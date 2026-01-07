@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Python Libraries for Dremio | Agentic Lakehouse</title>
+    <meta name="description"
+        content="Leverage Dremio's power within the Python ecosystem. dremio-simple-query, dremio-cli, and dremioframe.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/python" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agenticlakehouse.com/python">
+    <meta property="og:title" content="3 Python Libraries for Dremio | Agentic Lakehouse">
+    <meta property="og:description"
+        content="Leverage Dremio's power within the Python ecosystem. dremio-simple-query, dremio-cli, and dremioframe.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share-python.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="agenticlakehouse.com">
+    <meta property="twitter:url" content="https://agenticlakehouse.com/python">
+    <meta name="twitter:title" content="3 Python Libraries for Dremio | Agentic Lakehouse">
+    <meta name="twitter:description"
+        content="Leverage Dremio's power within the Python ecosystem. dremio-simple-query, dremio-cli, and dremioframe.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share-python.jpg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "3 Python Libraries for Dremio",
+      "description": "A guide to dremio-simple-query, dremio-cli, and dremioframe.",
+      "author": {
+        "@type": "Organization",
+        "name": "Dremio"
+      }
+    }
+    </script>
+
+    <!-- Icons (using Phosphor Icons for a premium look) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#libraries">The Libraries</a></li>
+                    <li><a href="https://www.dremio.com">Dremio</a></li>
+                    <li><a href="https://drmevn.fyi/am-get-started" class="btn btn-primary nav-cta">Start Free Trial</a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <div class="hero-text-wrapper">
+                    <h1 class="fade-in-up">Dremio + <br><span class="gradient-text">Python</span></h1>
+                    <p class="hero-subtitle fade-in-up delay-1">Unleash the Agentic Lakehouse within your Python
+                        ecosystem.</p>
+                    <div class="hero-actions fade-in-up delay-2">
+                        <a href="https://drmevn.fyi/am-get-started" class="btn btn-primary btn-lg">Start 30-Day Free
+                            Trial <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="#libraries" class="btn btn-secondary btn-lg">Explore Libraries</a>
+                    </div>
+                </div>
+                <!-- Abstract visual representation -->
+                <div class="hero-visual fade-in-up delay-3">
+                    <div class="glass-card floating-card card-1">
+                        <i class="ph-duotone ph-code"></i>
+                        <span>Python Code</span>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="glass-card floating-card card-2">
+                        <i class="ph-duotone ph-database"></i>
+                        <span>Lakehouse</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem/Overview Section -->
+        <section id="overview" class="problem-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Choose the Right Tool</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Dremio isn't just a UI. It has a rich ecosystem of
+                        community-driven Python libraries for every persona.</p>
+                </div>
+
+                <div class="problem-grid">
+                    <div class="feature-card fade-in-on-scroll">
+                        <div class="icon-wrapper success-light">
+                            <i class="ph-duotone ph-lightning"></i>
+                        </div>
+                        <h3>The Minimalist</h3>
+                        <p>Just need to run SQL? Don't overcomplicate it. Get high-performance Arrow Flight results
+                            instantly.</p>
+                    </div>
+
+                    <div class="feature-card fade-in-on-scroll delay-1">
+                        <div class="icon-wrapper success-light">
+                            <i class="ph-duotone ph-terminal-window"></i>
+                        </div>
+                        <h3>The Power User</h3>
+                        <p>Live in the terminal? Manage sources, users, and reflections without leaving your command
+                            line.</p>
+                    </div>
+
+                    <div class="feature-card fade-in-on-scroll delay-2">
+                        <div class="icon-wrapper success-light">
+                            <i class="ph-duotone ph-gear"></i>
+                        </div>
+                        <h3>The Engineer</h3>
+                        <p>Building pipelines? Need DataFrames? Use a robust toolkit for CI/CD, data science, and
+                            complex operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Libraries Section -->
+        <section id="libraries" class="solution-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="fade-in-on-scroll">The <span class="gradient-text">Python Toolkit</span></h2>
+                    <p class="section-subtitle fade-in-on-scroll">Three versatile libraries to supercharge your
+                        workflow.</p>
+                </div>
+
+                <div class="solution-grid">
+                    <!-- Library 1 -->
+                    <div class="solution-card large-card fade-in-on-scroll">
+                        <div class="card-content">
+                            <h3>dremio-simple-query</h3>
+                            <p>For the Minimalist. A lightweight library with one job: executing SQL queries using the
+                                high-performance Arrow Flight protocol.</p>
+                            <ul class="check-list">
+                                <li><i class="ph-bold ph-check-circle"></i> Pure SQL Execution</li>
+                                <li><i class="ph-bold ph-check-circle"></i> Arrow Flight Speed</li>
+                                <li><i class="ph-bold ph-check-circle"></i> Zero Bloat</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem;">
+                                <code
+                                    style="background: rgba(0,0,0,0.3); padding: 0.5rem 1rem; border-radius: 6px; font-family: monospace; color: var(--color-accent-blue);">pip install dremio-simple-query</code>
+                            </div>
+                        </div>
+                        <div class="card-visual visual-semantic"
+                            style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjkwIiBzdHJva2U9InJnYmEoNTcsMTUzLDIyOSwwLjIpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIC8+PHBhdGggZD0iTTEwMCA0MCBMICAxNjAgMTYwIEwgNDAgMTYwIFoiIGZpbGw9IiMzOTk5ZTUiIG9wYWNpdHk9IjAuOCIgLz48L3N2Zz4=');">
+                        </div>
+                    </div>
+
+                    <!-- Library 2 -->
+                    <div class="solution-card fade-in-on-scroll">
+                        <div class="card-content">
+                            <div class="icon-wrapper success-light">
+                                <i class="ph-duotone ph-terminal"></i>
+                            </div>
+                            <h3>dremio-cli</h3>
+                            <p>For the Terminal Power User. A CLI for managing Dremio. Script administrative tasks,
+                                explore catalogs, and integrate into CI/CD pipelines.</p>
+                            <div style="margin-top: 1rem;">
+                                <code
+                                    style="background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: var(--color-accent-blue);">dremio-cli sql execute "SELECT..."</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Library 3 -->
+                    <div class="solution-card fade-in-on-scroll">
+                        <div class="card-content">
+                            <div class="icon-wrapper success-light">
+                                <i class="ph-duotone ph-brackets-curly"></i>
+                            </div>
+                            <h3>dremioframe</h3>
+                            <p>For the Data Engineer. A comprehensive DataFrame API. Manage reflections, run vacuums,
+                                build pipelines, and manage your lakehouse as code.</p>
+                            <div style="margin-top: 1rem;">
+                                <code
+                                    style="background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: var(--color-accent-blue);">df = client.table('sales').filter(...)</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box fade-in-on-scroll">
+                    <h2>Ready to Code?</h2>
+                    <p>Integrate Dremio seamlessly into your Python workflow today.</p>
+                    <a href="https://drmevn.fyi/am-get-started" class="btn btn-light btn-lg">Start Free 30-Day Trial</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
