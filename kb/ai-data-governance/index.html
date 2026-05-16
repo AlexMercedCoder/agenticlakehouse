@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Governance | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description"
+        content="Discover the principles of AI Data Governance and how automated metadata tagging secures enterprise data for autonomous agent consumption.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/ai-data-governance/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "AI Data Governance",
+      "description": "An deep dive into modern governance practices designed specifically to manage and secure the autonomous operations of AI data agents.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://agenticlakehouse.com/kb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Data Governance",
+          "item": "https://agenticlakehouse.com/kb/ai-data-governance/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kb-label {
+            display: inline-block;
+            background: rgba(88, 225, 247, 0.1);
+            color: var(--color-accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">AI Data Governance</h1>
+                <p class="hero-subtitle mx-auto">Automating security, lineage, and compliance for autonomous analytical systems.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>Data governance in the pre-AI era was largely a manual exercise. Data stewards would periodically audit schemas, apply static tags to sensitive columns, and manually review access requests submitted via IT tickets. In the era of the Agentic Lakehouse, this manual approach completely breaks down. When autonomous agents are dynamically generating SQL and exploring datasets at machine speed, governance must also operate at machine speed.</p>
+
+            <p><strong>AI Data Governance</strong> is the practice of leveraging automation and universal catalogs to secure enterprise data without impeding the velocity of Agentic Workflows.</p>
+
+            <h2>Programmatic Metadata Tagging</h2>
+            <p>AI agents rely heavily on metadata to reason about database schemas. If a table containing European customer data is not explicitly tagged as subject to GDPR regulations, the AI might unknowingly use that data in a non-compliant predictive model.</p>
+
+            <p>Modern lakehouses utilize AI to govern AI. Data engineering teams deploy specialized classification agents that constantly scan newly ingested Apache Iceberg tables. These agents use pattern recognition to identify PII (like phone numbers or social security numbers) and automatically apply governance tags in the underlying catalog (like Apache Polaris or Dremio). When an analytical agent later attempts to query that table, the execution engine instantly reads the automated tags and applies the necessary Column-Masking policies.</p>
+
+            <h2>Lineage as Security</h2>
+            <p>In a traditional dashboard environment, data lineage is used primarily for debugging ("Which ETL job broke my chart?"). In an Agentic Lakehouse, data lineage is a critical security control.</p>
+            
+            <p>Consider a scenario where an AI agent utilizes a Code Interpreter tool to synthesize a new aggregate dataset and writes it back to the lakehouse as a new Iceberg table. If the original source data contained sensitive HR records, the newly generated aggregate table must inherit those exact same access restrictions. The execution engine tracks this lineage programmatically, ensuring that derived tables cannot be used to bypass original security policies.</p>
+
+            <h2>The Shift from Deny-by-Default to Bounded Autonomy</h2>
+            <p>Historically, enterprise data was secured using a strict "deny-by-default" policy. Users were given access only to the specific tables they needed to do their jobs. This model severely limits the effectiveness of Data Agents. If an agent is tasked with finding correlations between disparate business units, it needs wide visibility across the catalog.</p>
+
+            <p>AI Data Governance shifts the security paradigm from restricting table visibility to restricting row and column access. The agent is permitted to "see" the entire schema landscape, allowing it to reason about macro-level business trends. However, the execution engine enforces strict Row-Level Security (RLS) policies at query runtime. This allows the agent to explore freely within the secure, logical boundaries established by the human user's identity.</p>
+
+            <p>By automating tagging, enforcing strict lineage, and utilizing RLS, AI Data Governance ensures that the immense power of the Agentic Lakehouse is deployed safely and legally within the enterprise.</p>
+
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
