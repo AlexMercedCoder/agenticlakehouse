@@ -56,6 +56,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/agentic-bi/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/agentic-lakehouse/</loc>
     <lastmod>2026-05-15</lastmod>
     <priority>0.6</priority>
@@ -121,6 +126,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-fabric-for-ai/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/enterprise-ai-agents/</loc>
     <lastmod>2026-05-15</lastmod>
     <priority>0.6</priority>
@@ -142,6 +152,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/llm-data-access/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/llm-driven-bi/</loc>
     <lastmod>2026-05-15</lastmod>
     <priority>0.6</priority>
   </url>
