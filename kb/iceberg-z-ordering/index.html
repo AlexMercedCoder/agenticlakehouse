@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg Z-Ordering | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about Iceberg Z-Ordering: a multi-dimensional sorting technique used during compaction to cluster data and optimize query performance across multiple columns.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-z-ordering/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg Z-Ordering","description":"A guide to Z-Ordering in Apache Iceberg, detailing how this advanced sorting strategy improves data skipping for queries that filter on multiple columns simultaneously.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg Z-Ordering","item":"https://agenticlakehouse.com/kb/iceberg-z-ordering/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg Z-Ordering</h1>
+            <p class="hero-subtitle mx-auto">The multi-dimensional sorting technique that dramatically improves query performance across multiple filter columns.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>In Apache Iceberg, data skipping is powered by the min/max statistics stored in the manifest files. If data is randomly scattered across thousands of Parquet files, a query engine has to open and scan almost all of them because the min/max range of every file will likely overlap with the query's filter. To fix this, data engineers use <strong>compaction</strong> to sort the data, grouping similar values into the same physical files.</p>
+
+            <h2>The Limitation of Linear Sorting</h2>
+            <p>Traditional sorting is hierarchical and linear. If you sort a table by <code>country</code>, and then by <code>city</code>, the data is perfectly clustered for a query filtering by <code>country</code>. However, if a user queries the table filtering only by <code>city = 'Paris'</code>, the query engine will still have to scan many files because "Paris" is scattered across the files associated with the "France" country block. Linear sorting strongly biases performance toward the first column in the sort key.</p>
+
+            <h2>What is Z-Ordering?</h2>
+            <p><strong>Z-Ordering</strong> (or Z-curve routing) is an advanced space-filling curve mathematical technique used during Iceberg table compaction. Instead of sorting hierarchically, Z-Ordering maps multi-dimensional data into a single dimension, interleaving the binary representation of the values from multiple columns.</p>
+            <p>This creates a layout where data points that are logically close in multiple dimensions (e.g., both <code>country</code> and <code>city</code>) are stored physically close together on the disk. Z-Ordering eliminates the bias of hierarchical sorting, giving equal sorting weight to all columns included in the Z-Order expression.</p>
+
+            <h2>When to Use Z-Ordering</h2>
+            <p>Z-Ordering is computationally expensive to execute during a compaction job. Therefore, it is best applied under specific conditions:</p>
+            <ul>
+                <li><strong>Multiple Uncorrelated Filters:</strong> When business users frequently query a table using different combinations of filters (e.g., querying by <code>customer_id</code> in one query, and <code>product_id</code> in another).</li>
+                <li><strong>High Cardinality:</strong> Z-Ordering works best on columns with many unique values. It is less effective for low-cardinality columns (like boolean flags or gender), which are better suited for traditional Iceberg partitioning.</li>
+            </ul>
+            <p>By applying Z-Ordering to the most frequently filtered columns, an organization can dramatically enhance Iceberg's data skipping efficiency, resulting in faster query execution and lower compute costs.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Universal Format | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Explore Delta Universal Format, the underlying open-source mechanism within the Delta Lake project that powers interoperability with Apache Iceberg.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/delta-universal-format/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Delta Universal Format","description":"A technical overview of the Delta Universal Format: the open-source specification enabling Delta tables to maintain compatible Iceberg metadata for cross-engine reads.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Delta Universal Format","item":"https://agenticlakehouse.com/kb/delta-universal-format/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Delta Universal Format</h1>
+            <p class="hero-subtitle mx-auto">The open-source mechanism within Delta Lake that bridges the metadata divide with Apache Iceberg.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>While "UniForm" is often discussed in the context of Databricks' commercial offerings, its foundation lies in the open-source community as the <strong>Delta Universal Format</strong>. It is a feature native to the open-source Delta Lake project, designed to allow users to expose Delta tables to engines that only speak the language of Apache Iceberg or Apache Hudi.</p>
+
+            <h2>Open-Source Interoperability</h2>
+            <p>The Delta Universal Format operates on a simple but powerful premise: because Delta, Iceberg, and Hudi all rely on Apache Parquet files for data storage, interoperability is purely an exercise in metadata translation. </p>
+            <p>When the Universal Format feature is enabled via table properties (e.g., <code>delta.enableIcebergCompatV2 = true</code>) in an open-source Spark deployment, the Delta writer takes on a dual responsibility. Every time a new transaction commits to the Delta log, an asynchronous process writes a corresponding Iceberg metadata tree (<code>v1.metadata.json</code>, manifest lists, etc.) into the exact same table directory.</p>
+
+            <h2>Bridging Ecosystems</h2>
+            <p>This open-source capability is vital for organizations implementing a multi-engine Lakehouse without locking into a single commercial vendor. For example:</p>
+            <ul>
+                <li>A data engineering team can use open-source Apache Spark to build complex ETL pipelines that natively write Delta Lake formats, taking advantage of Delta-specific features.</li>
+                <li>A downstream analytics team can use an engine like Dremio or Amazon Athena, which query the table using the universally generated Iceberg metadata, oblivious to the fact that the table was originally created as a Delta table.</li>
+            </ul>
+
+            <h2>Architectural Considerations</h2>
+            <p>The Delta Universal Format handles schema evolution, partition mapping, and data typing automatically. However, it is an asynchronous, read-optimized bridge. Because the "source of truth" remains the Delta transaction log, external engines reading the Iceberg metadata will always be highly consistent, but they generally cannot write to the table. Modifications must be routed back through an engine that understands the native Delta format to ensure the dual-metadata generation process remains synchronized.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

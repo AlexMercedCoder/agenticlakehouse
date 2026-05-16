@@ -256,7 +256,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/databricks-uniform/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/dataops/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/delta-universal-format/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -311,6 +321,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/iceberg-branching-and-tagging/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-catalog/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -322,6 +337,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-copy-on-write/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/iceberg-data-skipping/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -342,6 +362,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-manifest-list/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/iceberg-materialized-views/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -391,6 +416,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/iceberg-table-maintenance/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-time-travel/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -412,6 +442,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-vs-delta-lake/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/iceberg-z-ordering/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -516,6 +551,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/parquet-vs-iceberg/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/predictive-ai-agents/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -571,7 +611,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/snowflake-iceberg-tables/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/streaming-vs-batch-processing/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/tabular-iceberg/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
