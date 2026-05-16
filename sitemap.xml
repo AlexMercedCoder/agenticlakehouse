@@ -121,6 +121,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/apache-arrow/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/apache-flink/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -137,6 +142,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-spark/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/arrow-flight-sql/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -176,6 +186,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/columnar-data-formats/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/compute-storage-separation/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -187,6 +202,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/conversational-analytics/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/cost-based-optimizer/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -266,6 +286,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/databricks-photon-engine/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/databricks-uniform/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -282,6 +307,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/delta-universal-format/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/distributed-query-processing/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -506,6 +536,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/in-memory-data-grid/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/intelligent-data-foundation/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -572,6 +607,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/modern-data-stack/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/mpp-massively-parallel-processing/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -716,6 +756,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/sub-second-analytics/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/tabular-iceberg/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -737,6 +782,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/unified-data-analytics/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/vectorized-query-execution/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
