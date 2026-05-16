@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Spark | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand Apache Spark's role in the data lakehouse as the dominant batch processing and ETL engine with deep native Apache Iceberg integration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/apache-spark/" />
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"TechArticle","headline":"Apache Spark","author":{"@type":"Person","name":"Alex Merced"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}}
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>.article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}</style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Apache Spark</h1>
+            <p class="hero-subtitle mx-auto">The dominant distributed compute engine for large-scale ETL, machine learning, and Iceberg table operations.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Apache Spark</strong> is the most widely adopted distributed processing framework in the data engineering world. Originally developed at UC Berkeley's AMPLab in 2009, Spark replaced Hadoop MapReduce by keeping intermediate results in memory rather than writing each step back to disk, achieving significant performance improvements for iterative computations. In the modern lakehouse, Spark remains the dominant engine for heavy-duty ETL and machine learning pipelines.</p>
+            <h2>Spark and Apache Iceberg</h2>
+            <p>Apache Spark has the deepest and most mature integration with Apache Iceberg of any compute engine. The official Iceberg Spark runtime library enables full table procedures like <code>CALL catalog.system.rewrite_data_files()</code>, <code>expire_snapshots()</code>, complete DML support (<code>MERGE INTO</code>, <code>UPDATE</code>, <code>DELETE</code>), and Structured Streaming writes with exactly-once guarantees. Spark is the primary interface for running Iceberg maintenance operations at scale.</p>
+            <h2>Spark's Role in the Multi-Engine Lakehouse</h2>
+            <p>In an interoperable lakehouse, Spark handles the data engineering layer: processing raw bronze data through medallion layers, running scheduled machine learning training jobs, and performing large-scale data migrations. Interactive BI queries are typically served by faster, more concurrent engines like Trino, Dremio, or DuckDB reading the same Iceberg tables Spark has written.</p>
+            <h2>DataFusion Comet</h2>
+            <p>A notable 2025/2026 development is <strong>Apache DataFusion Comet</strong>, which replaces Spark's JVM-based execution engine with the high-performance Rust-native DataFusion execution engine as a native plugin. Maturing through 2026, Comet delivers dramatic performance improvements for common Spark SQL workloads while maintaining full API compatibility.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
