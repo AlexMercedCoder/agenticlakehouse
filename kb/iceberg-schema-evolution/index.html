@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg Schema Evolution | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn how Iceberg Schema Evolution enables safe, backward-compatible schema changes (add, drop, rename, reorder columns, promote types) without rewriting data files.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-schema-evolution/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg Schema Evolution","description":"A guide to Iceberg Schema Evolution: the supported operations (add, drop, rename, reorder, type promotion), how column IDs ensure backward compatibility, and the Spec v2 required field feature.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg Schema Evolution","item":"https://agenticlakehouse.com/kb/iceberg-schema-evolution/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg Schema Evolution</h1>
+            <p class="hero-subtitle mx-auto">Change table schemas safely and without rewriting data, using Iceberg's column ID-based schema tracking.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Iceberg Schema Evolution</strong> is the ability to alter a table's schema (add columns, drop columns, rename columns, reorder columns, or promote column data types) without rewriting the existing data files and without breaking existing queries or pipelines that reference the old schema. This is one of Iceberg's most operationally significant features, addressing a painful limitation of older data lake approaches where any schema change required a full table rewrite.</p>
+            <p>The mechanism that makes safe schema evolution possible is Iceberg's use of stable, immutable column IDs. Rather than tracking columns by their names (as Parquet's native format does), Iceberg assigns each column a unique integer ID at creation time. This ID never changes, even if the column is renamed. When the query engine reads an old Parquet file that has a column named <code>price</code> with ID 7, and the current schema shows column ID 7 is now named <code>unit_price</code>, the engine correctly maps the renamed column by ID rather than by name. Old data files remain readable without modification.</p>
+
+            <h2>Supported Evolution Operations</h2>
+            <ul>
+                <li><strong>Add column:</strong> New columns are added to the schema. Existing data files return null for the new column (or the column's default value in Spec v2 with a default value defined). No data files are rewritten.</li>
+                <li><strong>Drop column:</strong> A column is removed from the current schema. Existing data files that contain the dropped column are still readable; the dropped column's data is simply ignored. No data files are rewritten.</li>
+                <li><strong>Rename column:</strong> A column name changes. Because the underlying column ID is stable, both old and new data files continue to work correctly. Any query using the old name will fail (the name changed), but the data itself is intact.</li>
+                <li><strong>Reorder columns:</strong> The logical order of columns in the schema can be changed. Because Parquet reads by column ID rather than position, reordering does not require rewriting files.</li>
+                <li><strong>Type promotion:</strong> Certain type widening operations are safe: int to long, float to double, decimal precision widening. These can be applied without rewriting data. Narrowing (long to int) is not supported because it can cause data loss.</li>
+            </ul>
+
+            <h2>Spec v2 Required Fields</h2>
+            <p>Iceberg Spec v2 introduced explicit required vs. optional field tracking. When a column is added with a default value (Spec v2 feature), the schema records that the column is required and specifies the default. Old data files that do not contain the column are handled by returning the default value at read time. This allows pipeline code to treat the column as non-nullable even for historical data that predates the column's addition.</p>
+
+            <h2>Schema Evolution for AI Agents</h2>
+            <p>Safe schema evolution is particularly valuable in AI agent contexts where the agent may be querying tables that change over time. If the underlying table schema changes (a column is renamed or a new field is added), Iceberg's evolution guarantees that historical data remains queryable under the new schema. An agent that caches a table's schema for context should still verify schema currency against the catalog before generating SQL for production queries.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg vs Apache Hudi | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Compare Iceberg vs Apache Hudi: architecture differences in metadata, indexing, CDC and streaming upsert capabilities, and which format fits which workload.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-vs-apache-hudi/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg vs Apache Hudi","description":"A technical comparison of Apache Iceberg and Apache Hudi: metadata models, streaming update performance, CDC support, and when each format is the better architectural choice.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg vs Apache Hudi","item":"https://agenticlakehouse.com/kb/iceberg-vs-apache-hudi/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg vs Apache Hudi</h1>
+            <p class="hero-subtitle mx-auto">Two ASF-governed open table formats with different strengths: broad engine support vs streaming-first CDC.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>Apache Iceberg and Apache Hudi are both governed by the Apache Software Foundation, and both deliver ACID transactions and versioned history on top of Parquet files in object storage. Their architectural differences reflect different original problem statements: Iceberg was designed to solve Netflix's large-scale batch analytics reliability problems, while Hudi (originally Hoodie) was designed by Uber to handle the high-frequency, record-level upsert requirements of their ride-sharing operational pipelines.</p>
+            <p>Understanding these origins helps predict where each format naturally excels.</p>
+
+            <h2>The Metadata Model Difference</h2>
+            <p><strong>Apache Iceberg</strong> uses a snapshot-based metadata hierarchy. Each write operation creates a new snapshot pointing to a manifest list that tracks all active data files along with column-level statistics. This structure makes query planning efficient for large-scale analytical workloads: the planner uses file statistics to prune entire data files without reading them. The trade-off is that the snapshot model is inherently write-oriented toward appends and replacements of data file sets rather than individual record mutations.</p>
+            <p><strong>Apache Hudi</strong> uses a timeline-based architecture with advanced pluggable indexing. The timeline records all write operations (commits, compaction, cleaning) as a log of events. Hudi's indexes (Bloom filter index, HBase index, or simple file-based index) allow the engine to locate the specific data file(s) containing a given record key, which makes record-level upserts efficient without scanning all files. This indexing capability is why Hudi handles high-frequency CDC updates more efficiently than Iceberg for record-level operations.</p>
+
+            <h2>Merge-on-Read and Copy-on-Write</h2>
+            <p>Both formats support Merge-on-Read (MoR) and Copy-on-Write (CoW) write strategies. In CoW mode, every write rewrites the affected data files completely, producing files that are immediately optimized for reads but making writes expensive for small updates. In MoR mode, writes append to log files that are merged with base files at read time, making writes fast but adding read-time overhead until a compaction job merges the logs into base files.</p>
+            <p>Hudi has historically been stronger for high-frequency MoR workloads because its indexing makes the "find the record to update" step fast. Iceberg v2 introduced positional and equality delete files that provide MoR capability, closing much of this gap for workloads that do not require Hudi's specific indexing strategies.</p>
+
+            <h2>Engine Support</h2>
+            <p>Apache Iceberg has broader support across non-Spark query engines. Dremio, Trino, Snowflake, BigQuery, and Athena all support Iceberg natively. Hudi's primary integration is with Apache Spark; support in other engines exists but is less mature. For organizations that need to query tables from multiple engines (not just Spark), Iceberg is the safer choice.</p>
+
+            <h2>When to Choose Each</h2>
+            <ul>
+                <li>Choose <strong>Apache Iceberg</strong> for large-scale batch analytics, multi-engine environments, and workloads where write patterns are predominantly append-oriented or periodic bulk updates.</li>
+                <li>Choose <strong>Apache Hudi</strong> for high-frequency streaming upsert workloads, complex CDC pipelines where individual records are frequently updated or deleted, and Spark-centric environments where Hudi's native Spark integrations can be used fully.</li>
+            </ul>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakehouse Migration | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="A practical guide to Lakehouse Migration: phased strategies for moving from on-premise Hadoop or proprietary cloud warehouses to an open Apache Iceberg lakehouse.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/lakehouse-migration/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Lakehouse Migration","description":"A practical guide to migrating from Hadoop or a proprietary cloud warehouse to an open Apache Iceberg lakehouse, covering phased strategies and common pitfalls.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Lakehouse Migration","item":"https://agenticlakehouse.com/kb/lakehouse-migration/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Lakehouse Migration</h1>
+            <p class="hero-subtitle mx-auto">Moving from Hadoop or a proprietary warehouse to an open lakehouse without disrupting the business.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Lakehouse Migration</strong> is the process of transitioning an organization's analytical data estate from a legacy architecture (typically on-premise Hadoop, or a proprietary cloud data warehouse) to an open Data Lakehouse built on cloud object storage and Apache Iceberg. The motivation is typically a combination of cost reduction, flexibility to use multiple engines, removal of vendor lock-in, and access to the open ecosystem of AI and ML tools that work natively with Parquet files.</p>
+            <p>A lakehouse migration is rarely a simple lift-and-shift. Hadoop-specific components (YARN resource management, Oozie scheduling, Hive Metastore-based catalogs) have no direct equivalents in the lakehouse architecture. The code often needs to be refactored, not just moved. Treating a migration as a rewrite opportunity rather than a transplant tends to produce better outcomes.</p>
+
+            <h2>The Phased Migration Approach</h2>
+            <p>Successful migrations proceed in phases rather than as a single cutover event. A recommended sequence:</p>
+            <ol>
+                <li><strong>Inventory and classify:</strong> Audit every workload and dataset in the current system. Classify each by criticality, query frequency, data volume, and transformation complexity. This produces a prioritized migration backlog.</li>
+                <li><strong>Establish the target architecture:</strong> Stand up cloud object storage, select an Iceberg catalog (Apache Polaris for open-standard, AWS Glue for AWS-native environments, or Project Nessie for Git-like branch semantics), and configure the query engine (Dremio, Spark, or Trino).</li>
+                <li><strong>Migrate non-critical workloads first:</strong> Start with lower-risk datasets such as historical archives, reporting snapshots, or datasets with no active SLA. These provide real production experience with the new stack before the stakes are high.</li>
+                <li><strong>Run both systems in parallel:</strong> For mission-critical workloads, run the legacy and new systems concurrently during the transition period. Compare query results to validate correctness. This parallel running period prevents surprises at cutover.</li>
+                <li><strong>Cut over by domain:</strong> Transfer ownership of each data domain to the lakehouse as it is validated, retiring the corresponding legacy workload systematically rather than all at once.</li>
+            </ol>
+
+            <h2>Federated Querying as a Migration Bridge</h2>
+            <p>One underused pattern in lakehouse migrations is federated querying as a transition bridge. Rather than blocking all analytics while data moves, a query engine like Dremio can federate queries across both the legacy system and the new lakehouse simultaneously. Analysts continue working without interruption while the migration proceeds. Once a dataset is fully migrated and validated, Dremio's query routing shifts transparently from the legacy source to the Iceberg table, with no change required in reports or dashboards.</p>
+
+            <h2>Common Pitfalls</h2>
+            <ul>
+                <li>Migrating raw data without redesigning table partitioning for the new query patterns, producing poor performance on the lakehouse.</li>
+                <li>Skipping the parallel validation phase and discovering data quality differences only after cutover.</li>
+                <li>Not establishing a catalog and governance model before data arrives, creating a new data swamp rather than a managed lakehouse.</li>
+                <li>Underestimating the operational learning curve for Iceberg table maintenance (compaction, snapshot expiration, partition evolution).</li>
+            </ul>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
