@@ -141,6 +141,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/apache-kafka-integration/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/apache-polaris/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -181,6 +186,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/change-data-capture/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/cloud-data-warehouse/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -192,6 +202,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cloud-native-data-warehouse/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/column-level-security/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -301,7 +316,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-masking/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-mesh/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-modeling-techniques/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -312,6 +337,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-quality-framework/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-vault-2/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -392,6 +422,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/enterprise-ai-agents/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/enterprise-data-security/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -606,6 +641,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/kimball-methodology/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-architecture/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -657,6 +697,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/machine-learning-lakehouse/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/master-data-management/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -731,6 +776,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/pii-data-protection/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/polars/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -791,6 +841,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/row-level-security/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/s3-data-lake/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -831,6 +886,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/slowly-changing-dimensions/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/snowflake-iceberg-tables/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -847,6 +907,16 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/sql-dialects/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/star-schema-vs-snowflake-schema/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/streaming-data-pipelines/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>

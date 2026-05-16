@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Column-Level Security | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about column-level security in data lakehouses, restricting access to specific columns containing sensitive data without duplicating tables.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/column-level-security/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Column-Level Security","author":{"@type":"Person","name":"Alex Merced"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}}</script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>.article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}</style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Column-Level Security</h1>
+            <p class="hero-subtitle mx-auto">Restricting access to sensitive columns in Iceberg tables at query time, without duplicating or restructuring underlying data.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Column-Level Security (CLS)</strong> is the governance control that restricts which users or roles can see specific columns within a table. Rather than creating separate, sanitized copies of tables for different user groups (an expensive and operationally complex approach), CLS enforces column visibility at query time: the query engine checks the requesting user's permissions against the requested columns and either returns the column data, masks it, or excludes the column from the result entirely.</p>
+            <h2>Why Column-Level Security Matters</h2>
+            <p>Real-world enterprise tables often contain sensitive data alongside non-sensitive operational data in the same row. A customer orders table might include: order ID (non-sensitive), product SKU (non-sensitive), quantity (non-sensitive), customer SSN (highly sensitive PII), salary bracket (sensitive), and credit card token (sensitive). Most analysts need access to the first three columns for sales analysis but should never see the latter three. Without CLS, the only option would be creating separate, de-identified views or table copies for different user groups, multiplying storage costs and maintenance burden.</p>
+            <h2>CLS Implementation in Lakehouse Platforms</h2>
+            <p>Column-level security in lakehouse environments is enforced at the query layer:</p>
+            <ul>
+                <li><strong>Dremio:</strong> Implements column masking policies and grants that hide or mask specific columns from specific roles. A masking policy on the SSN column might return '***-**-****' for all non-HR users while returning the real value for authorized HR analysts, all transparently within the query execution.</li>
+                <li><strong>Apache Polaris:</strong> Column-level privileges can be granted or revoked per catalog namespace, allowing fine-grained control over which engines and users can access specific columns in shared Iceberg catalogs.</li>
+                <li><strong>Databricks Unity Catalog:</strong> Supports column masks and row filters as SQL expressions evaluated at query time for Iceberg and Delta tables.</li>
+            </ul>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active partner.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
