@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg Compaction | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about Iceberg Compaction: the critical maintenance process that merges small files, applies deletes, and sorts data to optimize read performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-compaction/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg Compaction","description":"A guide to Apache Iceberg Compaction: exploring Bin-pack and Sort strategies, and why managing small files and delete files is essential for query performance.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg Compaction","item":"https://agenticlakehouse.com/kb/iceberg-compaction/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg Compaction</h1>
+            <p class="hero-subtitle mx-auto">The critical maintenance process that restructures data files and metadata to guarantee maximum query performance.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Compaction</strong> is an essential table maintenance operation in Apache Iceberg. Over time, as data is ingested (especially via streaming or micro-batches) and updated, the physical layout of an Iceberg table can degrade, leading to slower query times. Compaction restructures this data in the background to restore optimal performance.</p>
+
+            <h2>Why is Compaction Necessary?</h2>
+            <p>There are two primary reasons a table requires compaction:</p>
+            <ul>
+                <li><strong>The Small File Problem:</strong> Cloud object storage (like Amazon S3) is optimized for reading a few large files (e.g., 256MB to 512MB) rather than thousands of tiny KB-sized files. Streaming ingestion often produces many small files, which overwhelms the query engine with network requests and metadata parsing overhead.</li>
+                <li><strong>Delete File Bloat:</strong> In tables using the <strong>Merge-on-Read (MoR)</strong> strategy, updates and deletes generate "delete files." At read time, the query engine must scan the base data and filter out rows matched by these delete files. As delete files accumulate, read performance degrades rapidly.</li>
+            </ul>
+
+            <h2>Compaction Strategies</h2>
+            <p>Iceberg supports different strategies for rewriting data files during compaction, allowing engineers to balance maintenance cost against read performance:</p>
+            
+            <h3>1. Bin-pack Compaction</h3>
+            <p>The simplest and fastest strategy. Bin-packing takes multiple small data files and combines them into fewer, target-sized data files (e.g., merging ten 25MB files into one 250MB file). It does not change the order of the data within the files. It is the cheapest way to solve the small file problem.</p>
+            
+            <h3>2. Sort Compaction</h3>
+            <p>A more expensive, but highly effective strategy. Sort compaction physically reorganizes the data within the files based on specific columns (e.g., sorting a sales table by <code>customer_id</code>). This ensures that similar data is grouped tightly together. As a result, the column-level min/max statistics stored in the Iceberg Manifest Files become highly precise. When a query filters by that column, the engine can "skip" large chunks of the table entirely, drastically reducing query times. Advanced multi-column sorting (like <strong>Z-ordering</strong>) can be used to optimize for queries that filter on multiple columns simultaneously.</p>
+
+            <h2>Applying Deletes</h2>
+            <p>Regardless of the strategy used, the compaction process reads the existing data files, applies any pending equality or position delete files, and writes out fresh, clean Parquet files. After the compaction job commits, the query engine no longer has to process those delete files on the fly.</p>
+            <p>In modern lakehouse architectures, compaction is often handled automatically by managed services or automated control planes (like Dremio's autonomous table optimization or AWS Glue), freeing data engineers from writing manual maintenance scripts.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

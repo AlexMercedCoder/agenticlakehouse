@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg V2 Spec | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Explore the Apache Iceberg V2 Specification: the update that introduced row-level deletes, making the table format suitable for streaming and CDC workloads.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-v2-spec/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg V2 Spec","description":"A guide to the Apache Iceberg V2 Specification: the major evolution that introduced row-level deletes, enabling Merge-on-Read and efficient streaming ingestion.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg V2 Spec","item":"https://agenticlakehouse.com/kb/iceberg-v2-spec/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg V2 Spec</h1>
+            <p class="hero-subtitle mx-auto">The major format evolution that introduced row-level deletes, enabling efficient streaming and CDC workloads.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>The Apache Iceberg format is defined by a strict specification that guarantees how metadata and data files interact, ensuring compatibility across the myriad of engines that read and write to the lakehouse. While <strong>Spec V1</strong> focused on analytical batch processing, schema evolution, and massive scalability using the Copy-on-Write methodology, the release of the <strong>Iceberg V2 Spec</strong> marked a major evolutionary leap for the format.</p>
+
+            <h2>The Problem with Spec V1</h2>
+            <p>Under Spec V1, data files in object storage were immutable. To delete or update a single row, a query engine had to read the entire data file, remove or alter the target row in memory, and rewrite a brand-new data file to storage. This <strong>Copy-on-Write (CoW)</strong> approach provided incredibly fast read speeds but created massive write amplification. It was fundamentally unsuited for Change Data Capture (CDC) pipelines or high-frequency streaming workloads, where small, rapid updates would quickly overwhelm the compute clusters tasked with rewriting the data files.</p>
+
+            <h2>The Innovation of Spec V2</h2>
+            <p>The defining feature of the Iceberg V2 Spec is the introduction of <strong>Row-Level Deletes</strong>. This fundamentally changes how updates and deletes are handled by enabling a <strong>Merge-on-Read (MoR)</strong> strategy. Under MoR, the original data file remains untouched. Instead, the engine writes a small "delete file" indicating which rows should be ignored. The merging of the base data and the deleted rows happens dynamically at query time.</p>
+            
+            <p>Spec V2 introduced two types of delete files to support this:</p>
+            <ul>
+                <li><strong>Position Deletes:</strong> Records the exact file path and row index of the deleted data. This is highly efficient for read engines, but requires the writer to know exactly where the data physically resides.</li>
+                <li><strong>Equality Deletes:</strong> Records the logical condition of the delete (e.g., <code>id = 123</code>). This is computationally expensive for read engines to evaluate, but incredibly fast for streaming ingestion engines (like Apache Flink) to write, as they do not need to scan the lake to find the data's location.</li>
+            </ul>
+
+            <h2>Sequence Numbers</h2>
+            <p>To safely manage these delete files without corrupting data, Spec V2 introduced <strong>Sequence Numbers</strong>. Every data file and delete file is assigned a sequence number based on when the snapshot was committed. During a read, an equality delete file only applies to data files that possess a lower or equal sequence number. This guarantees that if a user deletes "Customer A" at sequence 10, and then "Customer A" creates a new account at sequence 15, the delete file from sequence 10 will not accidentally erase the new record.</p>
+
+            <h2>Impact on the Lakehouse</h2>
+            <p>By solving the streaming ingestion problem, the Iceberg V2 Spec expanded the lakehouse from a batch-oriented analytical repository into a real-time platform capable of replacing traditional, expensive data warehouses for almost all operational and analytical workloads.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
