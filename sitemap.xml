@@ -51,6 +51,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/abac-data/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/agentic-analytics/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -231,7 +236,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-contracts/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-discovery/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-engine-scaling/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -276,12 +291,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-lineage-tracking/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-lineage/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-mesh/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-observability/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-quality-framework/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -676,6 +706,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/odbc-jdbc-drivers/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/open-data-architecture/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -741,6 +776,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/rbac-data/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/real-time-ai-decisions/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -786,6 +826,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/serverless-sql/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/snowflake-iceberg-tables/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -797,6 +842,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/spark-sql/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/sql-dialects/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
