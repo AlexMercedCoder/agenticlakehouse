@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Iceberg Explained: Architecture, Snapshots, and Catalogs | Agentic Lakehouse</title>
+    <meta name="description"
+        content="A comprehensive guide to Apache Iceberg. Understand how open table formats solve the data lake concurrency problem using snapshots, manifests, and catalogs.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/apache-iceberg/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "Apache Iceberg Explained: Architecture, Snapshots, and Catalogs",
+      "description": "An architectural deep-dive into Apache Iceberg, detailing how metadata layers, manifest lists, and catalogs enable ACID transactions on the data lake.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Apache Iceberg",
+          "item": "https://agenticlakehouse.com/apache-iceberg/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="gradient-text">Apache Iceberg Explained</h1>
+                <p class="hero-subtitle mx-auto">How file-level metadata and optimistic concurrency transformed the modern data lakehouse.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>To understand Apache Iceberg, you have to understand the specific engineering problem it was built to solve. Before Iceberg, the de facto standard for tracking large datasets on distributed storage was Apache Hive. Hive defined tables using a directory-based layout: a table was simply a folder in a filesystem (like HDFS or S3), and partitions were subfolders.</p>
+            
+            <p>This folder-based abstraction worked passably for on-premise Hadoop clusters, but it collapsed at scale on cloud object storage. Object stores like S3 are not true filesystems; they are key-value stores. Running a command like `LIST /sales/year=2026/` across millions of files is computationally expensive and incredibly slow. Worse, because Hive had no concept of atomic, file-level transactions, if a job failed halfway through writing to a folder, readers would suddenly start pulling corrupt, partial data. There was no isolation, no consistency, and no safe way to mutate data concurrently.</p>
+
+            <p>Netflix, managing petabytes of operational data, hit the physical limits of the Hive architecture. Their solution was to abandon folder-based tracking entirely and build a format that tracks data at the <em>file level</em>. That project became Apache Iceberg.</p>
+
+            <h2>The Core Abstraction: Metadata over Folders</h2>
+            <p>Apache Iceberg is an open table format for huge analytic datasets. It provides a layer of metadata that sits between your compute engines (like Spark, Trino, or Dremio) and your raw data files (typically Parquet, ORC, or Avro) stored in object storage.</p>
+            
+            <p>Instead of defining a table by asking "What files are in this folder?", Iceberg defines a table by reading a strict hierarchy of metadata files that maintain an exact list of every single data file that currently belongs to the table. This architectural shift enables warehouse-grade features on open data lakes.</p>
+
+            <h3>1. The Metadata Tree</h3>
+            <p>The Iceberg architecture is defined by a tree of metadata. When a query engine reads an Iceberg table, it traverses this tree from the top down:</p>
+            <ul>
+                <li><strong>The Catalog:</strong> The highest level. The catalog (such as Apache Polaris, Project Nessie, or AWS Glue) holds a pointer to the current Metadata JSON file for the table. It is the central concurrency bottleneck that ensures atomic swaps.</li>
+                <li><strong>Metadata JSON:</strong> This file defines the current state of the table. It contains the schema, the partition spec, and an array of historical snapshots, along with an explicit pointer to the <em>current</em> snapshot.</li>
+                <li><strong>Manifest Lists:</strong> A snapshot points to a Manifest List. This is an Avro file that lists all the Manifest Files that make up the current state of the table. Crucially, it includes partition bounds for each manifest, allowing the engine to skip reading manifests that don't match the query filter.</li>
+                <li><strong>Manifest Files:</strong> Also Avro files, these track the actual data files (Parquet). They store column-level min/max statistics, file sizes, and row counts, enabling massive data skipping before the engine ever touches a Parquet file.</li>
+            </ul>
+
+            <h2>Key Architectural Benefits</h2>
+
+            <h3>Optimistic Concurrency and ACID Transactions</h3>
+            <p>Because Iceberg tracks state via immutable metadata files, writers never modify existing files. When an ingestion job runs, it writes new Parquet data files, creates new Manifest files, and generates a new Metadata JSON file representing the proposed new state.</p>
+            <p>To commit, the writer asks the Catalog to atomically swap the table's pointer from the old Metadata JSON to the new one. If two writers attempt to commit at the exact same millisecond, Iceberg uses optimistic concurrency control: the first writer succeeds, and the second writer catches an exception, reads the new current state, and retries its commit on top of the new state. This guarantees serializable isolation without locking.</p>
+
+            <h3>Schema Evolution</h3>
+            <p>In the Hive era, changing a column name or type often required rewriting the entire historical dataset—an expensive and dangerous operation. Iceberg implements true schema evolution. Columns are tracked by unique IDs, not by their names. If you rename a column, Iceberg simply updates the mapping in the Metadata JSON. Old data files are read seamlessly using the new schema definition, requiring zero data rewrites.</p>
+
+            <h3>Hidden Partitioning</h3>
+            <p>Partitioning data by date (e.g., extracting the month from a timestamp) is standard practice. Historically, users had to provide the exact partition column in their SQL queries (e.g., `WHERE date >= '2026-01-01' AND partition_month = '01'`). If the user forgot the partition clause, the engine would trigger a devastating full-table scan.</p>
+            <p>Iceberg introduces Hidden Partitioning. The table's partition spec is defined in the metadata, not the user's queries. A user simply queries the timestamp column (`WHERE timestamp >= '2026-01-01'`), and Iceberg automatically translates this filter to prune files based on the underlying partition layout. If the data engineering team later changes the partition granularity from monthly to daily (Partition Evolution), the metadata handles the transition seamlessly across both old and new data, and the user's queries do not need to change.</p>
+
+            <h2>Iceberg in the Agentic Lakehouse</h2>
+            <p>As organizations shift towards Agentic Analytics—where AI agents autonomously query enterprise data to answer complex business questions—Iceberg becomes a mandatory architectural component.</p>
+            <p>AI agents require reliable, deterministic access to data. They cannot navigate corrupt Hive partitions or deal with locking issues caused by concurrent writes. By standardizing on Apache Iceberg, agents interact with a consistent, transactional metadata layer. When combined with a semantic layer (like Dremio) and an open catalog (like Apache Polaris), Iceberg provides the governed, high-performance foundation required for autonomous AI execution over the data lake.</p>
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

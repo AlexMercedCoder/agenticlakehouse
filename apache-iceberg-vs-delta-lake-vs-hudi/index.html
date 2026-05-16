@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Iceberg vs Delta Lake vs Apache Hudi: Open Table Formats Compared | Agentic Lakehouse</title>
+    <meta name="description"
+        content="An architectural comparison of Apache Iceberg, Delta Lake, and Apache Hudi. Learn the differences in metadata management, upserts, and ecosystem interoperability.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "Apache Iceberg vs Delta Lake vs Apache Hudi",
+      "description": "A comprehensive comparison of the top three open table formats, evaluating architecture, schema evolution, and optimal use cases for data lakehouses.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Iceberg vs Delta vs Hudi",
+          "item": "https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .comparison-table-wrapper {
+            margin: 3rem 0;
+            overflow-x: auto;
+            background: var(--color-navy-light);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        table.comparison-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        
+        table.comparison-matrix th, table.comparison-matrix td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        table.comparison-matrix th {
+            background: rgba(0,0,0,0.2);
+            font-family: var(--font-heading);
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        table.comparison-matrix th:first-child {
+            color: var(--color-accent-blue);
+        }
+        
+        table.comparison-matrix td {
+            color: var(--color-text-gray);
+            font-size: 1rem;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            width: 25%;
+        }
+        
+        table.comparison-matrix tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="gradient-text">Apache Iceberg vs Delta Lake vs Apache Hudi</h1>
+                <p class="hero-subtitle mx-auto">Evaluating the architecture of the big three open table formats.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>The foundation of every modern Data Lakehouse is an Open Table Format. Without an open table format, a data lake is just a massive directory of unmanaged, untransactional Parquet files. By introducing a metadata layer on top of those files, table formats enable ACID transactions, schema evolution, and time travel.</p>
+            
+            <p>Today, the market is dominated by three major open source projects: <strong>Apache Iceberg</strong>, <strong>Delta Lake</strong>, and <strong>Apache Hudi</strong>. While they all achieve the same high-level goal, their underlying architectures and design philosophies are drastically different, which significantly impacts performance, ecosystem interoperability, and operational overhead.</p>
+
+            <h2>Architectural Philosophies</h2>
+
+            <h3>Apache Iceberg: The Metadata Tree Approach</h3>
+            <p>Created at Netflix, Apache Iceberg was designed to fix the concurrency and performance issues of Apache Hive. Iceberg completely abstracts away the physical folder structure of the data lake. Instead, it tracks the state of a table at the individual file level using a strict hierarchy of JSON, Avro Manifest Lists, and Avro Manifest Files.</p>
+            <p>Because Iceberg tracks everything via a hierarchical metadata tree, it excels at massive scale. Query engines can prune thousands of files by reading the manifest statistics without ever touching the underlying Parquet data. Iceberg's philosophy is fiercely engine-agnostic, making it the most broadly supported format across the ecosystem.</p>
+
+            <h3>Delta Lake: The Transaction Log Approach</h3>
+            <p>Created by Databricks, Delta Lake manages table state using a transaction log (the `_delta_log` directory) stored directly alongside the data files. Every change to the table creates a new JSON commit file in this log. Periodically, these JSON commits are compacted into a Parquet "checkpoint" file to speed up log reading.</p>
+            <p>Delta Lake's architecture is deeply intertwined with Apache Spark. While Delta is now fully open source and supports other engines, its design inherently favors Spark's processing model. It provides excellent out-of-the-box performance within the Databricks ecosystem but can require more configuration for third-party engines.</p>
+
+            <h3>Apache Hudi: The Upsert and Streaming Approach</h3>
+            <p>Created at Uber, Apache Hudi (Hadoop Upserts Deletes and Incrementals) was built specifically to solve the problem of real-time, heavy-mutation streaming data on top of Hadoop. Hudi treats the data lake much like a database, providing primary keys, indexing, and incredibly fast upserts.</p>
+            <p>Hudi offers two storage types: Copy-on-Write (optimized for read-heavy analytical workloads) and Merge-on-Read (optimized for write-heavy streaming workloads). It includes robust built-in table services for compaction and cleaning, making it highly autonomous, but also making it the most complex format to set up and manage.</p>
+
+            <h2>Feature Comparison Matrix</h2>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-matrix">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Apache Iceberg</th>
+                            <th>Delta Lake</th>
+                            <th>Apache Hudi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Primary Origin</th>
+                            <td>Netflix</td>
+                            <td>Databricks</td>
+                            <td>Uber</td>
+                        </tr>
+                        <tr>
+                            <th>Metadata Mechanism</th>
+                            <td>Hierarchical Manifest Tree</td>
+                            <td>Transaction Log (`_delta_log`)</td>
+                            <td>Timeline and Indexes</td>
+                        </tr>
+                        <tr>
+                            <th>Schema Evolution</th>
+                            <td>Full support via internal column IDs (safest)</td>
+                            <td>Supported (Name-based originally, IDs added later)</td>
+                            <td>Supported (Name-based)</td>
+                        </tr>
+                        <tr>
+                            <th>Partition Evolution</th>
+                            <td>Hidden Partitioning (Seamlessly changes over time)</td>
+                            <td>Requires rewriting data / manual management</td>
+                            <td>Requires manual management</td>
+                        </tr>
+                        <tr>
+                            <th>Ecosystem Neutrality</th>
+                            <td>Highest (Engine agnostic by design)</td>
+                            <td>Moderate (Databricks/Spark optimized)</td>
+                            <td>Moderate (Spark/Flink optimized)</td>
+                        </tr>
+                        <tr>
+                            <th>Best Use Case</th>
+                            <td>Massive analytic tables queried by many different engines</td>
+                            <td>Organizations heavily invested in Databricks/Spark</td>
+                            <td>Heavy streaming pipelines with constant upserts/deletes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Engine Interoperability and Governance</h2>
+            <p>For organizations building a modern data stack, interoperability is the most critical evaluation metric. If a table format restricts you to a single query engine, you have recreated the vendor lock-in of the data warehouse era.</p>
+            
+            <p><strong>Apache Iceberg</strong> currently leads the market in interoperability. Because it relies on an external Catalog (like Apache Polaris or REST) to manage concurrency, it provides a safe, standardized API for any engine to integrate with. Dremio, Trino, Snowflake, AWS Athena, and Spark can all safely read and write to the same Iceberg table concurrently.</p>
+
+            <p><strong>Delta Lake</strong> historically struggled with multi-engine write concurrency on object storage like S3 because S3 lacked native atomic `put-if-absent` operations. While newer updates (and integration with Unity Catalog) have mitigated this, Iceberg's catalog-first architecture inherently handles multi-engine concurrency more robustly across diverse clouds.</p>
+
+            <p><strong>Apache Hudi</strong> integrates deeply with Spark and Flink for ingestion but requires specific sync mechanisms to make its tables readable by external engines like Trino or Presto, adding architectural overhead.</p>
+
+            <h2>Decision Framework</h2>
+            <p>Choosing the right open table format ultimately depends on your organization's engineering culture and existing tooling:</p>
+            <ul>
+                <li><strong>Choose Delta Lake</strong> if your data engineering team lives entirely within Databricks. The tight integration between Delta, Spark, and Databricks Photon provides an unparalleled developer experience, assuming you accept the ecosystem lock-in.</li>
+                <li><strong>Choose Apache Hudi</strong> if your primary pain point is managing millions of CDC (Change Data Capture) upserts per minute from operational databases into the lake, and you have the engineering talent to tune its complex configurations.</li>
+                <li><strong>Choose Apache Iceberg</strong> if you are building an open, multi-engine data lakehouse. If you want data scientists using Spark, business analysts using Dremio, and external partners using Snowflake to all query the exact same data without moving it, Iceberg's engine-agnostic metadata tree is the mathematically safest and most performant architecture.</li>
+            </ul>
+
+            <p>For the <strong>Agentic Lakehouse</strong>, Iceberg is the preferred foundation. AI Agents operate best when data is cleanly abstracted via semantic layers and open catalogs. Iceberg's strict schema evolution, hidden partitioning, and universal engine support ensure that agents interact with deterministic, trustworthy data at all times.</p>
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -40,20 +40,33 @@
 
     <!-- Schema.org -->
     <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "What is an Agentic Lakehouse? Architecture and Definition",
+      "description": "A technical guide to Agentic Lakehouses, including the four non-negotiable architectural layers: context, governed execution, multicloud standards, and safe action loops.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Dremio Agentic Lakehouse",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Cloud, Linux",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Free 30-Day Trial"
-      },
-      "description": "The foundation for Agentic Analytics. Solving Context, Data Gravity, and Performance bottlenecks."
-    }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        }
+      ]
+    }]
     </script>
 
     <!-- Icons (using Phosphor Icons for a premium look) -->
@@ -69,11 +82,10 @@
             </a>
             <nav class="site-nav">
                 <ul>
-                    <li><a href="#problem">The Problem</a></li>
-                    <li><a href="#solution">The Solution</a></li>
-                    <li><a href="https://www.dremio.com">Dremio</a></li>
-                    <li><a href="https://drmevn.fyi/am-get-started" class="btn btn-primary nav-cta">Start Free Trial</a>
-                    </li>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
@@ -152,10 +164,46 @@
             </div>
         </section>
 
-        <!-- Solution Section -->
+        <!-- What is an Agentic Lakehouse Section -->
+        <section id="agentic-lakehouse" class="definition-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">What is an Agentic Lakehouse?</h2>
+                    <p class="section-subtitle fade-in-on-scroll">The four non-negotiable architectural layers that separate standard analytics from true agentic capability.</p>
+                </div>
+                
+                <div class="architecture-diagram fade-in-on-scroll">
+                    <div class="arch-layer">
+                        <div class="icon-wrapper success-light"><i class="ph-duotone ph-robot"></i></div>
+                        <h4>1. Agent Interface</h4>
+                        <p>Safe action loops where AI can plan, query, and reason without hallunicating.</p>
+                    </div>
+                    <div class="arch-arrow"><i class="ph-bold ph-arrow-down"></i></div>
+                    <div class="arch-layer">
+                        <div class="icon-wrapper success-light"><i class="ph-duotone ph-brain"></i></div>
+                        <h4>2. Context & Semantic Meaning</h4>
+                        <p>Understanding business logic (e.g. "revenue" vs "gross sales") instead of just raw tables.</p>
+                    </div>
+                    <div class="arch-arrow"><i class="ph-bold ph-arrow-down"></i></div>
+                    <div class="arch-layer">
+                        <div class="icon-wrapper success-light"><i class="ph-duotone ph-shield-check"></i></div>
+                        <h4>3. Governed Execution & Trust</h4>
+                        <p>Strict access controls ensuring AI only queries data it is explicitly authorized to see.</p>
+                    </div>
+                    <div class="arch-arrow"><i class="ph-bold ph-arrow-down"></i></div>
+                    <div class="arch-layer">
+                        <div class="icon-wrapper success-light"><i class="ph-duotone ph-database"></i></div>
+                        <h4>4. Multicloud & Open Standards</h4>
+                        <p>Operating across engines and clouds using Apache Iceberg, Polaris, and open formats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <section id="solution" class="solution-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header center-text">
                     <h2 class="fade-in-on-scroll">The Solution: <span class="gradient-text">Dremio Agentic
                             Lakehouse</span></h2>
                     <p class="section-subtitle fade-in-on-scroll">One cohesive platform. No Franken-stack required.</p>
@@ -227,13 +275,51 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
             <div class="container">
-                <div class="cta-box fade-in-on-scroll">
-                    <h2>Ready to build your Data Foundation?</h2>
-                    <p>Transform your data repository into an active, intelligent partner today.</p>
-                    <a href="https://drmevn.fyi/am-get-started" class="btn btn-light btn-lg">Start Free 30-Day Trial</a>
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
