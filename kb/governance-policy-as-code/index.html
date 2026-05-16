@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governance Policy as Code | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about Governance Policy as Code for data lakehouses, managing access control, data quality rules, and compliance requirements as version-controlled code artifacts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/governance-policy-as-code/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Governance Policy as Code","author":{"@type":"Person","name":"Alex Merced"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}}</script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>.article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}</style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Governance Policy as Code</h1>
+            <p class="hero-subtitle mx-auto">Managing access control, data quality rules, and compliance requirements as version-controlled, auditable, and automatically enforced code artifacts.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>Governance Policy as Code</strong> applies the Infrastructure as Code philosophy to data governance: instead of managing access control, masking rules, data quality expectations, and compliance policies through manual GUI clicks in a governance platform, these policies are defined as code (YAML, HCL, Python, SQL), stored in version control (Git), reviewed via pull requests, and deployed automatically through CI/CD pipelines. This transforms governance from an ad-hoc administrative activity into a rigorous, auditable engineering discipline.</p>
+            <h2>Why Policy as Code Matters</h2>
+            <ul>
+                <li><strong>Auditability:</strong> Every policy change is a Git commit with an author, timestamp, and justification. Compliance auditors can see exactly who changed which policy, when, and why—directly from the version history.</li>
+                <li><strong>Repeatability:</strong> Policies applied via code are consistent across environments. The same access control definitions applied to production are replicated exactly to staging.</li>
+                <li><strong>Drift Detection:</strong> CI pipelines can detect when the actual state of governance policies drifts from the desired state defined in code, automatically raising alerts or applying corrections.</li>
+                <li><strong>Peer Review:</strong> A new masking policy or access grant requires a pull request, enabling data governance teams to review and approve changes before they take effect.</li>
+            </ul>
+            <h2>Implementation Patterns</h2>
+            <p>Apache Polaris implements governance through REST API calls that can be wrapped in Terraform providers or custom CLI tools, enabling catalog permissions to be managed as code. Great Expectations and Soda Core store data quality expectations as YAML files committed to Git. Dremio's role and permission management can be exported and managed via the REST API, enabling IaC workflows. Open Policy Agent (OPA) provides a general-purpose policy language (Rego) for expressing data access policies that can be evaluated programmatically by catalog and query engine integrations.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active partner.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

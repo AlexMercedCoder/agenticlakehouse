@@ -126,6 +126,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/apache-airflow/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/apache-arrow/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -166,6 +171,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/automated-data-testing/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/autonomous-bi/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -187,6 +197,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/change-data-capture/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/ci-cd-for-data/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -236,7 +251,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/cross-cloud-data-sharing/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/dagster/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-asset-management/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-caching-strategies/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-catalog-integration/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -252,6 +287,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-contracts/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-democratization/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -331,7 +371,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-monetization/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-observability/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-orchestration/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-provenance/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -341,7 +396,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-quality-rules/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-vault-2/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-versioning/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -372,6 +437,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dataops/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/dbt-data-build-tool/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -451,12 +521,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/gdpr-ccpa-compliance/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/genai-analytics/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/generative-ai-data-stack/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/governance-policy-as-code/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -711,6 +791,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/metadata-management/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/metric-store/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -791,6 +876,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/prefect/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/presto/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -857,6 +947,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/safe-action-loops/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/secure-data-sharing/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -942,6 +1037,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/trino/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/trusted-data-environments/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
