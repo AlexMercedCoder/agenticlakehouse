@@ -435,6 +435,18 @@
         <div class="kb-card"><a href="/kb/iceberg-snapshots/"><h3>Iceberg Snapshots</h3><p>Every write creates a complete, independently readable snapshot for time travel, concurrent safety, and rollback.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-time-travel/"><h3>Iceberg Time Travel</h3><p>Query any Iceberg table as it existed at a past point in time, using a snapshot ID or timestamp.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-schema-evolution/"><h3>Iceberg Schema Evolution</h3><p>Add, drop, rename, and retype columns safely without rewriting data files, using stable column IDs.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-partition-evolution/"><h3>Iceberg Partition Evolution</h3><p>Change a table's physical partition layout over time without rewriting historical data.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-hidden-partitioning/"><h3>Iceberg Hidden Partitioning</h3><p>Transform logical columns into partition values automatically, eliminating physical partition columns.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-rest-catalog/"><h3>Iceberg REST Catalog</h3><p>The open API standard that enables seamless interoperability between query engines and catalogs.</p></a></div>
+        <div class="kb-card"><a href="/kb/apache-polaris/"><h3>Apache Polaris</h3><p>The open-source, vendor-neutral implementation of the Iceberg REST Catalog API for lakehouse governance.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-manifest-files/"><h3>Iceberg Manifest Files</h3><p>The detailed metadata files that track individual data files and column-level statistics for data skipping.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-manifest-list/"><h3>Iceberg Manifest List</h3><p>The snapshot table of contents, enabling high-level partition pruning before reading manifest files.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-metadata-file/"><h3>Iceberg Metadata File</h3><p>The JSON document at the root of the tree that defines the table's structure, configuration, and state.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-merge-on-read/"><h3>Iceberg Merge-on-Read</h3><p>The write strategy introduced in Spec v2 that optimizes for fast ingestion by deferring data rewriting.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-copy-on-write/"><h3>Iceberg Copy-on-Write</h3><p>The write strategy that trades update speed for maximum analytical query performance.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-position-deletes/"><h3>Iceberg Position Deletes</h3><p>The high-performance delete mechanism for Merge-on-Read workloads that tracks data by physical location.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-equality-deletes/"><h3>Iceberg Equality Deletes</h3><p>The engine-agnostic delete mechanism that powers streaming CDC by matching logical column values.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-view-specification/"><h3>Iceberg View Specification</h3><p>The standardization layer that makes SQL views and materialized views interoperable across engines.</p></a></div>
         <!-- Additional KB entries will be added here dynamically -->
       </div>
     </section>

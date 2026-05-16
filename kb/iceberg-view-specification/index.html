@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Data Lake | Agentic Lakehouse Knowledge Base</title>
-    <meta name="description" content="Learn how S3 serves as the foundation of a Data Lake and Lakehouse, including bucket design, access patterns, and how Apache Iceberg transforms raw S3 files into governed tables.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg View Specification | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Explore the Iceberg View Specification: how it enables multi-engine, vendor-neutral views and materialized views by standardizing the storage of SQL definitions across dialects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
-    <link rel="canonical" href="https://agenticlakehouse.com/kb/s3-data-lake/" />
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-view-specification/" />
     <script type="application/ld+json">
-    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"S3 Data Lake","description":"A guide to building an S3 Data Lake, covering bucket design, IAM policies, Parquet organization, and the Iceberg upgrade path to a full lakehouse.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"S3 Data Lake","item":"https://agenticlakehouse.com/kb/s3-data-lake/"}]}]
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg View Specification","description":"A guide to the Iceberg View Specification: how it standardizes SQL definitions across engine dialects to enable truly interoperable views and materialized views.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg View Specification","item":"https://agenticlakehouse.com/kb/iceberg-view-specification/"}]}]
     </script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -21,31 +23,31 @@
 <body>
     <header class="site-header"><div class="container">
         <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
-        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
     </div></header>
     <main>
         <section class="page-header"><div class="container">
             <span class="kb-label">Knowledge Base</span>
-            <h1 class="gradient-text">S3 Data Lake</h1>
-            <p class="hero-subtitle mx-auto">Amazon S3 as the storage backbone of modern enterprise data architectures.</p>
+            <h1 class="gradient-text">Iceberg View Specification</h1>
+            <p class="hero-subtitle mx-auto">The standardization layer that makes SQL views and materialized views interoperable across different compute engines.</p>
         </div></section>
         <article class="article-content container">
-            <p>Amazon S3 (Simple Storage Service) is the most widely deployed data lake storage backend in the world. Its combination of unlimited capacity, eleven nines of durability, and cent-per-GB pricing made it the de facto home for enterprise data that doesn't fit in a traditional database. Building a well-structured <strong>S3 Data Lake</strong> is the first step toward a production Data Lakehouse.</p>
+            <p>One of the historical challenges in multi-engine data lakehouses is the lack of interoperability for logical views. If an engineer creates a view in Apache Spark, a user querying from Trino or Dremio usually cannot read it because the SQL dialect and the way the view definition is stored in the catalog are engine-specific. The <strong>Iceberg View Specification</strong> was created to solve this problem by providing a standardized metadata format for views.</p>
 
-            <h2>Bucket and Prefix Design</h2>
-            <p>S3 organizes objects using buckets and key prefixes. A well-designed S3 Data Lake separates data by domain and processing tier. A common pattern uses a single bucket with prefixes that mirror the Medallion Architecture:</p>
-            <ul>
-                <li><code>s3://company-lakehouse/bronze/</code>  -  raw ingested data, partitioned by source and date</li>
-                <li><code>s3://company-lakehouse/silver/</code>  -  cleaned and standardized Parquet, managed by Iceberg</li>
-                <li><code>s3://company-lakehouse/gold/</code>  -  business-domain aggregations and AI-ready feature tables</li>
-                <li><code>s3://company-lakehouse/metadata/</code>  -  Iceberg catalog metadata files (manifests and manifest lists)</li>
-            </ul>
+            <h2>Multi-Dialect Support</h2>
+            <p>The core innovation of the Iceberg View Specification is that it acknowledges that different engines use different SQL dialects. Instead of trying to force a single universal SQL syntax, the spec allows a single view to store multiple representations of its SQL definition, mapped to specific dialects (e.g., <code>spark-sql</code>, <code>trino</code>, <code>dremio</code>). When an engine queries the view, it requests the representation that matches its native dialect. This enables true multi-engine collaboration over complex logical models.</p>
 
-            <h2>IAM and Access Control</h2>
-            <p>AWS Identity and Access Management (IAM) policies govern which principals (users, roles, AI agent task execution roles) can read or write specific S3 prefixes. In a lakehouse context, IAM policies should be organized by data tier: the AI agent's IAM role gets read access to gold-tier prefixes and no write permissions. ETL pipeline roles get write access to bronze and silver tiers. Data stewards get write access to the metadata prefix for catalog operations. These IAM boundaries complement (but do not replace) the row-level and column-level security enforced by the query engine and catalog.</p>
+            <h2>Materialized Views</h2>
+            <p>The view specification also laid the groundwork for <strong>Materialized Views</strong> in the Iceberg ecosystem. A materialized view combines a logical view definition with a physical storage table (an Iceberg table) containing the precomputed results. The maturation of Iceberg Spec v3 - which introduced features like row lineage - provided the necessary change data capture mechanisms to allow compute engines to perform efficient, incremental refreshes of these materialized views without doing a full table recomputation.</p>
+            <p>By late 2025, major managed service providers like AWS began delivering native support for Iceberg materialized views within their data catalogs, utilizing these foundational specifications to offer automatic query rewriting and incremental updates across their integrated services.</p>
 
-            <h2>The Upgrade Path: From S3 Data Lake to Iceberg Lakehouse</h2>
-            <p>Many organizations already have existing data in S3 in Parquet format. The migration to an Apache Iceberg Lakehouse does not require rewriting the data files. Iceberg can register existing Parquet files into a new Iceberg table via a metadata-only operation that creates the necessary manifest and manifest list files pointing to the existing Parquet objects. After registration, the S3 files are queryable as a governed Iceberg table with full time-travel, schema evolution, and access control capabilities, without a single byte of data being copied.</p>
+            <h2>Why It Matters for Agentic Architectures</h2>
+            <p>For AI agents interacting with the lakehouse, standardized views are critical. Agents rely heavily on semantic layers and curated data products to formulate correct SQL. If a view is locked into a proprietary engine syntax, an agent using a different query interface cannot access that curated logic. The Iceberg View Specification ensures that the semantic layer remains open, neutral, and accessible to any agentic workflow, regardless of the underlying execution engine.</p>
         </article>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>

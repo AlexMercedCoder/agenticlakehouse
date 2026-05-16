@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg REST Catalog | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand the Iceberg REST Catalog API: the open standard for metadata management that ensures vendor neutrality and seamless interoperability between different compute engines.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-rest-catalog/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg REST Catalog","description":"A guide to the Apache Iceberg REST Catalog API specification: how it decouples compute engines from specific catalog backends to eliminate vendor lock-in and enable interoperability.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg REST Catalog","item":"https://agenticlakehouse.com/kb/iceberg-rest-catalog/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Iceberg REST Catalog</h1>
+            <p class="hero-subtitle mx-auto">The open API standard that enables seamless interoperability between query engines and table catalogs.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>At the very top of the Apache Iceberg architecture sits the Catalog layer. It is responsible for tracking the current state of a table by storing a pointer to the latest metadata file. Initially, organizations had to use specific catalog implementations like the Hive Metastore, AWS Glue, or direct database connections (JDBC) to manage these pointers. This created a problem: if a new query engine wanted to read Iceberg tables, it had to build custom integration code for every possible catalog backend.</p>
+            <p>The <strong>Iceberg REST Catalog API</strong> solves this problem. It is an open, vendor-neutral specification that standardizes how compute engines communicate with catalog services over HTTP. Instead of an engine needing to know the low-level details of how a specific catalog stores its data, the engine simply makes standardized REST API calls (like `GET /v1/namespaces/{namespace}/tables/{table}` to fetch table metadata, or `POST /v1/namespaces/{namespace}/tables/{table}` to commit an update).</p>
+
+            <h2>Why the REST API Matters</h2>
+            <p>The REST Catalog API is the linchpin of true vendor neutrality in the modern data lakehouse.</p>
+            <ul>
+                <li><strong>Eliminates Lock-in:</strong> An organization can deploy a REST-compliant catalog service (like Apache Polaris or Dremio Arctic) and know that any query engine supporting the REST standard (Spark, Flink, Trino, Snowflake, etc.) can instantly connect to it. If the organization later decides to migrate to a different catalog provider, they can do so without breaking their compute engines, provided the new catalog also implements the REST API.</li>
+                <li><strong>Centralized Governance:</strong> By routing all table operations through a standardized REST interface, the catalog service becomes the natural place to enforce central governance. The catalog can intercept requests to verify authentication, enforce Role-Based Access Control (RBAC), and manage credential vending for the underlying object storage, ensuring security policies are applied consistently regardless of which engine submitted the query.</li>
+                <li><strong>Future-Proofing:</strong> New capabilities (like Iceberg Spec v3 features or materialized view definitions) can be supported by updating the REST API specification, allowing the entire ecosystem of clients and servers to adopt new features coherently rather than relying on fragmented, implementation-specific updates.</li>
+            </ul>
+
+            <h2>Implementations</h2>
+            <p>The REST API is just a specification. It requires a server to implement it. **Apache Polaris**, which graduated to a Top-Level Apache Project in early 2026, is the premier open-source implementation of the Iceberg REST Catalog API. Managed services from vendors like Snowflake and Dremio also expose REST-compliant endpoints, allowing organizations to choose between self-hosting an open-source solution or consuming a managed service, all while retaining the benefits of a standardized interface.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

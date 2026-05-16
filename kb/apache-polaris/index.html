@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Data Lake | Agentic Lakehouse Knowledge Base</title>
-    <meta name="description" content="Learn how S3 serves as the foundation of a Data Lake and Lakehouse, including bucket design, access patterns, and how Apache Iceberg transforms raw S3 files into governed tables.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Polaris | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about Apache Polaris: the open-source, vendor-neutral implementation of the Iceberg REST Catalog API that provides centralized governance for data lakehouses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
-    <link rel="canonical" href="https://agenticlakehouse.com/kb/s3-data-lake/" />
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/apache-polaris/" />
     <script type="application/ld+json">
-    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"S3 Data Lake","description":"A guide to building an S3 Data Lake, covering bucket design, IAM policies, Parquet organization, and the Iceberg upgrade path to a full lakehouse.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"S3 Data Lake","item":"https://agenticlakehouse.com/kb/s3-data-lake/"}]}]
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Apache Polaris","description":"A guide to Apache Polaris, the open-source Iceberg REST Catalog service. Discover its role in securing and governing cross-engine data lakehouse architectures.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Apache Polaris","item":"https://agenticlakehouse.com/kb/apache-polaris/"}]}]
     </script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -21,31 +23,33 @@
 <body>
     <header class="site-header"><div class="container">
         <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
-        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
     </div></header>
     <main>
         <section class="page-header"><div class="container">
             <span class="kb-label">Knowledge Base</span>
-            <h1 class="gradient-text">S3 Data Lake</h1>
-            <p class="hero-subtitle mx-auto">Amazon S3 as the storage backbone of modern enterprise data architectures.</p>
+            <h1 class="gradient-text">Apache Polaris</h1>
+            <p class="hero-subtitle mx-auto">The open-source, vendor-neutral implementation of the Iceberg REST Catalog API for centralized lakehouse governance.</p>
         </div></section>
         <article class="article-content container">
-            <p>Amazon S3 (Simple Storage Service) is the most widely deployed data lake storage backend in the world. Its combination of unlimited capacity, eleven nines of durability, and cent-per-GB pricing made it the de facto home for enterprise data that doesn't fit in a traditional database. Building a well-structured <strong>S3 Data Lake</strong> is the first step toward a production Data Lakehouse.</p>
+            <p><strong>Apache Polaris</strong> is an open-source catalog service for Apache Iceberg. Originally developed by Snowflake and open-sourced in June 2024, it was donated to the Apache Software Foundation (ASF) and officially graduated to a Top-Level Project in early 2026. Polaris serves as a centralized metadata management layer that allows multiple, disparate compute engines to interact securely and seamlessly with Iceberg tables.</p>
+            <p>By implementing the open <strong>Iceberg REST Catalog API</strong>, Polaris ensures that organizations can decouple their storage and catalog layers from specific compute vendors, achieving true architectural flexibility and preventing vendor lock-in.</p>
 
-            <h2>Bucket and Prefix Design</h2>
-            <p>S3 organizes objects using buckets and key prefixes. A well-designed S3 Data Lake separates data by domain and processing tier. A common pattern uses a single bucket with prefixes that mirror the Medallion Architecture:</p>
+            <h2>Core Capabilities</h2>
             <ul>
-                <li><code>s3://company-lakehouse/bronze/</code>  -  raw ingested data, partitioned by source and date</li>
-                <li><code>s3://company-lakehouse/silver/</code>  -  cleaned and standardized Parquet, managed by Iceberg</li>
-                <li><code>s3://company-lakehouse/gold/</code>  -  business-domain aggregations and AI-ready feature tables</li>
-                <li><code>s3://company-lakehouse/metadata/</code>  -  Iceberg catalog metadata files (manifests and manifest lists)</li>
+                <li><strong>Engine Interoperability:</strong> Any query engine that supports the Iceberg REST standard (which includes Apache Spark, Apache Flink, Dremio, Trino, and Snowflake) can connect to a Polaris catalog out-of-the-box. No custom connectors or proprietary translation layers are required.</li>
+                <li><strong>Unified Governance and RBAC:</strong> Polaris acts as the central gatekeeper for data access. It provides a unified Role-Based Access Control (RBAC) model, allowing administrators to define fine-grained security policies in one place. These policies are enforced uniformly, regardless of which compute engine requests the data.</li>
+                <li><strong>Credential Vending:</strong> To enhance security, Polaris integrates with cloud IAM (Identity and Access Management) systems to vend short-lived, scoped credentials to compute engines. The engine receives temporary access to read or write specific object storage paths (S3, ADLS, GCS) only after Polaris verifies the user's authorization, eliminating the need to distribute long-lived storage keys to various client applications.</li>
+                <li><strong>Flexible Deployment:</strong> As an open-source project with mature Kubernetes support (Helm charts), Polaris can be self-hosted on-premises, deployed in public or private clouds, or consumed as a managed service from various vendors, providing deployment flexibility to match security and operational requirements.</li>
             </ul>
 
-            <h2>IAM and Access Control</h2>
-            <p>AWS Identity and Access Management (IAM) policies govern which principals (users, roles, AI agent task execution roles) can read or write specific S3 prefixes. In a lakehouse context, IAM policies should be organized by data tier: the AI agent's IAM role gets read access to gold-tier prefixes and no write permissions. ETL pipeline roles get write access to bronze and silver tiers. Data stewards get write access to the metadata prefix for catalog operations. These IAM boundaries complement (but do not replace) the row-level and column-level security enforced by the query engine and catalog.</p>
-
-            <h2>The Upgrade Path: From S3 Data Lake to Iceberg Lakehouse</h2>
-            <p>Many organizations already have existing data in S3 in Parquet format. The migration to an Apache Iceberg Lakehouse does not require rewriting the data files. Iceberg can register existing Parquet files into a new Iceberg table via a metadata-only operation that creates the necessary manifest and manifest list files pointing to the existing Parquet objects. After registration, the S3 files are queryable as a governed Iceberg table with full time-travel, schema evolution, and access control capabilities, without a single byte of data being copied.</p>
+            <h2>The Shift Toward Vendor Neutrality</h2>
+            <p>Before Polaris, organizations looking to adopt Iceberg often had to rely on proprietary or cloud-specific catalogs like AWS Glue, or adapt the legacy Hive Metastore. Polaris fills the critical need for a modern, security-focused, and robust catalog that is entirely open-source and governed by the ASF. It cements the Iceberg ecosystem's commitment to openness, ensuring that the catalog layer - the crucial component that defines the table's state - remains under the organization's control.</p>
         </article>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>

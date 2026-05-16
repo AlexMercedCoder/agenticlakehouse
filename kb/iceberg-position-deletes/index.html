@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Data Lake | Agentic Lakehouse Knowledge Base</title>
-    <meta name="description" content="Learn how S3 serves as the foundation of a Data Lake and Lakehouse, including bucket design, access patterns, and how Apache Iceberg transforms raw S3 files into governed tables.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg Position Deletes | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about Iceberg Position Deletes: how they track deleted rows by their physical file path and row index, enabling efficient Merge-on-Read processing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
-    <link rel="canonical" href="https://agenticlakehouse.com/kb/s3-data-lake/" />
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-position-deletes/" />
     <script type="application/ld+json">
-    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"S3 Data Lake","description":"A guide to building an S3 Data Lake, covering bucket design, IAM policies, Parquet organization, and the Iceberg upgrade path to a full lakehouse.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"S3 Data Lake","item":"https://agenticlakehouse.com/kb/s3-data-lake/"}]}]
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg Position Deletes","description":"A guide to Apache Iceberg Position Deletes: the Spec v2 feature that enables Merge-on-Read by tracking deleted rows via their physical file path and row index.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg Position Deletes","item":"https://agenticlakehouse.com/kb/iceberg-position-deletes/"}]}]
     </script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -21,31 +23,34 @@
 <body>
     <header class="site-header"><div class="container">
         <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
-        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
     </div></header>
     <main>
         <section class="page-header"><div class="container">
             <span class="kb-label">Knowledge Base</span>
-            <h1 class="gradient-text">S3 Data Lake</h1>
-            <p class="hero-subtitle mx-auto">Amazon S3 as the storage backbone of modern enterprise data architectures.</p>
+            <h1 class="gradient-text">Iceberg Position Deletes</h1>
+            <p class="hero-subtitle mx-auto">The high-performance delete mechanism for Merge-on-Read workloads that tracks data by physical location.</p>
         </div></section>
         <article class="article-content container">
-            <p>Amazon S3 (Simple Storage Service) is the most widely deployed data lake storage backend in the world. Its combination of unlimited capacity, eleven nines of durability, and cent-per-GB pricing made it the de facto home for enterprise data that doesn't fit in a traditional database. Building a well-structured <strong>S3 Data Lake</strong> is the first step toward a production Data Lakehouse.</p>
+            <p><strong>Position Deletes</strong> are one of the two mechanisms introduced in Apache Iceberg Spec v2 to support Merge-on-Read (MoR) architectures. They allow a query engine to mark specific rows in a data file as deleted without rewriting the entire multi-megabyte Parquet file.</p>
 
-            <h2>Bucket and Prefix Design</h2>
-            <p>S3 organizes objects using buckets and key prefixes. A well-designed S3 Data Lake separates data by domain and processing tier. A common pattern uses a single bucket with prefixes that mirror the Medallion Architecture:</p>
+            <h2>How They Work</h2>
+            <p>When an engine performs a batch delete operation (like <code>DELETE FROM sales WHERE status = 'CANCELLED'</code>), it can scan the table to find the matching rows. Instead of rewriting the data files, the engine writes a separate <strong>Position Delete File</strong>.</p>
+            <p>A Position Delete File contains two critical pieces of information for every deleted row:</p>
             <ul>
-                <li><code>s3://company-lakehouse/bronze/</code>  -  raw ingested data, partitioned by source and date</li>
-                <li><code>s3://company-lakehouse/silver/</code>  -  cleaned and standardized Parquet, managed by Iceberg</li>
-                <li><code>s3://company-lakehouse/gold/</code>  -  business-domain aggregations and AI-ready feature tables</li>
-                <li><code>s3://company-lakehouse/metadata/</code>  -  Iceberg catalog metadata files (manifests and manifest lists)</li>
+                <li><code>file_path</code>: The absolute URI of the original data file containing the row.</li>
+                <li><code>pos</code>: The exact row index (position) within that specific data file.</li>
             </ul>
+            <p>At read time, when a query engine opens the data file, it also reads the associated position delete file. It uses the exact physical row indexes to instantly skip the deleted rows. Because the engine knows exactly which positions to ignore, the overhead of applying the deletes during a read is minimal.</p>
 
-            <h2>IAM and Access Control</h2>
-            <p>AWS Identity and Access Management (IAM) policies govern which principals (users, roles, AI agent task execution roles) can read or write specific S3 prefixes. In a lakehouse context, IAM policies should be organized by data tier: the AI agent's IAM role gets read access to gold-tier prefixes and no write permissions. ETL pipeline roles get write access to bronze and silver tiers. Data stewards get write access to the metadata prefix for catalog operations. These IAM boundaries complement (but do not replace) the row-level and column-level security enforced by the query engine and catalog.</p>
-
-            <h2>The Upgrade Path: From S3 Data Lake to Iceberg Lakehouse</h2>
-            <p>Many organizations already have existing data in S3 in Parquet format. The migration to an Apache Iceberg Lakehouse does not require rewriting the data files. Iceberg can register existing Parquet files into a new Iceberg table via a metadata-only operation that creates the necessary manifest and manifest list files pointing to the existing Parquet objects. After registration, the S3 files are queryable as a governed Iceberg table with full time-travel, schema evolution, and access control capabilities, without a single byte of data being copied.</p>
+            <h2>Performance Characteristics</h2>
+            <p>Position deletes are generally highly performant for the reader. They do not require the engine to evaluate complex logical comparisons or execute expensive anti-joins against the data stream; the engine simply drops the specified row indexes from the result set. This makes position deletes the preferred MoR delete mechanism for most analytical query engines.</p>
+            <p>The primary limitation of position deletes is that the writer must know the exact physical file path and row position of the data being deleted. This is easy for a batch engine (like Spark) executing a <code>DELETE</code> or <code>MERGE</code> statement, because the engine scans the data before writing the delete file. However, for a pure streaming ingestion job (like Flink) that receives a "delete customer 123" event but does not know where customer 123 is stored in object storage, generating a position delete is impossible without an expensive pre-read step. In those streaming scenarios, Equality Deletes are used instead.</p>
         </article>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>

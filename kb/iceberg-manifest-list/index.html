@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Data Lake | Agentic Lakehouse Knowledge Base</title>
-    <meta name="description" content="Learn how S3 serves as the foundation of a Data Lake and Lakehouse, including bucket design, access patterns, and how Apache Iceberg transforms raw S3 files into governed tables.">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberg Manifest List | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn about the Iceberg Manifest List: the Avro metadata file that serves as the table of contents for a snapshot, enabling high-level partition pruning before reading any manifest files.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
-    <link rel="canonical" href="https://agenticlakehouse.com/kb/s3-data-lake/" />
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/iceberg-manifest-list/" />
     <script type="application/ld+json">
-    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"S3 Data Lake","description":"A guide to building an S3 Data Lake, covering bucket design, IAM policies, Parquet organization, and the Iceberg upgrade path to a full lakehouse.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"S3 Data Lake","item":"https://agenticlakehouse.com/kb/s3-data-lake/"}]}]
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Iceberg Manifest List","description":"A guide to the Apache Iceberg Manifest List: how it acts as the table of contents for a snapshot, enabling partition pruning and reducing I/O during query planning.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Iceberg Manifest List","item":"https://agenticlakehouse.com/kb/iceberg-manifest-list/"}]}]
     </script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -21,31 +23,37 @@
 <body>
     <header class="site-header"><div class="container">
         <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
-        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
     </div></header>
     <main>
         <section class="page-header"><div class="container">
             <span class="kb-label">Knowledge Base</span>
-            <h1 class="gradient-text">S3 Data Lake</h1>
-            <p class="hero-subtitle mx-auto">Amazon S3 as the storage backbone of modern enterprise data architectures.</p>
+            <h1 class="gradient-text">Iceberg Manifest List</h1>
+            <p class="hero-subtitle mx-auto">The "table of contents" for a snapshot, enabling high-level partition pruning before reading any manifest files.</p>
         </div></section>
         <article class="article-content container">
-            <p>Amazon S3 (Simple Storage Service) is the most widely deployed data lake storage backend in the world. Its combination of unlimited capacity, eleven nines of durability, and cent-per-GB pricing made it the de facto home for enterprise data that doesn't fit in a traditional database. Building a well-structured <strong>S3 Data Lake</strong> is the first step toward a production Data Lakehouse.</p>
+            <p>Every snapshot in an Apache Iceberg table is associated with exactly one <strong>Manifest List</strong>. If the underlying Manifest Files are the detailed index of the data, the Manifest List is the "table of contents." It sits in the middle of Iceberg's metadata hierarchy, acting as a crucial optimization layer between the high-level JSON metadata file and the granular Avro manifest files.</p>
 
-            <h2>Bucket and Prefix Design</h2>
-            <p>S3 organizes objects using buckets and key prefixes. A well-designed S3 Data Lake separates data by domain and processing tier. A common pattern uses a single bucket with prefixes that mirror the Medallion Architecture:</p>
+            <h2>Purpose and Structure</h2>
+            <p>Like manifest files, the manifest list is stored in the <strong>Avro</strong> format. Its primary purpose is to list all the manifest files that make up the current snapshot. However, it does not just provide a list of URIs; it provides summary statistics about the contents of each manifest file.</p>
+            <p>For each manifest file it references, the manifest list records:</p>
             <ul>
-                <li><code>s3://company-lakehouse/bronze/</code>  -  raw ingested data, partitioned by source and date</li>
-                <li><code>s3://company-lakehouse/silver/</code>  -  cleaned and standardized Parquet, managed by Iceberg</li>
-                <li><code>s3://company-lakehouse/gold/</code>  -  business-domain aggregations and AI-ready feature tables</li>
-                <li><code>s3://company-lakehouse/metadata/</code>  -  Iceberg catalog metadata files (manifests and manifest lists)</li>
+                <li>The path and length of the manifest file.</li>
+                <li>The <code>partition_spec_id</code> that the manifest file was written under.</li>
+                <li>Whether the manifest tracks <code>DATA</code> files or <code>DELETES</code> files.</li>
+                <li>Statistics on the number of added, existing, and deleted files within that manifest.</li>
+                <li><strong>Partition Summaries:</strong> The upper and lower bounds for the partition columns of all the data files contained within that manifest.</li>
             </ul>
 
-            <h2>IAM and Access Control</h2>
-            <p>AWS Identity and Access Management (IAM) policies govern which principals (users, roles, AI agent task execution roles) can read or write specific S3 prefixes. In a lakehouse context, IAM policies should be organized by data tier: the AI agent's IAM role gets read access to gold-tier prefixes and no write permissions. ETL pipeline roles get write access to bronze and silver tiers. Data stewards get write access to the metadata prefix for catalog operations. These IAM boundaries complement (but do not replace) the row-level and column-level security enforced by the query engine and catalog.</p>
-
-            <h2>The Upgrade Path: From S3 Data Lake to Iceberg Lakehouse</h2>
-            <p>Many organizations already have existing data in S3 in Parquet format. The migration to an Apache Iceberg Lakehouse does not require rewriting the data files. Iceberg can register existing Parquet files into a new Iceberg table via a metadata-only operation that creates the necessary manifest and manifest list files pointing to the existing Parquet objects. After registration, the S3 files are queryable as a governed Iceberg table with full time-travel, schema evolution, and access control capabilities, without a single byte of data being copied.</p>
+            <h2>Manifest Pruning</h2>
+            <p>The partition summaries are what make the manifest list critical for performance. When a query planner receives a query with a partition filter (e.g., <code>year = 2024</code>), it first reads the single manifest list for the snapshot. It looks at the partition lower and upper bounds for each manifest file listed.</p>
+            <p>If a manifest file's partition summary indicates it only contains data from 2022 and 2023, the query planner can completely ignore that manifest file. It does not need to download the manifest file, nor does it need to scan the thousands of individual data file entries inside it. This process is called <strong>manifest pruning</strong>.</p>
+            <p>By preventing the engine from downloading and parsing irrelevant metadata, the manifest list ensures that query planning remains fast (typically well under a second) even for tables containing petabytes of data spread across millions of files and thousands of manifests.</p>
         </article>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>

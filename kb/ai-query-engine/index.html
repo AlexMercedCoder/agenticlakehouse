@@ -78,9 +78,9 @@
             <h2>Native AI Functions</h2>
             <p>A core requirement of an AI Query Engine is the ability to invoke AI models directly within SQL. Dremio exposes three native AI SQL functions that can be called inline within a standard <code>SELECT</code> statement:</p>
             <ul>
-                <li><strong><code>AI_GENERATE</code></strong> — generates structured output from unstructured inputs, such as extracting fields from free-text or documents</li>
-                <li><strong><code>AI_CLASSIFY</code></strong> — classifies input data into categories based on a prompt, enabling sentiment tagging, topic labeling, or intent detection directly in SQL</li>
-                <li><strong><code>AI_COMPLETE</code></strong> — generates text responses, summaries, or descriptions from input data using an LLM endpoint</li>
+                <li><strong><code>AI_GENERATE</code></strong>  -  generates structured output from unstructured inputs, such as extracting fields from free-text or documents</li>
+                <li><strong><code>AI_CLASSIFY</code></strong>  -  classifies input data into categories based on a prompt, enabling sentiment tagging, topic labeling, or intent detection directly in SQL</li>
+                <li><strong><code>AI_COMPLETE</code></strong>  -  generates text responses, summaries, or descriptions from input data using an LLM endpoint</li>
             </ul>
             <p>These functions embed AI processing into SQL without requiring a separate Python pipeline. An analyst can write a single <code>SELECT customer_id, AI_CLASSIFY(support_notes, 'sentiment') FROM support_tickets</code> and receive classification results alongside structured columns, all within one query execution. Dremio also ships a built-in AI agent and an MCP (Model Context Protocol) server that allows external AI assistants to connect to the lakehouse directly and query it using the semantic layer.</p>
 
