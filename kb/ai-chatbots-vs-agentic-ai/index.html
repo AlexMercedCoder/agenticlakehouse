@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbots vs Agentic AI | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand the concrete technical differences between AI Chatbots and Agentic AI systems, and why that distinction determines whether enterprise analytics succeeds or fails.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/ai-chatbots-vs-agentic-ai/" />
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "AI Chatbots vs Agentic AI",
+      "description": "A direct technical comparison between stateless AI chatbots and stateful agentic AI systems, with implications for enterprise data analytics.",
+      "author": { "@type": "Person", "name": "Alex Merced", "url": "https://alexmercedcoder.dev/" },
+      "publisher": { "@type": "Organization", "name": "Agentic Lakehouse Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://agenticlakehouse.com/kb/" },
+        { "@type": "ListItem", "position": 3, "name": "AI Chatbots vs Agentic AI", "item": "https://agenticlakehouse.com/kb/ai-chatbots-vs-agentic-ai/" }
+      ]
+    }]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content { padding: 4rem 0; max-width: 800px; margin: 0 auto; }
+        .article-content h2 { font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--color-accent-blue); }
+        .article-content h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: white; }
+        .article-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--color-text-gray); line-height: 1.8; }
+        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--color-text-gray); }
+        .article-content li { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .page-header { padding: 120px 0 60px; background: var(--gradient-hero); text-align: center; }
+        .page-header h1 { font-size: 3.5rem; margin-bottom: 1rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .kb-label { display: inline-block; background: rgba(88,225,247,0.1); color: var(--color-accent-blue); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; font-weight: 600; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th { background: rgba(88,225,247,0.15); color: var(--color-accent-blue); padding: 0.8rem 1.2rem; text-align: left; border-bottom: 2px solid rgba(88,225,247,0.3); }
+        .comparison-table td { padding: 0.8rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.07); color: var(--color-text-gray); vertical-align: top; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table td:first-child { color: white; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">AI Chatbots vs Agentic AI</h1>
+                <p class="hero-subtitle mx-auto">Two fundamentally different architectures with completely different enterprise outcomes.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>The terms "AI chatbot" and "Agentic AI" are frequently used interchangeably in enterprise technology conversations. They describe architecturally distinct systems with profoundly different capabilities, and confusing them leads to expensive project failures. An organization that deploys a chatbot expecting agentic behavior will be disappointed. Understanding the concrete differences is the first step toward choosing the right tool.</p>
+
+            <h2>The Core Architectural Difference</h2>
+            <p>An AI chatbot is a request-response interface. The user sends a message, the LLM generates a completion, and the system returns the text. The chatbot has no persistent memory between separate sessions, no ability to take action outside the conversation window, and no access to live enterprise data unless a human developer pre-loads it into the context window manually.</p>
+
+            <p>An Agentic AI system has a planning layer, a tool execution layer, and a persistent memory layer. When given a question, it does not just respond; it executes a plan. It calls database tools, reads file systems, queries APIs, and iterates based on what it finds. It remembers what it learned in previous steps and adjusts its strategy accordingly.</p>
+
+            <h2>Side-by-Side Comparison</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>AI Chatbot</th>
+                        <th>Agentic AI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Access</td>
+                        <td>Static context window only</td>
+                        <td>Live queries via database tools</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Stateless across sessions</td>
+                        <td>Persistent working memory and session logs</td>
+                    </tr>
+                    <tr>
+                        <td>Action Capability</td>
+                        <td>Text generation only</td>
+                        <td>SQL execution, API calls, file writes (within bounds)</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-step Reasoning</td>
+                        <td>Single inference pass</td>
+                        <td>Iterative ReAct loop with self-correction</td>
+                    </tr>
+                    <tr>
+                        <td>Math on Live Data</td>
+                        <td>Cannot aggregate or calculate</td>
+                        <td>Full SQL aggregations against Iceberg tables</td>
+                    </tr>
+                    <tr>
+                        <td>Auditability</td>
+                        <td>Limited to chat history</td>
+                        <td>Immutable log of every tool call and query</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>When Chatbots Are Appropriate</h2>
+            <p>Chatbots are the right choice for use cases that do not require live data computation: customer service FAQ resolution, document summarization from a fixed knowledge base, or drafting email templates. They are cost-effective, fast to deploy, and do not require the infrastructure complexity of a full agent framework.</p>
+
+            <h2>When Agentic AI Is Required</h2>
+            <p>Any analytical question that requires retrieving live data, performing arithmetic, comparing results across time periods, or taking a downstream action based on findings requires an Agentic AI system. "What is our current inventory exposure in the Southeast region?" cannot be answered by a chatbot without live database access. "Alert the operations team if stockout risk crosses 20% for any SKU" requires an agent with both database access and notification tool capabilities.</p>
+
+            <p>The Agentic Lakehouse is specifically designed to host the second category. Dremio acts as the execution engine that fulfills the agent's data requests, while Apache Iceberg and Apache Polaris provide the governed, consistent data foundation the agent relies on for accurate answers.</p>
+        </article>
+
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><span class="logo-text"></span></div>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

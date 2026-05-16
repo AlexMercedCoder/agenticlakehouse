@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Authorization | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn the technical patterns for AI Agent Authorization, ensuring that autonomous data agents only access the data and systems they are permitted to use.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/ai-agent-authorization/" />
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "AI Agent Authorization",
+      "description": "A technical breakdown of the authorization patterns that control what data, tools, and systems an AI agent may access inside the enterprise lakehouse.",
+      "author": { "@type": "Person", "name": "Alex Merced", "url": "https://alexmercedcoder.dev/" },
+      "publisher": { "@type": "Organization", "name": "Agentic Lakehouse Hub" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://agenticlakehouse.com/kb/" },
+        { "@type": "ListItem", "position": 3, "name": "AI Agent Authorization", "item": "https://agenticlakehouse.com/kb/ai-agent-authorization/" }
+      ]
+    }]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content { padding: 4rem 0; max-width: 800px; margin: 0 auto; }
+        .article-content h2 { font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--color-accent-blue); }
+        .article-content h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: white; }
+        .article-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--color-text-gray); line-height: 1.8; }
+        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--color-text-gray); }
+        .article-content li { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .article-content code { background: rgba(88,225,247,0.1); color: var(--color-accent-blue); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.95em; }
+        .page-header { padding: 120px 0 60px; background: var(--gradient-hero); text-align: center; }
+        .page-header h1 { font-size: 3.5rem; margin-bottom: 1rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .kb-label { display: inline-block; background: rgba(88,225,247,0.1); color: var(--color-accent-blue); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">AI Agent Authorization</h1>
+                <p class="hero-subtitle mx-auto">Controlling exactly what data, tools, and actions an autonomous agent is permitted to use.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>Authorization for human users in enterprise software is well understood. A user logs in, their identity is verified, and their access rights determine which database rows, API endpoints, and application features are available to them. <strong>AI Agent Authorization</strong> extends this model to cover non-human software actors that operate autonomously, often on behalf of multiple different users, and that may attempt to access data through multiple interfaces simultaneously.</p>
+
+            <p>Getting agent authorization wrong has asymmetric consequences. A human accidentally accessing a restricted table generates an audit alert. An autonomous agent doing the same thing at machine speed across thousands of records in minutes generates a compliance disaster.</p>
+
+            <h2>Three Authorization Models</h2>
+
+            <h3>Model 1: Static Service Account</h3>
+            <p>The simplest and least safe pattern. The agent authenticates as a dedicated service account with a fixed set of permissions that never change. This pattern is acceptable for tightly scoped automation agents with no user-facing component, such as a nightly data quality monitoring bot. It fails for any agent that serves multiple users with different access rights, because the service account becomes a shared credential that bypasses individual user-level policies.</p>
+
+            <h3>Model 2: Credential Delegation</h3>
+            <p>The recommended pattern for user-facing Agentic AI systems. When a user initiates an analytical session, the identity provider issues the agent a short-lived access token derived from the user's own identity through an OAuth 2.0 token exchange. The agent presents this delegated token to Dremio when executing SQL queries. Dremio evaluates the token, recognizes the underlying human user's identity, and applies that user's exact Row-Level Security and Column-Masking policies at query execution time. The agent physically cannot return data the user is not permitted to see.</p>
+
+            <h3>Model 3: Scope-Limited Agent Identities</h3>
+            <p>For autonomous agents that run on schedules without a human in the loop (such as the Autonomous BI monitoring agents described elsewhere in this Knowledge Base), a dedicated agent identity with narrowly scoped permissions is appropriate. The agent identity in Apache Polaris is granted read access only to specific namespaces and is explicitly denied write permissions, schema modification rights, and access to any PII-classified columns. This is the principle of least privilege applied to automated systems.</p>
+
+            <h2>Tool-Level Authorization</h2>
+            <p>Beyond data access, agent authorization must cover the toolset the agent may invoke. In a Python-based orchestration framework, each tool (the SQL query tool, the file write tool, the email notification tool) should perform an authorization check before executing. A read-only analytics agent should not have the email notification tool registered in its toolset at all. The tool registry itself is an authorization boundary, not just an organizational convenience.</p>
+
+            <h2>Audit Trail Requirements</h2>
+            <p>Every authorization decision, whether granted or denied, should be written to an immutable log stored in the lakehouse. When a compliance audit asks "Did the AI agent access customer PII on March 15th?", the authorization audit log provides a definitive, cryptographically signed answer. Without this log, the organization is left reconstructing agent behavior from incomplete inference.</p>
+        </article>
+
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><span class="logo-text"></span></div>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
