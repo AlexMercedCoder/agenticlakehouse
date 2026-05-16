@@ -102,8 +102,10 @@
     </section>
 
     <section class="kb-container container">
-      <h2>Batch 1: Agentic Analytics & Fundamentals</h2>
-      <div class="kb-grid">
+      <div class="search-container" style="margin-bottom: 2rem;">
+        <input type="text" id="kbSearch" placeholder="Search the Knowledge Base..." aria-label="Search the Knowledge Base" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: var(--color-navy-dark); color: white; font-size: 1.1rem;">
+      </div>
+      <div class="kb-grid" id="kbGrid">
         <div class="kb-card">
           <a href="/kb/agentic-analytics/">
             <h3>Agentic Analytics</h3>
@@ -328,5 +330,26 @@
       </div>
     </div>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('kbSearch');
+      const cards = document.querySelectorAll('.kb-card');
+      
+      if(searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          
+          cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if(text.includes(searchTerm)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
