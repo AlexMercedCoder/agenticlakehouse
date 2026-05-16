@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contextual Metadata for AI | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description"
+        content="Explore the critical role of Contextual Metadata in the Agentic Lakehouse, bridging the gap between raw data physics and AI-driven business logic.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/contextual-metadata-for-ai/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "Contextual Metadata for AI",
+      "description": "A technical look at how contextual metadata enables Large Language Models to accurately reason about structured enterprise data.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://agenticlakehouse.com/kb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Metadata for AI",
+          "item": "https://agenticlakehouse.com/kb/contextual-metadata-for-ai/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kb-label {
+            display: inline-block;
+            background: rgba(88, 225, 247, 0.1);
+            color: var(--color-accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">Contextual Metadata for AI</h1>
+                <p class="hero-subtitle mx-auto">Bridging the gap between raw data physics and intelligent business reasoning.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>To operate effectively, artificial intelligence requires context. When a human analyst looks at a column named <code>temp_c</code> in an Apache Iceberg table, they intuitively know it represents temperature measured in Celsius. An AI agent lacking contextual guidance might interpret that column as a "temporary count" and generate mathematically flawed aggregations. Resolving this ambiguity is the primary function of <strong>Contextual Metadata</strong>.</p>
+
+            <p>Understanding the difference between physical metadata and contextual metadata is critical when architecting an Agentic Lakehouse.</p>
+
+            <h2>Physical vs. Contextual Metadata</h2>
+            <p>Physical metadata defines how data is stored. In an Apache Iceberg ecosystem, the manifest lists act as the physical metadata layer. They track file paths, byte sizes, partition boundaries, and column data types (like <code>INT</code> or <code>VARCHAR</code>). While physical metadata is essential for the query engine to retrieve data efficiently, it is useless for business reasoning.</p>
+
+            <p>Contextual metadata defines what the data actually means. It is the qualitative layer that sits on top of the physical storage. Examples of contextual metadata include:</p>
+            <ul>
+                <li><strong>Units of Measure:</strong> Specifying that a <code>revenue</code> column is calculated in USD, not EUR.</li>
+                <li><strong>Data Lineage:</strong> Documenting that the <code>gold_customers</code> table is refreshed nightly by a specific dbt model, warning the AI not to expect real-time minute-by-minute updates.</li>
+                <li><strong>Business Definitions:</strong> Explaining that "Active User" means a user who has logged in within the last 30 days, preventing the AI from guessing the definition.</li>
+            </ul>
+
+            <h2>Injection into the ReAct Loop</h2>
+            <p>In a standard Agentic Workflow, the AI uses a ReAct (Reason + Act) loop to answer natural language questions. Before the agent generates a single line of SQL, it performs a retrieval action against the contextual metadata repository.</p>
+
+            <p>If the user asks, "How many premium subscribers churned last quarter?", the agent queries the Contextual Metadata API. It learns that "premium subscribers" are defined by <code>tier_level = 3</code> and that "churned" is defined by <code>account_status = 'cancelled'</code>. Armed with this exact contextual mapping, the agent can generate a perfectly deterministic SQL query.</p>
+
+            <h2>Automating Context Maintenance</h2>
+            <p>Historically, contextual metadata was stored in disconnected data dictionaries or static wiki pages that quickly became outdated. In the Agentic Lakehouse, contextual metadata is embedded directly into the universal catalog (such as Apache Polaris) or the semantic layer hosted by the execution engine.</p>
+
+            <p>Engineering teams are increasingly deploying secondary AI agents specifically tasked with maintaining this context. When a new table is ingested into the lakehouse, a classification agent scans the schema, infers the likely business definitions based on similar historical tables, and automatically drafts the contextual metadata tags for a human data steward to approve. This programmatic approach ensures that the intelligent foundation remains fully mapped and readily consumable by downstream analytical agents.</p>
+
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
