@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Data Context Layer | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description"
+        content="Explore the Data Context Layer: the central repository of tribal knowledge that empowers AI agents to understand the business intent behind raw lakehouse schemas.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/data-context-layer/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "The Data Context Layer",
+      "description": "A technical look at how the Data Context Layer captures tribal knowledge and provides the necessary business framing for AI agents in the data lakehouse.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://agenticlakehouse.com/kb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Data Context Layer",
+          "item": "https://agenticlakehouse.com/kb/data-context-layer/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kb-label {
+            display: inline-block;
+            background: rgba(88, 225, 247, 0.1);
+            color: var(--color-accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">The Data Context Layer</h1>
+                <p class="hero-subtitle mx-auto">Encoding tribal knowledge to power deterministic AI reasoning.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>In modern enterprise data architecture, there is a vast chasm between physical storage (e.g., Apache Iceberg files resting in an S3 bucket) and business intelligence. Physical data lacks intent. The schema tells you that a column is named <code>c_rev_q3</code> and typed as a <code>FLOAT</code>, but it doesn't tell you that the revenue calculation excludes cancelled orders, or that Q3 refers to a specific fiscal calendar rather than a standard calendar quarter.</p>
+
+            <p>Historically, this gap was bridged by human analysts holding "Tribal Knowledge." When an AI agent replaces the human analyst, this tribal knowledge must be explicitly encoded into the architecture. This is the function of the <strong>Data Context Layer</strong>.</p>
+
+            <h2>Context vs. Semantics</h2>
+            <p>The Data Context Layer is deeply intertwined with, but distinct from, the AI Semantic Layer. While the Semantic Layer defines the strict mathematical relationships between datasets (e.g., executing a SQL <code>JOIN</code> between the Customer and Orders tables), the Context Layer acts as the qualitative repository of knowledge surrounding those datasets.</p>
+
+            <p>The Context Layer typically manifests as a combination of Data Dictionaries, Data Governance tags, and integrated Wikis built directly into the Lakehouse platform (such as Dremio's dataset wikis).</p>
+
+            <h2>Why AI Agents Need the Context Layer</h2>
+            <p>When an autonomous Data Agent receives a prompt like "Analyze churn in our European markets," it utilizes a Semantic API to find the tables. However, to execute a meaningful analysis, the agent relies on the Context Layer to answer highly specific business questions:</p>
+
+            <ul>
+                <li><strong>Definitional Nuance:</strong> What constitutes "churn"? Does the business define it as a cancelled subscription, or simply 30 days without a login? The Context Layer provides the written definition.</li>
+                <li><strong>Data Lineage:</strong> If the agent spots an anomaly in the <code>dim_europe_customers</code> table, the Context Layer provides lineage data. The agent can see that this table is populated by an upstream dbt job, helping it diagnose whether the anomaly is a pipeline failure or a real-world business trend.</li>
+                <li><strong>Historical Anomalies:</strong> Data is rarely pristine. A human analyst knows that a massive spike in revenue in May 2023 was due to an acquisition, not organic growth. If this is encoded in a dataset wiki within the Context Layer, the AI agent can read it during its Retrieval-Augmented Generation (RAG) phase and avoid drawing false conclusions.</li>
+            </ul>
+
+            <h2>Implementing the Context Layer</h2>
+            <p>Building a robust Data Context Layer requires a cultural shift in data engineering. Documentation can no longer be an afterthought stored in a disconnected Notion or Confluence page. It must live adjacent to the data, accessible via the same APIs that the AI agents use to execute queries.</p>
+
+            <p>In a true Agentic Lakehouse, data stewards are responsible for continuously updating the Context Layer. They tag sensitive columns (PII), write descriptive Markdown wikis for dimensional tables, and explicitly document edge cases. When a Data Agent initiates a ReAct (Reason + Act) loop, its very first "Action" is to ping this Context Layer, ensuring that every SQL query it subsequently generates is grounded not just in the correct schema, but in the correct business reality.</p>
+
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
