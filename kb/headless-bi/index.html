@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headless BI | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Explore Headless BI: the architectural pattern that separates metric computation from visualization, serving analytical results through APIs to any consumer including AI agents.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/headless-bi/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Headless BI","description":"A technical guide to Headless BI architecture, decoupled metric APIs, and how AI agents consume pre-defined analytical metrics without re-deriving business logic.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Headless BI","item":"https://agenticlakehouse.com/kb/headless-bi/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Headless BI</h1>
+            <p class="hero-subtitle mx-auto">Metric computation served as an API, consumed by any interface from dashboards to AI agents.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>Traditional Business Intelligence tools are monolithic: the computation engine and the visualization layer are inseparable. You calculate metrics inside the BI tool and view them in the BI tool's charts. <strong>Headless BI</strong> separates these two concerns. The computation layer (metric definitions, aggregation logic, time-period handling, access control) is exposed through an API. Any consumer that can make an HTTP call can retrieve analytical results: a web dashboard, a mobile app, a voice interface, an email report, or an AI agent.</p>
+            <p>The "headless" terminology comes from web development, where a "headless CMS" stores content but does not control how it is displayed. The principle is identical: decouple what the data means from how it is presented.</p>
+
+            <h2>Why the Separation Matters</h2>
+            <p>When metric computation lives inside a specific BI tool, any team that wants to embed those metrics in a product or application must either use that BI tool's embed features (which are usually limited and carry licensing costs), or duplicate the calculation logic in the application code (which creates consistency risk immediately). A product team that builds its own "user engagement" calculation for their in-app dashboard will almost inevitably produce a number that does not match the "user engagement" number in the data team's Tableau dashboard, because the two implementations drift over time.</p>
+            <p>With Headless BI, both the in-app dashboard and the Tableau dashboard call the same metric API. They receive the same number, derived from the same computation, every time.</p>
+
+            <h2>Cube.dev and the Headless Approach</h2>
+            <p>Cube.dev is the most widely deployed headless BI platform. It defines metrics in a JavaScript-based schema (with TypeScript support), stores those definitions in version-controlled files, and serves results through REST, GraphQL, and SQL APIs. Cube reads from any SQL data source, including Apache Iceberg tables via Athena or Dremio. Organizations that want the full Headless BI pattern without a separate tool can also implement a subset of these capabilities through Dremio's Virtual Datasets, which expose curated analytical views through Dremio's own SQL and Arrow Flight interfaces.</p>
+
+            <h2>AI Agents as API Consumers</h2>
+            <p>For AI agents, Headless BI APIs are a controlled, reliable alternative to raw SQL generation for pre-defined metrics. When an agent knows that a metric API exists for "monthly active users," it can call that API with the appropriate time range and dimension filters, receiving a trustworthy answer without needing to understand the underlying calculation. This is faster, less error-prone, and produces answers guaranteed to be consistent with the organization's dashboards. The agent reserves its SQL generation capability for exploratory analytical questions that the pre-defined metric catalog does not yet cover.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Layer | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn what a Semantic Layer does, how it encodes business logic above the physical schema, and why it is critical infrastructure for AI-driven analytics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/semantic-layer/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Semantic Layer","description":"A definitive guide to the Semantic Layer: how it maps raw database columns to business-meaningful metrics and why AI agents require it to produce trustworthy SQL.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Semantic Layer","item":"https://agenticlakehouse.com/kb/semantic-layer/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Semantic Layer</h1>
+            <p class="hero-subtitle mx-auto">The translation tier that maps raw schema to business meaning, defined once and used everywhere.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>Every enterprise database has a physical schema: column names, data types, table relationships. Almost none of it is self-explanatory to an outsider. A column called <code>ord_stat_cd</code> in a twenty-year-old order management system might mean three different things depending on which business unit created it. A <strong>Semantic Layer</strong> sits between that raw schema and the people (and AI agents) consuming it, encoding the business logic that transforms unintelligible column names into trustworthy, consistently defined metrics and dimensions.</p>
+            <p>The semantic layer does not store data. It stores business logic about data. When a user or agent queries "total revenue for Q3," the semantic layer defines what "revenue" means in this organization (gross or net? including tax? which exchange rate for multi-currency?), and it enforces that definition uniformly for every query.</p>
+
+            <h2>What Lives in the Semantic Layer</h2>
+            <p>A well-constructed semantic layer contains several types of definitions:</p>
+            <ul>
+                <li><strong>Metric definitions:</strong> Named KPIs with their SQL formulas. "Monthly Recurring Revenue" is defined once as a specific calculation against specific source tables, not re-derived by each analyst independently.</li>
+                <li><strong>Dimension hierarchies:</strong> Country rolls up to Region rolls up to Global. These hierarchies power drill-down in BI tools and help AI agents understand geographic aggregation logic without guessing.</li>
+                <li><strong>Business aliases:</strong> Human-readable names mapped to technical column names. <code>net_rev_usd_adj</code> becomes "Adjusted Net Revenue (USD)."</li>
+                <li><strong>Row-level security filters:</strong> Automatically applied predicates that restrict the result set to the data the requesting user is authorized to see.</li>
+                <li><strong>Time intelligence shortcuts:</strong> "This quarter," "rolling 90 days," "same period last year": pre-defined date expressions that eliminate the most common source of date calculation errors in analytical SQL.</li>
+            </ul>
+
+            <h2>The Dremio Semantic Layer</h2>
+            <p>Dremio implements the semantic layer through its Virtual Dataset and Semantic Layer features, which let data stewards define curated views and metric definitions on top of raw Iceberg tables. These definitions are stored in the Dremio catalog and are accessible to BI tools via standard SQL and ODBC/JDBC connections, as well as to AI agents through the Dremio MCP server. When Dremio's built-in AI agent or an external AI agent connects to query the lakehouse, it can introspect the semantic layer definitions to understand what metrics are available and how they are calculated before generating any SQL.</p>
+
+            <h2>The Critical Importance for AI</h2>
+            <p>An LLM generating SQL against raw tables will derive its own interpretation of column names and business logic from whatever context it is given. Two agents, given the same question and the same raw schema, might produce two different revenue calculations (both syntactically valid, both returning different numbers), and the semantic layer eliminates this by providing one canonical definition that both agents must use. The consistency of AI-generated analytics depends directly on the completeness and accuracy of the semantic layer the agents query.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

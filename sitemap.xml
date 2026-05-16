@@ -116,6 +116,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/analytics-engineering/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/automated-data-insights/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -136,6 +141,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/compute-storage-separation/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/contextual-metadata-for-ai/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -146,7 +156,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-cataloging/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-context-layer/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/data-discovery/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -186,6 +206,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/data-virtualization/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/data-warehouse-vs-data-lakehouse/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -206,6 +231,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/federated-querying/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/genai-analytics/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -221,6 +251,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticlakehouse.com/kb/headless-bi/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://agenticlakehouse.com/kb/intelligent-data-foundation/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
@@ -232,6 +267,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-architecture/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/lakehouse-cost-optimization/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -252,6 +292,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/machine-learning-lakehouse/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/metric-store/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>
@@ -312,6 +357,11 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/semantic-data-layer/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/kb/semantic-layer/</loc>
     <lastmod>2026-05-16</lastmod>
     <priority>0.6</priority>
   </url>

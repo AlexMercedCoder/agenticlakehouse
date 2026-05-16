@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakehouse Cost Optimization | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Practical Lakehouse Cost Optimization: storage tiering, file compaction, Dremio Reflections, autoscaling, and query pruning techniques that reduce spend without cutting performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/lakehouse-cost-optimization/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Lakehouse Cost Optimization","description":"A practical guide to reducing Data Lakehouse operating costs through storage tiering, file compaction, query acceleration, and compute autoscaling.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Lakehouse Cost Optimization","item":"https://agenticlakehouse.com/kb/lakehouse-cost-optimization/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Lakehouse Cost Optimization</h1>
+            <p class="hero-subtitle mx-auto">Practical techniques for reducing storage and compute spend without sacrificing performance.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>A Data Lakehouse can be dramatically cheaper than a proprietary cloud data warehouse, but only if it is actively managed. An unoptimized lakehouse accumulates small files, keeps historical data in expensive hot-tier storage, runs redundant full table scans for the same queries repeatedly, and holds compute clusters running during idle periods. <strong>Lakehouse Cost Optimization</strong> is the operational discipline of identifying and eliminating these patterns systematically.</p>
+
+            <h2>Storage: Tiering Old Data</h2>
+            <p>Amazon S3 Standard costs roughly $0.023 per GB per month. S3 Glacier Instant Retrieval costs $0.004. For a 100 TB lakehouse where 70% of the data is historical bronze-tier audit logs accessed less than once per quarter, moving that 70 TB to Glacier-class storage saves roughly $1,330 per month with no impact on the frequently accessed gold-tier analytical tables. S3 Lifecycle Rules automate these transitions based on object age without requiring any changes to the Iceberg metadata that points to those files.</p>
+            <p>Iceberg also supports snapshot expiration: removing old table snapshots (and the data files orphaned by them) on a schedule. Running <code>expire_snapshots</code> after a defined retention window (typically 7-30 days, depending on time-travel requirements) reclaims storage consumed by versions of the data that are no longer needed for audit or rollback purposes.</p>
+
+            <h2>Storage: File Compaction</h2>
+            <p>Streaming ingestion pipelines frequently produce thousands of tiny Parquet files, sometimes just kilobytes each. Small files are expensive in two ways: each requires a separate S3 GET request (S3 charges per request, not just per byte), and they do not compress as efficiently as large files. Iceberg's <code>rewrite_data_files</code> compaction procedure merges small files into optimally sized files (256 MB to 1 GB), reducing both request counts and storage footprint simultaneously. Scheduling compaction nightly on high-write tables is a standard production practice.</p>
+
+            <h2>Compute: Reflections for Repeated Queries</h2>
+            <p>The highest compute cost in any lakehouse is repeatedly scanning the same large datasets to answer the same questions. Dremio Reflections address this directly: they pre-compute and cache the results of common query patterns in Arrow columnar format. When Dremio detects that a new query matches an existing reflection, it serves the result from the reflection without touching the source Iceberg files. A daily revenue aggregation reflection that compresses a 500 GB scan into a 10 MB cached result will eliminate that 500 GB scan for every dashboard refresh and AI agent query that asks the same question.</p>
+
+            <h2>Compute: Autoscaling and Idle Timeout</h2>
+            <p>A compute cluster that is running but receiving no queries is pure waste. Dremio Cloud supports autoscaling engines that scale down to zero when no queries are active and scale back up automatically when demand returns. Setting aggressive idle timeout policies (15-30 minutes for non-critical workloads) and configuring autoscaling groups reduces compute costs by 60-80% for workloads with uneven utilization patterns, which includes most AI agent sessions that run intensively for short periods and then go quiet.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
