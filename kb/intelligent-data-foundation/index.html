@@ -2,267 +2,267 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Intelligent Data Foundation | Agentic Lakehouse Knowledge Base</title>
-    <meta name="description"
-        content="Explore the architecture of an Intelligent Data Foundation. Learn why open formats and governed engines are required to safely deploy AI agents.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Intelligent Data Foundation | Agentic Lakehouse Knowledge Base</title>
+  <meta name="description"
+    content="Explore the architecture of an Intelligent Data Foundation. Learn why open formats and governed engines are required to safely deploy AI agents.">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="canonical" href="https://agenticlakehouse.com/kb/intelligent-data-foundation/" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="canonical" href="https://agenticlakehouse.com/kb/intelligent-data-foundation/" />
 
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    [{
-      "@context": "https://schema.org",
-      "@type": ["TechArticle", "Article"],
-      "headline": "The Intelligent Data Foundation",
-      "description": "A technical breakdown of the Intelligent Data Foundation, contrasting legacy data warehouses with modern, AI-ready data lakehouse architectures.",
-      "author": {
-        "@type": "Person",
-        "name": "Alex Merced",
-        "url": "https://alexmercedcoder.dev/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Agentic Lakehouse Hub"
-      }
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  [{
+   "@context": "https://schema.org",
+   "@type": ["TechArticle", "Article"],
+   "headline": "The Intelligent Data Foundation",
+   "description": "A technical breakdown of the Intelligent Data Foundation, contrasting legacy data warehouses with modern, AI-ready data lakehouse architectures.",
+   "author": {
+    "@type": "Person",
+    "name": "Alex Merced",
+    "url": "https://alexmercedcoder.dev/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Agentic Lakehouse Hub"
+   }
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://agenticlakehouse.com/"
     },
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://agenticlakehouse.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Knowledge Base",
-          "item": "https://agenticlakehouse.com/kb/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Intelligent Data Foundation",
-          "item": "https://agenticlakehouse.com/kb/intelligent-data-foundation/"
-        }
-      ]
-    }]
-    </script>
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Knowledge Base",
+     "item": "https://agenticlakehouse.com/kb/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Intelligent Data Foundation",
+     "item": "https://agenticlakehouse.com/kb/intelligent-data-foundation/"
+    }
+   ]
+  }]
+  </script>
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        .article-content {
-            padding: 4rem 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .article-content h2 {
-            font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-accent-blue);
-        }
-        .article-content h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        .article-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--color-text-gray);
-            line-height: 1.8;
-        }
-        .article-content ul, .article-content ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            color: var(--color-text-gray);
-        }
-        .article-content li {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .page-header {
-            padding: 120px 0 60px;
-            background: var(--gradient-hero);
-            text-align: center;
-        }
-        .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .kb-label {
-            display: inline-block;
-            background: rgba(88, 225, 247, 0.1);
-            color: var(--color-accent-blue);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-    </style>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .article-content {
+      padding: 4rem 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .article-content h2 {
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-accent-blue);
+    }
+    .article-content h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .article-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--color-text-gray);
+      line-height: 1.8;
+    }
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      color: var(--color-text-gray);
+    }
+    .article-content li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .page-header {
+      padding: 120px 0 60px;
+      background: var(--gradient-hero);
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .kb-label {
+      display: inline-block;
+      background: rgba(88, 225, 247, 0.1);
+      color: var(--color-accent-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container">
-            <a href="/" class="logo" aria-label="Home">
-                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
-                <span class="logo-text">The Agentic Lakehouse</span>
-            </a>
-            <nav class="site-nav">
-                <ul>
-                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
-                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
-                    <li><a href="/kb/">Knowledge Base</a></li>
-                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
-                </ul>
-            </nav>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo" aria-label="Home">
+        <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+        <span class="logo-text">The Agentic Lakehouse</span>
+      </a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+          <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+          <li><a href="/kb/">Knowledge Base</a></li>
+          <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="kb-label">Knowledge Base</span>
+        <h1 class="gradient-text">The Intelligent Data Foundation</h1>
+        <p class="hero-subtitle mx-auto">Architecting the immutable, governed bedrock required to safely deploy AI agents.</p>
+      </div>
+    </section>
+
+    <article class="article-content container">
+      <p>Before an organization can deploy AI Agents, Semantic RAG, or autonomous analytics pipelines, it must first establish an <strong>Intelligent Data Foundation</strong>. This foundation is the underlying physical and logical architecture that stores, manages, and secures the enterprise's data. If this foundation is brittle, siloed, or lacks deterministic concurrency controls, the AI systems built on top of it will inevitably hallucinate or fail.</p>
+
+      <p>For decades, the standard data foundation was the Enterprise Data Warehouse (EDW). While fault-tolerant, EDWs are intrinsically flawed as an intelligent foundation. They lock data in proprietary formats, making it impossible for diverse AI tooling (like PyTorch, LangChain, or custom containerized models) to access the data without expensive, slow ETL extraction pipelines.</p>
+
+      <h2>The Shift to the Data Lakehouse</h2>
+      <p>The Intelligent Data Foundation Abandons the EDW model in favor of the Data Lakehouse architecture. The Lakehouse decouples the physical storage from the compute engines, storing all enterprise data in open, universally accessible formats on object storage (like AWS S3 or Azure ADLS).</p>
+
+      <p>However, simply dumping Parquet files into S3 creates a "Data Swamp," not an intelligent foundation. To make a lakehouse intelligent (meaning it can support concurrent AI reasoning, transactions, and governance) it requires three critical architectural pillars.</p>
+
+      <h2>Pillar 1: Open Table Formats (Apache Iceberg)</h2>
+      <p>AI agents require absolute determinism. If an agent queries a table while an ingestion job is writing to it, the agent cannot receive partial or corrupted data. In an EDW, the proprietary database handles this via ACID transactions. In a lakehouse, this capability is provided by <strong>Apache Iceberg</strong>.</p>
+      
+      <p>Iceberg acts as the physical foundation of the intelligent architecture. It manages a tree of metadata files (Snapshots and Manifests) that track the exact state of the table. By utilizing Optimistic Concurrency Control, Iceberg ensures that an AI agent querying the data is completely isolated from concurrent streaming writes or GDPR deletion jobs. This guarantees that the AI always reasons over a mathematically consistent snapshot of the data.</p>
+
+      <h2>Pillar 2: The Universal Metadata Catalog</h2>
+      <p>An intelligent foundation cannot rely on fragmented metadata. If the data engineering team uses one catalog for Spark jobs, and the BI team uses a different catalog for reporting, AI agents will face a fragmented truth. They will hallucinate table names or fail to find critical datasets.</p>
+
+      <p>The solution is a universal, multi-engine catalog like <strong>Apache Polaris</strong> or the Dremio Catalog. This component serves as the central brain of the foundation. It enforces RBAC (Role-Based Access Control) globally and provides a single API endpoint where an AI agent can discover the schema and location of any table in the enterprise, regardless of whether it was written by Flink, Spark, or dbt.</p>
+
+      <h2>Pillar 3: The Unified Execution Engine</h2>
+      <p>The final component of the Intelligent Data Foundation is the execution engine. While open formats and catalogs allow any tool to read the data, AI agents require a highly performant, governed endpoint to execute their SQL queries. They cannot be expected to spin up transient Spark clusters for every ad-hoc natural language question.</p>
+
+      <p>Engines like <strong>Dremio</strong> act as the intelligent gateway. When an AI agent generates a query via Text-to-SQL, it submits the query to Dremio via Arrow Flight SQL. The execution engine performs several critical tasks:</p>
+      <ul>
+        <li><strong>Security:</strong> It intercepts the query and dynamically injects Row-Level Security (RLS) predicates, ensuring the agent cannot exfiltrate unauthorized data.</li>
+        <li><strong>Performance:</strong> It utilizes Data Reflections (caching) and vectorized execution to return the result set in milliseconds, allowing the agent to maintain a conversational flow with the user.</li>
+        <li><strong>Semantics:</strong> It hosts the AI Semantic Layer, translating the complex physical Iceberg schemas into the business-friendly logical models the agent actually queries.</li>
+      </ul>
+
+      <p>By combining Apache Iceberg, a universal catalog, and a governed execution engine, organizations replace legacy data silos with an Intelligent Data Foundation. This foundation provides the speed, openness, and strict governance required to transition from human-driven dashboards to the era of the Agentic Lakehouse.</p>
+
+    </article>
+
+    <!-- Global CTA Section -->
+    <section class="global-cta-section">
+      <div class="container">
+        <div class="section-header center-text">
+          <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+          <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
         </div>
-    </header>
-
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <span class="kb-label">Knowledge Base</span>
-                <h1 class="gradient-text">The Intelligent Data Foundation</h1>
-                <p class="hero-subtitle mx-auto">Architecting the immutable, governed bedrock required to safely deploy AI agents.</p>
+        
+        <div class="book-cta-grid fade-in-on-scroll">
+          <!-- Dremio Trial -->
+          <div class="cta-card featured-cta">
+            <div class="cta-content">
+              <h3>Start Your Free Dremio Trial</h3>
+              <p>Transform your data repository into an active, intelligent partner today.</p>
+              <br>
+              <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
             </div>
-        </section>
-
-        <article class="article-content container">
-            <p>Before an organization can deploy AI Agents, Semantic RAG, or autonomous analytics pipelines, it must first establish an <strong>Intelligent Data Foundation</strong>. This foundation is the underlying physical and logical architecture that stores, manages, and secures the enterprise's data. If this foundation is brittle, siloed, or lacks deterministic concurrency controls, the AI systems built on top of it will inevitably hallucinate or fail.</p>
-
-            <p>For decades, the standard data foundation was the Enterprise Data Warehouse (EDW). While robust, EDWs are intrinsically flawed as an intelligent foundation. They lock data in proprietary formats, making it impossible for diverse AI tooling (like PyTorch, LangChain, or custom containerized models) to access the data without expensive, slow ETL extraction pipelines.</p>
-
-            <h2>The Shift to the Data Lakehouse</h2>
-            <p>The Intelligent Data Foundation Abandons the EDW model in favor of the Data Lakehouse architecture. The Lakehouse decouples the physical storage from the compute engines, storing all enterprise data in open, universally accessible formats on object storage (like AWS S3 or Azure ADLS).</p>
-
-            <p>However, simply dumping Parquet files into S3 creates a "Data Swamp," not an intelligent foundation. To make a lakehouse intelligent—meaning it can support concurrent AI reasoning, transactions, and governance—it requires three critical architectural pillars.</p>
-
-            <h2>Pillar 1: Open Table Formats (Apache Iceberg)</h2>
-            <p>AI agents require absolute determinism. If an agent queries a table while an ingestion job is writing to it, the agent cannot receive partial or corrupted data. In an EDW, the proprietary database handles this via ACID transactions. In a lakehouse, this capability is provided by <strong>Apache Iceberg</strong>.</p>
-            
-            <p>Iceberg acts as the physical foundation of the intelligent architecture. It manages a tree of metadata files (Snapshots and Manifests) that track the exact state of the table. By utilizing Optimistic Concurrency Control, Iceberg ensures that an AI agent querying the data is completely isolated from concurrent streaming writes or GDPR deletion jobs. This guarantees that the AI always reasons over a mathematically consistent snapshot of the data.</p>
-
-            <h2>Pillar 2: The Universal Metadata Catalog</h2>
-            <p>An intelligent foundation cannot rely on fragmented metadata. If the data engineering team uses one catalog for Spark jobs, and the BI team uses a different catalog for reporting, AI agents will face a fragmented truth. They will hallucinate table names or fail to find critical datasets.</p>
-
-            <p>The solution is a universal, multi-engine catalog like <strong>Apache Polaris</strong> or the Dremio Catalog. This component serves as the central brain of the foundation. It enforces RBAC (Role-Based Access Control) globally and provides a single API endpoint where an AI agent can discover the schema and location of any table in the enterprise, regardless of whether it was written by Flink, Spark, or dbt.</p>
-
-            <h2>Pillar 3: The Unified Execution Engine</h2>
-            <p>The final component of the Intelligent Data Foundation is the execution engine. While open formats and catalogs allow any tool to read the data, AI agents require a highly performant, governed endpoint to execute their SQL queries. They cannot be expected to spin up transient Spark clusters for every ad-hoc natural language question.</p>
-
-            <p>Engines like <strong>Dremio</strong> act as the intelligent gateway. When an AI agent generates a query via Text-to-SQL, it submits the query to Dremio via Arrow Flight SQL. The execution engine performs several critical tasks:</p>
-            <ul>
-                <li><strong>Security:</strong> It intercepts the query and dynamically injects Row-Level Security (RLS) predicates, ensuring the agent cannot exfiltrate unauthorized data.</li>
-                <li><strong>Performance:</strong> It utilizes Data Reflections (caching) and vectorized execution to return the result set in milliseconds, allowing the agent to maintain a conversational flow with the user.</li>
-                <li><strong>Semantics:</strong> It hosts the AI Semantic Layer, translating the complex physical Iceberg schemas into the business-friendly logical models the agent actually queries.</li>
-            </ul>
-
-            <p>By combining Apache Iceberg, a universal catalog, and a governed execution engine, organizations replace legacy data silos with an Intelligent Data Foundation. This foundation provides the speed, openness, and strict governance required to transition from human-driven dashboards to the era of the Agentic Lakehouse.</p>
-
-        </article>
-
-        <!-- Global CTA Section -->
-        <section class="global-cta-section">
-            <div class="container">
-                <div class="section-header center-text">
-                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
-                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
-                </div>
-                
-                <div class="book-cta-grid fade-in-on-scroll">
-                    <!-- Dremio Trial -->
-                    <div class="cta-card featured-cta">
-                        <div class="cta-content">
-                            <h3>Start Your Free Dremio Trial</h3>
-                            <p>Transform your data repository into an active, intelligent partner today.</p>
-                            <br>
-                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Book 1 -->
-                    <div class="cta-card book-card">
-                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
-                        <div class="cta-content">
-                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
-                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Book 2 -->
-                    <div class="cta-card book-card">
-                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
-                        <div class="cta-content">
-                            <h4>The AI Lakehouse</h4>
-                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Book 3 -->
-                    <div class="cta-card book-card">
-                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
-                        <div class="cta-content">
-                            <h4>Apache Iceberg and Agentic AI</h4>
-                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Book 4 -->
-                    <div class="cta-card book-card">
-                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
-                        <div class="cta-content">
-                            <h4>Lakehouse Built for Everyone</h4>
-                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          
+          <!-- Book 1 -->
+          <div class="cta-card book-card">
+            <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+            <div class="cta-content">
+              <h4>Architecting an Apache Iceberg Lakehouse</h4>
+              <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text"></span>
-                </div>
-                <div class="footer-links">
-                </div>
+          </div>
+          
+          <!-- Book 2 -->
+          <div class="cta-card book-card">
+            <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+            <div class="cta-content">
+              <h4>The AI Lakehouse</h4>
+              <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
             </div>
+          </div>
+          
+          <!-- Book 3 -->
+          <div class="cta-card book-card">
+            <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+            <div class="cta-content">
+              <h4>Apache Iceberg and Agentic AI</h4>
+              <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+            </div>
+          </div>
+          
+          <!-- Book 4 -->
+          <div class="cta-card book-card">
+            <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+            <div class="cta-content">
+              <h4>Lakehouse Built for Everyone</h4>
+              <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-text"></span>
+        </div>
+        <div class="footer-links">
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
-    </script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
