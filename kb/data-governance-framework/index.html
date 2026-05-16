@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Governance Framework | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn what a Data Governance Framework covers: policies, stewardship, access control, data quality standards, and how governance enables trustworthy AI analytics at scale.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/data-governance-framework/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Data Governance Framework","description":"A guide to Data Governance Frameworks: defining ownership, access policies, data quality standards, and compliance obligations across the enterprise data estate.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Data Governance Framework","item":"https://agenticlakehouse.com/kb/data-governance-framework/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Data Governance Framework</h1>
+            <p class="hero-subtitle mx-auto">The policies, roles, and technical controls that make enterprise data trustworthy and compliant.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>A <strong>Data Governance Framework</strong> is the structured set of policies, roles, standards, and technical controls that define how data is managed, protected, and used across an organization. Without a governance framework, data estates tend toward entropy: no one knows who owns which tables, quality standards vary by team, access control is inconsistently applied, and compliance with regulations like GDPR and CCPA is impossible to verify. A governance framework is the organizational infrastructure that prevents this decay.</p>
+            <p>Governance is frequently confused with compliance. Compliance is a legal obligation. Governance is the operational discipline that makes compliance achievable and sustainable, along with additional benefits that extend beyond regulatory requirements: improved data quality, consistent business definitions, reduced data incidents, and the trust infrastructure that makes AI analytics reliable.</p>
+
+            <h2>The Core Components</h2>
+            <ul>
+                <li><strong>Data ownership:</strong> Every dataset has a named owner responsible for its accuracy, documentation, and access decisions. Ownership assignments are stored in the data catalog, not in informal agreements.</li>
+                <li><strong>Data stewardship:</strong> Stewards are the day-to-day contacts for data quality issues in a specific domain. They are distinct from owners (who set policy) and from engineers (who implement it).</li>
+                <li><strong>Access control policy:</strong> Formal rules specifying which roles, teams, and individuals can read or write which datasets. These policies are enforced technically through the query engine (Dremio's role-based and attribute-based access controls) and documented in the catalog.</li>
+                <li><strong>Data classification:</strong> Tags applied to tables and columns identifying sensitivity levels: public, internal, confidential, PII, regulated. Classification drives access policy decisions automatically.</li>
+                <li><strong>Quality standards:</strong> Defined thresholds for completeness, accuracy, timeliness, and consistency for each tier of data. Gold-tier tables must meet higher quality standards than bronze-tier raw ingests.</li>
+                <li><strong>Lineage tracking:</strong> Documented records of how each dataset was produced and what depends on it, enabling impact analysis when upstream data changes.</li>
+            </ul>
+
+            <h2>Governance as AI Infrastructure</h2>
+            <p>Data governance is not optional infrastructure for organizations deploying AI agents. An AI agent that queries a table with unknown quality, ambiguous column definitions, and no documented ownership is operating on an unreliable foundation. Governance frameworks, when properly implemented, give AI agents the metadata they need to make informed decisions about which data to trust, which columns are sensitive (and should not appear in outputs), and which definitions are authoritative versus experimental.</p>
+            <p>Dremio's access control system enforces governance policy at query time. An AI agent operating under a specific service account inherits only the permissions that role is authorized to use, and row-level security filters are applied automatically based on the agent's identity. The agent cannot access data it is not authorized for, regardless of what SQL it generates.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

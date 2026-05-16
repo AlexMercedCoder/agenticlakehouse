@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataOps | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand DataOps: the practice of applying DevOps principles to data pipelines, emphasizing automation, testing, monitoring, and fast iteration cycles for data teams.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/dataops/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"DataOps","description":"A guide to DataOps practices: CI/CD for data pipelines, automated testing, observability, and how these practices reduce data incidents in production lakehouses.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"DataOps","item":"https://agenticlakehouse.com/kb/dataops/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">DataOps</h1>
+            <p class="hero-subtitle mx-auto">Applying DevOps discipline to data pipelines: automated, tested, monitored, and fast to iterate.</p>
+        </div></section>
+        <article class="article-content container">
+            <p><strong>DataOps</strong> applies the principles of DevOps (automation, continuous integration, rapid iteration, and observability) to the full lifecycle of data pipelines and analytical systems. The term first appeared around 2014, but its adoption accelerated sharply as organizations discovered that the same lack of engineering discipline that created fragile software systems before DevOps was creating fragile data pipelines: manual deployments, untested transformations, no monitoring, and cascading failures that were discovered by analysts rather than by automated systems.</p>
+            <p>DataOps is not a single tool. It is a methodology that cuts across the entire data engineering stack: version control for pipeline code, CI/CD for deploying transformations, automated data quality tests that run on every pipeline execution, real-time pipeline monitoring with alerting, and documented rollback procedures when data quality issues are detected.</p>
+
+            <h2>Core DataOps Practices</h2>
+            <ul>
+                <li><strong>Pipeline version control:</strong> Every pipeline definition lives in Git. Changes go through code review before deployment. Rollback means reverting to a previous commit, not manually undoing database operations.</li>
+                <li><strong>Automated testing:</strong> Data quality assertions run after every pipeline execution. Tests validate row counts, null rates, referential integrity, and value distributions. Failed tests block downstream pipeline steps and trigger alerts.</li>
+                <li><strong>Environment isolation:</strong> Development, staging, and production environments are separated. New pipeline versions are validated in staging against production-scale data before promotion. Iceberg's branching feature enables staging environments that share storage with production without data duplication.</li>
+                <li><strong>Observability:</strong> Pipeline execution metrics (run time, rows processed, failure rate) and data quality metrics (freshness, completeness, accuracy scores) are collected and dashboarded. Anomalies trigger alerts before they reach analysts or AI agents.</li>
+            </ul>
+
+            <h2>Why DataOps Matters for AI Agents</h2>
+            <p>AI agents that query a poorly operated data platform will receive bad data without warning. A pipeline that silently produces incorrect results for three days before a human analyst notices creates three days of potentially incorrect AI-generated insights. DataOps practices close this gap: automated tests detect quality issues within minutes of a pipeline run, and monitoring alerts data stewards before any downstream consumer (human or AI) acts on bad data.</p>
+            <p>Apache Iceberg's time-travel capability complements DataOps by providing a rollback mechanism when bad data is detected. If a pipeline produces an incorrect table version, a DataOps engineer can point consumers at the last known-good snapshot while the root cause is investigated, rather than blocking all analytics until the fix is deployed.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
