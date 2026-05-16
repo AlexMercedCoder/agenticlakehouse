@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-ETL | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Explore Zero-ETL: the architectural approach that eliminates data movement pipelines by enabling direct, governed query access across operational systems and the lakehouse.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/zero-etl/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Zero-ETL","description":"A guide to the Zero-ETL pattern, covering federated query, native database integrations, and when to use it over traditional ELT pipelines.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Zero-ETL","item":"https://agenticlakehouse.com/kb/zero-etl/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Zero-ETL</h1>
+            <p class="hero-subtitle mx-auto">Eliminating data movement pipelines through federated query and native database integrations.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>Every data pipeline is a failure point. It has a maintenance burden, a latency tax, and a storage cost for the intermediate copy it creates. The <strong>Zero-ETL</strong> philosophy challenges the assumption that data must be moved into the analytical system before it can be queried. Instead, it asks: can the query engine reach the data where it already lives?</p>
+            <p>Zero-ETL is not a single technology. It describes a design philosophy realized through two distinct technical approaches: federated query and native database replication.</p>
+
+            <h2>Approach 1: Federated Query</h2>
+            <p>In the federated query approach, the analytical execution engine (like Dremio) maintains live source connectors to operational databases (PostgreSQL, MySQL, MongoDB), SaaS applications (Salesforce, Marketo), and other cloud data stores. When an analyst or AI agent queries data from these sources, the engine translates the SQL into the source system's native query language, retrieves only the columns and rows required by the predicate, and returns the results directly. No staging copy is created.</p>
+            <p>This approach is ideal for low-volume lookups against operational systems where data freshness within seconds matters. It is not appropriate for large-scale aggregations over billions of rows in a source database, as the query load would interfere with the operational system's performance.</p>
+
+            <h2>Approach 2: Native Database Integrations</h2>
+            <p>Several cloud database vendors offer native Zero-ETL integrations that automatically and continuously sync data into an analytical destination without requiring a separate ETL pipeline. Amazon Aurora's native Zero-ETL integration with Amazon Redshift is a well-known example. The database engine itself manages the replication, eliminating the ETL middleware layer entirely while still providing a copy in the analytical system for heavy aggregation workloads.</p>
+
+            <h2>Zero-ETL and the Lakehouse</h2>
+            <p>The Lakehouse context adds a third Zero-ETL mechanism: writing operational databases directly to Iceberg via Change Data Capture. Tools like Debezium stream database change events to Kafka, and a Flink job writes those events as Iceberg rows with near-zero lag. The operational source never needs to export data; the change stream flows continuously into the lakehouse. AI agents querying the Iceberg table see data that is seconds old rather than waiting for a nightly batch pipeline to run.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

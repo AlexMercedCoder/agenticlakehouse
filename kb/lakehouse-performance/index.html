@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakehouse Performance | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand the key techniques for achieving sub-second Lakehouse Performance: partition pruning, query reflections, caching, and columnar execution optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/lakehouse-performance/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Lakehouse Performance","description":"A technical guide to the key patterns for achieving sub-second query performance in a production Apache Iceberg Data Lakehouse.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Lakehouse Performance","item":"https://agenticlakehouse.com/kb/lakehouse-performance/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul><li><a href="/data-lakehouse/">Lakehouse Hub</a></li><li><a href="/apache-iceberg/">Iceberg Hub</a></li><li><a href="/kb/">Knowledge Base</a></li><li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li></ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Lakehouse Performance</h1>
+            <p class="hero-subtitle mx-auto">The techniques that close the gap between object storage latency and warehouse-grade query speed.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>A common concern about the Data Lakehouse is whether querying Parquet files in S3 can match the sub-second performance of a purpose-built cloud data warehouse. The answer depends entirely on which performance techniques are applied. An unoptimized Lakehouse (raw S3 files, no partitioning, no caching, no acceleration) is slow. A properly tuned Lakehouse with modern execution engine features routinely matches or exceeds data warehouse performance at a fraction of the storage cost.</p>
+
+            <h2>Partition Pruning</h2>
+            <p>Partition pruning is the single most impactful performance technique in the Lakehouse. When an Iceberg table is partitioned by date (for example, one directory per day), a query filtering for last week's data only needs to scan seven partition directories out of potentially thousands. The Iceberg manifest files contain the partition range statistics for each data file, allowing the query engine to identify exactly which files to read without opening any of them. Well-chosen partition columns can reduce scan volumes by 99% on common analytical queries.</p>
+
+            <h2>Query Acceleration with Dremio Reflections</h2>
+            <p>Dremio Reflections are pre-computed, materialized query results stored internally in Arrow format. When Dremio detects that a new query matches (or partially matches) an existing reflection, it serves the result from the reflection rather than re-scanning the source Iceberg files. A reflection over a commonly used daily revenue aggregate might reduce a query that scans 500 GB of raw data to a millisecond read from a 10 MB pre-computed result. Reflections are created declaratively and maintained automatically; the query engine handles invalidation when the underlying Iceberg data changes.</p>
+
+            <h2>Columnar Vectorized Execution</h2>
+            <p>Dremio's Gandiva execution engine uses Apache Arrow's columnar in-memory format and LLVM-compiled vectorized operators to process data using SIMD CPU instructions. Instead of evaluating predicates row-by-row, the engine evaluates them on batches of thousands of values at once using the CPU's vector registers. This approach saturates CPU caches with column data rather than row data, which is the access pattern that modern CPUs handle most efficiently. The result is an order-of-magnitude throughput improvement over interpreted row-at-a-time engines for aggregation-heavy analytical queries.</p>
+
+            <h2>File Compaction and Z-Ordering</h2>
+            <p>Small Parquet files are the enemy of Lakehouse performance. Each file requires an S3 GET request, and thousands of tiny files generated by streaming ingestion pipelines produce thousands of requests for what might be a small amount of actual data. Iceberg's compaction operation merges small files into optimally sized larger files (typically 256 MB to 1 GB). Z-Ordering (also called clustering in some tools) physically co-locates related rows within files to improve predicate pushdown effectiveness for multi-column filter patterns that do not align with the primary partition key.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
