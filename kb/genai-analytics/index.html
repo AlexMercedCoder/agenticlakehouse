@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Analytics | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description"
+        content="Understand how GenAI Analytics synthesizes structured data into strategic narratives within the Agentic Lakehouse ecosystem.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/genai-analytics/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "GenAI Analytics",
+      "description": "An exploration of Generative AI applied to quantitative data sets to produce human-readable strategic insights.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://agenticlakehouse.com/kb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GenAI Analytics",
+          "item": "https://agenticlakehouse.com/kb/genai-analytics/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kb-label {
+            display: inline-block;
+            background: rgba(88, 225, 247, 0.1);
+            color: var(--color-accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">GenAI Analytics</h1>
+                <p class="hero-subtitle mx-auto">Synthesizing raw database output into strategic, human-readable narratives.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>For decades, the final output of an enterprise data pipeline was a visualization: a bar chart, a scatter plot, or a pivot table. The cognitive burden of interpreting that visual data fell entirely on the business user. <strong>GenAI Analytics</strong> shifts this burden. Instead of outputting raw numbers, the Agentic Lakehouse utilizes Generative AI to output narrative intelligence.</p>
+
+            <p>This is a fundamental change in how humans consume data. GenAI Analytics acts as a translator between deterministic mathematical aggregations and strategic business reasoning.</p>
+
+            <h2>The Synthesis Pipeline</h2>
+            <p>A true GenAI Analytics pipeline operates in distinct phases, ensuring that the generative process does not corrupt the underlying mathematics.</p>
+
+            <h3>1. Deterministic Execution</h3>
+            <p>The process begins with strict, non-generative operations. An AI agent translates a user's question into a SQL query and submits it to a lakehouse engine like Dremio. The engine computes the result against immutable Apache Iceberg tables. At this stage, the AI is not allowed to guess the data; it relies entirely on the SQL engine to calculate the accurate values.</p>
+
+            <h3>2. Data Serialization</h3>
+            <p>The execution engine returns a small, aggregated result set. For example, it might return a dozen rows showing regional revenue and profit margins. This structured data is serialized (typically into JSON or Markdown tables) and injected into the Large Language Model's context window.</p>
+
+            <h3>3. Generative Synthesis</h3>
+            <p>This is where GenAI Analytics occurs. The LLM reads the serialized mathematical output and the user's original intent. It then generates a natural language summary that highlights the most critical variances. Instead of handing the CEO a complex dashboard with twenty filters, the system delivers a three-sentence summary explaining exactly why Q3 margins missed projections.</p>
+
+            <h2>Multimodal Output Generation</h2>
+            <p>Advanced GenAI Analytics pipelines do not stop at text. They utilize a multi-agent framework to generate comprehensive briefing materials.</p>
+
+            <p>A "Data Analysis Agent" might run the SQL query, while a "Visualization Agent" writes Python code using matplotlib to generate a highly specific chart that a standard BI tool couldn't produce. Finally, a "Reporting Agent" combines the narrative text and the newly generated image into a polished PDF or Slack message. The business user receives a fully synthesized report rather than a raw data feed.</p>
+
+            <h2>Mitigating Narrative Hallucinations</h2>
+            <p>The primary risk in GenAI Analytics is narrative hallucination. The LLM might look at a table showing a 5% drop in sales and confidently state that the drop was caused by a competitor's new product launch, despite having no data to support that conclusion.</p>
+
+            <p>To prevent this, engineers implement strict system prompts that bind the LLM's reasoning exclusively to the provided dataset. The agent is explicitly instructed: "Do not infer causality unless it is mathematically represented in the provided context." By isolating the generative synthesis layer from the deterministic execution layer, the Agentic Lakehouse provides human-readable analytics without sacrificing accuracy.</p>
+
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

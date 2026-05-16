@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversational Analytics | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description"
+        content="Discover how Conversational Analytics replaces static BI dashboards with stateful, iterative dialogues powered by AI agents within the lakehouse.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/conversational-analytics/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": ["TechArticle", "Article"],
+      "headline": "Conversational Analytics",
+      "description": "An deep dive into stateful data exploration and the architectural requirements for delivering accurate chat-based analytical interfaces.",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Merced",
+        "url": "https://alexmercedcoder.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agentic Lakehouse Hub"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://agenticlakehouse.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://agenticlakehouse.com/kb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conversational Analytics",
+          "item": "https://agenticlakehouse.com/kb/conversational-analytics/"
+        }
+      ]
+    }]
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent-blue);
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-gray);
+            line-height: 1.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-gray);
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kb-label {
+            display: inline-block;
+            background: rgba(88, 225, 247, 0.1);
+            color: var(--color-accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="kb-label">Knowledge Base</span>
+                <h1 class="gradient-text">Conversational Analytics</h1>
+                <p class="hero-subtitle mx-auto">Replacing static BI filters with stateful, iterative data exploration.</p>
+            </div>
+        </section>
+
+        <article class="article-content container">
+            <p>For years, exploring data meant manipulating dropdowns on a Business Intelligence dashboard. If the dashboard was not pre-configured with a specific filter by a data engineer, the business user was stuck. <strong>Conversational Analytics</strong> shatters this constraint. It allows users to query, slice, and pivot enterprise data through a natural, stateful dialogue with an AI agent.</p>
+
+            <p>This is not merely a chat interface slapped over a SQL database. True Conversational Analytics requires a deep integration between the agent's memory framework and the lakehouse execution engine.</p>
+
+            <h2>Stateful Context Memory</h2>
+            <p>The defining feature of human conversation is statefulness. We remember what was said five seconds ago. For an AI agent to perform Conversational Analytics, it must maintain a rolling memory of the analytical session.</p>
+
+            <p>If a user asks, "Show me last quarter's revenue," the agent queries the semantic layer and returns the number. The user then asks, "Now break that down by product line." A stateful agent understands that "that" refers to "last quarter's revenue." It does not require the user to restate the entire premise. The agent dynamically generates a new, more complex SQL query by appending a <code>GROUP BY</code> clause to its previous logic.</p>
+
+            <p>This iterative process allows non-technical users to drill down into anomalies organically, asking follow-up questions until they isolate the root cause.</p>
+
+            <h2>Under the Hood: Query Modification</h2>
+            <p>From an engineering perspective, Conversational Analytics is an exercise in dynamic query modification. The AI agent acts as a compiler, taking the conversational history and translating it into a progressively complex Abstract Syntax Tree (AST) or SQL statement.</p>
+
+            <p>To do this safely, the system relies on the Data Context Layer. When the user says "exclude the outliers," the agent must know the mathematical definition of an outlier for that specific dataset. It queries the context layer, retrieves the statistical definition (e.g., values exceeding three standard deviations), and modifies the SQL <code>WHERE</code> clause accordingly before passing the query to the execution engine like Dremio.</p>
+
+            <h2>Integrating Data Visualization</h2>
+            <p>A conversational interface should not be limited to text output. When an agent identifies a trend, displaying a 500-row markdown table in a chat window is useless. Conversational Analytics systems employ Code Interpreter agents to generate visualizations on the fly.</p>
+
+            <p>Based on the user's conversational intent, the agent might write a Python script using Plotly to generate an interactive scatter plot. If the user replies, "Make the x-axis logarithmic," the agent modifies the Python code and re-renders the chart in real-time. This fuses the flexibility of natural language with the communicative power of data visualization, delivering a truly programmatic BI experience directly over the Agentic Lakehouse.</p>
+
+        </article>
+
+        <!-- Global CTA Section -->
+        <section class="global-cta-section">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2>
+                    <p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p>
+                </div>
+                
+                <div class="book-cta-grid fade-in-on-scroll">
+                    <!-- Dremio Trial -->
+                    <div class="cta-card featured-cta">
+                        <div class="cta-content">
+                            <h3>Start Your Free Dremio Trial</h3>
+                            <p>Transform your data repository into an active, intelligent partner today.</p>
+                            <br>
+                            <a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 1 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse">
+                        <div class="cta-content">
+                            <h4>Architecting an Apache Iceberg Lakehouse</h4>
+                            <a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse">
+                        <div class="cta-content">
+                            <h4>The AI Lakehouse</h4>
+                            <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI">
+                        <div class="cta-content">
+                            <h4>Apache Iceberg and Agentic AI</h4>
+                            <a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4 -->
+                    <div class="cta-card book-card">
+                        <img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone">
+                        <div class="cta-content">
+                            <h4>Lakehouse Built for Everyone</h4>
+                            <a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text"></span>
+                </div>
+                <div class="footer-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
