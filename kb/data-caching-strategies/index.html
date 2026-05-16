@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Caching Strategies | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Learn the key data caching strategies used in lakehouse architectures, from NVMe local disk caches to distributed memory caches, to maximize query performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/data-caching-strategies/" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Data Caching Strategies","author":{"@type":"Person","name":"Alex Merced"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}}</script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>.article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}</style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Data Caching Strategies</h1>
+            <p class="hero-subtitle mx-auto">A practical taxonomy of the caching layers that bridge the speed gap between slow cloud storage and fast analytical query engines.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>Effective data caching is one of the most impactful levers available for achieving sub-second analytical performance on a cloud object storage-based lakehouse. Because S3 and similar services impose latency and throughput constraints fundamentally different from local disk, sophisticated lakehouse engines implement multiple caching layers at different levels of the stack.</p>
+            <h2>The Caching Hierarchy</h2>
+            <p>Modern lakehouse query engines manage a caching hierarchy that mirrors the CPU memory hierarchy (L1/L2 cache, RAM, SSD, HDD):</p>
+            <ul>
+                <li><strong>Result Cache (L1 equivalent):</strong> The fastest and smallest. Stores complete query results for recently executed queries. Invalidated when the underlying Iceberg table receives a new snapshot. Serves identical repeated queries in milliseconds with zero compute work.</li>
+                <li><strong>Columnar NVMe Cache (L2 equivalent):</strong> Stores frequently accessed raw Parquet column chunks on local NVMe SSDs attached to executor nodes. Examples include Dremio's C3 cache and Alluxio (used with Trino). Reads are 10-100x faster than S3 and serve different queries accessing the same underlying data.</li>
+                <li><strong>Distributed Memory Cache (RAM equivalent):</strong> Some engines maintain in-memory pools of hot data across the cluster. These provide the lowest latency but are volatile (lost on node restart) and expensive per GB at cloud memory pricing.</li>
+                <li><strong>Metadata Cache:</strong> Stores Iceberg manifest files, manifest lists, and schema information in memory, eliminating repeated S3 reads just to plan a query. Critical for tables with many small partitions where metadata reads are a significant fraction of query planning time.</li>
+            </ul>
+            <h2>Cache Invalidation and Iceberg</h2>
+            <p>Iceberg's immutable snapshot model simplifies cache invalidation significantly. Because historical snapshot metadata files never change (only new snapshot files are added), any cached metadata for a specific snapshot ID remains valid indefinitely. When the table advances to a new snapshot, only caches referencing live data need invalidation, and the engine can use the new snapshot's version-controlled manifest files to precisely identify which data files are new vs. unchanged.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active partner.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
