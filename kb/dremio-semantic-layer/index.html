@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dremio Semantic Layer | Agentic Lakehouse Knowledge Base</title>
+    <meta name="description" content="Understand the Dremio Semantic Layer: the centralized intelligence hub that governs security, unifies data formats, and acts as the brain for AI agents.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/kb/dremio-semantic-layer/" />
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":["TechArticle","Article"],"headline":"Dremio Semantic Layer","description":"A detailed look at the Dremio Semantic Layer, its shift towards AI-readiness, and how it provides centralized governance and business logic across federated data.","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmercedcoder.dev/"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}},
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agenticlakehouse.com/"},{"@type":"ListItem","position":2,"name":"Knowledge Base","item":"https://agenticlakehouse.com/kb/"},{"@type":"ListItem","position":3,"name":"Dremio Semantic Layer","item":"https://agenticlakehouse.com/kb/dremio-semantic-layer/"}]}]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content h3{font-size:1.5rem;margin-top:2rem;margin-bottom:1rem;color:white}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul,.article-content ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo" aria-label="Home"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+    <main>
+        <section class="page-header"><div class="container">
+            <span class="kb-label">Knowledge Base</span>
+            <h1 class="gradient-text">Dremio Semantic Layer</h1>
+            <p class="hero-subtitle mx-auto">The centralized intelligence hub that unifies disparate data, enforces governance, and acts as the core mapping engine for AI.</p>
+        </div></section>
+        <article class="article-content container">
+            <p>In a traditional data architecture, business logic (like how to calculate "Net Revenue" or "Active Users") is often scattered across hundreds of disconnected BI dashboards and undocumented SQL scripts. This leads to conflicting answers and a lack of trust in the data. The <strong>Dremio Semantic Layer</strong> solves this by centralizing all business logic into a single, unified interface that sits securely between the raw data and the end consumers.</p>
+
+            <h2>Virtual Datasets and Governance</h2>
+            <p>The Semantic Layer is built on a foundation of <strong>Virtual Datasets (Views)</strong>. Data engineers create these views to standardize naming conventions, cast correct data types, and join disparate sources (e.g., joining an Iceberg table in S3 with a dimensional table in PostgreSQL) without actually copying the data.</p>
+            <p>Crucially, governance is applied directly to the Semantic Layer. Administrators enforce row-level security and column-masking (e.g., hiding PII data) at this central point. Because all queries must pass through Dremio - whether from Tableau, a Python script, or an API request - the security policies are applied consistently across the entire organization.</p>
+
+            <h2>Self-Documenting and AI-Ready</h2>
+            <p>As the industry transitioned toward Agentic AI in 2025 and 2026, the Dremio Semantic Layer evolved from a passive data dictionary into an active, intelligent "brain."</p>
+            <ul>
+                <li><strong>Generative Documentation:</strong> Dremio utilizes generative AI to automatically analyze data structures, suggest data classifications, and generate rich, context-aware wiki descriptions for datasets, significantly reducing the burden of manual documentation.</li>
+                <li><strong>Agentic Context:</strong> Large Language Models (LLMs) cannot query raw data effectively if the tables are full of cryptic column names like `usr_dt_flg`. The Semantic Layer provides structured, human-readable definitions and pre-defined metrics. When an AI agent connects to Dremio, it reads this Semantic Layer to understand the layout of the business, allowing it to generate perfectly accurate SQL and return trusted insights autonomously.</li>
+            </ul>
+
+            <h2>The Open Catalog Synergy</h2>
+            <p>By pairing the Semantic Layer with open catalogs (like Apache Polaris or Dremio's built-in Nessie-based catalog), organizations achieve a "single source of truth." Users and agents no longer need to know whether the underlying data format is Iceberg, Delta, or JSON - they simply query the clean, governed entity presented by the Semantic Layer.</p>
+        </article>
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>Transform your data repository into an active, intelligent partner today.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/iceberg-agentic-ai.jpg" alt="Apache Iceberg and Agentic AI"><div class="cta-content"><h4>Apache Iceberg and Agentic AI</h4><a href="https://www.amazon.com/gp/product/B0GW2WF4PX/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+                <div class="cta-card book-card"><img src="../../images/lakehouse-built-for-everyone.jpg" alt="Lakehouse Built for Everyone"><div class="cta-content"><h4>Lakehouse Built for Everyone</h4><a href="https://www.amazon.com/Lakehouse-Built-Everyone-Prototypes-Enterprise-Scale/dp/B0GYL5Q5YV/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text"></span></div><div class="footer-links"></div></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
