@@ -54,6 +54,16 @@
             <p>Another S3 limitation is API request throttling. If an engine sends millions of requests to the same S3 prefix (directory) simultaneously, Amazon S3 will throttle the requests, causing severe performance degradation.</p>
             <p>Iceberg solves this through an advanced feature called <strong>Object Store File Layout</strong>. When enabled, Iceberg will intentionally write Parquet files using randomized hashes in the S3 object key (e.g., <code>s3://bucket/table/data/1a2b3c.../file.parquet</code>). This artificially scatters the data across many different underlying S3 partitions, bypassing Amazon's throttling limits and ensuring maximum possible read/write throughput.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

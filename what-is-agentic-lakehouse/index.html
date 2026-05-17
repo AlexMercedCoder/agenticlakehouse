@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is an Agentic Lakehouse? Definition, Architecture & Use Cases</title>
+    <meta name="description" content="A complete guide to the Agentic Lakehouse: what it is, how it differs from traditional data lakehouses, its four architectural layers, and how Apache Iceberg and Dremio power it.">
+    <meta name="keywords" content="agentic lakehouse, what is agentic lakehouse, agentic lakehouse definition, agentic lakehouse architecture, AI lakehouse, Apache Iceberg AI, Dremio agentic lakehouse">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/what-is-agentic-lakehouse/" />
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "What is an Agentic Lakehouse? Definition, Architecture & Use Cases",
+        "description": "A complete guide to the Agentic Lakehouse: definition, four architectural layers, comparison to traditional lakehouses, and real-world use cases powered by Apache Iceberg and Dremio.",
+        "author": {"@type": "Person", "name": "Alex Merced", "url": "https://alexmercedcoder.dev/"},
+        "publisher": {"@type": "Organization", "name": "Agentic Lakehouse Hub"},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://agenticlakehouse.com/what-is-agentic-lakehouse/"}
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "name": "Agentic Lakehouse",
+        "description": "A data lakehouse architecture engineered for autonomous AI agents, combining open-format storage on Apache Iceberg, a semantic layer for business context, fine-grained governance, and high-performance query execution.",
+        "inDefinedTermSet": "https://agenticlakehouse.com"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an Agentic Lakehouse?",
+            "acceptedAnswer": {"@type": "Answer", "text": "An Agentic Lakehouse is a data lakehouse architecture specifically engineered for autonomous AI agents. It combines Apache Iceberg open-format storage, a semantic layer that provides business context, fine-grained RBAC/ABAC governance, and sub-second query performance — enabling AI agents to autonomously discover, query, and reason over enterprise data without hallucinating or exceeding data permissions."}
+          },
+          {
+            "@type": "Question",
+            "name": "How is an Agentic Lakehouse different from a traditional data lakehouse?",
+            "acceptedAnswer": {"@type": "Answer", "text": "A traditional data lakehouse is designed for human analysts using SQL and BI tools. An Agentic Lakehouse is designed for AI agents that must autonomously plan, query, reason, and act. This requires additional layers not present in traditional lakehouses: a semantic layer for business context (so agents understand what 'revenue' means), strict agent-aware governance (so agents cannot query data outside their authorized scope), and MCP/API interfaces designed for agent-to-platform communication rather than human-to-SQL interaction."}
+          },
+          {
+            "@type": "Question",
+            "name": "What technology powers the Agentic Lakehouse?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The Agentic Lakehouse is built on Apache Iceberg as the open table format, Apache Polaris or compatible catalogs for metadata and governance, Apache Arrow/Flight SQL for high-speed data transport, and the Model Context Protocol (MCP) for standardized agent-to-platform communication. Dremio is the leading query engine providing the semantic layer, query federation, and performance optimization capabilities needed for production Agentic Lakehouse deployments."}
+          }
+        ]
+      }
+    ]
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .pillar-content { max-width: 860px; margin: 0 auto; padding: 2rem 0 4rem; }
+        .pillar-content h2 { font-size: 2rem; margin: 3rem 0 1.25rem; color: var(--color-accent-blue); }
+        .pillar-content h3 { font-size: 1.4rem; margin: 2rem 0 1rem; color: var(--color-text-white); }
+        .pillar-content p { font-size: 1.1rem; color: var(--color-text-gray); line-height: 1.85; margin-bottom: 1.5rem; }
+        .pillar-content ul, .pillar-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--color-text-gray); }
+        .pillar-content li { font-size: 1.1rem; margin-bottom: .6rem; line-height: 1.7; }
+        .pillar-content strong { color: var(--color-text-white); }
+        .definition-block { background: rgba(57,153,229,.08); border-left: 4px solid var(--color-accent-blue); padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 2rem 0; }
+        .definition-block strong { color: var(--color-accent-blue); font-size: 1.1rem; }
+        .definition-block p { margin: .5rem 0 0; color: var(--color-text-gray); font-size: 1rem; }
+        .arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .arch-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .arch-card .num { font-size: 2rem; font-weight: 800; color: var(--color-accent-blue); margin-bottom: .5rem; }
+        .arch-card h4 { color: var(--color-text-white); margin: 0 0 .5rem; font-size: 1rem; }
+        .arch-card p { font-size: .9rem; margin: 0; }
+        .faq-section { margin: 3rem 0; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,.08); padding: 1.5rem 0; }
+        .faq-item h3 { font-size: 1.15rem; color: var(--color-text-white); margin: 0 0 .75rem; }
+        .faq-item p { margin: 0; font-size: 1rem; }
+        .related-articles { background: rgba(255,255,255,.03); border-radius: 16px; padding: 2rem; margin: 3rem 0; }
+        .related-articles h3 { color: var(--color-text-white); margin: 0 0 1.25rem; font-size: 1.2rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .75rem; }
+        .related-grid a { color: var(--color-accent-blue); text-decoration: none; font-size: .95rem; padding: .5rem .75rem; background: rgba(57,153,229,.07); border-radius: 8px; display: block; transition: background .2s; }
+        .related-grid a:hover { background: rgba(57,153,229,.15); }
+        .page-header { padding: 120px 0 60px; background: var(--gradient-hero); text-align: center; }
+        .page-header h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+        .breadcrumb { font-size: .9rem; color: var(--color-text-gray); margin-bottom: 1rem; }
+        .breadcrumb a { color: var(--color-accent-blue); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+
+    <main>
+        <section class="page-header"><div class="container">
+            <div class="breadcrumb"><a href="/">Home</a> › What is an Agentic Lakehouse?</div>
+            <h1 class="gradient-text">What is an Agentic Lakehouse?</h1>
+            <p class="hero-subtitle mx-auto">The complete guide to architecture, definition, and use cases for AI-native data platforms built on Apache Iceberg.</p>
+        </div></section>
+
+        <article class="pillar-content container">
+
+            <div class="definition-block" itemscope itemtype="https://schema.org/DefinedTerm">
+                <strong itemprop="name">Agentic Lakehouse</strong>
+                <p itemprop="description">A data lakehouse architecture engineered for autonomous AI agents, combining open-format storage on Apache Iceberg, a semantic layer for business context, fine-grained RBAC/ABAC governance, and high-performance query execution — enabling agents to reason over enterprise data without hallucination or unauthorized access.</p>
+            </div>
+
+            <h2>The Problem: Why Traditional Lakehouses Fail AI Agents</h2>
+            <p>Traditional data lakehouses were designed for human analysts. A human analyst brings domain knowledge to every query: they know that "revenue" means net revenue after returns, that "active customer" was redefined in Q3 2024, and that the marketing database uses different customer IDs than the CRM. They compensate for ambiguous data definitions through experience and institutional knowledge.</p>
+            <p>An autonomous AI agent has none of this context by default. When an LLM-based agent queries a raw data lakehouse, it must guess at business definitions, cannot verify the accuracy of its SQL, and has no mechanism to enforce that it only accesses data within its authorized scope. The result is hallucinated metrics, incorrect joins, and potential data governance violations — the exact failure modes that make enterprise leaders hesitant to deploy agentic AI systems on production data.</p>
+            <p>The Agentic Lakehouse solves this by adding four specific architectural layers that traditional lakehouses lack.</p>
+
+            <h2>The Four Layers of an Agentic Lakehouse</h2>
+            <div class="arch-grid">
+                <div class="arch-card"><div class="num">1</div><h4>Agent Interface</h4><p>Structured APIs and MCP endpoints for agent-to-platform communication, replacing ad-hoc SQL prompting.</p></div>
+                <div class="arch-card"><div class="num">2</div><h4>Semantic Layer</h4><p>Business context: metric definitions, column descriptions, and data dictionaries that ground agent reasoning in verified business logic.</p></div>
+                <div class="arch-card"><div class="num">3</div><h4>Governed Execution</h4><p>RBAC and ABAC policies enforced at query time, ensuring agents only access data explicitly within their authorized scope.</p></div>
+                <div class="arch-card"><div class="num">4</div><h4>Open Storage</h4><p>Apache Iceberg tables providing ACID transactions, time travel, schema evolution, and multi-engine accessibility without vendor lock-in.</p></div>
+            </div>
+
+            <h2>Layer 1: The Agent Interface</h2>
+            <p>The agent interface is the API layer through which AI agents interact with the lakehouse. Rather than requiring agents to generate raw SQL and hope the execution engine interprets it correctly, the Agentic Lakehouse exposes structured function-call APIs aligned with the <strong>Model Context Protocol (MCP)</strong> — the emerging standard for agent-to-tool communication developed by Anthropic and adopted broadly across the LLM ecosystem.</p>
+            <p>Through MCP, an agent can call structured functions like <code>query_dataset</code>, <code>get_schema</code>, <code>list_metrics</code>, and <code>get_data_lineage</code> — each with typed parameters and validated responses. This eliminates the ambiguity of free-form SQL generation and gives the agent a reliable, semantically rich interface to the data platform. Dremio's MCP server implementation exposes the semantic layer directly to MCP-compatible AI frameworks including LangChain, LlamaIndex, and Claude agents.</p>
+
+            <h2>Layer 2: The Semantic Layer</h2>
+            <p>The semantic layer is the most critical differentiator of an Agentic Lakehouse. It is a managed repository of business metadata that sits between the raw Iceberg tables and the query engine, providing:</p>
+            <ul>
+                <li><strong>Metric definitions:</strong> "Revenue" = SUM(order_amount) WHERE status = 'completed' AND return_date IS NULL, scoped to the fiscal calendar</li>
+                <li><strong>Entity resolution:</strong> "Customer" in the CRM maps to customer_id in orders, which maps to user_uuid in the analytics platform</li>
+                <li><strong>Column-level business descriptions:</strong> Human-readable explanations of each column's business meaning, data type, and valid values</li>
+                <li><strong>Virtual datasets:</strong> Pre-joined, pre-filtered views of Iceberg data organized around business entities (customer 360, product performance, sales pipeline) rather than raw table layouts</li>
+            </ul>
+            <p>When an AI agent asks "what was our revenue last quarter by product category?", the semantic layer ensures the agent uses the correct revenue calculation, the correct date filter, and the correct product taxonomy — rather than guessing at table and column names and potentially computing an incorrect metric.</p>
+
+            <h2>Layer 3: Governed Execution</h2>
+            <p>AI agents introduce a new access control challenge: unlike human users who request specific reports, agents autonomously determine which data they need and generate queries dynamically. A poorly governed Agentic Lakehouse could have an agent with customer service access inadvertently querying salary data or financial projections.</p>
+            <p>The Agentic Lakehouse enforces governance at the query engine level, not at the application level. <a href="/kb/rbac-data/">Role-Based Access Control (RBAC)</a> defines which tables, namespaces, and columns each agent identity can access. <a href="/kb/abac-data/">Attribute-Based Access Control (ABAC)</a> extends this with dynamic, policy-driven filters — for example, a regional agent can only see rows where region matches its assigned territory, automatically applied regardless of what SQL it generates. <a href="/kb/row-level-security/">Row-level security</a> and <a href="/kb/column-level-security/">column-level masking</a> ensure sensitive data is never exposed to unauthorized agents, even if the agent explicitly requests it.</p>
+
+            <h2>Layer 4: Open Storage on Apache Iceberg</h2>
+            <p>The storage foundation of the Agentic Lakehouse is <strong>Apache Iceberg</strong> — the open table format that provides the reliability and metadata richness that agentic workloads require. Iceberg's key properties for agentic use cases:</p>
+            <ul>
+                <li><strong>ACID transactions:</strong> AI agents performing data updates (writing analysis results, updating feature stores, logging agent decisions) need transactional guarantees to avoid data corruption in concurrent agentic workflows.</li>
+                <li><strong>Time travel:</strong> Agents can query data as of any past snapshot, enabling reproducible analysis and audit trails of agent-generated insights.</li>
+                <li><strong>Rich metadata:</strong> Iceberg's column-level statistics (min, max, null count, distinct count per file) enable query engines to efficiently prune data before scanning, delivering the sub-second response times that real-time agentic interactions require.</li>
+                <li><strong>Multi-engine access:</strong> Apache Iceberg's open REST Catalog API allows any engine (Dremio, Spark, Flink, Trino) to read the same tables, so specialized agents using different processing engines can work on the same governed data without data copying.</li>
+            </ul>
+
+            <h2>How an Agentic Lakehouse Differs from a RAG Architecture</h2>
+            <p>RAG (Retrieval-Augmented Generation) is a popular pattern for grounding LLM responses in external documents — it works well for unstructured text (PDFs, knowledge base articles, emails). The Agentic Lakehouse addresses a different problem: grounding AI agents in <em>structured, governed, transactional enterprise data</em> with mathematical precision.</p>
+            <p>A RAG system retrieves relevant text chunks and passes them to an LLM. An Agentic Lakehouse executes precise SQL queries against governed Iceberg tables, applies semantic business logic, and returns exact numerical results — not probabilistic text approximations. For analytics use cases where "revenue last quarter" must equal a specific number derived from a specific calculation, the Agentic Lakehouse approach is essential. Many production agentic systems combine both: RAG for contextual reasoning over unstructured data, Agentic Lakehouse for precise quantitative analysis.</p>
+
+            <h2>Real-World Agentic Lakehouse Use Cases</h2>
+            <ul>
+                <li><strong>Autonomous financial reporting:</strong> An agent monitors Iceberg financial tables, detects anomalies, and generates variance reports with explanatory narratives — without a human analyst prompting each query.</li>
+                <li><strong>Self-serve analytics for business teams:</strong> Non-technical stakeholders ask natural language questions; the agent translates them to SQL using the semantic layer and returns accurate, governed answers from Iceberg tables.</li>
+                <li><strong>Operational intelligence:</strong> Supply chain agents continuously monitor inventory and demand data, proactively identifying shortages and triggering replenishment workflows without human intervention.</li>
+                <li><strong>Compliance monitoring:</strong> Governance agents continuously scan transaction data for regulatory violations, generating audit-ready reports with full data lineage from the Iceberg snapshot history.</li>
+            </ul>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>What is an Agentic Lakehouse?</h3>
+                    <p>An Agentic Lakehouse is a data lakehouse architecture specifically designed for autonomous AI agents, combining Apache Iceberg open-format storage, a semantic layer for business context, RBAC/ABAC governance, and MCP-based agent interfaces. Unlike traditional lakehouses built for human analysts, it enables AI agents to autonomously discover, query, and reason over governed enterprise data.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How is an Agentic Lakehouse different from a traditional data lakehouse?</h3>
+                    <p>A traditional lakehouse is designed for humans using SQL and BI tools. An Agentic Lakehouse adds three layers that traditional lakehouses lack: a semantic layer for machine-understandable business context, agent-aware governance policies enforced at query time, and structured API interfaces (MCP) designed for agent-to-platform rather than human-to-SQL communication.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does an Agentic Lakehouse require Apache Iceberg?</h3>
+                    <p>Apache Iceberg is the preferred and most widely adopted storage foundation for the Agentic Lakehouse due to its ACID transactions, time travel, rich metadata statistics, and multi-engine open REST Catalog API. Other open table formats (Delta Lake, Hudi) can serve as the storage layer, but Iceberg's metadata richness and universal catalog interoperability make it the leading choice for agentic architectures in 2025 and 2026.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Which companies are building Agentic Lakehouse platforms?</h3>
+                    <p>Dremio pioneered the "Agentic Lakehouse" concept and offers the most complete commercial implementation, combining its semantic layer, query federation, Apache Polaris catalog integration, and native MCP server. Other vendors (Databricks, Snowflake) are implementing components of the pattern, but the Agentic Lakehouse as a defined architectural concept is primarily associated with Dremio's platform positioning as of 2025–2026.</p>
+                </div>
+            </div>
+
+            <div class="related-articles">
+                <h3>Explore the Agentic Lakehouse Knowledge Base</h3>
+                <div class="related-grid">
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/agentic-lakehouse-architecture/">Architecture Diagram</a>
+                    <a href="/kb/apache-iceberg/">Apache Iceberg</a>
+                    <a href="/kb/semantic-layer/">Semantic Layer</a>
+                    <a href="/kb/rbac-data/">RBAC for Data</a>
+                    <a href="/kb/abac-data/">ABAC for Data</a>
+                    <a href="/kb/data-contracts/">Data Contracts</a>
+                    <a href="/kb/data-observability/">Data Observability</a>
+                    <a href="/kb/governance-policy-as-code/">Policy as Code</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </article>
+
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Build Your Agentic Lakehouse</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>The leading Agentic Lakehouse platform — Apache Iceberg native, semantic layer included, MCP-ready.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

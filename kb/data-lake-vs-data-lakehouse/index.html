@@ -67,6 +67,16 @@
             <p>Apache Iceberg solves all four failure modes without moving the data out of object storage. It adds a metadata layer (manifest files and a manifest list) that tracks exactly which Parquet files constitute the current version of a table. Writes are atomic: the manifest list only updates to point to the new manifest files after all data files have been successfully written. Concurrent writes are coordinated through optimistic concurrency control. Schema changes are recorded in the table metadata and apply forward without file rewrites. Every table write creates a new snapshot, producing a complete, queryable audit history.</p>
             <p>The result is a data lake that behaves like a reliable transactional database without requiring proprietary storage. That combination is precisely what defines the Data Lakehouse.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section">
             <div class="container">
                 <div class="section-header center-text">

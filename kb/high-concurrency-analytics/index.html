@@ -45,6 +45,19 @@
             <h2>Iceberg's Role in Concurrency</h2>
             <p>Apache Iceberg's snapshot isolation model means that concurrent reads never block concurrent writes. A query reading the current snapshot of an Iceberg table is never delayed by a simultaneous Spark job writing a new snapshot. Multiple engines can read the same Iceberg table simultaneously without any locking or coordination overhead, making Iceberg the ideal foundation for high-concurrency, multi-engine lakehouse architectures.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/low-latency-queries/">Low Latency Queries</a>
+                    <a href="/kb/data-caching-strategies/">Data Caching Strategies</a>
+                    <a href="/kb/multi-engine-data-architecture/">Multi Engine Data Architecture</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

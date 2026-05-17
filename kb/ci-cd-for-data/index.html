@@ -36,6 +36,20 @@
             <h2>CI/CD Implementation for Iceberg Lakehouses</h2>
             <p>A typical CI/CD pipeline for an Iceberg lakehouse dbt project uses GitHub Actions or GitLab CI: on every pull request, dbt compiles the models (catching SQL syntax errors), runs dbt tests against a staging Iceberg catalog (confirming data quality rules pass on sample data), and reports results back to the PR. On merge to main, the pipeline triggers a full dbt run against the production Iceberg catalog, applying all model changes atomically. Apache Iceberg's branching capability (introduced in recent specs and implemented in tools like Project Nessie) takes this further, enabling data engineers to test transformations on an isolated Iceberg branch before merging changes to main, preventing production data corruption during experimentation.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/dbt-data-build-tool/">Dbt Data Build Tool</a>
+                    <a href="/kb/data-versioning/">Data Versioning</a>
+                    <a href="/kb/automated-data-testing/">Automated Data Testing</a>
+                    <a href="/kb/governance-policy-as-code/">Governance Policy As Code</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

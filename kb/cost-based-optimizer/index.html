@@ -45,6 +45,16 @@
             <h2>Iceberg Statistics and the CBO</h2>
             <p>Apache Iceberg's rich metadata layer is a significant asset for CBOs. The min/max statistics stored at the column level within each Parquet file enable the optimizer to estimate that a filter like <code>WHERE country = 'US'</code> will eliminate 80% of a table's files before scanning begins. This allows the CBO to accurately model the actual data volume each join operator will receive, enabling far more accurate join ordering decisions on large, skewed datasets that a simple rule-based approach would get wrong.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

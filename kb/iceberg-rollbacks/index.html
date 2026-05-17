@@ -54,6 +54,16 @@
             <h2>Prerequisites for Rollbacks</h2>
             <p>Rollbacks are only possible if the target historical snapshot still exists. If a data engineer has run an aggressive <code>expire_snapshots</code> maintenance job that deleted the metadata and associated Parquet files of the past state to save storage space, you cannot roll back to it. Therefore, organizations must carefully balance their snapshot retention policies - keeping enough history to ensure a safe rollback window (e.g., 7 days) without causing unnecessary cloud storage bloat.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

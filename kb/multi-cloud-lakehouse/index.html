@@ -50,6 +50,16 @@
             <h2>Egress Cost Management</h2>
             <p>Multi-cloud data access carries a significant operational cost risk: cloud egress fees. When the query engine moves data between cloud providers to perform a JOIN, each gigabyte transferred incurs fees from the source cloud provider. Effective Multi-Cloud Lakehouse architecture minimizes cross-cloud data movement by keeping JOIN operations co-located with the larger table. If a small reference table lives in Azure and a 10 TB fact table lives in AWS, the engine should broadcast the reference table to the AWS compute cluster rather than streaming 10 TB of fact data to Azure. Query planners in engines like Dremio implement cost-based optimizer rules specifically for this cross-cloud join ordering problem.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

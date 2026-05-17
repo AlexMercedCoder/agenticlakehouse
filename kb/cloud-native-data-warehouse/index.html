@@ -48,6 +48,16 @@
             <p>The primary limitations of cloud-native data warehouses are vendor lock-in and cost at scale for unstructured or semi-structured data. All data must live inside the warehouse's storage layer to be queryable at full performance. This creates a compulsion to move all data into the warehouse, which is expensive for large raw datasets that only a fraction of queries actually touch, and it makes it difficult to use open-source ML and AI tools that work natively with files in object storage.</p>
             <p>The open Data Lakehouse (Apache Iceberg on S3 with Dremio as the query engine) retains the cloud-native warehouse's compute-storage separation and elastic scaling model while replacing the proprietary storage format with open Parquet files. Data stored in Iceberg format is readable by any engine that supports the Iceberg spec, with no vendor lock-in. This openness comes with slightly higher operational responsibility for table management (compaction, snapshot expiration) that the proprietary warehouses handle automatically.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

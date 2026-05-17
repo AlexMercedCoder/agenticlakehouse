@@ -42,6 +42,16 @@
             <h2>Hybrid Architectures</h2>
             <p>Production systems commonly use both layers. The lakehouse stores the full historical dataset with ACID guarantees and cheap long-term storage. The IMDG caches a "hot" subset of frequently accessed data in memory for ultra-low-latency serving. Apache Flink or Spark pipelines periodically refresh the IMDG cache with fresh data from the Iceberg lakehouse, maintaining freshness without overloading the IMDG with the full data volume. This pattern is common in personalization engines, real-time dashboards, and agentic AI systems that require both deep historical context from the lakehouse and real-time low-latency lookups for individual user sessions.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

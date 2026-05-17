@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Lakehouse Architecture Diagram | Visual Guide</title>
+    <meta name="description" content="The canonical Agentic Lakehouse architecture diagram showing all four layers: Agent Interface (MCP), Semantic Layer, Governed Query Engine, and Apache Iceberg Open Storage.">
+    <meta name="keywords" content="agentic lakehouse architecture, agentic lakehouse diagram, agentic analytics architecture, iceberg lakehouse architecture diagram, AI lakehouse architecture">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/agentic-lakehouse-architecture/" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Agentic Lakehouse Architecture: A Visual Guide to All Four Layers",
+      "description": "The canonical reference architecture for the Agentic Lakehouse, showing the Agent Interface (MCP), Semantic Layer, Governed Query Engine (Dremio), and Apache Iceberg Open Storage.",
+      "author": {"@type": "Person", "name": "Alex Merced", "url": "https://alexmercedcoder.dev/"},
+      "publisher": {"@type": "Organization", "name": "Agentic Lakehouse Hub"}
+    }
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .arch-page { max-width: 900px; margin: 0 auto; padding: 2rem 0 4rem; }
+        .arch-page p { font-size: 1.1rem; color: var(--color-text-gray); line-height: 1.85; margin-bottom: 1.5rem; }
+        .arch-page h2 { font-size: 1.8rem; color: var(--color-accent-blue); margin: 3rem 0 1.25rem; }
+        .arch-page strong { color: var(--color-text-white); }
+        .page-header { padding: 100px 0 50px; background: var(--gradient-hero); text-align: center; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .breadcrumb { font-size: .9rem; color: var(--color-text-gray); margin-bottom: 1rem; }
+        .breadcrumb a { color: var(--color-accent-blue); text-decoration: none; }
+        .diagram-wrap { background: rgba(10,14,30,0.8); border: 1px solid rgba(57,153,229,.2); border-radius: 20px; padding: 2.5rem; margin: 2rem 0; }
+        .diagram-wrap svg { width: 100%; height: auto; display: block; }
+        .embed-note { font-size: .85rem; color: var(--color-text-gray); text-align: center; margin-top: .75rem; opacity: .6; }
+        .layer-cards { display: grid; gap: 1.5rem; margin: 2rem 0; }
+        .layer-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 1.75rem; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+        .layer-num { width: 48px; height: 48px; background: var(--color-accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800; color: white; flex-shrink: 0; }
+        .layer-card h3 { font-size: 1.2rem; color: var(--color-text-white); margin: 0 0 .5rem; }
+        .layer-card p { font-size: 1rem; color: var(--color-text-gray); margin: 0; line-height: 1.6; }
+        .related-articles { background: rgba(255,255,255,.03); border-radius: 16px; padding: 2rem; margin: 3rem 0; }
+        .related-articles h3 { color: var(--color-text-white); margin: 0 0 1.25rem; font-size: 1.2rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: .75rem; }
+        .related-grid a { color: var(--color-accent-blue); text-decoration: none; font-size: .95rem; padding: .5rem .75rem; background: rgba(57,153,229,.07); border-radius: 8px; display: block; transition: background .2s; }
+        .related-grid a:hover { background: rgba(57,153,229,.15); }
+    </style>
+</head>
+<body>
+    <header class="site-header"><div class="container">
+        <a href="/" class="logo"><span class="logo-icon"><i class="ph-fill ph-waves"></i></span><span class="logo-text">The Agentic Lakehouse</span></a>
+        <nav class="site-nav"><ul>
+            <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+            <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+            <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+        </ul></nav>
+    </div></header>
+
+    <main>
+        <section class="page-header"><div class="container">
+            <div class="breadcrumb"><a href="/">Home</a> › Agentic Lakehouse Architecture</div>
+            <h1 class="gradient-text">Agentic Lakehouse Architecture</h1>
+            <p class="hero-subtitle mx-auto">The canonical four-layer reference architecture for building AI agent-ready data platforms on Apache Iceberg.</p>
+        </div></section>
+
+        <div class="arch-page container">
+            <p>The <strong>Agentic Lakehouse</strong> is not a single product but an architectural pattern composed of four distinct layers. Each layer addresses a specific capability gap that prevents traditional data lakehouses from serving autonomous AI agents effectively. The diagram below shows all four layers and how they interact.</p>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agentic Lakehouse Architecture Diagram showing four layers: AI Agents at the top, then MCP Agent Interface, then Semantic and Governed Query Layer, then Apache Iceberg Open Storage at the bottom">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3999e5;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#58e1f7;stop-opacity:0.8"/>
+                        </linearGradient>
+                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#3999e5;stop-opacity:0.8"/>
+                        </linearGradient>
+                        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#059669;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#3999e5;stop-opacity:0.6"/>
+                        </linearGradient>
+                        <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d97706;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.6"/>
+                        </linearGradient>
+                        <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <!-- Background -->
+                    <rect width="800" height="520" fill="#0a0e1e" rx="16"/>
+                    <!-- Title -->
+                    <text x="400" y="36" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="700" fill="#ffffff">Agentic Lakehouse Reference Architecture</text>
+
+                    <!-- Layer 0: AI Agents (top) -->
+                    <rect x="40" y="60" width="720" height="72" rx="12" fill="url(#g1)" opacity="0.15" stroke="#3999e5" stroke-width="1.5"/>
+                    <text x="70" y="92" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#58e1f7">LAYER 0 — AI AGENTS &amp; APPLICATIONS</text>
+                    <rect x="70" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
+                    <text x="135" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">LangChain Agent</text>
+                    <rect x="215" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
+                    <text x="280" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">Claude / GPT Agent</text>
+                    <rect x="360" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
+                    <text x="425" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">LlamaIndex Agent</text>
+                    <rect x="505" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
+                    <text x="570" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">Custom AI Workflow</text>
+
+                    <!-- Arrow 1 -->
+                    <line x1="400" y1="132" x2="400" y2="152" stroke="#3999e5" stroke-width="2" stroke-dasharray="4,3"/>
+                    <polygon points="394,152 406,152 400,162" fill="#3999e5"/>
+                    <text x="420" y="148" font-family="Inter,sans-serif" font-size="10" fill="#3999e5">MCP / REST API</text>
+
+                    <!-- Layer 1: Agent Interface -->
+                    <rect x="40" y="164" width="720" height="72" rx="12" fill="url(#g2)" opacity="0.15" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="70" y="196" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#a78bfa">LAYER 1 — AGENT INTERFACE (MODEL CONTEXT PROTOCOL)</text>
+                    <rect x="70" y="205" width="200" height="22" rx="6" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
+                    <text x="170" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">MCP Server (Dremio)</text>
+                    <rect x="285" y="205" width="200" height="22" rx="6" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
+                    <text x="385" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">Arrow Flight SQL / REST</text>
+                    <rect x="500" y="205" width="200" height="22" rx="6" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
+                    <text x="600" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">ODBC / JDBC (BI Tools)</text>
+
+                    <!-- Arrow 2 -->
+                    <line x1="400" y1="236" x2="400" y2="256" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,3"/>
+                    <polygon points="394,256 406,256 400,266" fill="#7c3aed"/>
+                    <text x="420" y="252" font-family="Inter,sans-serif" font-size="10" fill="#a78bfa">Governed SQL</text>
+
+                    <!-- Layer 2: Semantic + Query Engine -->
+                    <rect x="40" y="268" width="720" height="90" rx="12" fill="url(#g3)" opacity="0.15" stroke="#059669" stroke-width="1.5"/>
+                    <text x="70" y="298" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#34d399">LAYER 2 — SEMANTIC LAYER + GOVERNED QUERY ENGINE</text>
+                    <rect x="70" y="307" width="200" height="40" rx="8" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
+                    <text x="170" y="323" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Semantic Layer</text>
+                    <text x="170" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Metrics · Entities · Wikis</text>
+                    <rect x="290" y="307" width="200" height="40" rx="8" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
+                    <text x="390" y="323" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Query Engine (Dremio)</text>
+                    <text x="390" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">RBAC · ABAC · Reflections</text>
+                    <rect x="510" y="307" width="200" height="40" rx="8" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
+                    <text x="610" y="323" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Governance Engine</text>
+                    <text x="610" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Row/Column Security · Audit</text>
+
+                    <!-- Arrow 3 -->
+                    <line x1="400" y1="358" x2="400" y2="378" stroke="#059669" stroke-width="2" stroke-dasharray="4,3"/>
+                    <polygon points="394,378 406,378 400,388" fill="#059669"/>
+                    <text x="420" y="374" font-family="Inter,sans-serif" font-size="10" fill="#34d399">Iceberg REST Catalog</text>
+
+                    <!-- Layer 3: Storage -->
+                    <rect x="40" y="390" width="720" height="100" rx="12" fill="url(#g4)" opacity="0.15" stroke="#d97706" stroke-width="1.5"/>
+                    <text x="70" y="420" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">LAYER 3 — APACHE ICEBERG OPEN STORAGE (S3 / ADLS / GCS)</text>
+                    <rect x="70" y="430" width="150" height="48" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
+                    <text x="145" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Bronze Tables</text>
+                    <text x="145" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Raw · CDC · Ingestion</text>
+                    <rect x="235" y="430" width="150" height="48" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
+                    <text x="310" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Silver Tables</text>
+                    <text x="310" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Cleansed · Validated · dbt</text>
+                    <rect x="400" y="430" width="150" height="48" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
+                    <text x="475" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Gold Tables</text>
+                    <text x="475" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Kimball · Data Vault · Wide</text>
+                    <rect x="565" y="430" width="170" height="48" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
+                    <text x="650" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Iceberg Catalog</text>
+                    <text x="650" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Apache Polaris · Nessie · Glue</text>
+
+                    <!-- Footer -->
+                    <text x="400" y="508" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.3)">agenticlakehouse.com — Free to use with attribution</text>
+                </svg>
+                <p class="embed-note">Free to embed with attribution to agenticlakehouse.com</p>
+            </div>
+
+            <h2>Understanding Each Layer</h2>
+
+            <div class="layer-cards">
+                <div class="layer-card">
+                    <div class="layer-num">0</div>
+                    <div>
+                        <h3>AI Agents &amp; Applications</h3>
+                        <p>The consumers of the Agentic Lakehouse. LLM-based agents (LangChain, LlamaIndex, Claude, GPT-based), custom agentic workflows, and BI tools all sit at this layer. Each interacts with the platform through the Agent Interface layer rather than directly with storage or the query engine.</p>
+                    </div>
+                </div>
+                <div class="layer-card">
+                    <div class="layer-num">1</div>
+                    <div>
+                        <h3>Agent Interface — Model Context Protocol (MCP)</h3>
+                        <p>The <a href="/kb/model-context-protocol/" style="color:var(--color-accent-blue)">Model Context Protocol</a> provides structured, typed function-call APIs for agent-to-platform communication. Instead of generating raw SQL strings, agents call MCP functions (<code>list_datasets</code>, <code>get_schema</code>, <code>execute_query</code>) and receive typed responses. BI tools connect via <a href="/kb/odbc-jdbc-drivers/" style="color:var(--color-accent-blue)">ODBC/JDBC</a> or <a href="/kb/arrow-flight-sql/" style="color:var(--color-accent-blue)">Arrow Flight SQL</a>.</p>
+                    </div>
+                </div>
+                <div class="layer-card">
+                    <div class="layer-num">2</div>
+                    <div>
+                        <h3>Semantic Layer + Governed Query Engine</h3>
+                        <p>The <a href="/kb/semantic-layer/" style="color:var(--color-accent-blue)">semantic layer</a> provides business context (metric definitions, entity mappings, column descriptions) that grounds agent reasoning in verified business logic. The query engine (Dremio) enforces <a href="/kb/rbac-data/" style="color:var(--color-accent-blue)">RBAC</a>, <a href="/kb/abac-data/" style="color:var(--color-accent-blue)">ABAC</a>, <a href="/kb/row-level-security/" style="color:var(--color-accent-blue)">row-level security</a>, and <a href="/kb/column-level-security/" style="color:var(--color-accent-blue)">column masking</a> transparently at query time.</p>
+                    </div>
+                </div>
+                <div class="layer-card">
+                    <div class="layer-num">3</div>
+                    <div>
+                        <h3>Apache Iceberg Open Storage</h3>
+                        <p>All data is stored as <a href="/kb/apache-iceberg/" style="color:var(--color-accent-blue)">Apache Iceberg</a> tables in cloud object storage (S3, ADLS, GCS). The Medallion architecture organizes data into Bronze (raw), Silver (cleansed), and Gold (analytical) layers. <a href="/kb/apache-polaris/" style="color:var(--color-accent-blue)">Apache Polaris</a>, Project Nessie, or AWS Glue serve as the Iceberg catalog, providing the REST Catalog API that all engines and the governance layer use to discover and access tables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-articles">
+                <h3>Deep-Dive Resources</h3>
+                <div class="related-grid">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/apache-iceberg/">Apache Iceberg</a>
+                    <a href="/kb/semantic-layer/">Semantic Layer</a>
+                    <a href="/kb/model-context-protocol/">Model Context Protocol</a>
+                    <a href="/kb/apache-polaris/">Apache Polaris</a>
+                    <a href="/kb/rbac-data/">RBAC for Data</a>
+                    <a href="/kb/data-observability/">Data Observability</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="global-cta-section"><div class="container">
+            <div class="section-header center-text"><h2 class="fade-in-on-scroll">Build This Architecture Today</h2></div>
+            <div class="book-cta-grid fade-in-on-scroll">
+                <div class="cta-card featured-cta"><div class="cta-content"><h3>Start Your Free Dremio Trial</h3><p>The semantic layer, MCP server, governance engine, and Iceberg-native query platform in one.</p><br><a href="https://www.dremio.com/get-started" class="btn btn-primary btn-lg">Get Started Free</a></div></div>
+                <div class="cta-card book-card"><img src="../images/architecting-iceberg.png" alt="Architecting an Apache Iceberg Lakehouse"><div class="cta-content"><h4>Architecting an Apache Iceberg Lakehouse</h4><a href="https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse" class="btn btn-secondary">Buy on Manning</a></div></div>
+                <div class="cta-card book-card"><img src="../images/ai-lakehouse.jpg" alt="The AI Lakehouse"><div class="cta-content"><h4>The AI Lakehouse</h4><a href="https://www.amazon.com/AI-Lakehouse-Architecting-Platforms-Agentic/dp/B0GSMQ6M2J/" class="btn btn-secondary">Buy on Amazon</a></div></div>
+            </div>
+        </div></section>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
+</body>
+</html>

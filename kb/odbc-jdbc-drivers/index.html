@@ -40,6 +40,19 @@
             <h2>Performance Considerations</h2>
             <p>ODBC and JDBC serialize data into row-oriented formats during transit, introducing overhead for large analytical result sets compared to Arrow Flight SQL. For BI dashboards where a query returns thousands to millions of rows to a Tableau visualization, this serialization overhead is measurable. High-performance lakehouse architectures often configure BI tools to use Arrow Flight SQL drivers where available (Tableau, Power BI, and Dremio all support Flight SQL connectivity), reserving ODBC/JDBC for legacy applications that cannot be migrated.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/sql-dialects/">Sql Dialects</a>
+                    <a href="/kb/arrow-flight-sql/">Arrow Flight Sql</a>
+                    <a href="/kb/serverless-sql/">Serverless Sql</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

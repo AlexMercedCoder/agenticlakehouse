@@ -36,6 +36,20 @@
             <h2>Testing Frameworks for Iceberg</h2>
             <p>The primary automated data testing frameworks for Iceberg lakehouses are: <strong>dbt tests</strong> (not_null, unique, accepted_values, relationships) run as SQL queries against Iceberg tables after each dbt model materialization. <strong>Great Expectations</strong> defines expectation suites as YAML configuration files, runs them as Spark or SQL jobs against Iceberg tables, and generates HTML data docs showing pass/fail results and data statistics. <strong>Soda Core</strong> provides a declarative YAML syntax for data quality checks that integrates with Airflow and dbt. All three tools support integration with CI/CD pipelines: a failing data test in CI blocks the pipeline from promoting bad data to production Iceberg tables.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/data-quality-rules/">Data Quality Rules</a>
+                    <a href="/kb/data-quality-framework/">Data Quality Framework</a>
+                    <a href="/kb/ci-cd-for-data/">Ci Cd For Data</a>
+                    <a href="/kb/dbt-data-build-tool/">Dbt Data Build Tool</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

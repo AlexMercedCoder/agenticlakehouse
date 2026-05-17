@@ -53,6 +53,16 @@
             <p>The metadata file is the linchpin of Iceberg's ACID transactions. Because the file is written in JSON and contains the entire table state, a commit operation in Iceberg simply means writing a new JSON metadata file and asking the Catalog to atomically swap its pointer from the old file to the new file.</p>
             <p>If two writers try to commit at the same time, they both read the current metadata file, create their own new metadata files, and attempt the atomic swap. The Catalog enforces Optimistic Concurrency Control: the first writer succeeds, while the second writer's swap fails. The second writer must then re-read the newly updated metadata, re-apply its changes, and try again. This ensures that the table state never becomes corrupted or inconsistent.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

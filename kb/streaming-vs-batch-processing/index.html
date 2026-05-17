@@ -51,6 +51,16 @@
             <p>The Lambda architecture combines both models: a batch layer recomputes historically correct results nightly, and a streaming speed layer provides low-latency approximate results for recent data. Queries merge both layers. The operational cost of maintaining two separate systems (batch and streaming code for the same transformations) made Lambda architecture unpopular in practice.</p>
             <p>The Kappa architecture simplifies this by using streaming exclusively. Historical reprocessing is handled by replaying the event log through the streaming engine. Apache Iceberg's support for both streaming writes from Flink and batch writes from Spark, on the same table, enables a practical middle path: use streaming ingestion into bronze-tier tables and batch transformations for silver and gold tiers. The latency properties of each tier are matched to its transformations without maintaining two separate code paths.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

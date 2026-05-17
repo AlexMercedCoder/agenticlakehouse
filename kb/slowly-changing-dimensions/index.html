@@ -42,6 +42,19 @@
             <h2>SCD Type 2 and Apache Iceberg</h2>
             <p>Implementing SCD Type 2 historically required complex ETL logic: identify changed rows, close existing records by setting end dates, and insert new rows with new effective dates. Iceberg's MERGE INTO statement simplifies this significantly. A single MERGE can atomically update existing rows (close them) and insert new rows (open new versions) in a single ACID transaction, eliminating the multi-step approach that was error-prone in traditional data lake implementations. Iceberg's time travel also provides an alternative to SCD Type 2 for some use cases: instead of maintaining separate rows for each version, queries can use AS OF TIMESTAMP to examine the dimension table's state at any past point in time.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/kimball-methodology/">Kimball Methodology</a>
+                    <a href="/kb/change-data-capture/">Change Data Capture</a>
+                    <a href="/kb/iceberg-merge-on-read/">Iceberg Merge On Read</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

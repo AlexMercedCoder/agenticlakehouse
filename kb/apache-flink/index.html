@@ -43,6 +43,16 @@
             <h2>The Streaming-Compaction Cycle</h2>
             <p>A critical operational reality of Flink-to-Iceberg streaming is the small file problem. Every checkpoint commit (which might occur every 1-5 minutes) creates new Parquet files. Production deployments must pair the Flink streaming job with a background compaction service that continuously merges these small files into optimally-sized blocks. Batching writes into 1-to-5-minute intervals reduces the number of commits by orders of magnitude compared to per-second commits while still providing near-real-time data availability for most dashboard use cases.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

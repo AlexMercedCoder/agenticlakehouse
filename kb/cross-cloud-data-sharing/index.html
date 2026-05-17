@@ -36,6 +36,19 @@
             <h2>Apache Iceberg as the Cross-Cloud Bridge</h2>
             <p>Apache Iceberg's architecture is cloud-agnostic by design. Iceberg tables in S3 use the same format as Iceberg tables in ADLS Gen2 or Google Cloud Storage. The Iceberg REST Catalog API standardizes how any engine connects to any catalog regardless of cloud provider. This means a Dremio Cloud engine on AWS can query an Iceberg table cataloged in a GCS-backed Polaris deployment, or a Spark cluster on Azure can read from an S3-backed Iceberg catalog, using standard Iceberg REST Catalog connectivity. The main practical challenge is cross-cloud data egress costs and latency, which make cross-cloud queries suitable for metadata-light, infrequent analytical use cases rather than high-volume operational pipelines that should co-locate data and compute.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/secure-data-sharing/">Secure Data Sharing</a>
+                    <a href="/kb/multi-cloud-data-strategy/">Multi Cloud Data Strategy</a>
+                    <a href="/kb/apache-iceberg-catalogs/">Apache Iceberg Catalogs</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

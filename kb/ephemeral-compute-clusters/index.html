@@ -40,6 +40,19 @@
             <h2>Ephemeral Compute and Apache Iceberg</h2>
             <p>Iceberg's ACID commit model is critical for ephemeral compute safety. If an ephemeral cluster fails mid-job (for example, a spot instance interruption on AWS), Iceberg's uncommitted snapshot is simply discarded. The table remains in its last-committed, consistent state. No data corruption occurs, and the job can be safely re-run on a new ephemeral cluster without risk of duplicate writes or partial data.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/cloud-native-compute/">Cloud Native Compute</a>
+                    <a href="/kb/data-engine-scaling/">Data Engine Scaling</a>
+                    <a href="/kb/serverless-sql/">Serverless Sql</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

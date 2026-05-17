@@ -44,6 +44,16 @@
             <p>The Data Lakehouse is built for ELT. The Medallion Architecture (bronze, silver, gold tiers as separate Iceberg table namespaces) is a direct implementation of ELT principles. Engineers load raw data once, then run successive transformation queries to produce higher-quality derived tables. At each tier, the output is an Iceberg table that is independently queryable, auditable via snapshots, and accessible to any compatible query engine.</p>
             <p>For AI agents, this means the raw source data is always available for retrieval alongside the curated analytical assets. An agent investigating a data quality anomaly can query the bronze tier to examine the exact raw records that produced a suspicious gold-tier aggregate, using Iceberg time travel to inspect the state of both tables at the exact moment the anomaly occurred.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2><p class="section-subtitle fade-in-on-scroll">Start building today with free trials and authoritative resources.</p></div>
             <div class="book-cta-grid fade-in-on-scroll">

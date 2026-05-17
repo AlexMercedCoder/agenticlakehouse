@@ -36,6 +36,20 @@
             <h2>How Iceberg Addresses Compliance</h2>
             <p>Apache Iceberg provides several capabilities that directly address regulatory requirements. The GDPR right to erasure is fulfilled using Iceberg's row-level delete feature: a targeted DELETE FROM table WHERE user_id = 'subject_id' executes as an ACID transaction, and subsequent compaction physically removes the deleted rows from Parquet files. Time travel supports data access requests: querying a historical snapshot shows what data existed at any past point. Iceberg V3's row lineage (the _row_id system column) makes identifying all rows belonging to a specific data subject more precise. Fine-grained access controls (column masking, row filters) in Dremio and Apache Polaris ensure that personal data is accessible only to authorized personnel, satisfying the data minimization principle.</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/pii-data-protection/">Pii Data Protection</a>
+                    <a href="/kb/data-masking/">Data Masking</a>
+                    <a href="/kb/data-lineage-tracking/">Data Lineage Tracking</a>
+                    <a href="/kb/secure-data-sharing/">Secure Data Sharing</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">

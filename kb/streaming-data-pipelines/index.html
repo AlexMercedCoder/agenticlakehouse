@@ -41,6 +41,19 @@
             <h2>Streaming Write Challenges with Iceberg</h2>
             <p>High-frequency streaming writes create challenges for Iceberg: many small Parquet files accumulate quickly, degrading query performance. Best practice is to let the streaming engine write frequently for freshness but run a parallel compaction process (using Iceberg's RewriteDataFiles procedure) on a scheduled basis to merge the small files into right-sized Parquet files. This separates the freshness concern (handled by the streaming writer) from the query performance concern (handled by compaction).</p>
         </article>
+        <section class="related-section" style="background:rgba(255,255,255,.03);padding:2.5rem 0;margin-bottom:0">
+            <div class="container" style="max-width:860px">
+                <h3 style="color:var(--color-text-white);margin:0 0 1.25rem;font-size:1.2rem">Related Articles</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+                    <a href="/kb/apache-kafka-integration/">Apache Kafka Integration</a>
+                    <a href="/kb/change-data-capture/">Change Data Capture</a>
+                    <a href="/kb/data-orchestration/">Data Orchestration</a>
+                    <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
+                    <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
+                    <a href="/kb/">Full Knowledge Base →</a>
+                </div>
+            </div>
+        </section>
         <section class="global-cta-section"><div class="container">
             <div class="section-header center-text"><h2 class="fade-in-on-scroll">Master the Agentic Lakehouse</h2></div>
             <div class="book-cta-grid fade-in-on-scroll">
