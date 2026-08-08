@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
     <link rel="canonical" href="https://agenticlakehouse.com/kb/spark-sql/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/kb/spark-sql/">
+    <meta property="og:title" content="Spark SQL | Agentic Lakehouse Knowledge Base">
+    <meta property="og:description" content="Learn about Spark SQL, the declarative SQL interface within Apache Spark used to query and manage Apache Iceberg tables at scale.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spark SQL | Agentic Lakehouse Knowledge Base">
+    <meta name="twitter:description" content="Learn about Spark SQL, the declarative SQL interface within Apache Spark used to query and manage Apache Iceberg tables at scale.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Spark SQL","author":{"@type":"Person","name":"Alex Merced"},"publisher":{"@type":"Organization","name":"Agentic Lakehouse Hub"}}</script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>.article-content{padding:4rem 0;max-width:800px;margin:0 auto}.article-content h2{font-size:2rem;margin-top:3rem;margin-bottom:1.5rem;color:var(--color-accent-blue)}.article-content p{margin-bottom:1.5rem;font-size:1.1rem;color:var(--color-text-gray);line-height:1.8}.article-content ul{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--color-text-gray)}.article-content li{margin-bottom:.5rem;font-size:1.1rem}.article-content code{background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.1rem .4rem;border-radius:4px;font-size:.95em}.page-header{padding:120px 0 60px;background:var(--gradient-hero);text-align:center}.page-header h1{font-size:3.5rem;margin-bottom:1rem}.kb-label{display:inline-block;background:rgba(88,225,247,.1);color:var(--color-accent-blue);padding:.5rem 1rem;border-radius:20px;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;font-weight:600}</style>
@@ -22,6 +35,7 @@
             <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
             <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
             <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="/videos/">Videos</a></li>
             <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
         </ul></nav>
     </div></header>
@@ -67,7 +81,40 @@
             </div>
         </div></section>
     </main>
-    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <footer class="site-footer"><div class="container"><div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo-link" aria-label="Agentic Lakehouse Home">
+                        <span class="footer-logo-text">Agentic<br><strong>Lakehouse</strong></span>
+                    </a>
+                    <p class="footer-tagline">A working reference for agentic lakehouse and agentic analytics architecture.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
+                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
+                        <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
+                        <li><a href="/apache-iceberg/">Apache Iceberg</a></li>
+                        <li><a href="/data-lakehouse/">Data Lakehouse</a></li>
+                        <li><a href="/kb/">Knowledge Base</a></li>
+                        <li><a href="/videos/">Video Explainers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Partner Sites</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="https://alexmerceddata.com" target="_blank" rel="noopener">alexmerceddata.com</a></li>
+                        <li><a href="https://datalakehousehub.com" target="_blank" rel="noopener">datalakehousehub.com</a></li>
+                        <li><a href="https://iceberglakehouse.com" target="_blank" rel="noopener">iceberglakehouse.com</a></li>
+                        <li><a href="https://dataengr.com" target="_blank" rel="noopener">dataengr.com</a></li>
+                        <li><a href="https://semanticlakehouse.com" target="_blank" rel="noopener">semanticlakehouse.com</a></li>
+                        <li><a href="https://opendatalakehouse.com" target="_blank" rel="noopener">opendatalakehouse.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AgenticLakehouse.com. A resource by <a href="https://alexmerceddata.com" target="_blank" rel="noopener">Alex Merced</a>.</p>
+            </div></div></footer>
     <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
 </body>
 </html>

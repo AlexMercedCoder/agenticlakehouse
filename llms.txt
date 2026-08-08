@@ -1,10 +1,11 @@
 # Agentic Lakehouse
 
-> AgenticLakehouse.com is the definitive knowledge hub on the agentic lakehouse: data lakehouse architectures engineered for autonomous AI agents, combining Apache Iceberg open table formats, semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution for real-time agentic analytics and BI workflows.
+> AgenticLakehouse.com is a reference on the agentic lakehouse: data lakehouse architectures built for autonomous AI agents, combining Apache Iceberg open table formats, semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution for agentic analytics and BI workflows. Written by Alex Merced, Open Lakehouse & AI Advocate, Author & Technologist.
 
 ## About
 
 - [Agentic Lakehouse Hub](https://agenticlakehouse.com/): Pillar resource covering agentic lakehouse architecture, agentic analytics, and agentic BI.
+- [Video Explainers](https://agenticlakehouse.com/videos/): Short silent explainers on governed agent data access, semantic layers, MCP, Iceberg snapshots, and safe agent writes.
 
 ## Pillar Pages
 
@@ -17,7 +18,7 @@
 - [Apache Iceberg vs Delta Lake vs Apache Hudi: Open Table Formats Compared](https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/): An architectural comparison of Apache Iceberg, Delta Lake, and Apache Hudi. Learn the differences in metadata management, upserts, and ecosystem interoperability.
 - [What Is a Data Lakehouse? Architecture and Definition](https://agenticlakehouse.com/data-lakehouse/): A deep dive into the data lakehouse architecture. Understand how the storage, metadata, and semantic layers combine the performance of a warehouse with the flexibility of a data lake.
 - [Data Lakehouse vs Data Lake vs Data Warehouse: The Ultimate Guide](https://agenticlakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/): Compare the architectural differences between data lakehouses, data lakes, and data warehouses. Learn how storage models, governance, and AI implications dictate the right choice.
-- [5 Powerful Dremio AI Features](https://agenticlakehouse.com/dremio-ai/): Unlock the power of your lakehouse with 5 integrated AI features. From SQL AI functions to Autonomous Performance.
+- [5 Powerful Dremio AI Features](https://agenticlakehouse.com/dremio-ai/): Five AI features built into the lakehouse, from SQL AI functions to autonomous performance.
 - [3 Surprising Truths About Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): Discover the Dremio Open Catalog: integrated Apache Polaris that is free, interoperable, and flexible.
 
 ## Knowledge Base (kb/)

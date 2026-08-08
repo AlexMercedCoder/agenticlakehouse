@@ -18,8 +18,13 @@ urls.append((f"{BASE}/", "1.0"))
 
 # Top-level pillar pages: directories with an index.html (excluding kb, images, python)
 for d in sorted(ROOT.iterdir()):
-    if d.is_dir() and d.name not in {"kb", "images", "python", ".git"} and (d / "index.html").exists():
-        urls.append((f"{BASE}/{d.name}/", "0.6"))
+    if d.is_dir() and d.name not in {"kb", "images", "python", ".git", "assets"} and (d / "index.html").exists():
+        # Pillar pages and the video gallery carry more weight than the rest.
+        priority = "0.8" if d.name in {
+            "what-is-agentic-lakehouse", "what-is-agentic-analytics",
+            "agentic-lakehouse-architecture", "videos",
+        } else "0.6"
+        urls.append((f"{BASE}/{d.name}/", priority))
 
 # KB pages
 kb = ROOT / "kb"

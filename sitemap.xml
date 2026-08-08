@@ -2,1082 +2,1087 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agenticlakehouse.com/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/agentic-bi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/agentic-lakehouse-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/apache-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/apache-iceberg-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/data-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/dremio-ai/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/dremio-polaris/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticlakehouse.com/videos/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/what-is-agentic-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/what-is-agentic-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-08</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/abac-data/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-bi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-rag/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-workflows/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-agent-authorization/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-agents-for-data/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-chatbots-vs-agentic-ai/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-data-governance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-hallucination-in-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-powered-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-query-engine/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-semantic-layer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/analytics-engineering/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-airflow/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-arrow/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-flink/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-kafka-integration/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-polaris/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/apache-spark/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/arrow-flight-sql/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/automated-data-insights/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/automated-data-testing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/autonomous-bi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/autonomous-data-agents/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/aws-glue-catalog-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/big-data-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/change-data-capture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ci-cd-for-data/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cloud-data-warehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cloud-native-compute/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cloud-native-data-warehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/column-level-security/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/columnar-data-formats/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/compute-storage-separation/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/contextual-metadata-for-ai/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/conversational-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cost-based-optimizer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/cross-cloud-data-sharing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dagster/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-asset-management/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-caching-strategies/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-catalog-integration/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-cataloging/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-context-layer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-contracts/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-democratization/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-discovery/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-engine-scaling/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-engineering/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-fabric/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-fabric-for-ai/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-governance-framework/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-knowledge-graph-for-ai/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-lake-metadata-management/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-lake-vs-data-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-lineage/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-lineage-tracking/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-masking/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-mesh/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-modeling-techniques/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-monetization/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-observability/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-orchestration/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-provenance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-quality-framework/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-quality-rules/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-vault-2/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-versioning/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-virtualization/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/data-warehouse-vs-data-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/databricks-photon-engine/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/databricks-uniform/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/datafusion/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dataops/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dbt-data-build-tool/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/delta-universal-format/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/distributed-query-processing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/distributed-sql-query-engine/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dremio/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dremio-cloud/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dremio-data-reflections/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dremio-performance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/dremio-semantic-layer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/duckdb/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/enterprise-ai-agents/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/enterprise-data-security/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ephemeral-compute-clusters/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/etl-vs-elt/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/federated-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/federated-querying/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/gdpr-ccpa-compliance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/genai-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/generative-ai-data-stack/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/governance-policy-as-code/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/governed-ai-querying/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/headless-bi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/high-concurrency-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-acid-transactions/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-branching-and-tagging/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-catalog/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-compaction/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-copy-on-write/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-data-skipping/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-equality-deletes/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-hidden-partitioning/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-manifest-files/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-manifest-list/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-materialized-views/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-merge-on-read/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-metadata-file/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-optimistic-concurrency/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-partition-evolution/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-position-deletes/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-rest-catalog/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-rollbacks/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-row-level-deletes/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-schema-evolution/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-small-file-problem/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-snapshots/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-table-maintenance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-time-travel/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-v2-spec/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-view-specification/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-vs-apache-hudi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-vs-delta-lake/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/iceberg-z-ordering/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/in-memory-data-grid/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/intelligent-data-foundation/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/intelligent-query-planning/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/kimball-methodology/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-cost-optimization/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-interoperability/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-migration/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-performance/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-tco/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/llm-data-access/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/llm-driven-bi/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/logical-data-warehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/low-latency-queries/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/machine-learning-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/master-data-management/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/materialized-views/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/metadata-management/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/metric-store/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/modern-data-stack/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/mpp-massively-parallel-processing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/multi-cloud-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/multi-engine-data-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/multimodal-data-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/natural-language-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/object-storage-for-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/odbc-jdbc-drivers/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/open-data-architecture/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/open-lakehouse/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/open-table-formats/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/parquet-vs-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/pii-data-protection/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/polars/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/predictive-ai-agents/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/prefect/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/presto/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/project-nessie/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/pyspark/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/query-caching/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/query-pushdown/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/rag/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ray-data/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/rbac-data/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/real-time-ai-decisions/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/real-time-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/row-level-security/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/s3-data-lake/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/s3-object-storage-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/safe-action-loops/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/secure-data-sharing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/self-service-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/semantic-data-layer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/semantic-layer/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/serverless-data-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/serverless-sql/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/slowly-changing-dimensions/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/snowflake-iceberg-tables/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/snowflake-query-engine/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/spark-sql/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/sql-dialects/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/star-schema-vs-snowflake-schema/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/streaming-data-pipelines/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/streaming-vs-batch-processing/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/sub-second-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/tabular-iceberg/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/text-to-sql/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/trino/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/trusted-data-environments/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/trustworthy-ai-execution/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/unified-data-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/vectorized-query-execution/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/zero-etl/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/zero-trust-ai-analytics/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

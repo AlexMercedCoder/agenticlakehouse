@@ -16,6 +16,19 @@
   <!-- Styles -->
   <link rel="stylesheet" href="../style.css">
   <link rel="canonical" href="https://agenticlakehouse.com/kb/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/kb/">
+    <meta property="og:title" content="The Agentic Lakehouse Knowledge Base | 200 SEO-Weighted Terms">
+    <meta property="og:description" content="Explore the Agentic Lakehouse Knowledge Base. Comprehensive technical definitions and architectural guides covering AI analytics, open table formats, and the modern data lakehouse.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Agentic Lakehouse Knowledge Base | 200 SEO-Weighted Terms">
+    <meta name="twitter:description" content="Explore the Agentic Lakehouse Knowledge Base. Comprehensive technical definitions and architectural guides covering AI analytics, open table formats, and the modern data lakehouse.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
 
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
@@ -74,6 +87,16 @@
       margin-bottom: 1rem;
     }
   </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/"},
+        {"@type": "ListItem", "position": 2, "name": "The Knowledge Base", "item": "https://agenticlakehouse.com/kb/"}
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -88,6 +111,7 @@
           <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
           <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
           <li><a href="/kb/">Knowledge Base</a></li>
+          <li><a href="/videos/">Videos</a></li>
           <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
         </ul>
       </nav>
@@ -437,7 +461,7 @@
         <div class="kb-card"><a href="/kb/iceberg-schema-evolution/"><h3>Iceberg Schema Evolution</h3><p>Add, drop, rename, and retype columns safely without rewriting data files, using stable column IDs.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-partition-evolution/"><h3>Iceberg Partition Evolution</h3><p>Change a table's physical partition layout over time without rewriting historical data.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-hidden-partitioning/"><h3>Iceberg Hidden Partitioning</h3><p>Transform logical columns into partition values automatically, eliminating physical partition columns.</p></a></div>
-        <div class="kb-card"><a href="/kb/iceberg-rest-catalog/"><h3>Iceberg REST Catalog</h3><p>The open API standard that enables seamless interoperability between query engines and catalogs.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-rest-catalog/"><h3>Iceberg REST Catalog</h3><p>The open API standard that lets query engines and catalogs work together without engine-specific glue.</p></a></div>
         <div class="kb-card"><a href="/kb/apache-polaris/"><h3>Apache Polaris</h3><p>The open-source, vendor-neutral implementation of the Iceberg REST Catalog API for lakehouse governance.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-manifest-files/"><h3>Iceberg Manifest Files</h3><p>The detailed metadata files that track individual data files and column-level statistics for data skipping.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-manifest-list/"><h3>Iceberg Manifest List</h3><p>The snapshot table of contents, enabling high-level partition pruning before reading manifest files.</p></a></div>
@@ -456,11 +480,11 @@
         <div class="kb-card"><a href="/kb/iceberg-row-level-deletes/"><h3>Iceberg Row-Level Deletes</h3><p>The mechanism that allows engines to invalidate data without the high cost of rewriting object storage files.</p></a></div>
         <div class="kb-card"><a href="/kb/data-lake-metadata-management/"><h3>Data Lake Metadata Management</h3><p>The evolution from centralized bottlenecks to scalable, file-based metadata hierarchies.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-acid-transactions/"><h3>Iceberg ACID Transactions</h3><p>How Apache Iceberg guarantees data reliability and consistency on distributed object storage.</p></a></div>
-        <div class="kb-card"><a href="/kb/open-data-architecture/"><h3>Open Data Architecture</h3><p>The paradigm shift that liberates data from proprietary silos by standardizing on open formats and modular compute.</p></a></div>
-        <div class="kb-card"><a href="/kb/parquet-vs-iceberg/"><h3>Parquet vs Iceberg</h3><p>Understanding the crucial difference between an open file format and an open table format.</p></a></div>
+        <div class="kb-card"><a href="/kb/open-data-architecture/"><h3>Open Data Architecture</h3><p>Standardizing on open formats and modular compute so data stops living inside one vendor's silo.</p></a></div>
+        <div class="kb-card"><a href="/kb/parquet-vs-iceberg/"><h3>Parquet vs Iceberg</h3><p>The difference between an open file format and an open table format, and why it matters.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-z-ordering/"><h3>Iceberg Z-Ordering</h3><p>The multi-dimensional sorting technique that dramatically improves query performance across multiple filter columns.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-data-skipping/"><h3>Iceberg Data Skipping</h3><p>The metadata-driven optimization that radically accelerates queries by ignoring irrelevant data files.</p></a></div>
-        <div class="kb-card"><a href="/kb/iceberg-branching-and-tagging/"><h3>Iceberg Branching and Tagging</h3><p>The metadata lifecycle features that enable Data-as-Code workflows and robust auditing capabilities.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-branching-and-tagging/"><h3>Iceberg Branching and Tagging</h3><p>The metadata lifecycle features behind data-as-code workflows and audit trails.</p></a></div>
         <div class="kb-card"><a href="/kb/tabular-iceberg/"><h3>Tabular Iceberg</h3><p>The independent commercial platform founded by the creators of Apache Iceberg, acquired to unify the open format ecosystem.</p></a></div>
         <div class="kb-card"><a href="/kb/snowflake-iceberg-tables/"><h3>Snowflake Iceberg Tables</h3><p>Combining the performance of the Snowflake engine with the interoperability of open-source table formats.</p></a></div>
         <div class="kb-card"><a href="/kb/databricks-uniform/"><h3>Databricks UniForm</h3><p>The interoperability layer that dynamically generates Iceberg metadata for native Delta Lake tables without data duplication.</p></a></div>
@@ -468,7 +492,7 @@
         <div class="kb-card"><a href="/kb/iceberg-materialized-views/"><h3>Iceberg Materialized Views</h3><p>Accelerating analytical performance by persisting the results of complex queries directly into Iceberg storage.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-table-maintenance/"><h3>Iceberg Table Maintenance</h3><p>The three essential routine operations that guarantee high query performance and minimize object storage costs.</p></a></div>
         <div class="kb-card"><a href="/kb/iceberg-small-file-problem/"><h3>Iceberg Small File Problem</h3><p>Why thousands of tiny data files degrade lakehouse performance and how to solve it.</p></a></div>
-        <div class="kb-card"><a href="/kb/iceberg-rollbacks/"><h3>Iceberg Rollbacks</h3><p>Instantly reverse data corruption and bad pipelines by leveraging immutable metadata snapshots.</p></a></div>
+        <div class="kb-card"><a href="/kb/iceberg-rollbacks/"><h3>Iceberg Rollbacks</h3><p>Reverse data corruption and bad pipeline runs using immutable metadata snapshots.</p></a></div>
         <div class="kb-card"><a href="/kb/s3-object-storage-iceberg/"><h3>S3 Object Storage with Iceberg</h3><p>How Iceberg was engineered from day one to conquer the performance limitations of cloud object storage.</p></a></div>
         <div class="kb-card"><a href="/kb/lakehouse-interoperability/"><h3>Lakehouse Interoperability</h3><p>The architectural principle that prevents vendor lock-in by standardizing on open data formats.</p></a></div>
         <div class="kb-card"><a href="/kb/dremio/"><h3>Dremio</h3><p>The unified, intelligent data lakehouse platform engineered for sub-second analytical performance on open architectures.</p></a></div>

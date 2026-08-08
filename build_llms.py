@@ -20,14 +20,16 @@ def title_of(path):
 lines = []
 lines.append("# Agentic Lakehouse")
 lines.append("")
-lines.append("> AgenticLakehouse.com is the definitive knowledge hub on the agentic lakehouse: "
-             "data lakehouse architectures engineered for autonomous AI agents, combining Apache Iceberg "
-             "open table formats, semantic layers, fine-grained governance (RBAC/ABAC), and high-performance "
-             "query execution for real-time agentic analytics and BI workflows.")
+lines.append("> AgenticLakehouse.com is a reference on the agentic lakehouse: data lakehouse "
+             "architectures built for autonomous AI agents, combining Apache Iceberg open table formats, "
+             "semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution "
+             "for agentic analytics and BI workflows. Written by Alex Merced, Open Lakehouse & AI Advocate, "
+             "Author & Technologist.")
 lines.append("")
 lines.append("## About")
 lines.append("")
 lines.append(f"- [Agentic Lakehouse Hub]({BASE}/): Pillar resource covering agentic lakehouse architecture, agentic analytics, and agentic BI.")
+lines.append(f"- [Video Explainers]({BASE}/videos/): Short silent explainers on governed agent data access, semantic layers, MCP, Iceberg snapshots, and safe agent writes.")
 lines.append("")
 lines.append("## Pillar Pages")
 lines.append("")
