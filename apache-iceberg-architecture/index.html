@@ -16,6 +16,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
     <link rel="canonical" href="https://agenticlakehouse.com/apache-iceberg-architecture/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/apache-iceberg-architecture/">
+    <meta property="og:title" content="Apache Iceberg Architecture: Snapshots, Manifests, and Catalogs | Agentic Lakehouse">
+    <meta property="og:description" content="A deep technical dive into the Apache Iceberg architecture. Learn how the metadata tree, manifest lists, and snapshots enable safe concurrency on the data lake.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apache Iceberg Architecture: Snapshots, Manifests, and Catalogs | Agentic Lakehouse">
+    <meta name="twitter:description" content="A deep technical dive into the Apache Iceberg architecture. Learn how the metadata tree, manifest lists, and snapshots enable safe concurrency on the data lake.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -116,6 +129,7 @@
                     <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
                     <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
                     <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="/videos/">Videos</a></li>
                     <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
                 </ul>
             </nav>
@@ -131,7 +145,7 @@
         </section>
 
         <article class="article-content container">
-            <p>To leverage Apache Iceberg effectively—especially for high-concurrency environments or Agentic Analytics—data engineers must understand the exact mechanics of its architecture. Iceberg is not an execution engine, nor is it a storage engine. It is an open specification for a table format, implemented via a series of strictly governed metadata files.</p>
+            <p>To get the most out of Apache Iceberg, especially in high-concurrency environments or agentic analytics, data engineers must understand the exact mechanics of its architecture. Iceberg is not an execution engine, nor is it a storage engine. It is an open specification for a table format, implemented via a series of strictly governed metadata files.</p>
             
             <p>This architectural deep dive breaks down the metadata tree, the write/commit lifecycle, query planning optimizations, and how table state is safely mutated across distributed systems.</p>
 
@@ -177,7 +191,7 @@
             <p>If another writer committed `Metadata_V1_B` while our writer was generating files, the Catalog rejects our writer's commit. Our writer catches the exception, re-reads the new current state (`Metadata_V1_B`), merges its new Manifest into a new proposed state (`Metadata_V3`), and retries the atomic commit. This guarantees ACID transactions across distributed engines without locking files.</p>
 
             <h2>Retention and Garbage Collection</h2>
-            <p>Because Iceberg never overwrites data—it only creates new snapshots and new metadata files—the storage footprint of an active table will grow indefinitely. This enables powerful features like Time Travel (querying the table as it looked exactly three days ago) and Rollbacks (reverting an accidental <code>DROP TABLE</code>).</p>
+            <p>Because Iceberg never overwrites data, and only ever creates new snapshots and new metadata files, the storage footprint of an active table will grow indefinitely. This enables powerful features like Time Travel (querying the table as it looked exactly three days ago) and Rollbacks (reverting an accidental <code>DROP TABLE</code>).</p>
             <p>However, this requires maintenance. Data engineers must run periodic table services:</p>
             <ul>
                 <li><strong>Expire Snapshots:</strong> Removes metadata references to snapshots older than a specific retention period (e.g., 7 days).</li>

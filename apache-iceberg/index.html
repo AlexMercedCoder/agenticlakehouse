@@ -16,6 +16,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
     <link rel="canonical" href="https://agenticlakehouse.com/apache-iceberg/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/apache-iceberg/">
+    <meta property="og:title" content="Apache Iceberg Explained: Architecture, Snapshots, and Catalogs | Agentic Lakehouse">
+    <meta property="og:description" content="A comprehensive guide to Apache Iceberg. Understand how open table formats solve the data lake concurrency problem using snapshots, manifests, and catalogs.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apache Iceberg Explained: Architecture, Snapshots, and Catalogs | Agentic Lakehouse">
+    <meta name="twitter:description" content="A comprehensive guide to Apache Iceberg. Understand how open table formats solve the data lake concurrency problem using snapshots, manifests, and catalogs.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -113,6 +126,7 @@
                     <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
                     <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
                     <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="/videos/">Videos</a></li>
                     <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
                 </ul>
             </nav>
@@ -144,7 +158,7 @@
             <ul>
                 <li><strong>The Catalog:</strong> The highest level. The catalog (such as Apache Polaris, Project Nessie, or AWS Glue) holds a pointer to the current Metadata JSON file for the table. It is the central concurrency bottleneck that ensures atomic swaps.</li>
                 <li><strong>Metadata JSON:</strong> This file defines the current state of the table. It contains the schema, the partition spec, and an array of historical snapshots, along with an explicit pointer to the <em>current</em> snapshot.</li>
-                <li><strong>Manifest Lists:</strong> A snapshot points to a Manifest List. This is an Avro file that lists all the Manifest Files that make up the current state of the table. Crucially, it includes partition bounds for each manifest, allowing the engine to skip reading manifests that don't match the query filter.</li>
+                <li><strong>Manifest Lists:</strong> A snapshot points to a Manifest List. This is an Avro file that lists all the Manifest Files that make up the current state of the table. It also includes partition bounds for each manifest, allowing the engine to skip reading manifests that don't match the query filter.</li>
                 <li><strong>Manifest Files:</strong> Also Avro files, these track the actual data files (Parquet). They store column-level min/max statistics, file sizes, and row counts, enabling massive data skipping before the engine ever touches a Parquet file.</li>
             </ul>
 
@@ -155,14 +169,14 @@
             <p>To commit, the writer asks the Catalog to atomically swap the table's pointer from the old Metadata JSON to the new one. If two writers attempt to commit at the exact same millisecond, Iceberg uses optimistic concurrency control: the first writer succeeds, and the second writer catches an exception, reads the new current state, and retries its commit on top of the new state. This guarantees serializable isolation without locking.</p>
 
             <h3>Schema Evolution</h3>
-            <p>In the Hive era, changing a column name or type often required rewriting the entire historical dataset—an expensive and dangerous operation. Iceberg implements true schema evolution. Columns are tracked by unique IDs, not by their names. If you rename a column, Iceberg simply updates the mapping in the Metadata JSON. Old data files are read seamlessly using the new schema definition, requiring zero data rewrites.</p>
+            <p>In the Hive era, changing a column name or type often required rewriting the entire historical dataset, which is both expensive and risky. Iceberg implements true schema evolution. Columns are tracked by unique IDs, not by their names. If you rename a column, Iceberg simply updates the mapping in the Metadata JSON. Old data files are read through the new schema definition, with no data rewrite.</p>
 
             <h3>Hidden Partitioning</h3>
             <p>Partitioning data by date (e.g., extracting the month from a timestamp) is standard practice. Historically, users had to provide the exact partition column in their SQL queries (e.g., `WHERE date >= '2026-01-01' AND partition_month = '01'`). If the user forgot the partition clause, the engine would trigger a devastating full-table scan.</p>
-            <p>Iceberg introduces Hidden Partitioning. The table's partition spec is defined in the metadata, not the user's queries. A user simply queries the timestamp column (`WHERE timestamp >= '2026-01-01'`), and Iceberg automatically translates this filter to prune files based on the underlying partition layout. If the data engineering team later changes the partition granularity from monthly to daily (Partition Evolution), the metadata handles the transition seamlessly across both old and new data, and the user's queries do not need to change.</p>
+            <p>Iceberg introduces Hidden Partitioning. The table's partition spec is defined in the metadata, not the user's queries. A user simply queries the timestamp column (`WHERE timestamp >= '2026-01-01'`), and Iceberg automatically translates this filter to prune files based on the underlying partition layout. If the data engineering team later changes the partition granularity from monthly to daily (Partition Evolution), the metadata covers both old and new data, and existing queries keep working unchanged.</p>
 
             <h2>Iceberg in the Agentic Lakehouse</h2>
-            <p>As organizations shift towards Agentic Analytics—where AI agents autonomously query enterprise data to answer complex business questions—Iceberg becomes a mandatory architectural component.</p>
+            <p>As organizations shift towards agentic analytics, where AI agents query enterprise data on their own to answer complex business questions, Iceberg becomes a hard requirement rather than an option.</p>
             <p>AI agents require reliable, deterministic access to data. They cannot navigate corrupt Hive partitions or deal with locking issues caused by concurrent writes. By standardizing on Apache Iceberg, agents interact with a consistent, transactional metadata layer. When combined with a semantic layer (like Dremio) and an open catalog (like Apache Polaris), Iceberg provides the governed, high-performance foundation required for autonomous AI execution over the data lake.</p>
         </article>
 

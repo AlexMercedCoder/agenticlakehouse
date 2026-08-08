@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
     <link rel="canonical" href="https://agenticlakehouse.com/agentic-lakehouse-architecture/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/agentic-lakehouse-architecture/">
+    <meta property="og:title" content="Agentic Lakehouse Architecture Diagram | Visual Guide">
+    <meta property="og:description" content="The canonical Agentic Lakehouse architecture diagram showing all four layers: Agent Interface (MCP), Semantic Layer, Governed Query Engine, and Apache Iceberg Open Storage.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agentic Lakehouse Architecture Diagram | Visual Guide">
+    <meta name="twitter:description" content="The canonical Agentic Lakehouse architecture diagram showing all four layers: Agent Interface (MCP), Semantic Layer, Governed Query Engine, and Apache Iceberg Open Storage.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,6 +59,16 @@
         .related-grid a { color: var(--color-accent-blue); text-decoration: none; font-size: .95rem; padding: .5rem .75rem; background: rgba(57,153,229,.07); border-radius: 8px; display: block; transition: background .2s; }
         .related-grid a:hover { background: rgba(57,153,229,.15); }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Agentic Lakehouse Architecture", "item": "https://agenticlakehouse.com/agentic-lakehouse-architecture/"}
+      ]
+    }
+    </script>
 </head>
 <body>
     <header class="site-header"><div class="container">
@@ -54,6 +77,7 @@
             <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
             <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
             <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="/videos/">Videos</a></li>
             <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
         </ul></nav>
     </div></header>
@@ -96,7 +120,7 @@
 
                     <!-- Layer 0: AI Agents (top) -->
                     <rect x="40" y="60" width="720" height="72" rx="12" fill="url(#g1)" opacity="0.15" stroke="#3999e5" stroke-width="1.5"/>
-                    <text x="70" y="92" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#58e1f7">LAYER 0 — AI AGENTS &amp; APPLICATIONS</text>
+                    <text x="70" y="92" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#58e1f7">LAYER 0 / AI AGENTS &amp; APPLICATIONS</text>
                     <rect x="70" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
                     <text x="135" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">LangChain Agent</text>
                     <rect x="215" y="101" width="130" height="22" rx="6" fill="rgba(57,153,229,0.2)" stroke="#3999e5" stroke-width="1"/>
@@ -113,7 +137,7 @@
 
                     <!-- Layer 1: Agent Interface -->
                     <rect x="40" y="164" width="720" height="72" rx="12" fill="url(#g2)" opacity="0.15" stroke="#7c3aed" stroke-width="1.5"/>
-                    <text x="70" y="196" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#a78bfa">LAYER 1 — AGENT INTERFACE (MODEL CONTEXT PROTOCOL)</text>
+                    <text x="70" y="196" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#a78bfa">LAYER 1 / AGENT INTERFACE (MODEL CONTEXT PROTOCOL)</text>
                     <rect x="70" y="205" width="200" height="22" rx="6" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
                     <text x="170" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#ffffff">MCP Server (Dremio)</text>
                     <rect x="285" y="205" width="200" height="22" rx="6" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
@@ -128,7 +152,7 @@
 
                     <!-- Layer 2: Semantic + Query Engine -->
                     <rect x="40" y="268" width="720" height="90" rx="12" fill="url(#g3)" opacity="0.15" stroke="#059669" stroke-width="1.5"/>
-                    <text x="70" y="298" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#34d399">LAYER 2 — SEMANTIC LAYER + GOVERNED QUERY ENGINE</text>
+                    <text x="70" y="298" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#34d399">LAYER 2 / SEMANTIC LAYER + GOVERNED QUERY ENGINE</text>
                     <rect x="70" y="307" width="200" height="40" rx="8" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
                     <text x="170" y="323" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Semantic Layer</text>
                     <text x="170" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Metrics · Entities · Wikis</text>
@@ -146,7 +170,7 @@
 
                     <!-- Layer 3: Storage -->
                     <rect x="40" y="390" width="720" height="100" rx="12" fill="url(#g4)" opacity="0.15" stroke="#d97706" stroke-width="1.5"/>
-                    <text x="70" y="420" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">LAYER 3 — APACHE ICEBERG OPEN STORAGE (S3 / ADLS / GCS)</text>
+                    <text x="70" y="420" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">LAYER 3 / APACHE ICEBERG OPEN STORAGE (S3 / ADLS / GCS)</text>
                     <rect x="70" y="430" width="150" height="48" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
                     <text x="145" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Bronze Tables</text>
                     <text x="145" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Raw · CDC · Ingestion</text>
@@ -161,7 +185,7 @@
                     <text x="650" y="465" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.6)">Apache Polaris · Nessie · Glue</text>
 
                     <!-- Footer -->
-                    <text x="400" y="508" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.3)">agenticlakehouse.com — Free to use with attribution</text>
+                    <text x="400" y="508" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.3)">agenticlakehouse.com | Free to use with attribution</text>
                 </svg>
                 <p class="embed-note">Free to embed with attribution to agenticlakehouse.com</p>
             </div>
@@ -179,8 +203,8 @@
                 <div class="layer-card">
                     <div class="layer-num">1</div>
                     <div>
-                        <h3>Agent Interface — Model Context Protocol (MCP)</h3>
-                        <p>The <a href="/kb/model-context-protocol/" style="color:var(--color-accent-blue)">Model Context Protocol</a> provides structured, typed function-call APIs for agent-to-platform communication. Instead of generating raw SQL strings, agents call MCP functions (<code>list_datasets</code>, <code>get_schema</code>, <code>execute_query</code>) and receive typed responses. BI tools connect via <a href="/kb/odbc-jdbc-drivers/" style="color:var(--color-accent-blue)">ODBC/JDBC</a> or <a href="/kb/arrow-flight-sql/" style="color:var(--color-accent-blue)">Arrow Flight SQL</a>.</p>
+                        <h3>Agent Interface: Model Context Protocol (MCP)</h3>
+                        <p>The <a href="/kb/llm-data-access/" style="color:var(--color-accent-blue)">Model Context Protocol</a> provides structured, typed function-call APIs for agent-to-platform communication. Instead of generating raw SQL strings, agents call MCP functions (<code>list_datasets</code>, <code>get_schema</code>, <code>execute_query</code>) and receive typed responses. BI tools connect via <a href="/kb/odbc-jdbc-drivers/" style="color:var(--color-accent-blue)">ODBC/JDBC</a> or <a href="/kb/arrow-flight-sql/" style="color:var(--color-accent-blue)">Arrow Flight SQL</a>.</p>
                     </div>
                 </div>
                 <div class="layer-card">
@@ -206,7 +230,7 @@
                     <a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a>
                     <a href="/kb/apache-iceberg/">Apache Iceberg</a>
                     <a href="/kb/semantic-layer/">Semantic Layer</a>
-                    <a href="/kb/model-context-protocol/">Model Context Protocol</a>
+                    <a href="/kb/llm-data-access/">Model Context Protocol</a>
                     <a href="/kb/apache-polaris/">Apache Polaris</a>
                     <a href="/kb/rbac-data/">RBAC for Data</a>
                     <a href="/kb/data-observability/">Data Observability</a>
@@ -224,7 +248,40 @@
             </div>
         </div></section>
     </main>
-    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <footer class="site-footer"><div class="container"><div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo-link" aria-label="Agentic Lakehouse Home">
+                        <span class="footer-logo-text">Agentic<br><strong>Lakehouse</strong></span>
+                    </a>
+                    <p class="footer-tagline">A working reference for agentic lakehouse and agentic analytics architecture.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
+                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
+                        <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
+                        <li><a href="/apache-iceberg/">Apache Iceberg</a></li>
+                        <li><a href="/data-lakehouse/">Data Lakehouse</a></li>
+                        <li><a href="/kb/">Knowledge Base</a></li>
+                        <li><a href="/videos/">Video Explainers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Partner Sites</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="https://alexmerceddata.com" target="_blank" rel="noopener">alexmerceddata.com</a></li>
+                        <li><a href="https://datalakehousehub.com" target="_blank" rel="noopener">datalakehousehub.com</a></li>
+                        <li><a href="https://iceberglakehouse.com" target="_blank" rel="noopener">iceberglakehouse.com</a></li>
+                        <li><a href="https://dataengr.com" target="_blank" rel="noopener">dataengr.com</a></li>
+                        <li><a href="https://semanticlakehouse.com" target="_blank" rel="noopener">semanticlakehouse.com</a></li>
+                        <li><a href="https://opendatalakehouse.com" target="_blank" rel="noopener">opendatalakehouse.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AgenticLakehouse.com. A resource by <a href="https://alexmerceddata.com" target="_blank" rel="noopener">Alex Merced</a>.</p>
+            </div></div></footer>
     <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
 </body>
 </html>

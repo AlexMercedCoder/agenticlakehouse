@@ -16,6 +16,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
     <link rel="canonical" href="https://agenticlakehouse.com/data-lakehouse/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/data-lakehouse/">
+    <meta property="og:title" content="What Is a Data Lakehouse? Architecture and Definition | Agentic Lakehouse">
+    <meta property="og:description" content="A deep dive into the data lakehouse architecture. Understand how the storage, metadata, and semantic layers combine the performance of a warehouse with the flexibility of a data lake.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What Is a Data Lakehouse? Architecture and Definition | Agentic Lakehouse">
+    <meta name="twitter:description" content="A deep dive into the data lakehouse architecture. Understand how the storage, metadata, and semantic layers combine the performance of a warehouse with the flexibility of a data lake.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -113,6 +126,7 @@
                     <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
                     <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
                     <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="/videos/">Videos</a></li>
                     <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
                 </ul>
             </nav>
@@ -128,7 +142,7 @@
         </section>
 
         <article class="article-content container">
-            <p>For decades, data architecture was defined by a strict dichotomy. You either built a data warehouse—structured, governed, performant, but expensive and rigid—or you built a data lake—cheap, flexible, infinitely scalable, but swampy and unreliable for strict BI workloads. The data lakehouse emerged to resolve this tension, fusing the best traits of both systems into a single, unified tier.</p>
+            <p>For decades, data architecture was defined by a strict dichotomy. You either built a data warehouse (structured, governed, performant, but expensive and rigid) or you built a data lake (cheap, flexible, endlessly scalable, but swampy and unreliable for strict BI workloads. The data lakehouse emerged to resolve this tension, fusing the best traits of both systems into a single, unified tier.</p>
             
             <p>A data lakehouse is an open data management architecture that implements data warehousing capabilities (such as ACID transactions, data governance, and high-performance SQL) directly over cheap, scalable cloud object storage. It eliminates the need to maintain separate storage tiers for raw data and analyzed data, fundamentally altering how organizations manage total cost of ownership (TCO) and data freshness.</p>
 
@@ -146,7 +160,7 @@
             <p>A true data lakehouse is not a single product you buy. It is an architectural pattern composed of three distinct layers.</p>
 
             <h3>1. The Storage Layer</h3>
-            <p>The foundation of the lakehouse is cloud object storage (AWS S3, Google Cloud Storage, Azure Data Lake Storage, or on-premise equivalents like MinIO). Data is stored in open, columnar file formats—primarily Apache Parquet. Parquet is highly compressed and optimized for analytical reads, allowing engines to scan only the columns they need rather than entire rows. Because object storage is decoupled from compute, you can store petabytes of data for pennies on the dollar compared to SSD-backed warehouse storage.</p>
+            <p>The foundation of the lakehouse is cloud object storage (AWS S3, Google Cloud Storage, Azure Data Lake Storage, or on-premise equivalents like MinIO). Data is stored in open, columnar file formats, primarily Apache Parquet. Parquet is highly compressed and optimized for analytical reads, allowing engines to scan only the columns they need rather than entire rows. Because object storage is decoupled from compute, you can store petabytes of data for pennies on the dollar compared to SSD-backed warehouse storage.</p>
 
             <h3>2. The Metadata Layer (Open Table Formats)</h3>
             <p>If you just have a massive bucket of Parquet files, you have a data lake. To turn it into a lakehouse, you need a metadata layer. This is the job of Open Table Formats like <strong>Apache Iceberg</strong>, Delta Lake, or Apache Hudi.</p>
@@ -159,7 +173,7 @@
 
             <h3>3. The Execution and Semantic Layer</h3>
             <p>The final layer is the query engine. Because the data and the table formats are open, you are not locked into a single vendor. You can plug multiple specialized engines into the same exact data simultaneously.</p>
-            <p>A data scientist might use Apache Spark or Ray to run machine learning models against the Iceberg tables. At the exact same time, a BI analyst might use a highly concurrent, sub-second query engine like <strong>Dremio</strong> to power an interactive dashboard. Dremio provides the semantic layer—allowing analysts to map raw tables to business-friendly logic, secure it with role-based access controls, and accelerate queries using transparent caching (Data Reflections).</p>
+            <p>A data scientist might use Apache Spark or Ray to run machine learning models against the Iceberg tables. At the exact same time, a BI analyst might use a highly concurrent, sub-second query engine like <strong>Dremio</strong> to power an interactive dashboard. Dremio provides the semantic layer, which lets analysts map raw tables to business-friendly logic, secure it with role-based access controls, and accelerate queries using transparent caching (Data Reflections).</p>
 
             <h2>When to Choose a Lakehouse</h2>
             <p>The lakehouse is rapidly becoming the default architecture for modern data teams. It is the right fit when:</p>

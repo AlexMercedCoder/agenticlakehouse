@@ -12,13 +12,26 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
     <link rel="canonical" href="https://agenticlakehouse.com/what-is-agentic-analytics/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/what-is-agentic-analytics/">
+    <meta property="og:title" content="What is Agentic Analytics? Definition, Components &amp; How It Works">
+    <meta property="og:description" content="A complete guide to Agentic Analytics: what it is, how autonomous AI agents replace passive BI dashboards, key components, and how to build an agentic analytics platform on Apache Iceberg.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What is Agentic Analytics? Definition, Components &amp; How It Works">
+    <meta name="twitter:description" content="A complete guide to Agentic Analytics: what it is, how autonomous AI agents replace passive BI dashboards, key components, and how to build an agentic analytics platform on Apache Iceberg.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
     <script type="application/ld+json">
     [
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "headline": "What is Agentic Analytics? Definition, Components & How It Works",
-        "description": "Agentic Analytics uses autonomous AI agents to perform the full analytical workflow — data discovery, querying, reasoning, and insight delivery — without constant human intervention.",
+        "description": "Agentic Analytics uses autonomous AI agents to perform the full analytical workflow (data discovery, querying, reasoning, and insight delivery) without constant human intervention.",
         "author": {"@type": "Person", "name": "Alex Merced", "url": "https://whoisalexmerced.com/", "sameAs": ["https://whoisalexmerced.com", "https://alexmerced.com", "https://alexmerceddata.com", "https://www.linkedin.com/in/alexmerced", "https://twitter.com/alexmercedcoder"]},
         "publisher": {"@type": "Organization", "name": "Agentic Lakehouse Hub"},
         "mainEntityOfPage": {"@type": "WebPage", "@id": "https://agenticlakehouse.com/what-is-agentic-analytics/"}
@@ -27,7 +40,7 @@
         "@context": "https://schema.org",
         "@type": "DefinedTerm",
         "name": "Agentic Analytics",
-        "description": "The discipline of using autonomous AI agents to perform the full analytical workflow — data discovery, querying, reasoning, and insight delivery — without constant human intervention, grounded in governed lakehouse data.",
+        "description": "The discipline of using autonomous AI agents to perform the full analytical workflow (data discovery, querying, reasoning, and insight delivery) without constant human intervention, grounded in governed lakehouse data.",
         "inDefinedTermSet": "https://agenticlakehouse.com"
       },
       {
@@ -37,7 +50,7 @@
           {
             "@type": "Question",
             "name": "What is Agentic Analytics?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Agentic Analytics is the discipline of using autonomous AI agents to perform the full analytical workflow — data discovery, querying, reasoning, and insight delivery — without constant human intervention. Unlike traditional BI, which requires humans to formulate queries and interpret dashboards, Agentic Analytics enables AI agents to proactively monitor data, answer complex multi-step questions in natural language, and trigger downstream actions, all grounded in governed, contextual lakehouse data."}
+            "acceptedAnswer": {"@type": "Answer", "text": "Agentic Analytics is the discipline of using autonomous AI agents to perform the full analytical workflow (data discovery, querying, reasoning, and insight delivery) without constant human intervention. Unlike traditional BI, which requires humans to formulate queries and interpret dashboards, Agentic Analytics enables AI agents to proactively monitor data, answer complex multi-step questions in natural language, and trigger downstream actions, all grounded in governed, contextual lakehouse data."}
           },
           {
             "@type": "Question",
@@ -83,6 +96,16 @@
         .breadcrumb { font-size: .9rem; color: var(--color-text-gray); margin-bottom: 1rem; }
         .breadcrumb a { color: var(--color-accent-blue); text-decoration: none; }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/"},
+        {"@type": "ListItem", "position": 2, "name": "What is Agentic Analytics?", "item": "https://agenticlakehouse.com/what-is-agentic-analytics/"}
+      ]
+    }
+    </script>
 </head>
 <body>
     <header class="site-header"><div class="container">
@@ -91,6 +114,7 @@
             <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
             <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
             <li><a href="/kb/">Knowledge Base</a></li>
+            <li><a href="/videos/">Videos</a></li>
             <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
         </ul></nav>
     </div></header>
@@ -106,11 +130,11 @@
 
             <div class="definition-block" itemscope itemtype="https://schema.org/DefinedTerm">
                 <strong itemprop="name">Agentic Analytics</strong>
-                <p itemprop="description">The discipline of deploying autonomous AI agents to perform the full analytical workflow — data discovery, query planning, execution, reasoning, and insight delivery — without constant human intervention, grounded in governed enterprise data.</p>
+                <p itemprop="description">The discipline of deploying autonomous AI agents to perform the full analytical workflow (data discovery, query planning, execution, reasoning, and insight delivery) without constant human intervention, grounded in governed enterprise data.</p>
             </div>
 
             <h2>From Passive Dashboards to Autonomous Analysis</h2>
-            <p>For three decades, business intelligence meant dashboards: humans decided which metrics to monitor, data engineers built the reports, and analysts interpreted the charts. The fundamental loop was reactive — a question would occur to a human, they would open a dashboard or ask a data analyst to run a query, wait for results, interpret them, and decide on the next question to ask.</p>
+            <p>For three decades, business intelligence meant dashboards: humans decided which metrics to monitor, data engineers built the reports, and analysts interpreted the charts. The loop was reactive. A question would occur to a human, they would open a dashboard or ask a data analyst to run a query, wait for results, interpret them, and decide on the next question to ask.</p>
             <p>Agentic Analytics breaks this loop. Instead of waiting to be asked, an agentic analytics system continuously monitors data, proactively identifies anomalies, patterns, and opportunities, and delivers contextualized insights without a human initiating each analysis cycle. When revenue drops unexpectedly at 3pm on a Tuesday, the agentic analytics system identifies it, traces the root cause across multiple datasets, and surfaces an actionable explanation before the business has noticed the problem.</p>
             <p>This shift from reactive reporting to proactive autonomous analysis is what distinguishes Agentic Analytics from everything that came before it.</p>
 
@@ -131,23 +155,23 @@
             <h2>The Five Components of an Agentic Analytics System</h2>
 
             <h3>1. The AI Agent (Reasoning Engine)</h3>
-            <p>The core of an agentic analytics system is an AI agent built on a large language model (LLM) with a reasoning framework (ReAct, chain-of-thought, or multi-agent orchestration). The agent receives a goal or question — either from a human or from an automated monitoring trigger — decomposes it into analytical sub-tasks, executes them in sequence, validates intermediate results, and synthesizes a final answer or action.</p>
+            <p>The core of an agentic analytics system is an AI agent built on a large language model (LLM) with a reasoning framework (ReAct, chain-of-thought, or multi-agent orchestration). The agent receives a goal or question, either from a human or from an automated monitoring trigger, then decomposes it into analytical sub-tasks, executes them in sequence, validates intermediate results, and synthesizes a final answer or action.</p>
             <p>Unlike a simple LLM chatbot that generates SQL and hopes it's correct, a well-designed analytics agent uses tool-use (function calling) to execute structured queries against the data platform, verify results, and iterate if the result doesn't satisfy the analytical goal. This verification loop is the critical capability that makes agentic analytics reliable rather than probabilistic.</p>
 
             <h3>2. The Semantic Layer</h3>
             <p>The <a href="/kb/semantic-layer/">semantic layer</a> is the business context layer that transforms raw table-and-column data into agent-understandable business concepts. It defines what "revenue" means precisely (including which calculation, which filters, which date logic), maps entity relationships across systems, and describes every column in business terms.</p>
-            <p>Without a semantic layer, an agentic analytics system is unreliable: the agent must guess at business definitions and table relationships, producing outputs that look plausible but may be mathematically incorrect. With a well-maintained semantic layer, the agent can generate verified, precise queries that align with established business definitions — enabling trust in the outputs.</p>
+            <p>Without a semantic layer, an agentic analytics system is unreliable: the agent must guess at business definitions and table relationships, producing outputs that look plausible but may be mathematically incorrect. With a well-maintained semantic layer, the agent can generate verified, precise queries that align with established business definitions, which is what makes the output worth trusting.</p>
 
             <h3>3. The Data Foundation (Agentic Lakehouse)</h3>
             <p>Agentic Analytics requires a data foundation designed for agent access patterns, not human analyst patterns. This is the <a href="/what-is-agentic-lakehouse/">Agentic Lakehouse</a>: Apache Iceberg tables providing ACID reliability and time travel, an open REST Catalog for multi-engine access, and high-performance query execution capable of responding to dozens of simultaneous agent queries in sub-second time.</p>
-            <p>Critically, the data foundation must support <a href="/kb/data-observability/">data observability</a> and <a href="/kb/data-quality-framework/">data quality frameworks</a> that give agents confidence in the data they are analyzing. An agent that encounters inconsistent or stale data cannot autonomously determine whether its analysis is correct — the data platform must surface quality metadata so the agent can make informed decisions about data reliability.</p>
+            <p>Critically, the data foundation must support <a href="/kb/data-observability/">data observability</a> and <a href="/kb/data-quality-framework/">data quality frameworks</a> that give agents confidence in the data they are analyzing. An agent that encounters inconsistent or stale data cannot determine on its own whether its analysis is correct. The data platform has to surface quality metadata so the agent can make informed decisions about data reliability.</p>
 
             <h3>4. Governance and Agent Identity Management</h3>
-            <p>In traditional BI, every user logs in with a human identity and receives a fixed set of dashboard access permissions. In Agentic Analytics, AI agents have their own identities, and each agent's data access must be as carefully governed as any human user's access — often more carefully, since agents execute queries autonomously at scale.</p>
-            <p><a href="/kb/rbac-data/">RBAC</a> defines which datasets an agent can access. <a href="/kb/row-level-security/">Row-level security</a> ensures a customer service agent only sees records for its assigned region. <a href="/kb/data-masking/">Data masking</a> ensures a marketing analytics agent never sees raw PII even when it queries tables that contain masked columns. All of these governance controls are enforced at the query engine level — the agent cannot bypass them regardless of how it formulates its queries.</p>
+            <p>In traditional BI, every user logs in with a human identity and receives a fixed set of dashboard access permissions. In Agentic Analytics, AI agents have their own identities, and each agent's data access must be as carefully governed as any human user's access, and often more carefully, since agents execute queries autonomously at scale.</p>
+            <p><a href="/kb/rbac-data/">RBAC</a> defines which datasets an agent can access. <a href="/kb/row-level-security/">Row-level security</a> ensures a customer service agent only sees records for its assigned region. <a href="/kb/data-masking/">Data masking</a> ensures a marketing analytics agent never sees raw PII even when it queries tables that contain masked columns. All of these controls are enforced at the query engine level, so the agent cannot get around them regardless of how it formulates its queries.</p>
 
             <h3>5. The Agentic Interface (MCP)</h3>
-            <p>The agentic interface is how AI agents communicate with the data platform. The emerging standard is the <a href="/kb/model-context-protocol/">Model Context Protocol (MCP)</a>, which provides a structured, typed function-call API for agent-to-platform interactions. Rather than generating arbitrary SQL strings, an agent calls structured MCP functions: <code>list_datasets()</code>, <code>get_schema(table_name)</code>, <code>execute_query(sql, timeout)</code>, <code>get_metric_definition(metric_name)</code>.</p>
+            <p>The agentic interface is how AI agents communicate with the data platform. The emerging standard is the <a href="/kb/llm-data-access/">Model Context Protocol (MCP)</a>, which provides a structured, typed function-call API for agent-to-platform interactions. Rather than generating arbitrary SQL strings, an agent calls structured MCP functions: <code>list_datasets()</code>, <code>get_schema(table_name)</code>, <code>execute_query(sql, timeout)</code>, <code>get_metric_definition(metric_name)</code>.</p>
             <p>This structured interface dramatically improves reliability compared to free-form SQL generation: the agent receives typed responses, can validate that its queries executed successfully, and can retry with refined parameters if the initial approach fails. Dremio's MCP server exposes the full semantic layer via MCP, enabling LangChain, LlamaIndex, Claude, and GPT-based agents to interact with governed Iceberg data through a standardized interface.</p>
 
             <h2>The Agentic Analytics Workflow</h2>
@@ -165,7 +189,7 @@
             <div class="faq-section">
                 <div class="faq-item">
                     <h3>What is Agentic Analytics?</h3>
-                    <p>Agentic Analytics is the deployment of autonomous AI agents to perform the full analytical workflow — data discovery, querying, reasoning, and insight delivery — without constant human intervention. Agents proactively monitor data, answer complex multi-step questions, and trigger downstream actions, all grounded in governed lakehouse data.</p>
+                    <p>Agentic Analytics is the deployment of autonomous AI agents to perform the full analytical workflow (data discovery, querying, reasoning, and insight delivery) without constant human intervention. Agents proactively monitor data, answer complex multi-step questions, and trigger downstream actions, all grounded in governed lakehouse data.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Is Agentic Analytics the same as AI-powered BI?</h3>
@@ -187,7 +211,7 @@
                     <a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a>
                     <a href="/agentic-lakehouse-architecture/">Architecture Diagram</a>
                     <a href="/kb/semantic-layer/">Semantic Layer</a>
-                    <a href="/kb/model-context-protocol/">Model Context Protocol</a>
+                    <a href="/kb/llm-data-access/">Model Context Protocol</a>
                     <a href="/kb/data-observability/">Data Observability</a>
                     <a href="/kb/data-quality-framework/">Data Quality Framework</a>
                     <a href="/kb/data-democratization/">Data Democratization</a>
@@ -207,7 +231,40 @@
         </div></section>
     </main>
 
-    <footer class="site-footer"><div class="container"><div class="footer-content"></div></div></footer>
+    <footer class="site-footer"><div class="container"><div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo-link" aria-label="Agentic Lakehouse Home">
+                        <span class="footer-logo-text">Agentic<br><strong>Lakehouse</strong></span>
+                    </a>
+                    <p class="footer-tagline">A working reference for agentic lakehouse and agentic analytics architecture.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
+                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
+                        <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
+                        <li><a href="/apache-iceberg/">Apache Iceberg</a></li>
+                        <li><a href="/data-lakehouse/">Data Lakehouse</a></li>
+                        <li><a href="/kb/">Knowledge Base</a></li>
+                        <li><a href="/videos/">Video Explainers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Partner Sites</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="https://alexmerceddata.com" target="_blank" rel="noopener">alexmerceddata.com</a></li>
+                        <li><a href="https://datalakehousehub.com" target="_blank" rel="noopener">datalakehousehub.com</a></li>
+                        <li><a href="https://iceberglakehouse.com" target="_blank" rel="noopener">iceberglakehouse.com</a></li>
+                        <li><a href="https://dataengr.com" target="_blank" rel="noopener">dataengr.com</a></li>
+                        <li><a href="https://semanticlakehouse.com" target="_blank" rel="noopener">semanticlakehouse.com</a></li>
+                        <li><a href="https://opendatalakehouse.com" target="_blank" rel="noopener">opendatalakehouse.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AgenticLakehouse.com. A resource by <a href="https://alexmerceddata.com" target="_blank" rel="noopener">Alex Merced</a>.</p>
+            </div></div></footer>
     <script>const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.fade-in-on-scroll').forEach(el=>observer.observe(el));</script>
 </body>
 </html>

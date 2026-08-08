@@ -16,6 +16,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
     <link rel="canonical" href="https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/">
+    <meta property="og:title" content="Apache Iceberg vs Delta Lake vs Apache Hudi: Open Table Formats Compared | Agentic Lakehouse">
+    <meta property="og:description" content="An architectural comparison of Apache Iceberg, Delta Lake, and Apache Hudi. Learn the differences in metadata management, upserts, and ecosystem interoperability.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apache Iceberg vs Delta Lake vs Apache Hudi: Open Table Formats Compared | Agentic Lakehouse">
+    <meta name="twitter:description" content="An architectural comparison of Apache Iceberg, Delta Lake, and Apache Hudi. Learn the differences in metadata management, upserts, and ecosystem interoperability.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -158,6 +171,7 @@
                     <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
                     <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
                     <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="/videos/">Videos</a></li>
                     <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
                 </ul>
             </nav>
@@ -189,7 +203,7 @@
 
             <h3>Apache Hudi: The Upsert and Streaming Approach</h3>
             <p>Created at Uber, Apache Hudi (Hadoop Upserts Deletes and Incrementals) was built specifically to solve the problem of real-time, heavy-mutation streaming data on top of Hadoop. Hudi treats the data lake much like a database, providing primary keys, indexing, and incredibly fast upserts.</p>
-            <p>Hudi offers two storage types: Copy-on-Write (optimized for read-heavy analytical workloads) and Merge-on-Read (optimized for write-heavy streaming workloads). It includes robust built-in table services for compaction and cleaning, making it highly autonomous, but also making it the most complex format to set up and manage.</p>
+            <p>Hudi offers two storage types: Copy-on-Write (optimized for read-heavy analytical workloads) and Merge-on-Read (optimized for write-heavy streaming workloads). It ships built-in table services for compaction and cleaning, which makes it largely self-managing, but also making it the most complex format to set up and manage.</p>
 
             <h2>Feature Comparison Matrix</h2>
 
@@ -224,7 +238,7 @@
                         </tr>
                         <tr>
                             <th>Partition Evolution</th>
-                            <td>Hidden Partitioning (Seamlessly changes over time)</td>
+                            <td>Hidden partitioning (partition spec can change over time)</td>
                             <td>Requires rewriting data / manual management</td>
                             <td>Requires manual management</td>
                         </tr>
@@ -249,7 +263,7 @@
             
             <p><strong>Apache Iceberg</strong> currently leads the market in interoperability. Because it relies on an external Catalog (like Apache Polaris or REST) to manage concurrency, it provides a safe, standardized API for any engine to integrate with. Dremio, Trino, Snowflake, AWS Athena, and Spark can all safely read and write to the same Iceberg table concurrently.</p>
 
-            <p><strong>Delta Lake</strong> historically struggled with multi-engine write concurrency on object storage like S3 because S3 lacked native atomic `put-if-absent` operations. While newer updates (and integration with Unity Catalog) have mitigated this, Iceberg's catalog-first architecture inherently handles multi-engine concurrency more robustly across diverse clouds.</p>
+            <p><strong>Delta Lake</strong> historically struggled with multi-engine write concurrency on object storage like S3 because S3 lacked native atomic `put-if-absent` operations. While newer updates (and integration with Unity Catalog) have mitigated this, Iceberg's catalog-first architecture handles multi-engine concurrency more predictably across clouds.</p>
 
             <p><strong>Apache Hudi</strong> integrates deeply with Spark and Flink for ingestion but requires specific sync mechanisms to make its tables readable by external engines like Trino or Presto, adding architectural overhead.</p>
 
