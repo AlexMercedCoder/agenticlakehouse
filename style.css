@@ -1076,26 +1076,44 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   FOOTER NETWORK
+   FOOTER RUNS — inline cross-network links
    ============================================ */
-.footer-network {
+.footer-run {
     margin-top: var(--spacing-md);
     padding-top: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-network-title {
+.footer-run-title {
     font-family: var(--font-heading);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--color-accent-blue);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
-.footer-network-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+.footer-run-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-run-list a {
+    color: var(--color-text-gray);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-run-list a:hover { color: var(--color-text-white); }
+
+.footer-run-list li + li::before {
+    content: "\00B7";
+    margin-right: 0.75rem;
+    opacity: 0.5;
 }
