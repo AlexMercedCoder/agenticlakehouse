@@ -195,6 +195,50 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-bg"></div>
+            <svg class="hero-stack" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+                <defs>
+                    <linearGradient id="ag-fade" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#fff"/>
+                        <stop offset="0.26" stop-color="#fff"/>
+                        <stop offset="0.33" stop-color="#000"/>
+                        <stop offset="0.75" stop-color="#000"/>
+                        <stop offset="0.80" stop-color="#fff"/>
+                        <stop offset="1" stop-color="#fff"/>
+                    </linearGradient>
+                    <mask id="ag-mask"><rect width="1440" height="900" fill="url(#ag-fade)"/></mask>
+                </defs>
+
+                <g mask="url(#ag-mask)">
+                    <!-- agents up top, their requests running down through the governed layers -->
+                <line class="ag-beam" x1="300" y1="150" x2="300" y2="878"/>
+                <line class="ag-beam" x1="560" y1="150" x2="560" y2="878"/>
+                <line class="ag-beam" x1="900" y1="150" x2="900" y2="878"/>
+                <line class="ag-beam" x1="1180" y1="150" x2="1180" y2="878"/>
+                <line class="ag-pulse" pathLength="100" x1="300" y1="150" x2="300" y2="878" style="animation-duration:6s;animation-delay:-0.5s"/>
+                <line class="ag-pulse" pathLength="100" x1="560" y1="150" x2="560" y2="878" style="animation-duration:7.5s;animation-delay:-2.4s"/>
+                <line class="ag-pulse" pathLength="100" x1="900" y1="150" x2="900" y2="878" style="animation-duration:5.5s;animation-delay:-4.1s"/>
+                <line class="ag-pulse" pathLength="100" x1="1180" y1="150" x2="1180" y2="878" style="animation-duration:8s;animation-delay:-1.3s"/>
+                <circle class="ag-agent" cx="300" cy="144" r="7" style="animation-delay:-0.0s"/>
+                <circle class="ag-agent" cx="560" cy="144" r="7" style="animation-delay:-1.2s"/>
+                <circle class="ag-agent" cx="900" cy="144" r="7" style="animation-delay:-2.4s"/>
+                <circle class="ag-agent" cx="1180" cy="144" r="7" style="animation-delay:-3.6s"/>
+                <line class="ag-layer" x1="80" y1="736" x2="1360" y2="736"/>
+                <line class="ag-layer" x1="80" y1="792" x2="1360" y2="792"/>
+                <line class="ag-layer" x1="80" y1="848" x2="1360" y2="848"/>
+                <rect class="ag-gate" x="293" y="729" width="14" height="14" rx="2" style="animation-delay:-0.0s"/>
+                <rect class="ag-gate" x="293" y="785" width="14" height="14" rx="2" style="animation-delay:-1.7s"/>
+                <rect class="ag-gate" x="293" y="841" width="14" height="14" rx="2" style="animation-delay:-3.4s"/>
+                <rect class="ag-gate" x="553" y="729" width="14" height="14" rx="2" style="animation-delay:-0.9s"/>
+                <rect class="ag-gate" x="553" y="785" width="14" height="14" rx="2" style="animation-delay:-2.6s"/>
+                <rect class="ag-gate" x="553" y="841" width="14" height="14" rx="2" style="animation-delay:-4.3s"/>
+                <rect class="ag-gate" x="893" y="729" width="14" height="14" rx="2" style="animation-delay:-1.8s"/>
+                <rect class="ag-gate" x="893" y="785" width="14" height="14" rx="2" style="animation-delay:-3.5s"/>
+                <rect class="ag-gate" x="893" y="841" width="14" height="14" rx="2" style="animation-delay:-5.2s"/>
+                <rect class="ag-gate" x="1173" y="729" width="14" height="14" rx="2" style="animation-delay:-2.7s"/>
+                <rect class="ag-gate" x="1173" y="785" width="14" height="14" rx="2" style="animation-delay:-4.4s"/>
+                <rect class="ag-gate" x="1173" y="841" width="14" height="14" rx="2" style="animation-delay:-6.1s"/>
+                </g>
+            </svg>
             <div class="container hero-content">
                 <div class="hero-text-wrapper">
                     <h1 class="fade-in-up">Agentic Analytics <br><span class="gradient-text">Starts With the Data</span></h1>
@@ -606,50 +650,42 @@
                     </ul>
                 </div>
 
-                <!-- Partner Sites -->
-                <div class="footer-col">
-                    <h4 class="footer-col-title">Partner Sites</h4>
-                    <ul class="footer-nav-list">
-                        <li>
-                            <a href="https://alexmerceddata.com" target="_blank" rel="noopener">
-                                alexmerceddata.com
-                            </a>
-                            <span class="footer-partner-desc">Data &amp; AI blog by Alex Merced</span>
-                        </li>
-                        <li>
-                            <a href="https://datalakehousehub.com" target="_blank" rel="noopener">
-                                datalakehousehub.com
-                            </a>
-                            <span class="footer-partner-desc">Data Lakehouse news &amp; tutorials</span>
-                        </li>
-                        <li>
-                            <a href="https://iceberglakehouse.com" target="_blank" rel="noopener">
-                                iceberglakehouse.com
-                            </a>
-                            <span class="footer-partner-desc">Apache Iceberg resources &amp; guides</span>
-                        </li>
-                        <li>
-                            <a href="https://dataengr.com" target="_blank" rel="noopener">
-                                dataengr.com
-                            </a>
-                            <span class="footer-partner-desc">Data engineering tutorials &amp; resources</span>
-                        </li>
-                        <li>
-                            <a href="https://semanticlakehouse.com" target="_blank" rel="noopener">
-                                semanticlakehouse.com
-                            </a>
-                            <span class="footer-partner-desc">Semantic Layer &amp; Lakehouse architecture</span>
-                        </li>
-                        <li>
-                            <a href="https://opendatalakehouse.com" target="_blank" rel="noopener">
-                                opendatalakehouse.com
-                            </a>
-                            <span class="footer-partner-desc">Open source Data Lakehouse resources</span>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
+
+            <nav class="footer-network" aria-label="The Alex Merced Network">
+                <h4 class="footer-network-title">The Alex Merced Network</h4>
+                <div class="footer-network-grid">
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Alex Merced</h4>
+                        <ul class="footer-nav-list">
+                            <li><a href="https://alexmerced.com" target="_blank" rel="noopener">AlexMerced.com</a></li>
+                            <li><a href="https://whoisalexmerced.com" target="_blank" rel="noopener">WhoIsAlexMerced.com</a></li>
+                            <li><a href="https://alexmercedmedia.com" target="_blank" rel="noopener">AlexMercedMedia.com</a></li>
+                            <li><a href="https://books.alexmerced.com" target="_blank" rel="noopener">Books</a></li>
+                            <li><a href="https://alexmercedcoder.dev" target="_blank" rel="noopener">AlexMercedCoder.dev</a></li>
+                            <li><a href="https://alexmerceddata.com" target="_blank" rel="noopener">AlexMercedData.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Lakehouse &amp; Data</h4>
+                        <ul class="footer-nav-list">
+                            <li><a href="https://datalakehousehub.com" target="_blank" rel="noopener">DataLakehouseHub.com</a></li>
+                            <li><a href="https://iceberglakehouse.com" target="_blank" rel="noopener">IcebergLakehouse.com</a></li>
+                            <li><a href="https://semanticlakehouse.com" target="_blank" rel="noopener">SemanticLakehouse.com</a></li>
+                            <li><a href="https://dataengnr.com" target="_blank" rel="noopener">DataEngnr.com</a></li>
+                            <li><a href="https://opendatalakehouse.com" target="_blank" rel="noopener">OpenDataLakehouse.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Blogs</h4>
+                        <ul class="footer-nav-list">
+                            <li><a href="https://alexmerced.blog" target="_blank" rel="noopener">AlexMerced.blog</a></li>
+                            <li><a href="https://grokoverflow.com" target="_blank" rel="noopener">GrokOverflow.com</a></li>
+                            <li><a href="https://ingestthis.com" target="_blank" rel="noopener">IngestThis.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <div class="footer-bottom">
                 <p>&copy; <span id="footer-year"></span> AgenticLakehouse.com &mdash; A resource by <a href="https://alexmerceddata.com" target="_blank" rel="noopener">Alex Merced</a>. Written for engineers and architects.</p>

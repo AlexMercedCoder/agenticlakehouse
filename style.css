@@ -1005,3 +1005,97 @@ h1, h2, h3, h4 {
         font-size: 1.05rem;
     }
 }
+
+/* ============================================
+   HERO GOVERNANCE STACK — desktop only
+   ============================================ */
+.hero-stack {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .hero-stack {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+}
+
+.ag-beam {
+    stroke: var(--color-primary);
+    stroke-width: 1;
+    opacity: 0.25;
+}
+
+.ag-pulse {
+    stroke: var(--color-accent-blue);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 7 93;
+    animation: agPulse 6s linear infinite;
+}
+
+.ag-agent {
+    fill: none;
+    stroke: var(--color-accent-blue);
+    stroke-width: 1.5;
+    animation: agBlink 4.5s ease-in-out infinite;
+}
+
+.ag-layer {
+    stroke: var(--color-secondary);
+    stroke-width: 1;
+    opacity: 0.3;
+}
+
+.ag-gate {
+    fill: none;
+    stroke: var(--color-secondary);
+    stroke-width: 1.5;
+    animation: agBlink 5.5s ease-in-out infinite;
+}
+
+@keyframes agPulse {
+    from { stroke-dashoffset: 100; }
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes agBlink {
+    0%, 100% { opacity: 0.28; }
+    50% { opacity: 0.95; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ag-pulse, .ag-agent, .ag-gate { animation: none; }
+    .ag-pulse { stroke-dashoffset: 55; }
+    .ag-agent, .ag-gate { opacity: 0.6; }
+}
+
+/* ============================================
+   FOOTER NETWORK
+   ============================================ */
+.footer-network {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-network-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-network-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
