@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by Alex Merced | Agentic Lakehouse</title>
+    <meta name="description"
+        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+    <meta name="author" content="Alex Merced">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%233999e5%22/><path d=%22M12 32 Q 32 12 52 32%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M12 44 Q 32 24 52 44%22 stroke=%22white%22 stroke-width=%226%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+    <link rel="canonical" href="https://agenticlakehouse.com/books/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agenticlakehouse.com/books/">
+    <meta property="og:title" content="Books by Alex Merced | Agentic Lakehouse">
+    <meta property="og:description"
+        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+    <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta property="og:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
+    <meta property="og:site_name" content="Agentic Lakehouse">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="agenticlakehouse.com">
+    <meta property="twitter:url" content="https://agenticlakehouse.com/">
+    <meta name="twitter:title" content="Agentic Lakehouse | Agentic Analytics, Apache Iceberg &amp; Dremio">
+    <meta name="twitter:description"
+        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+    <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
+    <meta name="twitter:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
+    <meta name="twitter:creator" content="@alexmercedcoder">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://agenticlakehouse.com/#alex-merced",
+        "name": "Alex Merced",
+        "url": "https://whoisalexmerced.com/",
+        "jobTitle": "Open Lakehouse & AI Advocate, Author & Technologist",
+        "sameAs": [
+          "https://whoisalexmerced.com",
+          "https://alexmerced.com",
+          "https://alexmerceddata.com",
+          "https://www.linkedin.com/in/alexmerced",
+          "https://twitter.com/alexmercedcoder",
+          "https://github.com/AlexMercedCoder",
+          "https://www.youtube.com/@AlexMercedCoder",
+          "https://www.youtube.com/@alexmerceddata"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://agenticlakehouse.com/#org",
+        "name": "Agentic Lakehouse",
+        "url": "https://agenticlakehouse.com/",
+        "logo": "https://agenticlakehouse.com/social-share.jpg",
+        "founder": {"@id": "https://agenticlakehouse.com/#alex-merced"},
+        "sameAs": [
+          "https://luma.com/agenticlakehouse",
+          "https://luma.com/DataLakehouseHub",
+          "https://www.linkedin.com/company/data-lakehouse-hub/",
+          "https://www.reddit.com/r/datalakehouseandai/"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://agenticlakehouse.com/#website",
+        "name": "Agentic Lakehouse",
+        "url": "https://agenticlakehouse.com/",
+        "description": "A reference on agentic lakehouse and agentic analytics architecture, built on Apache Iceberg, semantic layers, and governed query execution.",
+        "inLanguage": "en",
+        "publisher": {"@id": "https://agenticlakehouse.com/#org"},
+        "author": {"@id": "https://agenticlakehouse.com/#alex-merced"}
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://agenticlakehouse.com/#webpage",
+        "url": "https://agenticlakehouse.com/",
+        "name": "Agentic Lakehouse | Agentic Analytics, Apache Iceberg & Dremio",
+        "isPartOf": {"@id": "https://agenticlakehouse.com/#website"},
+        "about": {"@id": "https://agenticlakehouse.com/#term-agentic-lakehouse"},
+        "author": {"@id": "https://agenticlakehouse.com/#alex-merced"},
+        "dateModified": "2026-08-08"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://agenticlakehouse.com/"}
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "@id": "https://agenticlakehouse.com/#term-agentic-lakehouse",
+        "name": "Agentic Lakehouse",
+        "description": "A data lakehouse architecture built for autonomous AI agents, combining open-format storage on Apache Iceberg, a semantic layer for business context, fine-grained governance via RBAC and ABAC, and high-performance query execution.",
+        "inDefinedTermSet": "https://agenticlakehouse.com"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "@id": "https://agenticlakehouse.com/#term-agentic-analytics",
+        "name": "Agentic Analytics",
+        "description": "The practice of using autonomous AI agents to carry out the analytical workflow (discovery, querying, reasoning, and delivery) against governed lakehouse data rather than through fixed dashboards.",
+        "inDefinedTermSet": "https://agenticlakehouse.com"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an agentic lakehouse?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An agentic lakehouse is a data lakehouse built for autonomous AI agents rather than for human analysts. It adds three things to open-format storage on Apache Iceberg: a semantic layer that carries business definitions, governance enforced by the query engine at execution time, and a structured agent interface such as an MCP server. Together these let an agent find data, run a correct query, and stay inside the permissions of the person who asked."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is agentic analytics?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Agentic analytics is the practice of letting autonomous AI agents carry out the analytical workflow: discovering the relevant data, writing and running the query, reasoning over the result, and delivering or acting on the answer. It differs from dashboard BI in that the agent decides the steps, so the platform underneath has to supply business context and enforce permissions on every query it generates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Apache Iceberg support agentic analytics?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Apache Iceberg supplies the open table format underneath. Its ACID commits keep concurrent agent writes from corrupting a table, its snapshots let you replay the exact data state an agent saw when it answered, schema evolution keeps queries valid as tables change, and file-level column statistics let an engine prune data before scanning it. The open REST catalog also means several engines can read the same governed tables without copying data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is an agentic lakehouse different from RAG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Retrieval-augmented generation grounds a model in unstructured text by retrieving passages that resemble the question. An agentic lakehouse grounds a model in structured data by running an exact query against governed tables. Retrieval returns something approximate; a query returns a computed number you can reproduce. Most production systems use both and route each question to whichever is appropriate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does an AI agent need a semantic layer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Raw table and column names do not carry business meaning. Without a semantic layer an agent has to guess which column represents revenue and which rows to exclude, and a guess that runs without error still produces a wrong number. A semantic layer stores metric definitions, entity mappings, and column descriptions once, so the same question resolves to the same query and the same answer every time."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Icons (using Phosphor Icons for a premium look) -->
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+      .bookspage { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+      .bookspage__head { max-width: 46rem; margin-bottom: 2.5rem; }
+      .bookspage__eyebrow { margin: 0 0 .5rem; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+      .bookspage__head h1 { margin: 0 0 1rem; }
+      .bookspage__intro { margin: 0 0 .75rem; font-size: 1.125rem; line-height: 1.6; }
+      .bookspage__meta { margin: 0; font-size: .9375rem; opacity: .8; }
+      .bookspage__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: 2rem; margin: 0; padding: 0; list-style: none; }
+      .bookspage__item { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.25rem; align-items: start; padding-bottom: 2rem; border-bottom: 1px solid rgba(128,128,128,.28); }
+      .bookspage__cover img { width: 100%; height: auto; border-radius: 2px; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+      .bookspage__title { margin: 0 0 .35rem; font-size: 1.0625rem; line-height: 1.35; }
+      .bookspage__publisher { margin: 0 0 .5rem; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+      .bookspage__desc { margin: 0 0 .75rem; font-size: .9375rem; line-height: 1.55; }
+      .bookspage__links { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; font-size: .875rem; font-weight: 600; }
+      @media (max-width: 30rem) { .bookspage__item { grid-template-columns: 5rem 1fr; gap: 1rem; } }
+    </style>
+</head>
+<body>
+<header class="site-header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="Home">
+                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-text">The Agentic Lakehouse</span>
+            </a>
+            <nav class="site-nav"><ul>
+                    <li><a href="/what-is-agentic-lakehouse/">Agentic Lakehouse</a></li>
+                    <li><a href="/what-is-agentic-analytics/">Agentic Analytics</a></li>
+                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
+                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/kb/">Knowledge Base</a></li>
+                    <li><a href="/books/">Books</a></li>
+                    <li><a href="/videos/">Videos</a></li>
+                    <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>
+                </ul></nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+    <main class="bookspage">
+      <header class="bookspage__head">
+        <p class="bookspage__eyebrow">Books by Alex Merced</p>
+        <h1>Read further</h1>
+        <p class="bookspage__intro">Longer-form treatments of agentic analytics: how AI agents discover, query, and reason over governed lakehouse data, and the architecture underneath that.</p>
+        <p class="bookspage__meta">26 of 65 titles. <a href="https://books.alexmerced.com/" target="_blank" rel="noopener">See the complete catalog</a></p>
+      </header>
+      <ul class="bookspage__list">
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/ai-and-agents-for-normal-people/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0H59GBTMW.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/ai-and-agents-for-normal-people/" target="_blank" rel="noopener">AI and Agents for Normal People</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to using AI tools for everyday tasks, covering Gemini, NotebookLM, ChatGPT, Claude, and local agent workflows without technical jargon.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/ai-and-agents-for-normal-people/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0H59GBTMW" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/ai-application-architecture-patterns-for-building-intelligent-systems/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSVFT3H4.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/ai-application-architecture-patterns-for-building-intelligent-systems/" target="_blank" rel="noopener">AI Application Architecture: Patterns for Building Intelligent Systems</a></h2>
+            
+            <p class="bookspage__desc">Covers architectural patterns for building intelligent applications, from inference pipelines to multi-agent orchestration.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/ai-application-architecture-patterns-for-building-intelligent-systems/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/AI-Application-Architecture-Patterns-Intelligent/dp/B0GSVFT3H4" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/apache-iceberg-for-agentic-ai-connecting-structured-enterprise/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0DYTX2WZY.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/apache-iceberg-for-agentic-ai-connecting-structured-enterprise/" target="_blank" rel="noopener">Apache Iceberg for Agentic AI: Connecting Structured Enterprise</a></h2>
+            
+            <p class="bookspage__desc">Explores how to connect structured enterprise data in Apache Iceberg lakehouses to agentic AI systems.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/apache-iceberg-for-agentic-ai-connecting-structured-enterprise/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Apache-Iceberg-Agentic-Connecting-Structured-ebook/dp/B0DYTX2WZY" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/being-productive-with-open-models/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0H76JQ55R.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/being-productive-with-open-models/" target="_blank" rel="noopener">Being Productive with Open Models</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to using open models with Opencode, PI, and Hermes for AI-assisted development.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/being-productive-with-open-models/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0H76JQ55R" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/building-knowledge-systems-for-ai-graphs-rag-memory-and-context/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSWFSSRC.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/building-knowledge-systems-for-ai-graphs-rag-memory-and-context/" target="_blank" rel="noopener">Building Knowledge Systems for AI: Graphs, RAG, Memory, and Context</a></h2>
+            
+            <p class="bookspage__desc">A deep dive into building robust knowledge systems for AI using knowledge graphs, RAG, memory architectures, and context management.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/building-knowledge-systems-for-ai-graphs-rag-memory-and-context/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Building-Knowledge-Systems-AI-Context/dp/B0GSWFSSRC" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/constructing-context-and-semantics-for-ai-agents/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSHRZNZ5.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/constructing-context-and-semantics-for-ai-agents/" target="_blank" rel="noopener">Constructing Context and Semantics for AI Agents</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to embeddings, knowledge graphs, memory systems, RAG, evaluation, and production agent architectures.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/constructing-context-and-semantics-for-ai-agents/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Constructing-Context-Semantics-Agents-Embeddings/dp/B0GSHRZNZ5" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/enabling-agentic-analytics-with-apache-iceberg-and-dremio/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GQXT6W3N.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/enabling-agentic-analytics-with-apache-iceberg-and-dremio/" target="_blank" rel="noopener">Enabling Agentic Analytics with Apache Iceberg and Dremio</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to building AI-ready lakehouse systems using Apache Iceberg and Dremio for agentic analytics workflows.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/enabling-agentic-analytics-with-apache-iceberg-and-dremio/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GQXT6W3N" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/evaluating-ai-systems-testing-llms-rag-and-agents/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSVPQ667.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/evaluating-ai-systems-testing-llms-rag-and-agents/" target="_blank" rel="noopener">Evaluating AI Systems: Testing LLMs, RAG, and Agents</a></h2>
+            
+            <p class="bookspage__desc">A guide to properly testing and evaluating AI systems, including benchmarking strategies for LLMs, RAG pipelines, and agents.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/evaluating-ai-systems-testing-llms-rag-and-agents/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Evaluating-AI-Systems-Testing-Agents/dp/B0GSVPQ667" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/governing-ai-systems/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSMVQ1TH.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/governing-ai-systems/" target="_blank" rel="noopener">Governing AI Systems</a></h2>
+            
+            <p class="bookspage__desc">A guide to AI governance frameworks, covering risk management, compliance, ethics, and organizational oversight of AI systems.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/governing-ai-systems/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Governing-AI-Systems/dp/B0GSMVQ1TH" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/hands-on-agentic-engineering-a-practical-guide-to-building-multi-agent-systems/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GWTZ1394.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/hands-on-agentic-engineering-a-practical-guide-to-building-multi-agent-systems/" target="_blank" rel="noopener">Hands-On Agentic Engineering: A Practical Guide to Building Multi-Agent Systems</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to building multi-agent systems with Apache Iceberg.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/hands-on-agentic-engineering-a-practical-guide-to-building-multi-agent-systems/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GWTZ1394" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-2026-guide-to-lakehouses-apache-iceberg-and-agentic-ai/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GQNY21TD.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-2026-guide-to-lakehouses-apache-iceberg-and-agentic-ai/" target="_blank" rel="noopener">The 2026 Guide to Lakehouses, Apache Iceberg and Agentic AI</a></h2>
+            
+            <p class="bookspage__desc">A comprehensive guide covering the convergence of lakehouse architecture, Apache Iceberg, and the rise of agentic AI systems.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-2026-guide-to-lakehouses-apache-iceberg-and-agentic-ai/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GQNY21TD" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-agentic-enterprise-deploying-ai-agents-across-the-modern-organization/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSN3NNS5.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-agentic-enterprise-deploying-ai-agents-across-the-modern-organization/" target="_blank" rel="noopener">The Agentic Enterprise: Deploying AI Agents Across the Modern Organization</a></h2>
+            
+            <p class="bookspage__desc">A guide to deploying AI agents across enterprise functions, covering strategy, governance, and organizational adoption.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-agentic-enterprise-deploying-ai-agents-across-the-modern-organization/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Agentic-Enterprise-Deploying-Agents-Organization/dp/B0GSN3NNS5" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-ai-lakehouse-architecting-data-platforms-for-ai/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSMQ6M2J.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-ai-lakehouse-architecting-data-platforms-for-ai/" target="_blank" rel="noopener">The AI Lakehouse: Architecting Data Platforms for AI</a></h2>
+            
+            <p class="bookspage__desc">Explores how to architect data lakehouse platforms specifically designed to serve AI and machine learning workloads.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-ai-lakehouse-architecting-data-platforms-for-ai/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/AI-Lakehouse-Architecting-Data-Platforms/dp/B0GSMQ6M2J" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-book-on-agentic-analytics/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GQN4Q41Y.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-book-on-agentic-analytics/" target="_blank" rel="noopener">The Book on Agentic Analytics</a></h2>
+            
+            <p class="bookspage__desc">Explores the foundations of agentic data architecture, where AI agents autonomously discover, query, and analyze data.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-book-on-agentic-analytics/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GQN4Q41Y" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-1/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GZTXJQ1C.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-1/" target="_blank" rel="noopener">The Book on Data, Data Engineering, Data Analytics, and Agentic AI - Volume 1</a></h2>
+            
+            <p class="bookspage__desc">A complete guide to modern data systems, data engineering, analytics, and AI.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-1/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GZTXJQ1C" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-2/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GZVJB6ML.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-2/" target="_blank" rel="noopener">The Book on Data, Data Engineering, Data Analytics, and Agentic AI - Volume 2</a></h2>
+            
+            <p class="bookspage__desc">A complete guide to SQL analytics, BI, and agentic AI for modern data platforms.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-2/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GZVJB6ML" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-no-lock-in-apache-iceberg-lakehouse-with-agentic-analytics/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0H49TDNX3.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-no-lock-in-apache-iceberg-lakehouse-with-agentic-analytics/" target="_blank" rel="noopener">The No Lock-in Apache Iceberg Lakehouse with Agentic Analytics</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to building a portable Apache Iceberg lakehouse with open catalogs, agentic analytics, and AI-ready data platforms while avoiding vendor lock-in.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-no-lock-in-apache-iceberg-lakehouse-with-agentic-analytics/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0H49TDNX3" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/using-ai-agents-for-data-engineering-and-data-analysis/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GR6PYJT9.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/using-ai-agents-for-data-engineering-and-data-analysis/" target="_blank" rel="noopener">Using AI Agents for Data Engineering and Data Analysis</a></h2>
+            
+            <p class="bookspage__desc">A practical guide to leveraging AI agents for automating data engineering pipelines and performing intelligent data analysis.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/using-ai-agents-for-data-engineering-and-data-analysis/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GR6PYJT9" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/ai-ready-data/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GSN7GLH2.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/ai-ready-data/" target="_blank" rel="noopener">AI-Ready Data</a></h2>
+            
+            <p class="bookspage__desc">Designing data platforms optimized for LLMs, AI agents, and retrieval-augmented generation (RAG) workflows.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/ai-ready-data/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/AI-Ready-Data-Designing-Platforms-Agents/dp/B0GSN7GLH2" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/dremio-and-the-semantic-layer/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GWF7PFDG.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/dremio-and-the-semantic-layer/" target="_blank" rel="noopener">Dremio and the Semantic Layer</a></h2>
+            
+            <p class="bookspage__desc">The journey to providing meaning and context for AI with Dremio&#x27;s semantic layer.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/dremio-and-the-semantic-layer/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GWF7PFDG" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/apache-iceberg-the-definitive-guide/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/1098148622.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/apache-iceberg-the-definitive-guide/" target="_blank" rel="noopener">Apache Iceberg: The Definitive Guide</a></h2>
+            <p class="bookspage__publisher">O&#x27;Reilly Media</p>
+            <p class="bookspage__desc">A comprehensive guide to Apache Iceberg and modern lakehouse architecture, covering table format internals, schema evolution, partitioning, and integration with major query engines.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/apache-iceberg-the-definitive-guide/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/1098148622" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/apache-polaris-the-definitive-guide/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0FBRJ7J1Y.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/apache-polaris-the-definitive-guide/" target="_blank" rel="noopener">Apache Polaris: The Definitive Guide</a></h2>
+            <p class="bookspage__publisher">O&#x27;Reilly Media</p>
+            <p class="bookspage__desc">A guide to open catalogs for Apache Iceberg lakehouses, covering Polaris catalog architecture, configuration, and governance.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/apache-polaris-the-definitive-guide/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0FBRJ7J1Y" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/architecting-an-apache-iceberg-lakehouse/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/1633435105.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/architecting-an-apache-iceberg-lakehouse/" target="_blank" rel="noopener">Architecting an Apache Iceberg Lakehouse</a></h2>
+            <p class="bookspage__publisher">Manning Publications</p>
+            <p class="bookspage__desc">Architecture patterns and best practices for building production-grade, Iceberg-based data platforms from the ground up.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/architecting-an-apache-iceberg-lakehouse/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/1633435105" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-book-on-apache-polaris/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GZDVCV24.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-book-on-apache-polaris/" target="_blank" rel="noopener">The Book on Apache Polaris</a></h2>
+            
+            <p class="bookspage__desc">Building the open data lakehouse with the industry standard Iceberg REST catalog.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-book-on-apache-polaris/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GZDVCV24" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-lakehouse-built-for-everyone/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0GYL5Q5YV.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-lakehouse-built-for-everyone/" target="_blank" rel="noopener">The Lakehouse Built for Everyone</a></h2>
+            
+            <p class="bookspage__desc">From laptop prototypes to enterprise-scale agentic AI with Apache Iceberg and Dremio.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-lakehouse-built-for-everyone/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/dp/B0GYL5Q5YV" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+        <li class="bookspage__item">
+          <a class="bookspage__cover" href="https://books.alexmerced.com/books/the-open-source-lakehouse-architecting-the-decoupled-analytical-foundation/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="https://images.amazon.com/images/P/B0D46P3VB7.01._SCLZZZZZZZ_.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <h2 class="bookspage__title"><a href="https://books.alexmerced.com/books/the-open-source-lakehouse-architecting-the-decoupled-analytical-foundation/" target="_blank" rel="noopener">The Open Source Lakehouse: Architecting the Decoupled Analytical Foundation</a></h2>
+            
+            <p class="bookspage__desc">Covers building a fully decoupled lakehouse using open source technologies, emphasizing modularity and vendor independence.</p>
+            <p class="bookspage__links">
+              <a href="https://books.alexmerced.com/books/the-open-source-lakehouse-architecting-the-decoupled-analytical-foundation/" target="_blank" rel="noopener">Details</a>
+              <a href="https://www.amazon.com/Open-Source-Lakehouse-Architecting-Analytical-ebook/dp/B0D46P3VB7" target="_blank" rel="noopener">Buy on Amazon</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </main>
+<footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo-link" aria-label="Agentic Lakehouse Home">
+                        <span class="footer-logo-text">Agentic<br><strong>Lakehouse</strong></span>
+                    </a>
+                    <p class="footer-tagline">A working reference for agentic lakehouse and agentic analytics architecture.</p>
+                </div>
+
+                <!-- Site Navigation -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Explore</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
+                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
+                        <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
+                        <li><a href="/kb/">Knowledge Base</a></li>
+                        <li><a href="/videos/">Video Explainers</a></li>
+                        <li><a href="/#faq">Common Questions</a></li>
+                        <li><a href="/#must-read-articles">Must-Read Articles</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <nav class="footer-run" aria-label="The Alex Merced Network">
+              <div class="footer-run-title">The Alex Merced Network</div>
+              <ul class="footer-run-list">
+                <li><a href="https://alexmerced.com" target="_blank" rel="noopener">AlexMerced.com</a></li>
+                <li><a href="https://whoisalexmerced.com" target="_blank" rel="noopener">WhoIsAlexMerced.com</a></li>
+                <li><a href="https://alexmercedmedia.com" target="_blank" rel="noopener">AlexMercedMedia.com</a></li>
+                <li><a href="https://books.alexmerced.com" target="_blank" rel="noopener">Books</a></li>
+                <li><a href="https://alexmercedcoder.dev" target="_blank" rel="noopener">AlexMercedCoder.dev</a></li>
+                <li><a href="https://alexmerceddata.com" target="_blank" rel="noopener">AlexMercedData.com</a></li>
+                <li><a href="https://datalakehousehub.com" target="_blank" rel="noopener">DataLakehouseHub.com</a></li>
+                <li><a href="https://iceberglakehouse.com" target="_blank" rel="noopener">IcebergLakehouse.com</a></li>
+                <li><a href="https://semanticlakehouse.com" target="_blank" rel="noopener">SemanticLakehouse.com</a></li>
+                <li><a href="https://dataengnr.com" target="_blank" rel="noopener">DataEngnr.com</a></li>
+                <li><a href="https://openagenticplatform.com" target="_blank" rel="noopener">OpenAgenticPlatform.com</a></li>
+                <li><a href="https://www.alexmercedai.com" target="_blank" rel="noopener">AlexMercedAI.com</a></li>
+                <li><a href="https://alexmerced.blog" target="_blank" rel="noopener">AlexMerced.blog</a></li>
+                <li><a href="https://grokoverflow.com" target="_blank" rel="noopener">GrokOverflow.com</a></li>
+                <li><a href="https://ingestthis.com" target="_blank" rel="noopener">IngestThis.com</a></li>
+              </ul>
+            </nav>
+            <nav class="footer-run" aria-label="Free weekly newsletters">
+              <div class="footer-run-title">Free Weekly Newsletters</div>
+              <ul class="footer-run-list">
+                <li><a href="https://amdatalakehouse.substack.com" target="_blank" rel="noopener">AI newsletter, Thursdays</a></li>
+                <li><a href="https://amdatalakehouse.substack.com" target="_blank" rel="noopener">Apache lakehouse newsletter, Fridays</a></li>
+                <li><a href="https://amdatalakehouse.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a></li>
+              </ul>
+            </nav>
+            <nav class="footer-run" aria-label="Events and community">
+              <div class="footer-run-title">Events &amp; Community</div>
+              <ul class="footer-run-list">
+                <li><a href="https://luma.com/agenticlakehouse" target="_blank" rel="noopener">Agentic Lakehouse Events</a></li>
+                <li><a href="https://luma.com/DataLakehouseHub" target="_blank" rel="noopener">Data Lakehouse Hub Events</a></li>
+                <li><a href="https://join.slack.com/t/thedatalakehousehub/shared_invite/zt-274yc8sza-mI2zhCW8LGkOh1uxuf8T5Q" target="_blank" rel="noopener">Data Lakehouse Hub Slack</a></li>
+                <li><a href="https://join.slack.com/t/data-events/shared_invite/zt-38vgrooy9-U9ral_gr3NAz_Siih1QwmQ" target="_blank" rel="noopener">Data Events Slack</a></li>
+                <li><a href="https://join.slack.com/t/datatechcommunity/shared_invite/zt-12xrk4qmd-y~6jUFFd7kdaLhgLURKwoA" target="_blank" rel="noopener">Data &amp; Tech Slack</a></li>
+                <li><a href="https://www.reddit.com/r/datalakehouseandai/" target="_blank" rel="noopener">r/datalakehouseandai</a></li>
+                <li><a href="https://www.linkedin.com/company/data-lakehouse-hub/" target="_blank" rel="noopener">Data Lakehouse Hub on LinkedIn</a></li>
+                <li><a href="https://www.youtube.com/@AlexMercedCoder" target="_blank" rel="noopener">Alex Merced Tech on YouTube</a></li>
+                <li><a href="https://www.youtube.com/@alexmerceddata" target="_blank" rel="noopener">Alex Merced Data &amp; AI on YouTube</a></li>
+              </ul>
+            </nav>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year"></span> AgenticLakehouse.com &mdash; A resource by <a href="https://alexmerceddata.com" target="_blank" rel="noopener">Alex Merced</a>. Written for engineers and architects.</p>
+            </div>
+        </div>
+    </footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Books by Alex Merced","numberOfItems":26,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Book","name":"AI and Agents for Normal People","description":"A practical guide to using AI tools for everyday tasks, covering Gemini, NotebookLM, ChatGPT, Claude, and local agent workflows without technical jargon.","url":"https://books.alexmerced.com/books/ai-and-agents-for-normal-people/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":2,"item":{"@type":"Book","name":"AI Application Architecture: Patterns for Building Intelligent Systems","description":"Covers architectural patterns for building intelligent applications, from inference pipelines to multi-agent orchestration.","url":"https://books.alexmerced.com/books/ai-application-architecture-patterns-for-building-intelligent-systems/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":3,"item":{"@type":"Book","name":"Apache Iceberg for Agentic AI: Connecting Structured Enterprise","description":"Explores how to connect structured enterprise data in Apache Iceberg lakehouses to agentic AI systems.","url":"https://books.alexmerced.com/books/apache-iceberg-for-agentic-ai-connecting-structured-enterprise/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":4,"item":{"@type":"Book","name":"Being Productive with Open Models","description":"A practical guide to using open models with Opencode, PI, and Hermes for AI-assisted development.","url":"https://books.alexmerced.com/books/being-productive-with-open-models/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":5,"item":{"@type":"Book","name":"Building Knowledge Systems for AI: Graphs, RAG, Memory, and Context","description":"A deep dive into building robust knowledge systems for AI using knowledge graphs, RAG, memory architectures, and context management.","url":"https://books.alexmerced.com/books/building-knowledge-systems-for-ai-graphs-rag-memory-and-context/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":6,"item":{"@type":"Book","name":"Constructing Context and Semantics for AI Agents","description":"A practical guide to embeddings, knowledge graphs, memory systems, RAG, evaluation, and production agent architectures.","url":"https://books.alexmerced.com/books/constructing-context-and-semantics-for-ai-agents/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":7,"item":{"@type":"Book","name":"Enabling Agentic Analytics with Apache Iceberg and Dremio","description":"A practical guide to building AI-ready lakehouse systems using Apache Iceberg and Dremio for agentic analytics workflows.","url":"https://books.alexmerced.com/books/enabling-agentic-analytics-with-apache-iceberg-and-dremio/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":8,"item":{"@type":"Book","name":"Evaluating AI Systems: Testing LLMs, RAG, and Agents","description":"A guide to properly testing and evaluating AI systems, including benchmarking strategies for LLMs, RAG pipelines, and agents.","url":"https://books.alexmerced.com/books/evaluating-ai-systems-testing-llms-rag-and-agents/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":9,"item":{"@type":"Book","name":"Governing AI Systems","description":"A guide to AI governance frameworks, covering risk management, compliance, ethics, and organizational oversight of AI systems.","url":"https://books.alexmerced.com/books/governing-ai-systems/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":10,"item":{"@type":"Book","name":"Hands-On Agentic Engineering: A Practical Guide to Building Multi-Agent Systems","description":"A practical guide to building multi-agent systems with Apache Iceberg.","url":"https://books.alexmerced.com/books/hands-on-agentic-engineering-a-practical-guide-to-building-multi-agent-systems/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":11,"item":{"@type":"Book","name":"The 2026 Guide to Lakehouses, Apache Iceberg and Agentic AI","description":"A comprehensive guide covering the convergence of lakehouse architecture, Apache Iceberg, and the rise of agentic AI systems.","url":"https://books.alexmerced.com/books/the-2026-guide-to-lakehouses-apache-iceberg-and-agentic-ai/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":12,"item":{"@type":"Book","name":"The Agentic Enterprise: Deploying AI Agents Across the Modern Organization","description":"A guide to deploying AI agents across enterprise functions, covering strategy, governance, and organizational adoption.","url":"https://books.alexmerced.com/books/the-agentic-enterprise-deploying-ai-agents-across-the-modern-organization/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":13,"item":{"@type":"Book","name":"The AI Lakehouse: Architecting Data Platforms for AI","description":"Explores how to architect data lakehouse platforms specifically designed to serve AI and machine learning workloads.","url":"https://books.alexmerced.com/books/the-ai-lakehouse-architecting-data-platforms-for-ai/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":14,"item":{"@type":"Book","name":"The Book on Agentic Analytics","description":"Explores the foundations of agentic data architecture, where AI agents autonomously discover, query, and analyze data.","url":"https://books.alexmerced.com/books/the-book-on-agentic-analytics/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":15,"item":{"@type":"Book","name":"The Book on Data, Data Engineering, Data Analytics, and Agentic AI - Volume 1","description":"A complete guide to modern data systems, data engineering, analytics, and AI.","url":"https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-1/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":16,"item":{"@type":"Book","name":"The Book on Data, Data Engineering, Data Analytics, and Agentic AI - Volume 2","description":"A complete guide to SQL analytics, BI, and agentic AI for modern data platforms.","url":"https://books.alexmerced.com/books/the-book-on-data-data-engineering-data-analytics-and-agentic-ai-volume-2/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":17,"item":{"@type":"Book","name":"The No Lock-in Apache Iceberg Lakehouse with Agentic Analytics","description":"A practical guide to building a portable Apache Iceberg lakehouse with open catalogs, agentic analytics, and AI-ready data platforms while avoiding vendor lock-in.","url":"https://books.alexmerced.com/books/the-no-lock-in-apache-iceberg-lakehouse-with-agentic-analytics/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":18,"item":{"@type":"Book","name":"Using AI Agents for Data Engineering and Data Analysis","description":"A practical guide to leveraging AI agents for automating data engineering pipelines and performing intelligent data analysis.","url":"https://books.alexmerced.com/books/using-ai-agents-for-data-engineering-and-data-analysis/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":19,"item":{"@type":"Book","name":"AI-Ready Data","description":"Designing data platforms optimized for LLMs, AI agents, and retrieval-augmented generation (RAG) workflows.","url":"https://books.alexmerced.com/books/ai-ready-data/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":20,"item":{"@type":"Book","name":"Dremio and the Semantic Layer","description":"The journey to providing meaning and context for AI with Dremio's semantic layer.","url":"https://books.alexmerced.com/books/dremio-and-the-semantic-layer/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":21,"item":{"@type":"Book","name":"Apache Iceberg: The Definitive Guide","description":"A comprehensive guide to Apache Iceberg and modern lakehouse architecture, covering table format internals, schema evolution, partitioning, and integration with major query engines.","url":"https://books.alexmerced.com/books/apache-iceberg-the-definitive-guide/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":22,"item":{"@type":"Book","name":"Apache Polaris: The Definitive Guide","description":"A guide to open catalogs for Apache Iceberg lakehouses, covering Polaris catalog architecture, configuration, and governance.","url":"https://books.alexmerced.com/books/apache-polaris-the-definitive-guide/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":23,"item":{"@type":"Book","name":"Architecting an Apache Iceberg Lakehouse","description":"Architecture patterns and best practices for building production-grade, Iceberg-based data platforms from the ground up.","url":"https://books.alexmerced.com/books/architecting-an-apache-iceberg-lakehouse/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":24,"item":{"@type":"Book","name":"The Book on Apache Polaris","description":"Building the open data lakehouse with the industry standard Iceberg REST catalog.","url":"https://books.alexmerced.com/books/the-book-on-apache-polaris/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":25,"item":{"@type":"Book","name":"The Lakehouse Built for Everyone","description":"From laptop prototypes to enterprise-scale agentic AI with Apache Iceberg and Dremio.","url":"https://books.alexmerced.com/books/the-lakehouse-built-for-everyone/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}},{"@type":"ListItem","position":26,"item":{"@type":"Book","name":"The Open Source Lakehouse: Architecting the Decoupled Analytical Foundation","description":"Covers building a fully decoupled lakehouse using open source technologies, emphasizing modularity and vendor independence.","url":"https://books.alexmerced.com/books/the-open-source-lakehouse-architecting-the-decoupled-analytical-foundation/","author":{"@type":"Person","name":"Alex Merced","url":"https://alexmerced.com"}}}]}</script>
+</body>
+</html>
