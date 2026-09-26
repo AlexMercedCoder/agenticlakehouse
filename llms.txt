@@ -230,14 +230,14 @@
 
 ## Author
 
-Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio and O'Reilly/Manning author. More: [AlexMerced.com](https://alexmerced.com), [AlexMercedData.com](https://alexmerceddata.com), [LinkedIn](https://www.linkedin.com/in/alexmerced), [@alexmercedcoder](https://twitter.com/alexmercedcoder).
+Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio and O'Reilly/Manning/Packt author. More: [AlexMerced.com](https://alexmerced.com), [AlexMercedData.com](https://alexmerceddata.com), [LinkedIn](https://www.linkedin.com/in/alexmerced), [@alexmercedcoder](https://twitter.com/alexmercedcoder).
 
 ## Related Properties
 
 - [DataEngr.com](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).
 - [SemanticLakehouse.com](https://semanticlakehouse.com): Semantic layer and lakehouse knowledge base.
 - [WhoIsAlexMerced.com](https://whoisalexmerced.com): About the author.
-- [Books by Alex Merced](https://books.alexmerced.com): O'Reilly and Manning titles.
+- [Books by Alex Merced](https://books.alexmerced.com): O'Reilly, Manning, and Packt titles.
 
 ## Events
 - [Agentic Lakehouse Events](https://luma.com/agenticlakehouse): Global meetups and webinars on agentic analytics

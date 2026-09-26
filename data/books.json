@@ -3,7 +3,7 @@
   "source": "https://alexmerced.com/entity/books.json",
   "catalog": "https://books.alexmerced.com/",
   "intro": "Longer-form treatments of agentic analytics: how AI agents discover, query, and reason over governed lakehouse data, and the architecture underneath that.",
-  "totalInCatalog": 66,
+  "totalInCatalog": 77,
   "count": 26,
   "books": [
     {

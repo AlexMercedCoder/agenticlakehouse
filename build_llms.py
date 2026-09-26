@@ -53,7 +53,7 @@ lines.append("")
 lines.append("## Author")
 lines.append("")
 lines.append("Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio "
-             "and O'Reilly/Manning author. More: [AlexMerced.com](https://alexmerced.com), "
+             "and O'Reilly/Manning/Packt author. More: [AlexMerced.com](https://alexmerced.com), "
              "[AlexMercedData.com](https://alexmerceddata.com), "
              "[LinkedIn](https://www.linkedin.com/in/alexmerced), [@alexmercedcoder](https://twitter.com/alexmercedcoder).")
 lines.append("")
@@ -62,7 +62,7 @@ lines.append("")
 lines.append("- [DataEngr.com](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).")
 lines.append("- [SemanticLakehouse.com](https://semanticlakehouse.com): Semantic layer and lakehouse knowledge base.")
 lines.append("- [WhoIsAlexMerced.com](https://whoisalexmerced.com): About the author.")
-lines.append("- [Books by Alex Merced](https://books.alexmerced.com): O'Reilly and Manning titles.")
+lines.append("- [Books by Alex Merced](https://books.alexmerced.com): O'Reilly, Manning, and Packt titles.")
 lines.append("")
 
 (ROOT / "llms.txt").write_text("\n".join(lines))
