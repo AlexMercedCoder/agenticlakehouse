@@ -116,7 +116,7 @@ def nav_html():
         cur = ' aria-current="page"' if url == "/patterns/" else ""
         ev = ' data-network-event="cta_luma_community"' if "luma.com" in url else ""
         items.append(f'            <li><a href="{url}"{cur}{ev}>{label}</a></li>')
-    items.append('            <li><a href="https://www.dremio.com/get-started" class="btn btn-primary nav-cta">Start Free Trial</a></li>')
+    items.append('            <li><a href="https://amdatalakehouse.substack.com/p/the-open-lakehouse-explained-then" class="btn btn-primary nav-cta" data-network-event="cta_laptop_lakehouse">Try it on your laptop</a></li>')
     return "\n".join(items)
 
 

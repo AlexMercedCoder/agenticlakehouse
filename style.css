@@ -1263,3 +1263,22 @@ h1, h2, h3, h4 {
 }
 .patterns-home-grid .pattern-card h3 { font-size: 1.05rem; margin: 0 0 .3rem; color: var(--color-text-white); }
 .patterns-home-grid .pattern-card p { margin: 0; font-size: .95rem; color: var(--color-text-gray); }
+
+/* Featured film sits on a light gradient: give it dark text explicitly
+   (the site default is light-on-dark). Worst-case contrast on the gradient (#eef1ff): h2 16.6:1,
+   body 8.4:1, tag 6.0:1 (WCAG AA). */
+.featured-film { color: #0b1220; }
+.featured-film .section-tag { display: inline-block; color: #1d4ed8; font-family: var(--font-heading); font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.featured-film-header h2 { color: #0b1220; }
+.featured-film-header p, .featured-film-card figcaption { color: #3d4657; }
+.featured-film a { color: #1d4ed8; }
+
+/* Nav: keep labels on one line; tighten spacing on mid-width screens. */
+.site-nav a { white-space: nowrap; }
+.site-nav .nav-cta { padding: .55rem 1rem; font-size: .9rem; }
+@media (min-width: 769px) and (max-width: 1400px) {
+    .site-header .container { gap: 1rem; }
+    .logo { font-size: 1.25rem; white-space: nowrap; }
+    .site-nav ul { gap: .45rem 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
+    .site-nav a:not(.btn) { font-size: .88rem; }
+}
