@@ -2,52 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agenticlakehouse.com/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/agentic-bi/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/agentic-lakehouse-architecture/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://agenticlakehouse.com/apache-iceberg/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://agenticlakehouse.com/apache-iceberg-architecture/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://agenticlakehouse.com/data-lakehouse/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://agenticlakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://agenticlakehouse.com/books/</loc>
+    <lastmod>2026-09-26</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/dremio-ai/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/dremio-polaris/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -56,13 +36,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://agenticlakehouse.com/what-is-agentic-analytics/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://agenticlakehouse.com/what-is-agentic-lakehouse/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -72,17 +47,17 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-analytics/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-bi/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/agentic-lakehouse/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -97,7 +72,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-agent-authorization/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -112,12 +87,12 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-data-governance/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-hallucination-in-analytics/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -132,7 +107,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/ai-semantic-layer/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -192,12 +167,12 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/autonomous-bi/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/autonomous-data-agents/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -257,7 +232,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/conversational-analytics/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -507,7 +482,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/enterprise-ai-agents/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -557,7 +532,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/governed-ai-querying/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -747,12 +722,12 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-cost-optimization/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-interoperability/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -767,12 +742,12 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/lakehouse-tco/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/llm-data-access/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -812,7 +787,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/metric-store/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -832,7 +807,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/multi-engine-data-architecture/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -842,7 +817,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/natural-language-analytics/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -962,7 +937,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/safe-action-loops/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -977,12 +952,12 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/semantic-data-layer/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/semantic-layer/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1047,7 +1022,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/text-to-sql/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1062,7 +1037,7 @@
   </url>
   <url>
     <loc>https://agenticlakehouse.com/kb/trustworthy-ai-execution/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>

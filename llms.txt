@@ -1,25 +1,21 @@
 # Agentic Lakehouse
 
-> AgenticLakehouse.com is a reference on the agentic lakehouse: data lakehouse architectures built for autonomous AI agents, combining Apache Iceberg open table formats, semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution for agentic analytics and BI workflows. Written by Alex Merced, Open Lakehouse & AI Advocate, Author & Technologist.
+> AgenticLakehouse.com is a reference on the agentic lakehouse: data lakehouse architectures built for autonomous AI agents, combining Apache Iceberg open table formats, semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution for agentic analytics and BI workflows. Written for data engineers and architects by Alex Merced, Head of Developer Relations at Dremio.
 
 ## About
 
-- [Agentic Lakehouse Hub](https://agenticlakehouse.com/): Pillar resource covering agentic lakehouse architecture, agentic analytics, and agentic BI.
+- [Agentic Lakehouse](https://agenticlakehouse.com/): Build the agentic lakehouse: reference architecture, working patterns, and a community of builders.
+- [Agentic Lakehouse Glossary](https://agenticlakehouse.com/kb/): 200 agentic lakehouse terms for engineers and architects.
+- [Agentic Lakehouse community on Luma](https://luma.com/agenticlakehouse): Events and meetups for people building agents on lakehouse data.
 - [Video Explainers](https://agenticlakehouse.com/videos/): Short silent explainers on governed agent data access, semantic layers, MCP, Iceberg snapshots, and safe agent writes.
 
 ## Pillar Pages
 
 - [What is an Agentic Lakehouse? Definition, Architecture & Use Cases](https://agenticlakehouse.com/what-is-agentic-lakehouse/): A complete guide to the Agentic Lakehouse: what it is, how it differs from traditional data lakehouses, its four architectural layers, and how Apache Iceberg and Dremio power it.
-- [What is Agentic Analytics? Definition, Components & How It Works](https://agenticlakehouse.com/what-is-agentic-analytics/): A complete guide to Agentic Analytics: what it is, how autonomous AI agents replace passive BI dashboards, key components, and how to build an agentic analytics platform on Apache Iceberg.
 - [Agentic Lakehouse Architecture Diagram](https://agenticlakehouse.com/agentic-lakehouse-architecture/): The canonical Agentic Lakehouse architecture diagram showing all four layers: Agent Interface (MCP), Semantic Layer, Governed Query Engine, and Apache Iceberg Open Storage.
 - [The Future of BI is Agentic](https://agenticlakehouse.com/agentic-bi/): Dremio lets you talk to your data wherever it lives. Unifying federation, performance, and semantics for Agentic BI.
-- [Apache Iceberg Explained: Architecture, Snapshots, and Catalogs](https://agenticlakehouse.com/apache-iceberg/): A comprehensive guide to Apache Iceberg. Understand how open table formats solve the data lake concurrency problem using snapshots, manifests, and catalogs.
-- [Apache Iceberg Architecture: Snapshots, Manifests, and Catalogs](https://agenticlakehouse.com/apache-iceberg-architecture/): A deep technical dive into the Apache Iceberg architecture. Learn how the metadata tree, manifest lists, and snapshots enable safe concurrency on the data lake.
-- [Apache Iceberg vs Delta Lake vs Apache Hudi: Open Table Formats Compared](https://agenticlakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/): An architectural comparison of Apache Iceberg, Delta Lake, and Apache Hudi. Learn the differences in metadata management, upserts, and ecosystem interoperability.
-- [What Is a Data Lakehouse? Architecture and Definition](https://agenticlakehouse.com/data-lakehouse/): A deep dive into the data lakehouse architecture. Understand how the storage, metadata, and semantic layers combine the performance of a warehouse with the flexibility of a data lake.
-- [Data Lakehouse vs Data Lake vs Data Warehouse: The Ultimate Guide](https://agenticlakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/): Compare the architectural differences between data lakehouses, data lakes, and data warehouses. Learn how storage models, governance, and AI implications dictate the right choice.
-- [5 Powerful Dremio AI Features](https://agenticlakehouse.com/dremio-ai/): Five AI features built into the lakehouse, from SQL AI functions to autonomous performance.
-- [3 Surprising Truths About Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): Discover the Dremio Open Catalog: integrated Apache Polaris that is free, interoperable, and flexible.
+- [Example implementation: Dremio AI features for the agentic lakehouse](https://agenticlakehouse.com/dremio-ai/): An example implementation of agentic lakehouse capabilities: the AI features built into Dremio, from SQL AI functions to autonomous performance.
+- [Example implementation: Dremio Open Catalog on Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): An example implementation of the agentic lakehouse catalog layer: Dremio Open Catalog, built on Apache Polaris, and what it offers for interoperability and governance.
 
 ## Knowledge Base (kb/)
 
@@ -230,14 +226,17 @@
 
 ## Author
 
-Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio and O'Reilly/Manning/Packt author. More: [AlexMerced.com](https://alexmerced.com), [AlexMercedData.com](https://alexmerceddata.com), [LinkedIn](https://www.linkedin.com/in/alexmerced), [@alexmercedcoder](https://twitter.com/alexmercedcoder).
+Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio and O'Reilly/Manning/Packt author. More: [AlexMerced.com](https://alexmerced.com), [AlexMercedData.com](https://alexmerceddata.com), [LinkedIn](https://www.linkedin.com/in/alexmerced), [@AMdatalakehouse](https://x.com/AMdatalakehouse).
 
 ## Related Properties
 
-- [DataEngr.com](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).
+- [Agentic Analytics Now](https://agenticanalyticsnow.com): The leader's side of the same topic: what agentic analytics is, the business case, rollout, governance, and trust. Its what-is-agentic-analytics page replaces the one this site used to host.
+- [Alex Merced's Lakehouse Blog](https://iceberglakehouse.com): Apache Iceberg and data lakehouse pillar guides (architecture, table format comparisons, lakehouse vs warehouse).
+- [DataEngnr](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).
 - [SemanticLakehouse.com](https://semanticlakehouse.com): Semantic layer and lakehouse knowledge base.
 - [WhoIsAlexMerced.com](https://whoisalexmerced.com): About the author.
 - [Books by Alex Merced](https://books.alexmerced.com): O'Reilly, Manning, and Packt titles.
+
 
 ## Events
 - [Agentic Lakehouse Events](https://luma.com/agenticlakehouse): Global meetups and webinars on agentic analytics
