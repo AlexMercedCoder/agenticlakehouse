@@ -12,10 +12,26 @@
 ## Pillar Pages
 
 - [What is an Agentic Lakehouse? Definition, Architecture & Use Cases](https://agenticlakehouse.com/what-is-agentic-lakehouse/): A complete guide to the Agentic Lakehouse: what it is, how it differs from traditional data lakehouses, its four architectural layers, and how Apache Iceberg and Dremio power it.
-- [Agentic Lakehouse Architecture Diagram](https://agenticlakehouse.com/agentic-lakehouse-architecture/): The canonical Agentic Lakehouse architecture diagram showing all four layers: Agent Interface (MCP), Semantic Layer, Governed Query Engine, and Apache Iceberg Open Storage.
+- [Agentic Lakehouse Reference Architecture Diagram](https://agenticlakehouse.com/agentic-lakehouse-architecture/): A free, downloadable agentic lakehouse reference architecture (SVG and PNG, CC BY 4.0): object storage, Apache Iceberg, catalog, query engine, semantic layer, MCP agent interface, agents, and governance.
 - [The Future of BI is Agentic](https://agenticlakehouse.com/agentic-bi/): Dremio lets you talk to your data wherever it lives. Unifying federation, performance, and semantics for Agentic BI.
 - [Example implementation: Dremio AI features for the agentic lakehouse](https://agenticlakehouse.com/dremio-ai/): An example implementation of agentic lakehouse capabilities: the AI features built into Dremio, from SQL AI functions to autonomous performance.
 - [Example implementation: Dremio Open Catalog on Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): An example implementation of the agentic lakehouse catalog layer: Dremio Open Catalog, built on Apache Polaris, and what it offers for interoperability and governance.
+
+## Implementation Patterns (patterns/)
+
+Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0 (repository link coming soon).
+
+- [Agentic Lakehouse Implementation Patterns](https://agenticlakehouse.com/patterns/): Implementation patterns for the agentic lakehouse: agent-safe governed views, row and column policies, query guardrails, a semantic layer over MCP, and an MCP server over an Iceberg catalog.
+- [Agent-Safe Governed Views](https://agenticlakehouse.com/patterns/agent-safe-governed-views/): Step-by-step pattern for agent-safe governed views over Apache Iceberg tables: raw and governed schemas, PII left out, locked engine, and tests, with working Python code.
+- [Build an MCP Server over an Apache Iceberg Catalog](https://agenticlakehouse.com/patterns/mcp-server-over-iceberg-catalog/): Build an MCP server on top of an Apache Iceberg catalog with PyIceberg: a local SQL catalog, partitioned tables, reading into DuckDB, and using Iceberg metadata for cost estimates.
+- [Query Guardrails for AI Agents: Allowlists, Limits, Timeouts, Cost Caps](https://agenticlakehouse.com/patterns/query-guardrails-for-agents/): Step-by-step query guardrails for AI agents on lakehouse data: name and relation allowlists, row limits, statement timeouts, Iceberg metadata cost caps, session budgets, and audit logs.
+- [Row and Column Policies for AI Agents](https://agenticlakehouse.com/patterns/row-and-column-policies-for-agents/): How to enforce row-level and column-level security for AI agents: roles in a semantic model, row filters baked into governed views, denied metrics and dimensions, and tests that try to escape.
+- [Expose a Semantic Layer to AI Agents over MCP](https://agenticlakehouse.com/patterns/semantic-layer-over-mcp/): Build an MCP server that exposes a semantic layer to AI agents: tool design, metric definitions as tool descriptions, read-only annotations, errors the agent can act on, and in-process tests.
+
+## Downloads
+
+- [Agentic lakehouse reference architecture, SVG](https://agenticlakehouse.com/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture.svg): Adapts to light and dark. CC BY 4.0, attribution Alex Merced.
+- [Same diagram, PNG light](https://agenticlakehouse.com/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture-light.png) and [PNG dark](https://agenticlakehouse.com/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture-dark.png): 2400 x 1920.
 
 ## Knowledge Base (kb/)
 
