@@ -45,6 +45,7 @@ const li = (url, label, extra = '') => `<li><a href="${esc(url)}"${ext(url)}${ex
 const SITE_EXPLORE = [
   ['/what-is-agentic-lakehouse/', 'What is an agentic lakehouse?'],
   ['/agentic-lakehouse-architecture/', 'Reference architecture'],
+  ['/patterns/', 'Implementation patterns'],
   ['/agentic-bi/', 'Agentic BI'],
   ['/kb/', 'Agentic lakehouse glossary'],
   ['/videos/', 'Video explainers'],

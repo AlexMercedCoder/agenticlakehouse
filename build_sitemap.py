@@ -22,9 +22,14 @@ for d in sorted(ROOT.iterdir()):
     if d.is_dir() and d.name not in {"kb", "images", "python", ".git", "assets", "network", "scripts"} and (d / "index.html").exists():
         # Pillar pages and the video gallery carry more weight than the rest.
         priority = "0.8" if d.name in {
-            "what-is-agentic-lakehouse", "agentic-lakehouse-architecture", "videos",
+            "what-is-agentic-lakehouse", "agentic-lakehouse-architecture", "videos", "patterns",
         } else "0.6"
         urls.append((f"{BASE}/{d.name}/", priority, d / "index.html"))
+        # Nested pages (the /patterns/ section).
+        if d.name == "patterns":
+            for sub in sorted(d.iterdir()):
+                if sub.is_dir() and (sub / "index.html").exists():
+                    urls.append((f"{BASE}/{d.name}/{sub.name}/", "0.8", sub / "index.html"))
 
 # KB pages
 kb = ROOT / "kb"

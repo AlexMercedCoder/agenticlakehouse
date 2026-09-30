@@ -1,0 +1,137 @@
+            <p class="pattern-lede">An agent with credentials to raw tables can read every column, including the ones with names and email addresses, and it will write its own joins. Some of those joins will be wrong. The fix is old and boring: publish views that hold the curated columns and the correct joins, and give the agent access to those views and nothing else. This page builds that, step by step, over Apache Iceberg tables.</p>
+
+<!-- companion -->
+
+            <h2 id="shape">The shape of the pattern</h2>
+            <ul class="pattern-list">
+                <li><strong>Raw schema.</strong> The Iceberg tables as written by your pipelines. Engineers and jobs read these. Agents never do.</li>
+                <li><strong>Governed schema.</strong> Views over the raw tables that select allowed columns only, apply the joins the business agreed on, and apply the row policy for the agent's role (covered in <a href="/patterns/row-and-column-policies-for-agents/">row and column policies</a>).</li>
+                <li><strong>A locked engine.</strong> The connection the agent's queries run on cannot read files, call URLs, or change its own settings.</li>
+            </ul>
+            <p>In the demo the engine is DuckDB and the views live in a <code>governed</code> schema. In a production lakehouse engine the same shape is a folder or schema of views plus grants that give the agent's service identity <code>SELECT</code> on the views and no privilege on the tables underneath.</p>
+
+            <h2 id="step-1">Step 1: Keep the raw tables where agents cannot name them</h2>
+            <p>The demo writes two Iceberg tables with PyIceberg: <code>sales.customers</code>, which deliberately includes <code>customer_name</code> and <code>email</code>, and <code>sales.orders</code>. The catalog is a SQLite file and the warehouse is a local folder, so there is nothing to install beyond Python packages.</p>
+```python
+from pyiceberg.catalog import Catalog, load_catalog
+
+def get_catalog(home=None) -> Catalog:
+    """Load (or create) the SQL catalog backed by SQLite and a local warehouse."""
+    root = demo_home(home)
+    warehouse = root / "warehouse"
+    warehouse.mkdir(parents=True, exist_ok=True)
+    return load_catalog(
+        "demo",
+        **{
+            "type": "sql",
+            "uri": f"sqlite:///{root / 'catalog.db'}",
+            "warehouse": warehouse.as_uri(),
+        },
+    )
+```
+            <p>The agent never receives catalog credentials. The MCP server holds them, and the only things it exposes are metrics and dimensions. That is the first boundary: the agent cannot ask for a table it has no way to name.</p>
+
+            <h2 id="step-2">Step 2: Declare the governed view in the semantic model</h2>
+            <p>The view definition belongs next to the metrics that use it, in version control, reviewed like code. The column list <em>is</em> the column policy: anything not selected here cannot be reached by any metric or dimension.</p>
+```yaml
+sources:
+  orders:
+    table: sales.orders
+  customers:
+    table: sales.customers
+
+governed_views:
+  orders_enriched:
+    description: One row per order with the customer's segment. No personal data.
+    sql: |
+      SELECT
+        o.order_id,
+        o.order_date,
+        o.customer_id,
+        o.region,
+        o.channel,
+        o.product_category,
+        o.status,
+        o.amount,
+        o.discount,
+        c.segment
+      FROM {orders} AS o
+      JOIN {customers} AS c ON o.customer_id = c.customer_id
+    row_policy_column: region
+    time_column: order_date
+    cost_source: orders
+```
+            <p>Three details matter. The join from orders to customers is written once, by someone who knows the keys, so no agent reinvents it. <code>customer_id</code> stays because counting distinct customers is a legitimate metric, while the name and email columns stay behind. And <code>{orders}</code> and <code>{customers}</code> are placeholders, so the view text never hard-codes where raw data lives.</p>
+
+            <h2 id="step-3">Step 3: Build raw and governed schemas in the engine</h2>
+            <p>At startup the server reads each source table from Iceberg into a private <code>raw</code> schema, then creates each governed view in the <code>governed</code> schema.</p>
+```python
+RAW_SCHEMA = "raw"
+GOVERNED_SCHEMA = "governed"
+
+def build_connection(catalog, model, role) -> duckdb.DuckDBPyConnection:
+    """Load sources from Iceberg and return a locked DuckDB connection."""
+    con = duckdb.connect(database=":memory:")
+    con.execute(f"CREATE SCHEMA {RAW_SCHEMA}")
+    con.execute(f"CREATE SCHEMA {GOVERNED_SCHEMA}")
+
+    for key, identifier in model.sources.items():
+        try:
+            arrow = catalog.load_table(identifier).scan().to_arrow()
+        except NoSuchTableError as exc:
+            raise RuntimeError(f"Iceberg table {identifier} not found. Run `slh-seed` first.") from exc
+        con.register("_incoming", arrow)
+        con.execute(f"CREATE TABLE {RAW_SCHEMA}.{key} AS SELECT * FROM _incoming")
+        con.unregister("_incoming")
+
+    for view_name in model.views:
+        con.execute(governed_view_sql(model, view_name, role))
+
+    # Defense in depth: no file, HTTP, or extension access from here on.
+    con.execute("SET enable_external_access = false")
+    con.execute("SET lock_configuration = true")
+    return con
+```
+            <p><code>governed_view_sql</code> fills in the placeholders and, when the role has one, wraps the view in its row filter. The next pattern covers that part.</p>
+
+            <h2 id="step-4">Step 4: Lock the engine</h2>
+            <p>The last two statements above are easy to skip and worth keeping. <code>enable_external_access = false</code> stops DuckDB from reading files, URLs, or extensions, so a query that somehow got past every other check still could not call <code>read_csv('/etc/passwd')</code>. <code>lock_configuration = true</code> stops anyone from turning it back on. Every query then runs on a cursor of this connection, and cursors share the same locked database.</p>
+            <p>In a server-based engine the equivalent is a service account for the agent that holds <code>SELECT</code> on the governed views and nothing else: no table privileges, no ability to create objects, no external data sources.</p>
+
+            <h2 id="step-5">Step 5: Only compile SQL against governed views</h2>
+            <p>The views only help if nothing ever queries around them. In the demo the agent cannot send SQL at all. The compiler turns metric names into SQL, and it only knows one <code>FROM</code> clause:</p>
+```python
+sql = f"  SELECT {', '.join(select)}\n  FROM governed.{view.name}"
+```
+            <p>A second, independent check parses the compiled statement with DuckDB's own parser and refuses anything that reads a relation outside the governed views. That check is described in <a href="/patterns/query-guardrails-for-agents/">query guardrails</a>.</p>
+
+            <h2 id="step-6">Step 6: Test the boundary, not just the happy path</h2>
+            <p>These tests run against real Iceberg tables in a temporary directory. They fail if a PII column appears in a governed view, or if the engine can read a file.</p>
+```python
+def test_governed_view_has_no_pii_columns(analyst):
+    cols = [r[0] for r in analyst.con.execute("DESCRIBE governed.orders_enriched").fetchall()]
+    assert "email" not in cols and "customer_name" not in cols
+    assert {"region", "segment", "amount"} <= set(cols)
+
+
+def test_external_access_is_off_and_locked(analyst):
+    with pytest.raises(duckdb.Error):
+        analyst.con.execute("SELECT * FROM read_csv('/etc/hosts')").fetchall()
+    with pytest.raises(duckdb.Error):
+        analyst.con.execute("SET enable_external_access = true")
+    # Cursors (used for every query) share the same locked database.
+    with pytest.raises(duckdb.Error):
+        analyst.con.cursor().execute("SELECT * FROM read_csv('/etc/hosts')").fetchall()
+```
+
+            <h2 id="done">Done when</h2>
+            <ul class="pattern-checklist">
+                <li>The agent's identity has no privilege on any raw table, only on governed views.</li>
+                <li>No governed view selects a column you would not show in a meeting. Check with <code>DESCRIBE</code>, not by reading the SQL.</li>
+                <li>Joins between facts and dimensions happen inside views, never in agent-generated SQL.</li>
+                <li>The engine connection used for agent queries cannot read files or URLs, and that setting cannot be changed from a query.</li>
+                <li>A test fails if any of the above stops being true.</li>
+            </ul>
+
+            <h2 id="production">Taking it to production</h2>
+            <p>The demo loads Iceberg tables into memory because it has to run anywhere in a few seconds. In production the views sit in the engine that queries Iceberg in place, and the engine enforces the grants. Keep the view definitions in the same repository as the semantic model so a pull request that adds a column to a view is reviewed by someone who knows what the column holds. Iceberg's own view specification lets several engines share a view definition; see <a href="/kb/iceberg-view-specification/">Iceberg view specification</a> for how far that support goes today.</p>

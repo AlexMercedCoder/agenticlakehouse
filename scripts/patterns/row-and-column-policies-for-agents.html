@@ -1,0 +1,129 @@
+            <p class="pattern-lede">An agent always acts for someone: a sales rep in one region, a finance analyst, a support lead. It should see what that person may see, and nothing more. The tempting shortcut is to write the rule into the system prompt ("only discuss EMEA"). A prompt is a request, not a control. This pattern puts the rule in the data path, where the agent cannot argue with it.</p>
+
+<!-- companion -->
+
+            <h2 id="shape">The shape of the pattern</h2>
+            <ul class="pattern-list">
+                <li><strong>Roles are configuration</strong>, reviewed in version control, not text the agent can read and rewrite.</li>
+                <li><strong>Row policy</strong> is a filter written into the governed view for the role, so every query inherits it.</li>
+                <li><strong>Column policy</strong> works at two levels: the governed view's column list (data) and denied metrics and dimensions per role (semantics).</li>
+                <li><strong>Identity comes from outside the conversation.</strong> The agent never passes its own role as a tool argument.</li>
+            </ul>
+
+            <h2 id="step-1">Step 1: Define roles next to the semantic model</h2>
+            <p>The demo has three agent identities. The EMEA sales agent sees EMEA rows only and cannot group by customer segment. Only the finance agent can see total discounts.</p>
+```yaml
+policies:
+  default_role: analyst_agent
+  roles:
+    analyst_agent:
+      description: Company-wide analytics agent. All regions, no finance-only metrics.
+      row_filter: null
+      denied_metrics: [discount_total]
+      denied_dimensions: []
+    emea_sales_agent:
+      description: Sales agent for the EMEA team. EMEA rows only.
+      row_filter:
+        column: region
+        values: [EMEA]
+      denied_metrics: [discount_total]
+      denied_dimensions: [segment]
+    finance_agent:
+      description: Finance agent. All regions and all metrics.
+      row_filter: null
+      denied_metrics: []
+      denied_dimensions: []
+```
+            <p>The loader validates this file before the server starts. A role that denies a metric that does not exist, or a row filter value with quote characters in it, stops startup instead of failing open.</p>
+```python
+for v in values:
+    if not re.match(r"^[A-Za-z0-9_ -]+$", v):
+        raise ModelError(f"{where}: row filter value {v!r} has unexpected characters")
+denied_m = frozenset(spec.get("denied_metrics") or ())
+denied_d = frozenset(spec.get("denied_dimensions") or ())
+if denied_m - set(metrics) or denied_d - set(dimensions):
+    raise ModelError(f"{where}: denies a metric or dimension that does not exist")
+```
+
+            <h2 id="step-2">Step 2: Write the row filter into the view</h2>
+            <p>The row policy is not a <code>WHERE</code> clause the compiler remembers to add. It is part of the view the role's queries read. When the server starts as <code>emea_sales_agent</code>, <code>governed.orders_enriched</code> only contains EMEA rows, so there is no query shape that returns anything else.</p>
+```python
+def governed_view_sql(model, view_name, role) -> str:
+    """Return the CREATE VIEW statement for one governed view under one role."""
+    view = model.views[view_name]
+    body = view.sql.strip().format(**{k: f"{RAW_SCHEMA}.{k}" for k in model.sources})
+    if role.row_filter_column:
+        if role.row_filter_column != view.row_policy_column:
+            raise ValueError(
+                f"role {role.name} filters on {role.row_filter_column}, "
+                f"but view {view_name} is filtered on {view.row_policy_column}"
+            )
+        allowed = ", ".join(_quote_literal(v) for v in role.row_filter_values)
+        body = f"SELECT * FROM (\n{body}\n) AS base\nWHERE {role.row_filter_column} IN ({allowed})"
+    return f"CREATE OR REPLACE VIEW {GOVERNED_SCHEMA}.{view_name} AS\n{body}"
+```
+            <p>The check that the role's filter column matches the view's declared <code>row_policy_column</code> catches a quiet failure: a policy written for a column the view does not have.</p>
+
+            <h2 id="step-3">Step 3: Enforce column policy at the semantic level</h2>
+            <p>The view's column list already keeps PII out (see <a href="/patterns/agent-safe-governed-views/">agent-safe governed views</a>). Some columns are fine for one role and not another. Rather than build a view per role, the demo denies metrics and dimensions per role, and the compiler refuses them by name:</p>
+```python
+for name in req.metrics:
+    if name not in model.metrics or name in role.denied_metrics:
+        raise GuardrailError(f"Unknown or restricted metric {name!r}. Call list_metrics.")
+for name in req.dimensions + [f.dimension for f in req.filters]:
+    if name not in model.dimensions or name in role.denied_dimensions:
+        raise GuardrailError(f"Unknown or restricted dimension {name!r}. Call list_dimensions.")
+```
+            <p>Two choices here are deliberate. Filters are checked too, so a denied dimension cannot be probed with <code>segment = 'enterprise'</code>. And the message does not say whether the name is unknown or restricted, so the agent cannot map what exists by trying names. Denied items are also left out of <code>list_metrics</code> and <code>list_dimensions</code>, so a well-behaved agent never tries them.</p>
+
+            <h2 id="step-4">Step 4: Take identity from outside the conversation</h2>
+            <p>The demo server runs as one role, chosen by an environment variable when the process starts:</p>
+```sh
+AGENT_ROLE=emea_sales_agent .venv/bin/slh-server
+```
+            <p>That is the right shape for a laptop and the wrong source for production. In production the role comes from the authenticated user behind the agent: an OAuth token on the MCP server's HTTP transport, mapped to groups your engine already understands. What matters is the direction: the identity flows from the platform into the server, and no tool accepts a role, user, or tenant argument from the model.</p>
+
+            <h2 id="step-5">Step 5: Test the escape attempts</h2>
+            <p>The useful tests are the ones an eager agent would try. The EMEA agent asks for NA and APAC through a filter; the answer is an empty result, not a leak. The analyst agent asks for a finance metric; it is refused and the refusal is logged.</p>
+```python
+def test_emea_agent_only_gets_emea_rows(emea):
+    result = emea.query_metric(metrics=["revenue"], dimensions=["region"], **Q1)
+    assert [r["region"] for r in result["rows"]] == ["EMEA"]
+
+
+def test_emea_agent_cannot_filter_its_way_out(emea):
+    result = emea.query_metric(
+        metrics=["revenue"],
+        dimensions=["region"],
+        filters=[{"dimension": "region", "op": "in", "values": ["NA", "APAC"]}],
+        **Q1,
+    )
+    assert result["rows"] == []
+
+
+def test_finance_can_query_restricted_metric(finance, analyst):
+    assert finance.query_metric(metrics=["discount_total"], **Q1)["rows"][0]["discount_total"] > 0
+    with pytest.raises(GuardrailError):
+        analyst.query_metric(metrics=["discount_total"], **Q1)
+```
+            <p>The agent can also ask the server which policy is in force. <code>describe_metric</code> returns it, which helps when a user asks why a total looks small (response trimmed):</p>
+```json
+{
+  "name": "revenue",
+  "view": "governed.orders_enriched",
+  "role": "emea_sales_agent",
+  "row_policy": "region in ['EMEA']"
+}
+```
+
+            <h2 id="done">Done when</h2>
+            <ul class="pattern-checklist">
+                <li>Every agent identity maps to a role in reviewed configuration, with a default that is the narrowest reasonable one.</li>
+                <li>Row filters live in the data path (views or engine row policies), never in the prompt.</li>
+                <li>Denied metrics and dimensions are refused in selects and in filters, and hidden from discovery tools.</li>
+                <li>No tool takes a role, user, or tenant argument.</li>
+                <li>Tests cover filter-based escapes and restricted names for each role.</li>
+            </ul>
+
+            <h2 id="production">Taking it to production</h2>
+            <p>Most lakehouse engines can enforce row filters and column masks natively, keyed on the querying user or group. Use them. The semantic layer's denied lists then become a second layer that keeps the agent's tool descriptions honest, not the only control. And keep the audit log (covered in <a href="/patterns/query-guardrails-for-agents/">query guardrails</a>) so you can show, per identity, what was asked and what was returned.</p>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 930" width="1200" height="930" class="alr" role="img" aria-labelledby="alr-auto-title alr-auto-desc">
+<title id="alr-auto-title">Agentic lakehouse reference architecture</title>
+<desc id="alr-auto-desc">A stack of seven numbered layers, top (7) to bottom (1): agents; agent interface such as MCP; semantic layer; query engine; catalog; table format such as Apache Iceberg; and object storage. Agents call typed tools over MCP, the interface sends metric requests to the semantic layer, which compiles governed SQL for the query engine. The engine reads table metadata from the catalog, snapshots and manifests from the table format, and Parquet data files from object storage. A governance rail runs beside the agent interface, semantic layer, query engine, and catalog: agent identity, row and column policies, query guardrails, cost caps, audit log, and catalog access control. Diagram by Alex Merced, CC BY 4.0, agenticlakehouse.com.</desc>
+<style>
+.alr {
+  --bg: #ffffff; --band: #f8fafc; --chip: #ffffff; --ink: #0f172a; --muted: #334155; --line: #64748b; --badge-ink: #ffffff;
+  --agents: #6d28d9;
+  --interface: #1d4ed8;
+  --semantic: #0f766e;
+  --engine: #0e7490;
+  --catalog: #a16207;
+  --format: #c2410c;
+  --storage: #475569;
+  --governance: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  .alr:not(.alr-light) {
+  --bg: #0f172a; --band: #1e293b; --chip: #0f172a; --ink: #f1f5f9; --muted: #cbd5e1; --line: #94a3b8; --badge-ink: #0f172a;
+  --agents: #c4b5fd;
+  --interface: #93c5fd;
+  --semantic: #5eead4;
+  --engine: #67e8f9;
+  --catalog: #fde047;
+  --format: #fdba74;
+  --storage: #cbd5e1;
+  --governance: #fca5a5;
+  }
+}
+.alr.alr-dark {
+  --bg: #0f172a; --band: #1e293b; --chip: #0f172a; --ink: #f1f5f9; --muted: #cbd5e1; --line: #94a3b8; --badge-ink: #0f172a;
+  --agents: #c4b5fd;
+  --interface: #93c5fd;
+  --semantic: #5eead4;
+  --engine: #67e8f9;
+  --catalog: #fde047;
+  --format: #fdba74;
+  --storage: #cbd5e1;
+  --governance: #fca5a5;
+}
+.alr text { font-family: Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: var(--ink); }
+.alr .bg { fill: var(--bg); }
+.alr .band { fill: var(--band); stroke-width: 2; }
+.alr .chip { fill: var(--chip); stroke-width: 1.5; }
+.alr .title { font-size: 30px; font-weight: 700; }
+.alr .subtitle { font-size: 17px; fill: var(--muted); }
+.alr .name { font-size: 21px; font-weight: 700; }
+.alr .job { font-size: 15px; fill: var(--muted); }
+.alr .chiptext { font-size: 14px; font-weight: 500; }
+.alr .num { font-size: 15px; font-weight: 700; fill: var(--badge-ink); }
+.alr .flow { stroke: var(--line); stroke-width: 2; fill: none; }
+.alr .flowhead { fill: var(--line); }
+.alr .flowlabel { font-size: 13.5px; fill: var(--muted); font-style: italic; }
+.alr .railitem { font-size: 15px; }
+.alr .foot { font-size: 13.5px; fill: var(--muted); }
+</style>
+<rect class="bg" width="1200" height="930" rx="20"/>
+<text class="title" x="40" y="56">Agentic lakehouse reference architecture</text>
+<text class="subtitle" x="40" y="86">How AI agents reach open lakehouse data through governed, typed interfaces</text>
+<rect class="band" x="40" y="118" width="850" height="88" rx="12" style="stroke: var(--agents)"/>
+<rect x="40" y="118" width="8" height="88" rx="4" style="fill: var(--agents)"/>
+<circle cx="82" cy="162.0" r="17" style="fill: var(--agents)"/>
+<text class="num" x="82" y="167.0" text-anchor="middle">7</text>
+<text class="name" x="114" y="156">Agents</text>
+<text class="job" x="114" y="182">Ask questions and act for people and teams</text>
+<rect class="chip" x="777" y="145" width="97" height="34" rx="17" style="stroke: var(--agents)"/>
+<text class="chiptext" x="825.5" y="167" text-anchor="middle">Workflows</text>
+<rect class="chip" x="639" y="145" width="128" height="34" rx="17" style="stroke: var(--agents)"/>
+<text class="chiptext" x="703.0" y="167" text-anchor="middle">Coding agents</text>
+<rect class="chip" x="524" y="145" width="105" height="34" rx="17" style="stroke: var(--agents)"/>
+<text class="chiptext" x="576.5" y="167" text-anchor="middle">Assistants</text>
+<line class="flow" x1="82" y1="208" x2="82" y2="219"/>
+<path class="flowhead" d="M77 218 L87 218 L82 225 Z"/>
+<text class="flowlabel" x="98" y="221">tool calls over MCP</text>
+<rect class="band" x="40" y="226" width="850" height="88" rx="12" style="stroke: var(--interface)"/>
+<rect x="40" y="226" width="8" height="88" rx="4" style="fill: var(--interface)"/>
+<circle cx="82" cy="270.0" r="17" style="fill: var(--interface)"/>
+<text class="num" x="82" y="275.0" text-anchor="middle">6</text>
+<text class="name" x="114" y="264">Agent interface (MCP)</text>
+<text class="job" x="114" y="290">Typed tools the agent can discover and call</text>
+<rect class="chip" x="738" y="253" width="136" height="34" rx="17" style="stroke: var(--interface)"/>
+<text class="chiptext" x="806.0" y="275" text-anchor="middle">OAuth identity</text>
+<rect class="chip" x="608" y="253" width="120" height="34" rx="17" style="stroke: var(--interface)"/>
+<text class="chiptext" x="668.0" y="275" text-anchor="middle">Tool schemas</text>
+<rect class="chip" x="486" y="253" width="112" height="34" rx="17" style="stroke: var(--interface)"/>
+<text class="chiptext" x="542.0" y="275" text-anchor="middle">MCP servers</text>
+<line class="flow" x1="82" y1="316" x2="82" y2="327"/>
+<path class="flowhead" d="M77 326 L87 326 L82 333 Z"/>
+<text class="flowlabel" x="98" y="329">metric requests, never raw SQL</text>
+<rect class="band" x="40" y="334" width="850" height="88" rx="12" style="stroke: var(--semantic)"/>
+<rect x="40" y="334" width="8" height="88" rx="4" style="fill: var(--semantic)"/>
+<circle cx="82" cy="378.0" r="17" style="fill: var(--semantic)"/>
+<text class="num" x="82" y="383.0" text-anchor="middle">5</text>
+<text class="name" x="114" y="372">Semantic layer</text>
+<text class="job" x="114" y="398">Business definitions and agent-safe views</text>
+<rect class="chip" x="738" y="361" width="136" height="34" rx="17" style="stroke: var(--semantic)"/>
+<text class="chiptext" x="806.0" y="383" text-anchor="middle">Governed views</text>
+<rect class="chip" x="623" y="361" width="105" height="34" rx="17" style="stroke: var(--semantic)"/>
+<text class="chiptext" x="675.5" y="383" text-anchor="middle">Dimensions</text>
+<rect class="chip" x="532" y="361" width="81" height="34" rx="17" style="stroke: var(--semantic)"/>
+<text class="chiptext" x="572.5" y="383" text-anchor="middle">Metrics</text>
+<line class="flow" x1="82" y1="424" x2="82" y2="435"/>
+<path class="flowhead" d="M77 434 L87 434 L82 441 Z"/>
+<text class="flowlabel" x="98" y="437">governed SQL</text>
+<rect class="band" x="40" y="442" width="850" height="88" rx="12" style="stroke: var(--engine)"/>
+<rect x="40" y="442" width="8" height="88" rx="4" style="fill: var(--engine)"/>
+<circle cx="82" cy="486.0" r="17" style="fill: var(--engine)"/>
+<text class="num" x="82" y="491.0" text-anchor="middle">4</text>
+<text class="name" x="114" y="480">Query engine</text>
+<text class="job" x="114" y="506">Plans and runs SQL, enforces grants</text>
+<rect class="chip" x="801" y="469" width="73" height="34" rx="17" style="stroke: var(--engine)"/>
+<text class="chiptext" x="837.5" y="491" text-anchor="middle">DuckDB</text>
+<rect class="chip" x="726" y="469" width="65" height="34" rx="17" style="stroke: var(--engine)"/>
+<text class="chiptext" x="758.5" y="491" text-anchor="middle">Spark</text>
+<rect class="chip" x="651" y="469" width="65" height="34" rx="17" style="stroke: var(--engine)"/>
+<text class="chiptext" x="683.5" y="491" text-anchor="middle">Trino</text>
+<rect class="chip" x="568" y="469" width="73" height="34" rx="17" style="stroke: var(--engine)"/>
+<text class="chiptext" x="604.5" y="491" text-anchor="middle">Dremio</text>
+<line class="flow" x1="82" y1="532" x2="82" y2="543"/>
+<path class="flowhead" d="M77 542 L87 542 L82 549 Z"/>
+<text class="flowlabel" x="98" y="545">table metadata and credentials</text>
+<rect class="band" x="40" y="550" width="850" height="88" rx="12" style="stroke: var(--catalog)"/>
+<rect x="40" y="550" width="8" height="88" rx="4" style="fill: var(--catalog)"/>
+<circle cx="82" cy="594.0" r="17" style="fill: var(--catalog)"/>
+<text class="num" x="82" y="599.0" text-anchor="middle">3</text>
+<text class="name" x="114" y="588">Catalog</text>
+<text class="job" x="114" y="614">Names tables and tracks their metadata</text>
+<rect class="chip" x="801" y="577" width="73" height="34" rx="17" style="stroke: var(--catalog)"/>
+<text class="chiptext" x="837.5" y="599" text-anchor="middle">Nessie</text>
+<rect class="chip" x="671" y="577" width="120" height="34" rx="17" style="stroke: var(--catalog)"/>
+<text class="chiptext" x="731.0" y="599" text-anchor="middle">Iceberg REST</text>
+<rect class="chip" x="525" y="577" width="136" height="34" rx="17" style="stroke: var(--catalog)"/>
+<text class="chiptext" x="593.0" y="599" text-anchor="middle">Apache Polaris</text>
+<line class="flow" x1="82" y1="640" x2="82" y2="651"/>
+<path class="flowhead" d="M77 650 L87 650 L82 657 Z"/>
+<text class="flowlabel" x="98" y="653">snapshots and manifests</text>
+<rect class="band" x="40" y="658" width="850" height="88" rx="12" style="stroke: var(--format)"/>
+<rect x="40" y="658" width="8" height="88" rx="4" style="fill: var(--format)"/>
+<circle cx="82" cy="702.0" r="17" style="fill: var(--format)"/>
+<text class="num" x="82" y="707.0" text-anchor="middle">2</text>
+<text class="name" x="114" y="696">Table format</text>
+<text class="job" x="114" y="722">Files become tables with ACID snapshots</text>
+<rect class="chip" x="762" y="685" width="112" height="34" rx="17" style="stroke: var(--format)"/>
+<text class="chiptext" x="818.0" y="707" text-anchor="middle">Time travel</text>
+<rect class="chip" x="655" y="685" width="97" height="34" rx="17" style="stroke: var(--format)"/>
+<text class="chiptext" x="703.5" y="707" text-anchor="middle">Snapshots</text>
+<rect class="chip" x="509" y="685" width="136" height="34" rx="17" style="stroke: var(--format)"/>
+<text class="chiptext" x="577.0" y="707" text-anchor="middle">Apache Iceberg</text>
+<line class="flow" x1="82" y1="748" x2="82" y2="759"/>
+<path class="flowhead" d="M77 758 L87 758 L82 765 Z"/>
+<text class="flowlabel" x="98" y="761">Parquet data files</text>
+<rect class="band" x="40" y="766" width="850" height="88" rx="12" style="stroke: var(--storage)"/>
+<rect x="40" y="766" width="8" height="88" rx="4" style="fill: var(--storage)"/>
+<circle cx="82" cy="810.0" r="17" style="fill: var(--storage)"/>
+<text class="num" x="82" y="815.0" text-anchor="middle">1</text>
+<text class="name" x="114" y="804">Object storage</text>
+<text class="job" x="114" y="830">Holds every byte once, in open formats</text>
+<rect class="chip" x="809" y="793" width="65" height="34" rx="17" style="stroke: var(--storage)"/>
+<text class="chiptext" x="841.5" y="815" text-anchor="middle">MinIO</text>
+<rect class="chip" x="694" y="793" width="105" height="34" rx="17" style="stroke: var(--storage)"/>
+<text class="chiptext" x="746.5" y="815" text-anchor="middle">Google GCS</text>
+<rect class="chip" x="579" y="793" width="105" height="34" rx="17" style="stroke: var(--storage)"/>
+<text class="chiptext" x="631.5" y="815" text-anchor="middle">Azure ADLS</text>
+<rect class="chip" x="472" y="793" width="97" height="34" rx="17" style="stroke: var(--storage)"/>
+<text class="chiptext" x="520.5" y="815" text-anchor="middle">Amazon S3</text>
+<rect class="band" x="910" y="226" width="250" height="412" rx="12" style="stroke: var(--governance)"/>
+<rect x="922" y="227" width="226" height="6" rx="3" style="fill: var(--governance)"/>
+<text class="name" x="932" y="272">Governance</text>
+<text class="job" x="932" y="298">Applies to layers 3 to 6</text>
+<rect x="932" y="332" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="342">Agent identity</text>
+<rect x="932" y="376" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="386">Row and column policies</text>
+<rect x="932" y="420" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="430">Query guardrails</text>
+<rect x="932" y="464" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="474">Cost caps</text>
+<rect x="932" y="508" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="518">Audit log</text>
+<rect x="932" y="552" width="10" height="10" rx="2" style="fill: var(--governance)"/>
+<text class="railitem" x="952" y="562">Catalog access control</text>
+<line x1="890" y1="270.0" x2="910" y2="270.0" stroke-width="2" stroke-dasharray="4 4" style="stroke: var(--governance)"/>
+<line x1="890" y1="378.0" x2="910" y2="378.0" stroke-width="2" stroke-dasharray="4 4" style="stroke: var(--governance)"/>
+<line x1="890" y1="486.0" x2="910" y2="486.0" stroke-width="2" stroke-dasharray="4 4" style="stroke: var(--governance)"/>
+<line x1="890" y1="594.0" x2="910" y2="594.0" stroke-width="2" stroke-dasharray="4 4" style="stroke: var(--governance)"/>
+<text class="foot" x="40" y="896">Diagram: Alex Merced, agenticlakehouse.com. License: CC BY 4.0 (creativecommons.org/licenses/by/4.0). Examples are illustrative, not endorsements.</text>
+</svg>

@@ -42,6 +42,22 @@ for p in pillars:
     if idx.exists():
         lines.append(f"- [{title_of(idx)}]({BASE}/{p}/): {meta_desc(idx)}")
 lines.append("")
+lines.append("## Implementation Patterns (patterns/)")
+lines.append("")
+lines.append("Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0 (repository link coming soon).")
+lines.append("")
+pat = ROOT / "patterns"
+if (pat / "index.html").exists():
+    lines.append(f"- [{title_of(pat / 'index.html')}]({BASE}/patterns/): {meta_desc(pat / 'index.html')}")
+    for d in sorted(pat.iterdir()):
+        if d.is_dir() and (d / "index.html").exists():
+            lines.append(f"- [{title_of(d / 'index.html')}]({BASE}/patterns/{d.name}/): {meta_desc(d / 'index.html')}")
+lines.append("")
+lines.append("## Downloads")
+lines.append("")
+lines.append(f"- [Agentic lakehouse reference architecture, SVG]({BASE}/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture.svg): Adapts to light and dark. CC BY 4.0, attribution Alex Merced.")
+lines.append(f"- [Same diagram, PNG light]({BASE}/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture-light.png) and [PNG dark]({BASE}/agentic-lakehouse-architecture/agentic-lakehouse-reference-architecture-dark.png): 2400 x 1920.")
+lines.append("")
 lines.append("## Knowledge Base (kb/)")
 lines.append("")
 kb = ROOT / "kb"

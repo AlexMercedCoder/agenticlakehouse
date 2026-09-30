@@ -1,0 +1,190 @@
+            <p class="pattern-lede">Agents ask more questions than people, they ask them faster, and they do not get tired of retrying. Governed views decide <em>what</em> an agent can read. Guardrails decide <em>how much</em>: which relations a statement may touch, how many rows come back, how long it may run, how much data it may scan, and how many queries one session gets. Each guardrail below is a few lines of code with a test.</p>
+
+<!-- companion -->
+
+            <h2 id="order">Where each guardrail sits</h2>
+            <ol class="pattern-list">
+                <li><strong>Name allowlist</strong>: metric and dimension names must exist in the semantic model and be allowed for the role.</li>
+                <li><strong>Shape limits</strong>: at most 5 metrics, 3 dimensions, 20 filter values, and a <code>LIMIT</code> no higher than the cap.</li>
+                <li><strong>Relation allowlist</strong>: the compiled SQL is parsed and must read governed views only.</li>
+                <li><strong>Cost cap</strong>: estimated rows scanned, from Iceberg metadata, must be under the cap.</li>
+                <li><strong>Timeout</strong>: the statement is interrupted after a fixed time.</li>
+                <li><strong>Session budget</strong> and <strong>audit log</strong> wrap all of the above.</li>
+            </ol>
+            <p>The limits are configuration, in the same YAML file as the metrics:</p>
+```yaml
+guardrails:
+  max_rows: 500              # hard cap on rows returned to the agent
+  default_limit: 100         # used when the agent does not ask for a limit
+  max_metrics_per_query: 5
+  max_dimensions_per_query: 3
+  max_filter_values: 20
+  timeout_seconds: 5         # the query is interrupted after this long
+  max_scan_rows: 25000
+  max_queries_per_session: 200
+```
+
+            <h2 id="step-1">Step 1: Allowlist names, bind values</h2>
+            <p>The agent never sends SQL. It sends names and values. Names are looked up in the model (see <a href="/patterns/row-and-column-policies-for-agents/">row and column policies</a> for the code) and values go into the statement as parameters, so a value like <code>EMEA' OR '1'='1</code> is a string to compare against, not SQL:</p>
+```python
+expr = model.dimensions[f.dimension].expression
+if op in ("=", "<>"):
+    if len(f.values) != 1:
+        raise GuardrailError(f"Op {f.op!r} takes exactly one value.")
+    where.append(f"({expr}) {op} ?")
+else:
+    where.append(f"({expr}) {op} ({', '.join('?' for _ in f.values)})")
+where_params += list(f.values)
+```
+            <p>Operators come from a fixed map (<code>=</code>, <code>!=</code>, <code>in</code>, <code>not_in</code>). Anything else is refused before SQL exists.</p>
+
+            <h2 id="step-2">Step 2: Cap rows and report truncation</h2>
+            <p>Every compiled statement ends with a <code>LIMIT</code>, and it asks for one row more than it will return. If that extra row arrives, the result says <code>truncated: true</code>, so the agent knows the list is partial instead of reporting the top 100 as the whole answer.</p>
+```python
+limit = g.default_limit if req.limit is None else int(req.limit)
+if limit < 1:
+    raise GuardrailError("limit must be at least 1.")
+limit = min(limit, g.max_rows)
+...
+sql += f"\nLIMIT {limit + 1}"
+```
+
+            <h2 id="step-3">Step 3: Check the compiled SQL with the engine's parser</h2>
+            <p>The compiler only writes <code>FROM governed.&lt;view&gt;</code>. A second check does not trust that. DuckDB's <code>json_serialize_sql</code> parses a statement without running it and only accepts <code>SELECT</code>, so DDL, DML, <code>PRAGMA</code>, and stacked statements fail at this step. Walking the parse tree gives every table and table function the statement reads:</p>
+```python
+def referenced_relations(con, sql: str) -> set[str]:
+    try:
+        ast = json.loads(con.execute("SELECT json_serialize_sql(?)", [sql]).fetchone()[0])
+    except duckdb.Error as exc:
+        raise GuardrailError(f"Query could not be parsed: {exc}") from exc
+    if ast.get("error"):
+        raise GuardrailError(f"Query refused by the parser: {ast.get('error_message')}")
+    if len(ast.get("statements", [])) != 1:
+        raise GuardrailError("Exactly one SELECT statement is allowed.")
+
+    ctes: set[str] = set()
+    found: set[str] = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            for entry in (node.get("cte_map") or {}).get("map", []):
+                ctes.add(entry["key"])
+            if node.get("type") == "BASE_TABLE":
+                found.add(f"{node.get('schema_name') or ''}.{node['table_name']}")
+            elif node.get("type") == "TABLE_FUNCTION":
+                found.add(f"function:{node.get('function', {}).get('function_name')}")
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(ast["statements"])
+    return {name for name in found if not (name.startswith(".") and name[1:] in ctes)}
+
+
+def check_allowlist(con, sql: str, allowed: set[str]) -> set[str]:
+    referenced = referenced_relations(con, sql)
+    outside = referenced - allowed
+    if outside or not referenced:
+        raise GuardrailError(f"Query reads relations outside the allowlist: {sorted(outside) or 'none'}")
+    return referenced
+```
+            <p>The tests feed it the statements you would worry about. Each one is refused:</p>
+```python
+@pytest.mark.parametrize(
+    "sql",
+    [
+        "SELECT * FROM raw.orders",
+        "SELECT * FROM governed.orders_enriched JOIN raw.customers USING (customer_id)",
+        "SELECT * FROM read_csv('/etc/passwd')",
+        "SELECT * FROM governed.orders_enriched WHERE region IN (SELECT region FROM raw.customers)",
+        "DROP TABLE raw.orders",
+        "SELECT 1; SELECT * FROM raw.orders",
+        "SELECT 1",
+    ],
+)
+def test_allowlist_refuses_anything_but_governed_views(analyst, sql):
+    with pytest.raises(GuardrailError):
+        check_allowlist(analyst.con, sql, ALLOWED)
+```
+            <p>A note from building this: DuckDB's <code>get_table_names()</code> looks like the obvious tool, but it binds the statement, expands views into their base tables, and cannot handle prepared parameters. Parsing without binding is the better fit for an allowlist.</p>
+
+            <h2 id="step-4">Step 4: Cap cost with Iceberg metadata</h2>
+            <p>A cost cap needs an estimate before the query runs. Iceberg already has one. The orders table is partitioned by month, and PyIceberg's <code>plan_files()</code> prunes partitions using the time range and returns data files with their record counts, all from manifests. No data file is opened.</p>
+```python
+def estimate_scan_rows(table, time_column, start, end) -> int:
+    if start is None or end is None or time_column is None:
+        snapshot = table.current_snapshot()
+        if snapshot is None or snapshot.summary is None:
+            return 0
+        return int(snapshot.summary.additional_properties.get("total-records", 0))
+    row_filter = And(
+        GreaterThanOrEqual(time_column, start.isoformat()),
+        LessThan(time_column, end.isoformat()),
+    )
+    return sum(task.file.record_count for task in table.scan(row_filter=row_filter).plan_files())
+
+
+def check_cost(estimated_rows: int, cap: int) -> None:
+    if estimated_rows > cap:
+        raise GuardrailError(
+            f"This query would scan about {estimated_rows:,} rows, above the cap of {cap:,}. "
+            "Narrow the time_range and try again."
+        )
+```
+            <p>With the demo data (36,000 orders over 18 months) an all-time question is refused, a one-year question passes, and Q1 2026 is estimated at 5,930 rows. Row counts are a stand-in for cost here; with a real engine you can swap in bytes from the same manifests (<code>file_size_in_bytes</code>) or the engine's own plan estimate.</p>
+            <p>Look at the refusal message. It tells the agent what to do next. Agents read error text and retry, so a guardrail message is an instruction. "Narrow the time_range" produces a better second call than "cost limit exceeded".</p>
+
+            <h2 id="step-5">Step 5: Interrupt slow queries</h2>
+            <p>DuckDB has no statement timeout setting, but a connection can be interrupted from another thread. Run each query on its own cursor and start a timer:</p>
+```python
+def run_with_timeout(con, sql, params, seconds):
+    """Execute on a cursor and interrupt it if it runs longer than ``seconds``."""
+    cursor = con.cursor()
+    timer = threading.Timer(seconds, cursor.interrupt)
+    timer.start()
+    try:
+        cursor.execute(sql, params)
+        rows = cursor.fetchall()
+        columns = [d[0] for d in cursor.description]
+    except duckdb.InterruptException as exc:
+        raise GuardrailError(f"Query stopped after the {seconds:g} second timeout.") from exc
+    finally:
+        timer.cancel()
+        cursor.close()
+    return columns, rows
+```
+            <p>The test runs a query that would take minutes and expects it to stop at 0.2 seconds. Engines with a statement timeout setting should use it instead, set on the agent's service identity so a request cannot raise it.</p>
+
+            <h2 id="step-6">Step 6: Budget the session and log every call</h2>
+            <p>A loop that retries the same failing call two hundred times is a bug in the harness, and the server should end it. The session budget is a counter; the audit log records every call, including refusals, with the role, the request, the compiled SQL, the rows returned, and the estimate. Here is a real refusal from the demo's log:</p>
+```python
+class SessionBudget:
+    """Counts queries for one server process (one stdio session)."""
+
+    def __init__(self, limit: int) -> None:
+        self.limit = limit
+        self.used = 0
+        self._lock = threading.Lock()
+
+    def spend(self) -> None:
+        with self._lock:
+            if self.used >= self.limit:
+                raise GuardrailError(f"Session query budget of {self.limit} is used up.")
+            self.used += 1
+```
+```json
+{"at": "2026-09-30T01:00:16+00:00", "role": "analyst_agent", "request": {"metrics": ["revenue"], "dimensions": null, "filters": [], "start": null, "end": null, "order_by": null, "descending": false, "limit": null}, "outcome": "refused", "reason": "This query would scan about 36,000 rows, above the cap of 25,000. Narrow the time_range and try again."}
+```
+            <p>The log is how you answer "what did the agent look at?" after the fact, and it is the dataset you tune guardrails from. If a cap refuses half of real questions, it is set wrong.</p>
+
+            <h2 id="done">Done when</h2>
+            <ul class="pattern-checklist">
+                <li>No tool accepts SQL, and every value reaches the engine as a bound parameter.</li>
+                <li>Every statement has a <code>LIMIT</code> at or under the cap, and truncation is reported to the agent.</li>
+                <li>An independent parser check refuses statements that read anything but governed views.</li>
+                <li>Large scans are refused before they run, with a message that says how to narrow them.</li>
+                <li>Statements are interrupted at a fixed timeout the agent cannot change.</li>
+                <li>Every call, allowed or refused, is in the audit log with the identity behind it.</li>
+            </ul>

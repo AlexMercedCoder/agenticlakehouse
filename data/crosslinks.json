@@ -1,38 +1,170 @@
 {
   "leader": {
-    "what-is-agentic-analytics": {"url": "https://agenticanalyticsnow.com/knowledge-base/what-is-agentic-analytics/", "title": "What is agentic analytics", "why": "Analytics leaders judge this architecture by one outcome: an agent that answers business questions from governed data and shows where each number came from."},
-    "the-stack": {"url": "https://agenticanalyticsnow.com/the-stack/", "title": "The agentic stack", "why": "When an agent gives a wrong answer, leaders need to know which layer failed: the model, the harness, or the interfaces and data underneath. That decides what to fix and what to buy."},
-    "from-dashboards-to-questions": {"url": "https://agenticanalyticsnow.com/knowledge-base/from-dashboards-to-questions/", "title": "From dashboards to questions", "why": "Dashboards answer the questions someone planned for. Agents take the ones nobody planned for, which changes what the business should expect from its BI spend."},
-    "why-the-lakehouse": {"url": "https://agenticanalyticsnow.com/knowledge-base/why-the-lakehouse/", "title": "Why an open lakehouse", "why": "Agents multiply the number of readers and questions. The business case for an open lakehouse is that one governed copy of the data can serve all of them."},
-    "semantic-layer-as-contract": {"url": "https://agenticanalyticsnow.com/knowledge-base/semantic-layer-as-contract/", "title": "The semantic layer as an agent contract", "why": "The semantic layer is where the business writes down what revenue, churn, and active customer mean. Without it, an agent's fluent guess becomes a wrong number in a meeting."},
-    "text-to-sql-and-its-limits": {"url": "https://agenticanalyticsnow.com/knowledge-base/text-to-sql-and-its-limits/", "title": "Text to SQL and why it stalls", "why": "Generating SQL is easy. Generating the SQL the business agrees is correct is not, and that gap decides whether a pilot earns trust."},
-    "governance-for-agents": {"url": "https://agenticanalyticsnow.com/knowledge-base/governance-for-agents/", "title": "Governance for agents", "why": "An agent must not reach data its user cannot, and you must be able to prove it afterwards. That is the first question risk and audit teams will ask."},
-    "evaluation-and-trust": {"url": "https://agenticanalyticsnow.com/knowledge-base/evaluation-and-trust/", "title": "Evaluation and trust", "why": "Leaders do not adopt agents because of benchmark scores. They adopt them when answers can be checked, traced, and reproduced."},
-    "cost-and-latency": {"url": "https://agenticanalyticsnow.com/knowledge-base/cost-and-latency/", "title": "Cost and latency", "why": "Agents replace a few large queries with many small ones, which changes where the analytics budget goes and what is worth optimizing."},
-    "portability-and-lock-in": {"url": "https://agenticanalyticsnow.com/knowledge-base/portability-and-lock-in/", "title": "Portability and lock-in", "why": "Every component choice carries a replacement cost later. Leaders should know which parts of the stack are hardest to swap before they sign."},
-    "enterprise-rollout": {"url": "https://agenticanalyticsnow.com/knowledge-base/enterprise-rollout/", "title": "Rolling this out enterprise wide", "why": "A pilot that impresses a steering committee is not yet a capability the whole company uses. The order of the rollout matters as much as the architecture."},
-    "the-harness": {"url": "https://agenticanalyticsnow.com/knowledge-base/the-harness/", "title": "The harness", "why": "Most agent behavior comes from the harness: context, tools, retries, and when to stop. That is where reliability is won or lost."},
-    "one-copy-many-readers": {"url": "https://agenticanalyticsnow.com/knowledge-base/one-copy-many-readers/", "title": "One copy, many readers", "why": "Copies of data produce agents that disagree with each other. One governed copy keeps answers consistent across teams."},
-    "the-model": {"url": "https://agenticanalyticsnow.com/knowledge-base/the-model/", "title": "The model", "why": "Model choice gets the attention, but it is one layer of three. Treating it as the whole architecture leads to the wrong purchase."},
-    "open-interfaces": {"url": "https://agenticanalyticsnow.com/knowledge-base/open-interfaces/", "title": "Open interfaces", "why": "The interfaces an agent speaks through should be specifications, not products. A closed one makes every later tool change expensive."}
+    "what-is-agentic-analytics": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/what-is-agentic-analytics/",
+      "title": "What is agentic analytics",
+      "why": "Analytics leaders judge this architecture by one outcome: an agent that answers business questions from governed data and shows where each number came from."
+    },
+    "the-stack": {
+      "url": "https://agenticanalyticsnow.com/the-stack/",
+      "title": "The agentic stack",
+      "why": "When an agent gives a wrong answer, leaders need to know which layer failed: the model, the harness, or the interfaces and data underneath. That decides what to fix and what to buy."
+    },
+    "from-dashboards-to-questions": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/from-dashboards-to-questions/",
+      "title": "From dashboards to questions",
+      "why": "Dashboards answer the questions someone planned for. Agents take the ones nobody planned for, which changes what the business should expect from its BI spend."
+    },
+    "why-the-lakehouse": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/why-the-lakehouse/",
+      "title": "Why an open lakehouse",
+      "why": "Agents multiply the number of readers and questions. The business case for an open lakehouse is that one governed copy of the data can serve all of them."
+    },
+    "semantic-layer-as-contract": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/semantic-layer-as-contract/",
+      "title": "The semantic layer as an agent contract",
+      "why": "The semantic layer is where the business writes down what revenue, churn, and active customer mean. Without it, an agent's fluent guess becomes a wrong number in a meeting."
+    },
+    "text-to-sql-and-its-limits": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/text-to-sql-and-its-limits/",
+      "title": "Text to SQL and why it stalls",
+      "why": "Generating SQL is easy. Generating the SQL the business agrees is correct is not, and that gap decides whether a pilot earns trust."
+    },
+    "governance-for-agents": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/governance-for-agents/",
+      "title": "Governance for agents",
+      "why": "An agent must not reach data its user cannot, and you must be able to prove it afterwards. That is the first question risk and audit teams will ask."
+    },
+    "evaluation-and-trust": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/evaluation-and-trust/",
+      "title": "Evaluation and trust",
+      "why": "Leaders do not adopt agents because of benchmark scores. They adopt them when answers can be checked, traced, and reproduced."
+    },
+    "cost-and-latency": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/cost-and-latency/",
+      "title": "Cost and latency",
+      "why": "Agents replace a few large queries with many small ones, which changes where the analytics budget goes and what is worth optimizing."
+    },
+    "portability-and-lock-in": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/portability-and-lock-in/",
+      "title": "Portability and lock-in",
+      "why": "Every component choice carries a replacement cost later. Leaders should know which parts of the stack are hardest to swap before they sign."
+    },
+    "enterprise-rollout": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/enterprise-rollout/",
+      "title": "Rolling this out enterprise wide",
+      "why": "A pilot that impresses a steering committee is not yet a capability the whole company uses. The order of the rollout matters as much as the architecture."
+    },
+    "the-harness": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/the-harness/",
+      "title": "The harness",
+      "why": "Most agent behavior comes from the harness: context, tools, retries, and when to stop. That is where reliability is won or lost."
+    },
+    "one-copy-many-readers": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/one-copy-many-readers/",
+      "title": "One copy, many readers",
+      "why": "Copies of data produce agents that disagree with each other. One governed copy keeps answers consistent across teams."
+    },
+    "the-model": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/the-model/",
+      "title": "The model",
+      "why": "Model choice gets the attention, but it is one layer of three. Treating it as the whole architecture leads to the wrong purchase."
+    },
+    "open-interfaces": {
+      "url": "https://agenticanalyticsnow.com/knowledge-base/open-interfaces/",
+      "title": "Open interfaces",
+      "why": "The interfaces an agent speaks through should be specifications, not products. A closed one makes every later tool change expensive."
+    }
   },
   "builder": {
-    "/what-is-agentic-lakehouse/": {"title": "What is an agentic lakehouse?", "how": "The engineering side is the agentic lakehouse: open Iceberg tables, a semantic layer, governance enforced at query time, and an agent interface such as an MCP server."},
-    "/agentic-lakehouse-architecture/": {"title": "Agentic lakehouse architecture", "how": "Engineers build this as a four-layer reference architecture: agent interface, semantic layer, governed query engine, and open Iceberg storage."},
-    "/agentic-bi/": {"title": "Agentic BI", "how": "Engineers build agentic BI by giving agents federated, governed access to data where it already lives."},
-    "/kb/autonomous-data-agents/": {"title": "Autonomous data agents", "how": "Engineers put a model to work on data as an autonomous data agent with tools, scoped credentials, and a stopping rule."},
-    "/kb/safe-action-loops/": {"title": "Safe action loops", "how": "Engineers build the harness as a safe action loop: plan, query, check the result, and stop inside explicit limits."},
-    "/kb/llm-data-access/": {"title": "LLM data access", "how": "Engineers expose data to models through defined, governed access paths instead of raw database credentials."},
-    "/kb/agentic-lakehouse/": {"title": "Agentic lakehouse", "how": "Engineers build the substrate as an agentic lakehouse on open table formats, with a semantic layer and governed query execution on top."},
-    "/kb/multi-engine-data-architecture/": {"title": "Multi-engine data architecture", "how": "Engineers keep one copy by letting several engines read the same Iceberg tables through a shared catalog."},
-    "/kb/ai-semantic-layer/": {"title": "AI semantic layer", "how": "Engineers implement the contract as an AI semantic layer that maps raw schemas to governed business definitions agents can query."},
-    "/kb/ai-agent-authorization/": {"title": "AI agent authorization", "how": "Engineers enforce this with agent authorization patterns that carry the user's identity and permissions into every query an agent runs."},
-    "/kb/trustworthy-ai-execution/": {"title": "Trustworthy AI execution", "how": "Engineers make agent answers checkable and reproducible at the execution layer, where every query can be logged and replayed."},
-    "/kb/lakehouse-cost-optimization/": {"title": "Lakehouse cost optimization", "how": "Engineers control the cost of many small agent queries with caching, pruning, and acceleration in the lakehouse."},
-    "/kb/enterprise-ai-agents/": {"title": "Enterprise AI agents", "how": "Engineers take agents from pilot to production with shared identity, governance, and semantic definitions."},
-    "/kb/lakehouse-interoperability/": {"title": "Lakehouse interoperability", "how": "Engineers keep components swappable by building on open table formats, open catalogs, and open protocols."},
-    "/kb/text-to-sql/": {"title": "Text-to-SQL", "how": "Engineers close the text-to-SQL gap by grounding generation in a semantic layer instead of raw schemas."},
-    "/kb/semantic-layer/": {"title": "Semantic layer", "how": "Engineers implement shared definitions as a semantic layer that agents and BI tools query through."}
+    "/what-is-agentic-lakehouse/": {
+      "title": "What is an agentic lakehouse?",
+      "how": "The engineering side is the agentic lakehouse: open Iceberg tables, a semantic layer, governance enforced at query time, and an agent interface such as an MCP server."
+    },
+    "/agentic-lakehouse-architecture/": {
+      "title": "Agentic lakehouse architecture",
+      "how": "Engineers build this as a layered reference architecture: object storage, Iceberg tables, a catalog, a query engine, a semantic layer, and an MCP agent interface, with governance across the middle."
+    },
+    "/agentic-bi/": {
+      "title": "Agentic BI",
+      "how": "Engineers build agentic BI by giving agents federated, governed access to data where it already lives."
+    },
+    "/kb/autonomous-data-agents/": {
+      "title": "Autonomous data agents",
+      "how": "Engineers put a model to work on data as an autonomous data agent with tools, scoped credentials, and a stopping rule."
+    },
+    "/kb/safe-action-loops/": {
+      "title": "Safe action loops",
+      "how": "Engineers build the harness as a safe action loop: plan, query, check the result, and stop inside explicit limits."
+    },
+    "/kb/llm-data-access/": {
+      "title": "LLM data access",
+      "how": "Engineers expose data to models through defined, governed access paths instead of raw database credentials."
+    },
+    "/kb/agentic-lakehouse/": {
+      "title": "Agentic lakehouse",
+      "how": "Engineers build the substrate as an agentic lakehouse on open table formats, with a semantic layer and governed query execution on top."
+    },
+    "/kb/multi-engine-data-architecture/": {
+      "title": "Multi-engine data architecture",
+      "how": "Engineers keep one copy by letting several engines read the same Iceberg tables through a shared catalog."
+    },
+    "/kb/ai-semantic-layer/": {
+      "title": "AI semantic layer",
+      "how": "Engineers implement the contract as an AI semantic layer that maps raw schemas to governed business definitions agents can query."
+    },
+    "/kb/ai-agent-authorization/": {
+      "title": "AI agent authorization",
+      "how": "Engineers enforce this with agent authorization patterns that carry the user's identity and permissions into every query an agent runs."
+    },
+    "/kb/trustworthy-ai-execution/": {
+      "title": "Trustworthy AI execution",
+      "how": "Engineers make agent answers checkable and reproducible at the execution layer, where every query can be logged and replayed."
+    },
+    "/kb/lakehouse-cost-optimization/": {
+      "title": "Lakehouse cost optimization",
+      "how": "Engineers control the cost of many small agent queries with caching, pruning, and acceleration in the lakehouse."
+    },
+    "/kb/enterprise-ai-agents/": {
+      "title": "Enterprise AI agents",
+      "how": "Engineers take agents from pilot to production with shared identity, governance, and semantic definitions."
+    },
+    "/kb/lakehouse-interoperability/": {
+      "title": "Lakehouse interoperability",
+      "how": "Engineers keep components swappable by building on open table formats, open catalogs, and open protocols."
+    },
+    "/kb/text-to-sql/": {
+      "title": "Text-to-SQL",
+      "how": "Engineers close the text-to-SQL gap by grounding generation in a semantic layer instead of raw schemas."
+    },
+    "/kb/semantic-layer/": {
+      "title": "Semantic layer",
+      "how": "Engineers implement shared definitions as a semantic layer that agents and BI tools query through."
+    },
+    "/patterns/agent-safe-governed-views/": {
+      "title": "Agent-safe governed views",
+      "how": "Engineers give agents governed views instead of raw tables: curated columns, joins written once, and an engine that cannot read anything else."
+    },
+    "/patterns/row-and-column-policies-for-agents/": {
+      "title": "Row and column policies for agents",
+      "how": "Engineers tie what an agent sees to the identity it acts for, with row filters baked into governed views and restricted metrics refused by name."
+    },
+    "/patterns/query-guardrails-for-agents/": {
+      "title": "Query guardrails for agents",
+      "how": "Engineers cap agent queries with allowlists, row limits, timeouts, and cost caps estimated from Iceberg metadata before anything runs."
+    },
+    "/patterns/semantic-layer-over-mcp/": {
+      "title": "Exposing a semantic layer to agents over MCP",
+      "how": "Engineers expose metrics and dimensions as MCP tools, so the agent picks a business definition and the server writes the SQL."
+    },
+    "/patterns/mcp-server-over-iceberg-catalog/": {
+      "title": "An MCP server over an Iceberg catalog",
+      "how": "Engineers build the agent interface on an Iceberg catalog, using table metadata to scope and cost each request."
+    },
+    "/patterns/": {
+      "title": "Implementation patterns",
+      "how": "Engineers make answers checkable by returning the SQL behind every number and logging every agent query, allowed or refused."
+    }
   },
   "builderToLeader": {
     "/what-is-agentic-lakehouse/": "what-is-agentic-analytics",
@@ -61,7 +193,13 @@
     "/kb/safe-action-loops/": "the-harness",
     "/kb/multi-engine-data-architecture/": "one-copy-many-readers",
     "/kb/autonomous-data-agents/": "the-model",
-    "/kb/llm-data-access/": "open-interfaces"
+    "/kb/llm-data-access/": "open-interfaces",
+    "/patterns/": "evaluation-and-trust",
+    "/patterns/agent-safe-governed-views/": "one-copy-many-readers",
+    "/patterns/row-and-column-policies-for-agents/": "governance-for-agents",
+    "/patterns/query-guardrails-for-agents/": "cost-and-latency",
+    "/patterns/semantic-layer-over-mcp/": "semantic-layer-as-contract",
+    "/patterns/mcp-server-over-iceberg-catalog/": "open-interfaces"
   },
   "leaderToBuilder": {
     "what-is-agentic-analytics": "/what-is-agentic-lakehouse/",
@@ -69,13 +207,13 @@
     "the-agentic-stack": "/agentic-lakehouse-architecture/",
     "the-model": "/kb/autonomous-data-agents/",
     "the-harness": "/kb/safe-action-loops/",
-    "open-interfaces": "/kb/llm-data-access/",
+    "open-interfaces": "/patterns/mcp-server-over-iceberg-catalog/",
     "why-the-lakehouse": "/kb/agentic-lakehouse/",
-    "one-copy-many-readers": "/kb/multi-engine-data-architecture/",
-    "semantic-layer-as-contract": "/kb/ai-semantic-layer/",
-    "governance-for-agents": "/kb/ai-agent-authorization/",
-    "evaluation-and-trust": "/kb/trustworthy-ai-execution/",
-    "cost-and-latency": "/kb/lakehouse-cost-optimization/",
+    "one-copy-many-readers": "/patterns/agent-safe-governed-views/",
+    "semantic-layer-as-contract": "/patterns/semantic-layer-over-mcp/",
+    "governance-for-agents": "/patterns/row-and-column-policies-for-agents/",
+    "evaluation-and-trust": "/patterns/",
+    "cost-and-latency": "/patterns/query-guardrails-for-agents/",
     "enterprise-rollout": "/kb/enterprise-ai-agents/",
     "from-dashboards-to-questions": "/agentic-bi/",
     "portability-and-lock-in": "/kb/lakehouse-interoperability/",

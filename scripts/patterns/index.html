@@ -1,0 +1,37 @@
+            <p class="pattern-lede">These patterns are for the engineers and architects who have to make agents work on real lakehouse data. Each one is a step-by-step build with code, a test that proves it, and a "done when" checklist. They fit together: governed views are what the policies filter, the guardrails run on what the compiler emits, and the MCP server is how the agent reaches all of it.</p>
+
+<!-- companion -->
+
+            <div class="pattern-cards">
+                <a class="pattern-card" href="/patterns/agent-safe-governed-views/">
+                    <span class="pattern-card__num">1</span>
+                    <h2>Agent-safe governed views</h2>
+                    <p>Raw and governed schemas, PII left out of the column list, joins written once, and an engine that cannot read files.</p>
+                </a>
+                <a class="pattern-card" href="/patterns/row-and-column-policies-for-agents/">
+                    <span class="pattern-card__num">2</span>
+                    <h2>Row and column policies for agents</h2>
+                    <p>Roles in reviewed configuration, row filters baked into views, denied metrics and dimensions, and tests that try to escape.</p>
+                </a>
+                <a class="pattern-card" href="/patterns/query-guardrails-for-agents/">
+                    <span class="pattern-card__num">3</span>
+                    <h2>Query guardrails for agents</h2>
+                    <p>Name and relation allowlists, row limits with truncation, timeouts, Iceberg metadata cost caps, session budgets, and an audit log.</p>
+                </a>
+                <a class="pattern-card" href="/patterns/semantic-layer-over-mcp/">
+                    <span class="pattern-card__num">4</span>
+                    <h2>Exposing a semantic layer to agents over MCP</h2>
+                    <p>Metric tools instead of a SQL tool, definitions an agent can choose from, errors it can act on, and tests through a real MCP client.</p>
+                </a>
+                <a class="pattern-card" href="/patterns/mcp-server-over-iceberg-catalog/">
+                    <span class="pattern-card__num">5</span>
+                    <h2>An MCP server over an Iceberg catalog</h2>
+                    <p>PyIceberg catalog and partitioned tables, reading into DuckDB, metadata-driven decisions, and the swap to a REST catalog.</p>
+                </a>
+            </div>
+
+            <h2 id="order">Suggested order</h2>
+            <p>If you are starting from nothing, read them in the order above and run the companion code as you go. If you already have an MCP server in front of your lakehouse, start with <a href="/patterns/query-guardrails-for-agents/">query guardrails</a> and check your server against its "done when" list; it is the fastest way to find gaps.</p>
+
+            <h2 id="where">Where they sit in the architecture</h2>
+            <p>The <a href="/agentic-lakehouse-architecture/">reference architecture</a> has eight labeled layers from object storage to agents. These patterns cover the middle of it: the catalog and table format (pattern 5), the semantic layer (pattern 4), governance (patterns 1 and 2), and the agent interface (patterns 3 and 4).</p>

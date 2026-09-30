@@ -1,0 +1,150 @@
+            <p class="pattern-lede">Apache Iceberg gives you open tables and a catalog any engine can read. MCP gives an agent a standard way to call tools. This pattern connects them: a Python MCP server that loads tables through an Iceberg catalog with PyIceberg, queries them with DuckDB, and uses Iceberg's own metadata to make decisions before a query runs. It runs on a laptop with a SQLite catalog, and the catalog is one function to swap for a REST catalog such as Apache Polaris.</p>
+
+<!-- companion -->
+
+            <h2 id="shape">The shape of the pattern</h2>
+            <ul class="pattern-list">
+                <li><strong>Catalog</strong>: PyIceberg <code>load_catalog</code>. Locally a SQL catalog in SQLite with a folder warehouse; in production a REST catalog.</li>
+                <li><strong>Tables</strong>: Iceberg tables written with PyIceberg from Arrow data, partitioned so metadata is useful for pruning.</li>
+                <li><strong>Engine</strong>: DuckDB reads Arrow from Iceberg scans and runs the compiled, governed SQL.</li>
+                <li><strong>Agent interface</strong>: an MCP server with metric tools, covered in <a href="/patterns/semantic-layer-over-mcp/">exposing a semantic layer over MCP</a>.</li>
+            </ul>
+
+            <h2 id="step-1">Step 1: Install and create the catalog</h2>
+            <p>PyIceberg's extras pull in what each piece needs: <code>sql-sqlite</code> for the catalog, <code>pyarrow</code> for reading and writing, and <code>pyiceberg-core</code> for partition transforms on write. Without <code>pyiceberg-core</code>, appending to a month-partitioned table fails with <code>NotInstalledError</code>.</p>
+```toml
+[project]
+dependencies = [
+    "pyiceberg[sql-sqlite,pyarrow,pyiceberg-core]>=0.12,<0.13",
+    "mcp>=2.2,<3",
+    "duckdb>=1.5,<2",
+    "pyyaml>=6",
+]
+```
+```python
+from pyiceberg.catalog import Catalog, load_catalog
+
+def get_catalog(home=None) -> Catalog:
+    """Load (or create) the SQL catalog backed by SQLite and a local warehouse."""
+    root = demo_home(home)
+    warehouse = root / "warehouse"
+    warehouse.mkdir(parents=True, exist_ok=True)
+    return load_catalog(
+        "demo",
+        **{
+            "type": "sql",
+            "uri": f"sqlite:///{root / 'catalog.db'}",
+            "warehouse": warehouse.as_uri(),
+        },
+    )
+```
+            <p>The SQL catalog creates its own tables in the SQLite file on first use. Everything the demo writes lives under one folder, so <code>rm -rf .lakehouse</code> resets it.</p>
+
+            <h2 id="step-2">Step 2: Write tables, partitioned for the questions agents ask</h2>
+            <p>Agents ask time-bounded questions: last quarter, this year, since the launch. Partitioning the fact table by month lets Iceberg skip whole months during planning, which Step 4 turns into a cost estimate. With a PyArrow schema, field IDs are assigned when the table is created, so the demo adds the partition field right after creation and before the first write:</p>
+```python
+customers_table = catalog.create_table(f"{NAMESPACE}.customers", schema=CUSTOMERS_SCHEMA)
+customers_table.append(customers)
+
+orders_table = catalog.create_table(f"{NAMESPACE}.orders", schema=ORDERS_SCHEMA)
+# Partition by month of order_date so scan planning can prune by time,
+# which the cost guardrail uses to estimate rows scanned.
+with orders_table.update_spec() as update:
+    update.add_field("order_date", MonthTransform(), "order_month")
+orders_table.append(orders)
+```
+            <p>The seed script generates 500 customers and 36,000 orders from a fixed random seed, so every run and every test sees the same numbers:</p>
+```sh
+$ slh-seed
+Seeded Iceberg tables in /home/you/mcp-semantic-lakehouse-demo/.lakehouse
+  sales.customers: 500 rows
+  sales.orders: 36,000 rows
+```
+            <p>A test confirms the layout the rest of the server relies on:</p>
+```python
+def test_iceberg_tables_exist_and_orders_are_partitioned_by_month(home):
+    catalog = get_catalog(home)
+    orders = catalog.load_table("sales.orders")
+    assert [f.name for f in orders.spec().fields] == ["order_month"]
+    assert str(orders.spec().fields[0].transform) == "month"
+    assert catalog.load_table("sales.customers").scan().to_arrow().num_rows == 500
+    # One data file per month: Jan 2025 to Jun 2026.
+    assert len(list(orders.scan().plan_files())) == 18
+```
+
+            <h2 id="step-3">Step 3: Read Iceberg into the engine</h2>
+            <p>An Iceberg scan returns Arrow, and DuckDB reads Arrow without copying through Python objects. PyIceberg also has a <code>to_duckdb()</code> shorthand that registers the Arrow table on a connection; the demo does the same steps by hand so the tables land in a named <code>raw</code> schema, away from the <code>governed</code> views agents query:</p>
+```python
+for key, identifier in model.sources.items():
+    arrow = catalog.load_table(identifier).scan().to_arrow()
+    con.register("_incoming", arrow)
+    con.execute(f"CREATE TABLE {RAW_SCHEMA}.{key} AS SELECT * FROM _incoming")
+    con.unregister("_incoming")
+```
+            <p>Loading into memory at startup keeps a demo fast and simple. At lakehouse scale, query the tables in place: point an engine at the same catalog, or pass a <code>row_filter</code> and <code>selected_fields</code> to <code>scan()</code> so PyIceberg only reads what a request needs.</p>
+
+            <h2 id="step-4">Step 4: Use Iceberg metadata as a tool, not only as storage</h2>
+            <p>Iceberg metadata is cheap to read and says a lot: how many rows a table holds, which files match a filter, when the current snapshot was committed. The server uses it to estimate how many rows a request would scan before running it:</p>
+```python
+row_filter = And(
+    GreaterThanOrEqual(time_column, start.isoformat()),
+    LessThan(time_column, end.isoformat()),
+)
+return sum(task.file.record_count for task in table.scan(row_filter=row_filter).plan_files())
+```
+            <p><code>plan_files()</code> reads manifests only. For Q1 2026 it keeps three month files and returns 5,930 rows; with no time range the server reads <code>total-records</code> from the snapshot summary instead (36,000) and the <a href="/patterns/query-guardrails-for-agents/">cost guardrail</a> refuses the query. The same metadata could back a freshness tool that tells the agent when the data was last committed, so it can say "as of" in its answer.</p>
+
+            <h2 id="step-5">Step 5: Serve it over MCP</h2>
+            <p>The server object is built once, and the service behind it opens the catalog and builds the governed engine on first use:</p>
+```python
+def build_server(service: SemanticLakehouse | None = None) -> MCPServer:
+    """Create the MCP server. Pass a service in tests; otherwise one is built lazily."""
+    state: dict[str, SemanticLakehouse] = {}
+
+    def svc() -> SemanticLakehouse:
+        if "s" not in state:
+            try:
+                state["s"] = service or SemanticLakehouse(role=os.environ.get("AGENT_ROLE"))
+            except RuntimeError as exc:  # e.g. tables not seeded yet: tell the agent why
+                raise ToolError(str(exc)) from exc
+        return state["s"]
+    ...
+
+
+def main() -> None:
+    build_server().run()  # stdio
+```
+            <p>Building lazily means an MCP client can start the server and list its tools even before anyone has seeded the tables; the first real call then returns a tool error the agent can read, "Iceberg table sales.orders not found. Run `slh-seed` first.", instead of a crash at startup. Raising <code>ToolError</code> matters here: the SDK hides the text of any other exception from the model.</p>
+            <p>Run the full walkthrough, a real MCP client talking to the server in process:</p>
+```sh
+slh-seed
+slh-demo
+AGENT_ROLE=emea_sales_agent slh-demo
+```
+
+            <h2 id="step-6">Step 6: Swap the local catalog for a REST catalog</h2>
+            <p>Nothing above depends on SQLite except <code>get_catalog</code>. PyIceberg's REST catalog takes a URI, a client credential, and a warehouse name, which is what an Apache Polaris deployment or another Iceberg REST catalog gives you:</p>
+```python
+catalog = load_catalog(
+    "prod",
+    **{
+        "type": "rest",
+        "uri": "https://your-catalog.example.com/api/catalog",
+        "credential": f"{client_id}:{client_secret}",
+        "warehouse": "analytics",
+    },
+)
+```
+            <p>This snippet is configuration, not part of the tested demo. When you make the swap, give the MCP server its own catalog principal with read access to the source namespaces only, so the catalog enforces the same boundary the governed views do.</p>
+
+            <h2 id="done">Done when</h2>
+            <ul class="pattern-checklist">
+                <li>The MCP server reaches data only through an Iceberg catalog, with its own credentials.</li>
+                <li>Fact tables are partitioned on the column agents filter by most, usually time.</li>
+                <li>Cost or scope decisions read Iceberg metadata before any data file is opened.</li>
+                <li>The catalog is created in one function, so moving from local to REST changes configuration, not code.</li>
+                <li>A fresh clone goes from install to a working tool call in a few minutes.</li>
+            </ul>
+
+            <h2 id="production">Taking it to production</h2>
+            <p>Two paths work. Keep this server and replace DuckDB-in-memory with an engine that reads Iceberg in place and enforces grants, or keep the MCP layer thin and delegate to a lakehouse platform that already exposes governed views and its own MCP server. Either way the parts that matter carry over: the catalog is the source of truth, agents only see governed views, and metadata is used to say no before a query costs money.</p>
