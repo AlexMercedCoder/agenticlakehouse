@@ -19,7 +19,7 @@ import subprocess
 ROOT = pathlib.Path(__file__).parent
 
 SKIP = re.compile(
-    r"\[mechanical\]|footer|webmcp|site navigation|^cwv|person @id|timezone",
+    r"\[mechanical\]|footer|webmcp|site navigation|cta strip|^cwv|person @id|timezone",
     re.I,
 )
 

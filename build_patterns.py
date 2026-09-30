@@ -28,6 +28,9 @@ SRC = ROOT / "scripts" / "patterns"
 BASE = "https://agenticlakehouse.com"
 CROSSLINKS = json.loads((ROOT / "data" / "crosslinks.json").read_text())
 PERSON = {"@id": "https://alexmerced.com/#alexmerced"}
+# First publication of the /patterns/ section. Stated explicitly because git
+# --follow can pair a new page with an older, similar file.
+PUBLISHED = "2026-09-29"
 
 # Tested versions, shown on every page. Keep in step with the demo README.
 TESTED = "Tested September 29, 2026 with Python 3.12 and 3.13, mcp 2.2.0 (official MCP Python SDK), pyiceberg 0.12.0, and duckdb 1.5.6."
@@ -142,6 +145,7 @@ def page(meta, body, crumbs):
         "author": PERSON,
         "publisher": {"@type": "Organization", "name": "Agentic Lakehouse", "url": f"{BASE}/"},
         "inLanguage": "en",
+        "datePublished": PUBLISHED,
     }
     if meta["slug"]:
         ld["proficiencyLevel"] = "Expert"
@@ -275,8 +279,8 @@ def _write(path, new):
             m = re.search(rf"<!-- network:{name}:start -->.*?<!-- network:{name}:end -->", old, re.S)
             if m:
                 new = re.sub(rf"<!-- network:{name}:start -->.*?<!-- network:{name}:end -->", lambda _: m.group(0), new, flags=re.S)
-        # Keep dates that apply_dates.py wrote.
-        dm = re.search(r'"datePublished": "[^"]*", "dateModified": "[^"]*"', old) or re.search(r'"dateModified": "[^"]*"', old)
+        # Keep the dateModified that apply_dates.py wrote.
+        dm = re.search(r'"dateModified": "[^"]*"', old)
         if dm and '"dateModified"' not in new:
             new = re.sub(r'("@type": "(?:TechArticle|CollectionPage)")', lambda m: f"{m.group(1)}, {dm.group(0)}", new, count=1)
         if old == new:
