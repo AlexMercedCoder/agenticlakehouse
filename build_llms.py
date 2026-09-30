@@ -23,20 +23,20 @@ lines.append("")
 lines.append("> AgenticLakehouse.com is a reference on the agentic lakehouse: data lakehouse "
              "architectures built for autonomous AI agents, combining Apache Iceberg open table formats, "
              "semantic layers, fine-grained governance (RBAC/ABAC), and high-performance query execution "
-             "for agentic analytics and BI workflows. Written by Alex Merced, Open Lakehouse & AI Advocate, "
-             "Author & Technologist.")
+             "for agentic analytics and BI workflows. Written for data engineers and architects by Alex Merced, "
+             "Head of Developer Relations at Dremio.")
 lines.append("")
 lines.append("## About")
 lines.append("")
-lines.append(f"- [Agentic Lakehouse Hub]({BASE}/): Pillar resource covering agentic lakehouse architecture, agentic analytics, and agentic BI.")
+lines.append(f"- [Agentic Lakehouse]({BASE}/): Build the agentic lakehouse: reference architecture, working patterns, and a community of builders.")
+lines.append(f"- [Agentic Lakehouse Glossary]({BASE}/kb/): 200 agentic lakehouse terms for engineers and architects.")
+lines.append("- [Agentic Lakehouse community on Luma](https://luma.com/agenticlakehouse): Events and meetups for people building agents on lakehouse data.")
 lines.append(f"- [Video Explainers]({BASE}/videos/): Short silent explainers on governed agent data access, semantic layers, MCP, Iceberg snapshots, and safe agent writes.")
 lines.append("")
 lines.append("## Pillar Pages")
 lines.append("")
-pillars = ["what-is-agentic-lakehouse", "what-is-agentic-analytics", "agentic-lakehouse-architecture",
-           "agentic-bi", "apache-iceberg", "apache-iceberg-architecture",
-           "apache-iceberg-vs-delta-lake-vs-hudi", "data-lakehouse",
-           "data-lakehouse-vs-data-lake-vs-data-warehouse", "dremio-ai", "dremio-polaris"]
+pillars = ["what-is-agentic-lakehouse", "agentic-lakehouse-architecture", "agentic-bi",
+           "dremio-ai", "dremio-polaris"]
 for p in pillars:
     idx = ROOT / p / "index.html"
     if idx.exists():
@@ -55,11 +55,13 @@ lines.append("")
 lines.append("Created and maintained by [Alex Merced](https://whoisalexmerced.com), Head of Developer Relations at Dremio "
              "and O'Reilly/Manning/Packt author. More: [AlexMerced.com](https://alexmerced.com), "
              "[AlexMercedData.com](https://alexmerceddata.com), "
-             "[LinkedIn](https://www.linkedin.com/in/alexmerced), [@alexmercedcoder](https://twitter.com/alexmercedcoder).")
+             "[LinkedIn](https://www.linkedin.com/in/alexmerced), [@AMdatalakehouse](https://x.com/AMdatalakehouse).")
 lines.append("")
 lines.append("## Related Properties")
 lines.append("")
-lines.append("- [DataEngr.com](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).")
+lines.append("- [Agentic Analytics Now](https://agenticanalyticsnow.com): The leader's side of the same topic: what agentic analytics is, the business case, rollout, governance, and trust. Its what-is-agentic-analytics page replaces the one this site used to host.")
+lines.append("- [Alex Merced's Lakehouse Blog](https://iceberglakehouse.com): Apache Iceberg and data lakehouse pillar guides (architecture, table format comparisons, lakehouse vs warehouse).")
+lines.append("- [DataEngnr](https://dataengnr.com): Data engineering knowledge base (Iceberg, lakehouse, AI).")
 lines.append("- [SemanticLakehouse.com](https://semanticlakehouse.com): Semantic layer and lakehouse knowledge base.")
 lines.append("- [WhoIsAlexMerced.com](https://whoisalexmerced.com): About the author.")
 lines.append("- [Books by Alex Merced](https://books.alexmerced.com): O'Reilly, Manning, and Packt titles.")

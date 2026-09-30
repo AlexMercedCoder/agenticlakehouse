@@ -1,0 +1,14 @@
+# Pages this site gave up in the 2026-09-29 network plan (P4.3). Each target was verified HTTP 200.
+# Record of every move: docs-and-audits/network-audit-2026-09-29/redirect-maps/agenticlakehouse.com.csv
+/what-is-agentic-analytics                          https://agenticanalyticsnow.com/knowledge-base/what-is-agentic-analytics/    301!
+/what-is-agentic-analytics/*                        https://agenticanalyticsnow.com/knowledge-base/what-is-agentic-analytics/    301!
+/apache-iceberg                                     https://iceberglakehouse.com/apache-iceberg/                                 301!
+/apache-iceberg/*                                   https://iceberglakehouse.com/apache-iceberg/                                 301!
+/apache-iceberg-architecture                        https://iceberglakehouse.com/apache-iceberg-architecture/                    301!
+/apache-iceberg-architecture/*                      https://iceberglakehouse.com/apache-iceberg-architecture/                    301!
+/apache-iceberg-vs-delta-lake-vs-hudi               https://iceberglakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/           301!
+/apache-iceberg-vs-delta-lake-vs-hudi/*             https://iceberglakehouse.com/apache-iceberg-vs-delta-lake-vs-hudi/           301!
+/data-lakehouse                                     https://iceberglakehouse.com/data-lakehouse/                                 301!
+/data-lakehouse/*                                   https://iceberglakehouse.com/data-lakehouse/                                 301!
+/data-lakehouse-vs-data-lake-vs-data-warehouse      https://iceberglakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/  301!
+/data-lakehouse-vs-data-lake-vs-data-warehouse/*    https://iceberglakehouse.com/data-lakehouse-vs-data-lake-vs-data-warehouse/  301!

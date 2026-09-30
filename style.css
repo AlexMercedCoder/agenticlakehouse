@@ -1150,3 +1150,64 @@ h1, h2, h3, h4 {
     line-height: 1.2;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Leader cross-link: "Why this matters to the business" (links to
+   agenticanalyticsnow.com, the leader-facing sister site)
+   --------------------------------------------------------------------------- */
+.business-link { padding: var(--spacing-md) 0 0; }
+.business-link__inner {
+    max-width: 860px;
+    margin: 0 auto;
+    background: rgba(79, 181, 176, .08);
+    border-left: 4px solid var(--color-secondary);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+}
+.business-link__label {
+    font-family: var(--font-heading);
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--color-secondary);
+    margin: 0 0 .4rem;
+}
+.business-link__inner p:not(.business-link__label) { color: var(--color-text-gray); line-height: 1.7; margin: 0; }
+.business-link a, .hero-links a, .section-subtitle a { color: var(--color-accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+.hero-links { margin-top: 1.25rem; color: var(--color-text-gray); font-size: .95rem; }
+
+/* ---------------------------------------------------------------------------
+   Network CTA strip and footer directory (rendered by scripts/apply-network.mjs)
+   --------------------------------------------------------------------------- */
+.network-cta {
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(57, 153, 229, .06);
+}
+.network-cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+}
+.network-cta__heading { font-size: 1.4rem; margin: 0; }
+.network-cta__links { display: flex; flex-wrap: wrap; gap: .75rem; }
+.site-footer .container { display: block; }
+.footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+.footer-network {
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-network__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 3rem;
+}
+.footer-network__all { margin-top: 1.25rem; font-size: .9rem; }
+.footer-network__all a { color: var(--color-accent-blue); }
+@media (max-width: 768px) {
+    .footer-network__grid { grid-template-columns: 1fr; }
+    .network-cta__links .btn { width: 100%; justify-content: center; }
+}

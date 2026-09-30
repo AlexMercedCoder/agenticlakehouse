@@ -36,10 +36,7 @@ PILLAR_FOOTER = """<div class="footer-grid">
                     <h4 class="footer-col-title">Explore</h4>
                     <ul class="footer-nav-list">
                         <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
-                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
                         <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
-                        <li><a href="/apache-iceberg/">Apache Iceberg</a></li>
-                        <li><a href="/data-lakehouse/">Data Lakehouse</a></li>
                         <li><a href="/kb/">Knowledge Base</a></li>
                         <li><a href="/videos/">Video Explainers</a></li>
                     </ul>

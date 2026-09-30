@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic Lakehouse | Agentic Analytics, Apache Iceberg &amp; Dremio</title>
+    <title>Agentic Lakehouse | Build AI Agents on Open Lakehouse Data</title>
     <meta name="description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Reference architecture, working patterns, and a community for data engineers and architects building AI agents on governed Apache Iceberg lakehouse data.">
     <meta name="author" content="Alex Merced">
 
     <!-- Fonts -->
@@ -25,9 +25,9 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agenticlakehouse.com/">
-    <meta property="og:title" content="Agentic Lakehouse | Agentic Analytics, Apache Iceberg &amp; Dremio">
+    <meta property="og:title" content="Agentic Lakehouse | Build AI Agents on Open Lakehouse Data">
     <meta property="og:description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Reference architecture, working patterns, and a community for data engineers and architects building AI agents on governed Apache Iceberg lakehouse data.">
     <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
     <meta property="og:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
     <meta property="og:site_name" content="Agentic Lakehouse">
@@ -36,9 +36,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="agenticlakehouse.com">
     <meta property="twitter:url" content="https://agenticlakehouse.com/">
-    <meta name="twitter:title" content="Agentic Lakehouse | Agentic Analytics, Apache Iceberg &amp; Dremio">
+    <meta name="twitter:title" content="Agentic Lakehouse | Build AI Agents on Open Lakehouse Data">
     <meta name="twitter:description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Reference architecture, working patterns, and a community for data engineers and architects building AI agents on governed Apache Iceberg lakehouse data.">
     <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
     <meta name="twitter:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
     <meta name="twitter:creator" content="@alexmercedcoder">
@@ -97,7 +97,7 @@
         "@type": "WebPage",
         "@id": "https://agenticlakehouse.com/#webpage",
         "url": "https://agenticlakehouse.com/",
-        "name": "Agentic Lakehouse | Agentic Analytics, Apache Iceberg & Dremio",
+        "name": "Agentic Lakehouse | Build AI Agents on Open Lakehouse Data",
         "isPartOf": {"@id": "https://agenticlakehouse.com/#website"},
         "about": {"@id": "https://agenticlakehouse.com/#term-agentic-lakehouse"},
         "author": {"@id": "https://alexmerced.com/#alexmerced"},
@@ -188,9 +188,9 @@
             </a>
             <nav class="site-nav"><ul>
                     <li><a href="/what-is-agentic-lakehouse/">Agentic Lakehouse</a></li>
-                    <li><a href="/what-is-agentic-analytics/">Agentic Analytics</a></li>
-                    <li><a href="/data-lakehouse/">Lakehouse Hub</a></li>
-                    <li><a href="/apache-iceberg/">Iceberg Hub</a></li>
+                    <li><a href="/agentic-bi/">Agentic BI</a></li>
+                    <li><a href="/agentic-lakehouse-architecture/">Architecture</a></li>
+                    <li><a href="https://luma.com/agenticlakehouse" data-network-event="cta_luma_community">Community</a></li>
                     <li><a href="/kb/">Knowledge Base</a></li>
                     <li><a href="/books/">Books</a></li>
                     <li><a href="/videos/">Videos</a></li>
@@ -252,14 +252,17 @@
             </svg>
             <div class="container hero-content">
                 <div class="hero-text-wrapper">
-                    <h1 class="fade-in-up">Agentic Analytics <br><span class="gradient-text">Starts With the Data</span></h1>
-                    <p class="hero-subtitle fade-in-up delay-1">The blocker is rarely the model. It is whether your
-                        agents can reach correct, governed data.</p>
+                    <h1 class="fade-in-up">Build the <br><span class="gradient-text">agentic lakehouse</span></h1>
+                    <p class="hero-subtitle fade-in-up delay-1">Reference architecture, working patterns, and a
+                        community of builders, for the data engineers and architects who have to make AI agents
+                        work on real lakehouse data.</p>
                     <div class="hero-actions fade-in-up delay-2">
-                        <a href="https://drmevn.fyi/am-get-started" class="btn btn-primary btn-lg">Start 30-Day Free
-                            Trial <i class="ph-bold ph-arrow-right"></i></a>
-                        <a href="#problem" class="btn btn-secondary btn-lg">See what breaks</a>
+                        <a href="https://luma.com/agenticlakehouse" class="btn btn-primary btn-lg" data-network-event="cta_luma_community">Join the
+                            Agentic Lakehouse community <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="/books/" class="btn btn-secondary btn-lg">Read the books</a>
                     </div>
+                    <p class="hero-links fade-in-up delay-2">Start with the <a href="/agentic-lakehouse-architecture/">reference architecture</a>
+                        or the <a href="/kb/">200-term glossary</a>.</p>
                 </div>
                 <!-- Abstract visual representation of connected nodes/data -->
                 <div class="hero-visual fade-in-up delay-3">
@@ -305,8 +308,8 @@
                         query engine at execution time, and a structured agent interface such as an MCP server. Together
                         these let an agent find data, run a correct query, and stay inside the permissions of the person
                         who asked.</p>
-                    <p class="answer-byline">Written by <a href="https://whoisalexmerced.com/">Alex Merced</a>, Open
-                        Lakehouse &amp; AI Advocate, Author &amp; Technologist. Last updated
+                    <p class="answer-byline">Written by <a href="https://whoisalexmerced.com/">Alex Merced</a>, Head of Developer
+                        Relations at Dremio. Last updated
                         <time datetime="2026-08-08">August 8, 2026</time>.</p>
                 </div>
             </div>
@@ -409,6 +412,7 @@
                     <h2 class="fade-in-on-scroll">The Solution: <span class="gradient-text">Dremio Agentic
                             Lakehouse</span></h2>
                     <p class="section-subtitle fade-in-on-scroll">One platform, rather than a stack you assemble and maintain yourself.</p>
+                    <p class="section-subtitle fade-in-on-scroll">Example implementations: <a href="/dremio-ai/">Dremio AI features for the agentic lakehouse</a> and <a href="/dremio-polaris/">Dremio Open Catalog, built on Apache Polaris</a>.</p>
                 </div>
 
                 <div class="solution-grid">
@@ -577,7 +581,7 @@
                             result, and delivering or acting on the answer. It differs from dashboard BI in that the
                             agent decides the steps, so the platform underneath has to supply business context and
                             enforce permissions on every query it generates.
-                            <a href="/what-is-agentic-analytics/">Read the full guide</a>.</p>
+                            <a href="https://agenticanalyticsnow.com/knowledge-base/what-is-agentic-analytics/">Read the leader's guide on Agentic Analytics Now</a>.</p>
                     </details>
                     <details class="faq-item-home">
                         <summary><h3>How does Apache Iceberg support agentic analytics?</h3></summary>
@@ -586,7 +590,7 @@
                             agent saw when it answered, schema evolution keeps queries valid as tables change, and
                             file-level column statistics let an engine prune data before scanning it. The open REST
                             catalog also means several engines can read the same governed tables without copying data.
-                            <a href="/apache-iceberg/">More on Apache Iceberg</a>.</p>
+                            <a href="/kb/apache-iceberg/">More on Apache Iceberg</a>.</p>
                     </details>
                     <details class="faq-item-home">
                         <summary><h3>How is an agentic lakehouse different from RAG?</h3></summary>
@@ -685,7 +689,7 @@
                     <h4 class="footer-col-title">Explore</h4>
                     <ul class="footer-nav-list">
                         <li><a href="/what-is-agentic-lakehouse/">What is an Agentic Lakehouse?</a></li>
-                        <li><a href="/what-is-agentic-analytics/">What is Agentic Analytics?</a></li>
+                        <li><a href="/kb/agentic-analytics/">What is Agentic Analytics?</a></li>
                         <li><a href="/agentic-lakehouse-architecture/">Architecture Guide</a></li>
                         <li><a href="/kb/">Knowledge Base</a></li>
                         <li><a href="/videos/">Video Explainers</a></li>
