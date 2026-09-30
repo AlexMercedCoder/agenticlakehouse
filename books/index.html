@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books by Alex Merced | Agentic Lakehouse</title>
     <meta name="description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Books by Alex Merced on agentic analytics, semantic layers, and the lakehouse underneath: how AI agents discover, query, and reason over governed data.">
     <meta name="author" content="Alex Merced">
 
     <!-- Fonts -->
@@ -26,7 +26,7 @@
     <meta property="og:url" content="https://agenticlakehouse.com/books/">
     <meta property="og:title" content="Books by Alex Merced | Agentic Lakehouse">
     <meta property="og:description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Books by Alex Merced on agentic analytics, semantic layers, and the lakehouse underneath: how AI agents discover, query, and reason over governed data.">
     <meta property="og:image" content="https://agenticlakehouse.com/social-share.jpg">
     <meta property="og:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
     <meta property="og:site_name" content="Agentic Lakehouse">
@@ -35,9 +35,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:domain" content="agenticlakehouse.com">
     <meta name="twitter:url" content="https://agenticlakehouse.com/">
-    <meta name="twitter:title" content="Agentic Lakehouse | Agentic Analytics, Apache Iceberg &amp; Dremio">
+    <meta name="twitter:title" content="Books by Alex Merced | Agentic Lakehouse">
     <meta name="twitter:description"
-        content="How an agentic lakehouse gives AI agents governed access to enterprise data: Apache Iceberg storage, a semantic layer, and policy enforced at query time.">
+        content="Books by Alex Merced on agentic analytics, semantic layers, and the lakehouse underneath: how AI agents discover, query, and reason over governed data.">
     <meta name="twitter:image" content="https://agenticlakehouse.com/social-share.jpg">
     <meta name="twitter:image:alt" content="Agentic Lakehouse: architecture for AI agents on governed data">
     <meta name="twitter:creator" content="@AMdatalakehouse">
@@ -80,19 +80,17 @@
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "@id": "https://agenticlakehouse.com/#webpage",
-        "url": "https://agenticlakehouse.com/",
-        "name": "Agentic Lakehouse | Agentic Analytics, Apache Iceberg & Dremio",
+        "@id": "https://agenticlakehouse.com/books/#webpage",
+        "url": "https://agenticlakehouse.com/books/",
+        "name": "Books by Alex Merced | Agentic Lakehouse",
         "isPartOf": {
           "@id": "https://agenticlakehouse.com/#website"
-        },
-        "about": {
-          "@id": "https://agenticlakehouse.com/#term-agentic-lakehouse"
         },
         "author": {
           "@id": "https://alexmerced.com/#alexmerced"
         },
-        "datePublished": "2026-08-29", "dateModified": "2026-09-26"
+        "datePublished": "2026-08-29",
+        "dateModified": "2026-09-26"
       },
       {
         "@context": "https://schema.org",
@@ -103,68 +101,12 @@
             "position": 1,
             "name": "Home",
             "item": "https://agenticlakehouse.com/"
-          }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "DefinedTerm",
-        "@id": "https://agenticlakehouse.com/#term-agentic-lakehouse",
-        "name": "Agentic Lakehouse",
-        "description": "A data lakehouse architecture built for autonomous AI agents, combining open-format storage on Apache Iceberg, a semantic layer for business context, fine-grained governance via RBAC and ABAC, and high-performance query execution.",
-        "inDefinedTermSet": "https://agenticlakehouse.com"
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "DefinedTerm",
-        "@id": "https://agenticlakehouse.com/#term-agentic-analytics",
-        "name": "Agentic Analytics",
-        "description": "The practice of using autonomous AI agents to carry out the analytical workflow (discovery, querying, reasoning, and delivery) against governed lakehouse data rather than through fixed dashboards.",
-        "inDefinedTermSet": "https://agenticlakehouse.com"
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is an agentic lakehouse?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "An agentic lakehouse is a data lakehouse built for autonomous AI agents rather than for human analysts. It adds three things to open-format storage on Apache Iceberg: a semantic layer that carries business definitions, governance enforced by the query engine at execution time, and a structured agent interface such as an MCP server. Together these let an agent find data, run a correct query, and stay inside the permissions of the person who asked."
-            }
           },
           {
-            "@type": "Question",
-            "name": "What is agentic analytics?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Agentic analytics is the practice of letting autonomous AI agents carry out the analytical workflow: discovering the relevant data, writing and running the query, reasoning over the result, and delivering or acting on the answer. It differs from dashboard BI in that the agent decides the steps, so the platform underneath has to supply business context and enforce permissions on every query it generates."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does Apache Iceberg support agentic analytics?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Apache Iceberg supplies the open table format underneath. Its ACID commits keep concurrent agent writes from corrupting a table, its snapshots let you replay the exact data state an agent saw when it answered, schema evolution keeps queries valid as tables change, and file-level column statistics let an engine prune data before scanning it. The open REST catalog also means several engines can read the same governed tables without copying data."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How is an agentic lakehouse different from RAG?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Retrieval-augmented generation grounds a model in unstructured text by retrieving passages that resemble the question. An agentic lakehouse grounds a model in structured data by running an exact query against governed tables. Retrieval returns something approximate; a query returns a computed number you can reproduce. Most production systems use both and route each question to whichever is appropriate."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why does an AI agent need a semantic layer?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Raw table and column names do not carry business meaning. Without a semantic layer an agent has to guess which column represents revenue and which rows to exclude, and a guess that runs without error still produces a wrong number. A semantic layer stores metric definitions, entity mappings, and column descriptions once, so the same question resolves to the same query and the same answer every time."
-            }
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Books",
+            "item": "https://agenticlakehouse.com/books/"
           }
         ]
       }
