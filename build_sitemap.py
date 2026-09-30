@@ -28,6 +28,8 @@ for d in sorted(ROOT.iterdir()):
 
 # KB pages
 kb = ROOT / "kb"
+if (kb / "index.html").exists():
+    urls.append((f"{BASE}/kb/", "0.8", kb / "index.html"))
 if kb.exists():
     for d in sorted(kb.iterdir()):
         if d.is_dir() and (d / "index.html").exists():
