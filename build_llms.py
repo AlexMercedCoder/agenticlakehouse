@@ -44,7 +44,7 @@ for p in pillars:
 lines.append("")
 lines.append("## Implementation Patterns (patterns/)")
 lines.append("")
-lines.append("Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0 (repository link coming soon).")
+lines.append("Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0: https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo")
 lines.append("")
 pat = ROOT / "patterns"
 if (pat / "index.html").exists():

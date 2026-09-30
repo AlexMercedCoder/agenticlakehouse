@@ -25,7 +25,7 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
+  "@type": "CollectionPage", "dateModified": "2026-09-29",
   "headline": "Implementation patterns",
   "description": "Implementation patterns for the agentic lakehouse: agent-safe governed views, row and column policies, query guardrails, a semantic layer over MCP, and an MCP server over an Iceberg catalog.",
   "url": "https://agenticlakehouse.com/patterns/",
@@ -41,7 +41,7 @@
   "datePublished": "2026-09-29",
   "hasPart": [
     {
-      "@type": "TechArticle", "dateModified": "2026-09-29",
+      "@type": "TechArticle",
       "headline": "Agent-safe governed views",
       "url": "https://agenticlakehouse.com/patterns/agent-safe-governed-views/"
     },
@@ -138,7 +138,7 @@ document.addEventListener('click', function (e) {
 
             <aside class="pattern-companion" aria-label="Companion code">
                 <p class="pattern-companion__label">Companion code</p>
-                <p>Every snippet on this page comes from <strong>mcp-semantic-lakehouse-demo</strong>, a small Apache-2.0 Python project that runs on a laptop: PyIceberg with a local SQLite catalog, DuckDB, a YAML semantic model, and the official MCP Python SDK. Repository link coming soon.</p>
+                <p>Every snippet on this page comes from <a href="https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo" data-network-event="cta_demo_repo"><strong>mcp-semantic-lakehouse-demo</strong></a>, a small Apache-2.0 Python project that runs on a laptop: PyIceberg with a local SQLite catalog, DuckDB, a YAML semantic model, and the official MCP Python SDK. Clone it from <a href="https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo" data-network-event="cta_demo_repo">GitHub</a> and follow the 5-minute quickstart.</p>
                 <p class="pattern-companion__tested">Tested September 29, 2026 with Python 3.12 and 3.13, mcp 2.2.0 (official MCP Python SDK), pyiceberg 0.12.0, and duckdb 1.5.6.</p>
             </aside>
 

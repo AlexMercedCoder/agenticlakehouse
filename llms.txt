@@ -19,7 +19,7 @@
 
 ## Implementation Patterns (patterns/)
 
-Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0 (repository link coming soon).
+Step-by-step builds with working Python code (PyIceberg, DuckDB, a YAML semantic model, and the official MCP Python SDK). Companion code: mcp-semantic-lakehouse-demo, Apache-2.0: https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo
 
 - [Agentic Lakehouse Implementation Patterns](https://agenticlakehouse.com/patterns/): Implementation patterns for the agentic lakehouse: agent-safe governed views, row and column policies, query guardrails, a semantic layer over MCP, and an MCP server over an Iceberg catalog.
 - [Agent-Safe Governed Views](https://agenticlakehouse.com/patterns/agent-safe-governed-views/): Step-by-step pattern for agent-safe governed views over Apache Iceberg tables: raw and governed schemas, PII left out, locked engine, and tests, with working Python code.

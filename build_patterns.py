@@ -230,7 +230,7 @@ def page(meta, body, crumbs):
 def companion_box():
     return f"""            <aside class="pattern-companion" aria-label="Companion code">
                 <p class="pattern-companion__label">Companion code</p>
-                <p>Every snippet on this page comes from <strong>mcp-semantic-lakehouse-demo</strong>, a small Apache-2.0 Python project that runs on a laptop: PyIceberg with a local SQLite catalog, DuckDB, a YAML semantic model, and the official MCP Python SDK. Repository link coming soon.</p>
+                <p>Every snippet on this page comes from <a href="https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo" data-network-event="cta_demo_repo"><strong>mcp-semantic-lakehouse-demo</strong></a>, a small Apache-2.0 Python project that runs on a laptop: PyIceberg with a local SQLite catalog, DuckDB, a YAML semantic model, and the official MCP Python SDK. Clone it from <a href="https://github.com/alexmerced-oss/mcp-semantic-lakehouse-demo" data-network-event="cta_demo_repo">GitHub</a> and follow the 5-minute quickstart.</p>
                 <p class="pattern-companion__tested">{html.escape(TESTED)}</p>
             </aside>"""
 
