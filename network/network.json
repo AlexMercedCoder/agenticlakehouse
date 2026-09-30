@@ -144,17 +144,17 @@
     "allSitesLabel": "All of Alex's sites"
   },
   "cta": {
-    "heading": "Work with Alex",
+    "heading": "Build with the community",
     "links": [
+      {
+        "label": "Join Agentic Lakehouse events",
+        "url": "https://luma.com/agenticlakehouse",
+        "event": "cta_luma_community"
+      },
       {
         "label": "Book Alex to speak",
         "url": "https://alexmerced.com/speaking",
         "event": "cta_speaking"
-      },
-      {
-        "label": "Get the newsletter",
-        "url": "https://alexmerced.com/newsletter",
-        "event": "cta_newsletter"
       },
       {
         "label": "Free Apache Iceberg book",
