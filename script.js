@@ -3,19 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const siteNav = document.querySelector('.site-nav');
 
+    const setMenuIcon = (open) => {
+        if (!mobileToggle) return;
+        const list = mobileToggle.querySelector('.ph-list');
+        const x = mobileToggle.querySelector('.ph-x');
+        // SVG elements have no .hidden property, so set the attribute.
+        if (list) list.toggleAttribute('hidden', open);
+        if (x) x.toggleAttribute('hidden', !open);
+    };
+
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
             siteNav.classList.toggle('active');
             
-            // Toggle icon
-            const icon = mobileToggle.querySelector('i');
-            if (siteNav.classList.contains('active')) {
-                icon.classList.remove('ph-list');
-                icon.classList.add('ph-x');
-            } else {
-                icon.classList.remove('ph-x');
-                icon.classList.add('ph-list');
-            }
+            // Toggle icon (inline SVGs: list when closed, x when open)
+            setMenuIcon(siteNav.classList.contains('active'));
         });
     }
 
@@ -48,9 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close mobile menu if open
             if (siteNav.classList.contains('active')) {
                 siteNav.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('ph-x');
-                icon.classList.add('ph-list');
+                setMenuIcon(false);
             }
 
             const targetId = this.getAttribute('href');

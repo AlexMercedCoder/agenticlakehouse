@@ -259,7 +259,7 @@ h1, h2, h3, h4 {
     min-width: 140px;
 }
 
-.glass-card i {
+.glass-card .ph-icon {
     font-size: 3rem;
     color: var(--color-accent-blue);
 }
@@ -420,7 +420,7 @@ h1, h2, h3, h4 {
     font-weight: 500;
 }
 
-.check-list i {
+.check-list .ph-icon {
     color: var(--color-secondary);
 }
 
@@ -620,6 +620,19 @@ h1, h2, h3, h4 {
 .delay-1 { animation-delay: 0.2s; transition-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; transition-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; transition-delay: 0.6s; }
+
+/* The hero headline and subtitle are the largest paint on the homepage, so they
+   render at once (no opacity fade) and only slide into place. */
+.hero-text-wrapper > h1.fade-in-up,
+.hero-text-wrapper > .hero-subtitle.fade-in-up {
+    opacity: 1;
+    animation-name: slideUp;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); }
+    to { transform: translateY(0); }
+}
 
 @keyframes fadeInUp {
     to {
@@ -886,9 +899,12 @@ h1, h2, h3, h4 {
     color: var(--color-accent-blue);
 }
 
+.footer-nav-list a { overflow-wrap: anywhere; }
+
 @media (max-width: 768px) {
     .footer-grid {
-        grid-template-columns: 1fr;
+        /* minmax(0, 1fr): a long footer link must not widen the page on phones */
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
     }
 
@@ -1282,3 +1298,13 @@ h1, h2, h3, h4 {
     .site-nav ul { gap: .45rem 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
     .site-nav a:not(.btn) { font-size: .88rem; }
 }
+
+/* Inline SVG icons (Phosphor, see scripts/inline_icons.py). 1em square, like the icon font they replace. */
+.ph-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    vertical-align: -0.125em;
+}
+.ph-icon[hidden] { display: none; }

@@ -22,8 +22,11 @@ import html
 import json
 import pathlib
 import re
+import sys
 
 ROOT = pathlib.Path(__file__).parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from perf_fixes import convert as inline_icons  # noqa: E402
 SRC = ROOT / "scripts" / "patterns"
 BASE = "https://agenticlakehouse.com"
 CROSSLINKS = json.loads((ROOT / "data" / "crosslinks.json").read_text())
@@ -198,7 +201,6 @@ def page(meta, body, crumbs):
     <script type="application/ld+json">
 {json.dumps(bc, indent=2)}
     </script>
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
 <!-- network:head:start -->
 <!-- network:head:end -->
 </head>
@@ -277,6 +279,7 @@ def main():
 
 def _write(path, new):
     """Write a page, keeping the network blocks apply-network.mjs already filled in."""
+    new = inline_icons(new)
     if path.exists():
         old = path.read_text()
         for name in ("head", "footer"):

@@ -11,9 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700&display=swap"></noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="../style.css">
@@ -113,9 +111,6 @@
     ]
     </script>
 
-    <!-- Icons (using Phosphor Icons for a premium look) -->
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <style>
       .bookspage { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
       .bookspage__head { max-width: 46rem; margin-bottom: 2.5rem; }
@@ -200,7 +195,7 @@ document.addEventListener('click', function (e) {
 <header class="site-header">
         <div class="container">
             <a href="/" class="logo" aria-label="Home">
-                <span class="logo-icon"><i class="ph-fill ph-waves"></i></span>
+                <span class="logo-icon"><svg class="ph-icon ph-waves" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM197.2,176.87c-13.07,11.18-24.9,15.1-35.64,15.1-14.26,0-26.62-6.92-37.47-13-18.41-10.31-32.95-18.45-54.89.31a8,8,0,1,1-10.4-12.16c30.42-26,54.09-12.76,73.11-2.11,18.41,10.31,33,18.45,54.89-.31a8,8,0,0,1,10.4,12.16Zm0-44c-13.07,11.18-24.9,15.1-35.64,15.1-14.26,0-26.62-6.92-37.47-13-18.41-10.31-32.95-18.45-54.89.31a8,8,0,0,1-10.4-12.16c30.42-26,54.09-12.76,73.11-2.11,18.41,10.31,33,18.45,54.89-.31a8,8,0,1,1,10.4,12.16Zm0-44c-13.07,11.18-24.9,15.1-35.64,15.1-14.26,0-26.62-6.92-37.47-13-18.41-10.31-32.95-18.45-54.89.31A8,8,0,0,1,58.8,79.13c30.42-26,54.09-12.76,73.11-2.11,18.41,10.31,33,18.45,54.89-.31a8,8,0,1,1,10.4,12.16Z"/></svg></span>
                 <span class="logo-text">The Agentic Lakehouse</span>
             </a>
             <nav class="site-nav"><ul>
@@ -215,7 +210,7 @@ document.addEventListener('click', function (e) {
                     <li><a href="https://amdatalakehouse.substack.com/p/the-open-lakehouse-explained-then" class="btn btn-primary nav-cta" data-network-event="cta_laptop_lakehouse">Try it on your laptop</a></li>
                 </ul></nav>
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                <i class="ph ph-list"></i>
+                <svg class="ph-icon ph-list" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg><svg class="ph-icon ph-x" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" hidden><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
             </button>
         </div>
     </header>
