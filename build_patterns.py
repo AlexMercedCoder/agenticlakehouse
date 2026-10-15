@@ -41,43 +41,43 @@ PAGES = [
         "title": "Agent-Safe Governed Views | Agentic Lakehouse Patterns",
         "h1": "Agent-safe governed views",
         "subtitle": "Give agents views, never raw tables: a curated column list, joins done once, and an engine that cannot read anything else.",
-        "description": "Step-by-step pattern for agent-safe governed views over Apache Iceberg tables: raw and governed schemas, PII left out, locked engine, and tests, with working Python code.",
+        "description": "Step-by-step pattern for agent-safe governed views over Apache Iceberg tables: raw and governed schemas, PII left out, a locked engine, and tests.",
         "leader": "one-copy-many-readers",
         "kb": [("/kb/pii-data-protection/", "PII data protection"), ("/kb/data-masking/", "Data masking"), ("/kb/governed-ai-querying/", "Governed AI querying"), ("/kb/iceberg-view-specification/", "Iceberg view specification")],
     },
     {
         "slug": "row-and-column-policies-for-agents",
-        "title": "Row and Column Policies for AI Agents | Agentic Lakehouse Patterns",
+        "title": "Row and Column Policies for AI Agents | Agentic Lakehouse",
         "h1": "Row and column policies for agents",
         "subtitle": "Tie what an agent can see to the identity it acts for, and enforce it in the data path instead of the prompt.",
-        "description": "How to enforce row-level and column-level security for AI agents: roles in a semantic model, row filters baked into governed views, denied metrics and dimensions, and tests that try to escape.",
+        "description": "Enforce row and column security for AI agents: roles in a semantic model, row filters in governed views, denied metrics, and tests that try to escape.",
         "leader": "governance-for-agents",
         "kb": [("/kb/row-level-security/", "Row-level security"), ("/kb/column-level-security/", "Column-level security"), ("/kb/ai-agent-authorization/", "AI agent authorization"), ("/kb/abac-data/", "ABAC for data")],
     },
     {
         "slug": "query-guardrails-for-agents",
-        "title": "Query Guardrails for AI Agents: Allowlists, Limits, Timeouts, Cost Caps | Agentic Lakehouse Patterns",
+        "title": "Query Guardrails for AI Agents: Allowlists and Cost Caps",
         "h1": "Query guardrails for agents",
         "subtitle": "Allowlists, row limits, timeouts, cost caps, and an audit log, each one a few lines of code with a test.",
-        "description": "Step-by-step query guardrails for AI agents on lakehouse data: name and relation allowlists, row limits, statement timeouts, Iceberg metadata cost caps, session budgets, and audit logs.",
+        "description": "Query guardrails for AI agents on lakehouse data: allowlists, row limits, statement timeouts, Iceberg metadata cost caps, session budgets, and audit logs.",
         "leader": "cost-and-latency",
         "kb": [("/kb/safe-action-loops/", "Safe action loops"), ("/kb/lakehouse-cost-optimization/", "Lakehouse cost optimization"), ("/kb/iceberg-manifest-files/", "Iceberg manifest files"), ("/kb/trustworthy-ai-execution/", "Trustworthy AI execution")],
     },
     {
         "slug": "semantic-layer-over-mcp",
-        "title": "Expose a Semantic Layer to AI Agents over MCP | Agentic Lakehouse Patterns",
+        "title": "Expose a Semantic Layer to AI Agents over MCP",
         "h1": "Exposing a semantic layer to agents over MCP",
         "subtitle": "Metrics and dimensions as MCP tools: the agent picks business definitions, the server writes the SQL.",
-        "description": "Build an MCP server that exposes a semantic layer to AI agents: tool design, metric definitions as tool descriptions, read-only annotations, errors the agent can act on, and in-process tests.",
+        "description": "Build an MCP server that exposes a semantic layer to AI agents: tool design, metric definitions as tool descriptions, read-only hints, and tests.",
         "leader": "semantic-layer-as-contract",
         "kb": [("/kb/semantic-layer/", "Semantic layer"), ("/kb/ai-semantic-layer/", "AI semantic layer"), ("/kb/metric-store/", "Metric store"), ("/kb/text-to-sql/", "Text-to-SQL")],
     },
     {
         "slug": "mcp-server-over-iceberg-catalog",
-        "title": "Build an MCP Server over an Apache Iceberg Catalog | Agentic Lakehouse Patterns",
+        "title": "Build an MCP Server over an Apache Iceberg Catalog",
         "h1": "An MCP server over an Iceberg catalog",
         "subtitle": "PyIceberg for the catalog and table metadata, DuckDB for execution, MCP for the agent, all runnable on a laptop.",
-        "description": "Build an MCP server on top of an Apache Iceberg catalog with PyIceberg: a local SQL catalog, partitioned tables, reading into DuckDB, and using Iceberg metadata for cost estimates.",
+        "description": "Build an MCP server over an Apache Iceberg catalog with PyIceberg: a local SQL catalog, partitioned tables, DuckDB reads, and metadata cost estimates.",
         "leader": "open-interfaces",
         "kb": [("/kb/iceberg-catalog/", "Iceberg catalog"), ("/kb/iceberg-rest-catalog/", "Iceberg REST catalog"), ("/kb/apache-polaris/", "Apache Polaris"), ("/kb/llm-data-access/", "LLM data access")],
     },
@@ -85,10 +85,10 @@ PAGES = [
 
 INDEX = {
     "slug": "",
-    "title": "Agentic Lakehouse Implementation Patterns | Step by Step with Code",
+    "title": "Agentic Lakehouse Implementation Patterns with Code",
     "h1": "Implementation patterns",
     "subtitle": "Step-by-step patterns for giving AI agents safe, governed access to lakehouse data, each with code you can run.",
-    "description": "Implementation patterns for the agentic lakehouse: agent-safe governed views, row and column policies, query guardrails, a semantic layer over MCP, and an MCP server over an Iceberg catalog.",
+    "description": "Five implementation patterns for the agentic lakehouse, with working Python: governed views, row and column policies, guardrails, and two MCP servers.",
     "leader": "evaluation-and-trust",
 }
 
@@ -152,7 +152,11 @@ def page(meta, body, crumbs):
         ld["dependencies"] = "Python 3.10+, mcp 2.x, pyiceberg 0.12, duckdb 1.5"
         ld["isPartOf"] = {"@type": "CollectionPage", "@id": f"{BASE}/patterns/", "name": "Agentic lakehouse implementation patterns"}
     else:
-        ld["hasPart"] = [{"@type": "TechArticle", "headline": p["h1"][0].upper() + p["h1"][1:], "url": f"{BASE}/patterns/{p['slug']}/"} for p in PAGES]
+        ld["hasPart"] = [
+            {"@type": "TechArticle", "headline": p["h1"][0].upper() + p["h1"][1:], "url": f"{BASE}/patterns/{p['slug']}/",
+             "author": PERSON, "datePublished": PUBLISHED}
+            for p in PAGES
+        ]
     bc = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
