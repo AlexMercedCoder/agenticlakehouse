@@ -15,7 +15,7 @@
 - [Agentic Lakehouse Reference Architecture Diagram](https://agenticlakehouse.com/agentic-lakehouse-architecture/): A free, downloadable agentic lakehouse reference architecture (SVG and PNG, CC BY 4.0): object storage, Apache Iceberg, catalog, query engine, semantic layer, MCP agent interface, agents, and governance.
 - [The Future of BI is Agentic](https://agenticlakehouse.com/agentic-bi/): Dremio lets you talk to your data wherever it lives. Unifying federation, performance, and semantics for Agentic BI.
 - [Example implementation: Dremio AI features for the agentic lakehouse](https://agenticlakehouse.com/dremio-ai/): An example implementation of agentic lakehouse capabilities: the AI features built into Dremio, from SQL AI functions to autonomous performance.
-- [Example implementation: Dremio Open Catalog on Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): An example implementation of the agentic lakehouse catalog layer: Dremio Open Catalog, built on Apache Polaris, and what it offers for interoperability and governance.
+- [Example implementation: Dremio Catalog on Apache Polaris](https://agenticlakehouse.com/dremio-polaris/): An example implementation of the agentic lakehouse catalog layer: Dremio Catalog, built on Apache Polaris, and what it offers for interoperability and governance.
 
 ## Implementation Patterns (patterns/)
 
